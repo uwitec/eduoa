@@ -1,0 +1,23 @@
+<script  src="/js/dtree.js"></script>
+<div id="dtree">
+	<script type="text/javascript">
+		<!--
+
+		d = new dTree('d');
+		d.config.target = "right";
+
+		d.add(0,-1,'盘古消费运营软件');
+
+		<?php 
+		  if (!empty($role['Module'])){
+			  foreach ($role['Module'] as $module):
+				  echo("d.add(". $module['id']. ",". $module['parent_id'] . ",'" . $module['module_name'] . "','" . $module['url'] . "');\n");
+			  endforeach;
+		  }
+		?>
+
+		document.write(d);
+
+		//-->
+	</script>
+</div>

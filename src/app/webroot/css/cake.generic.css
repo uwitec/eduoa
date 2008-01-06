@@ -1,6 +1,6 @@
 *{
-margin:0;
-padding:0;
+margin:5;
+padding:5;
 }
 
 body{
@@ -192,6 +192,7 @@ margin-left: 0em;
 }
 label {
 display: block;
+float:left;
 width: 140px;
 font-size: 14px;
 padding-right: 20px;

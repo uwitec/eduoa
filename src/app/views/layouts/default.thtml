@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>金色校园教育管理软件系统</title>
+<?php echo $html->charset('UTF-8');?>
+<?php header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");?>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="expires" content="0"/>
+<link rel="icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+<?php 
+if(isset($javascript)):
+    echo $javascript->link('prototype.js');
+endif;          
+?> 
+<?php echo $html->css('pangu.generic');?>
+</head>
+<body>
+	<div id="container">
+	   <?php
+	   if ($session->check('Message.flash')){
+	   	  $session->flash();
+	   ?>
+	      <SCRIPT LANGUAGE="JavaScript">
+	      <!--
+			element = document.getElementById("flashMessage");
+			element.style.display = "none";
+			alert(element.innerHTML);
+	      //-->
+	      </SCRIPT>
+	   <?php
+	   }
+	   echo $content_for_layout;
+	   ?>
+	</div>
+<?php echo $cakeDebug?>
+</script>
+<script type="text/javascript">
+  window.onload=function(){window.history.forward(1);}
+</script>
+</body>
+</html>

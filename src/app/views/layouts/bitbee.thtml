@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>金色校园教育管理软件系统</title>
+<?php echo $html->charset('UTF-8');?>
+<link rel="icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+</head>
+<body>
+<?php
+  echo $content_for_layout;
+  echo $cakeDebug;
+?>
+</body>
+</html>

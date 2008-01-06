@@ -14,3 +14,6 @@
 
 数据库名称：   eduoa
 MySQL 字符集： UTF-8 Unicode (utf8)
+
+
+如需存放文件在app\wwwroot目录下面，请严格按照默认文件夹存放相关文件。

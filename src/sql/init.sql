@@ -1,3 +1,9 @@
-CREATE DATABASE `eduoa` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+@db_acl.sql;
 
-CREATE DATABASE `eduoa-test` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+@sessions.sql;
+
+@members.sql;
+
+@eduoa.sql;
+
+@modules_default_data.sql;

@@ -1,0 +1,16 @@
+运行WEB容器使用XAMPP 1.6.5。
+
+各支持服务软件版本如下：
+
+    * Apache 2.2.6 + OpenSSL 0.9.8g
+    * MySQL 5.0.51
+    * PHP 5.2.5 & PHP 4.4.6
+    * phpMyAdmin 2.11.3
+    * FileZilla FTP Server 0.9.24
+    * Mercury Mail Transport System v4.52
+
+
+开发期间Mysql中使用root帐号，密码root
+
+数据库名称：   eduoa
+MySQL 字符集： UTF-8 Unicode (utf8)

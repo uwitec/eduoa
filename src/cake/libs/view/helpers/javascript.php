@@ -1,12 +1,12 @@
 <?php
-/* SVN FILE: $Id: javascript.php 6305 2008-01-02 02:33:56Z phpnut $ */
+/* SVN FILE: $Id: javascript.php 5421 2007-07-09 04:58:57Z phpnut $ */
 /**
  * Javascript Helper class file.
  *
  * PHP versions 4 and 5
  *
  * CakePHP(tm) :  Rapid Development Framework <http://www.cakephp.org/>
- * Copyright 2005-2008, Cake Software Foundation, Inc.
+ * Copyright 2005-2007, Cake Software Foundation, Inc.
  *								1785 E. Sahara Avenue, Suite 490-204
  *								Las Vegas, Nevada 89104
  *
@@ -14,14 +14,14 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @copyright		Copyright 2005-2007, Cake Software Foundation, Inc.
  * @link				http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 6305 $
+ * @version			$Revision: 5421 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2008-01-01 20:33:56 -0600 (Tue, 01 Jan 2008) $
+ * @lastmodified	$Date: 2007-07-08 23:58:57 -0500 (Sun, 08 Jul 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -222,12 +222,9 @@ class JavascriptHelper extends Helper{
  */
 	function includeScript($script = "") {
 		if ($script == "") {
-			$dh = opendir(JS);
-			while (false !== ($filename = readdir($dh))) {
-                $files[] = $filename;
-            }
-            sort($files);
+			$files = scandir(JS);
 			$javascript = '';
+
 			foreach ($files as $file) {
 				if (substr($file, -3) == '.js') {
 					$javascript .= file_get_contents(JS . "{$file}") . "\n\n";

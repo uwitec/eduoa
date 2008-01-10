@@ -1,12 +1,12 @@
 <?php
-/* SVN FILE: $Id: html.php 6305 2008-01-02 02:33:56Z phpnut $ */
+/* SVN FILE: $Id: html.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Html Helper class file.
  *
  * Simplifies the construction of HTML elements.
  *
  * CakePHP(tm) :  Rapid Development Framework <http://www.cakephp.org/>
- * Copyright 2005-2008, Cake Software Foundation, Inc.
+ * Copyright 2005-2007, Cake Software Foundation, Inc.
  *								1785 E. Sahara Avenue, Suite 490-204
  *								Las Vegas, Nevada 89104
  *
@@ -14,14 +14,14 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @copyright		Copyright 2005-2007, Cake Software Foundation, Inc.
  * @link				http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 0.9.1
- * @version			$Revision: 6305 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2008-01-01 20:33:56 -0600 (Tue, 01 Jan 2008) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -107,10 +107,7 @@ class HtmlHelper extends Helper {
  * @return mixed	Either string or echos the value, depends on AUTO_OUTPUT and $return.
  * @access public
  */
-	function charset($charset = null, $return = false) {
-		if (is_null($charset)) {
-			$charset = 'utf-8';
-		}
+	function charset($charset, $return = false) {
 		return $this->output(sprintf($this->tags['charset'], $charset), $return);
 	}
 /**
@@ -590,7 +587,7 @@ class HtmlHelper extends Helper {
 			$selected = date('m', strtotime($this->tagValue($tagName)));
 		}
 		$monthValue = empty($selected) ? ($showEmpty ? NULL : date('m')) : $selected;
-		$months = array('01' => 'January', '02' => 'February', '03' => 'March', '04' => 'April', '05' => 'May', '06' => 'June', '07' => 'July', '08' => 'August', '09' => 'September', '10' => 'October', '11' => 'November', '12' => 'December');
+		$months = array('01' => '01', '02' => '02', '03' => '03', '04' => '04', '05' => '05', '06' => '06', '07' => '07', '08' => '08', '09' => '09', '10' => '10', '11' => '11', '12' => '12');
 
 		return $this->selectTag($tagName . "_month", $months, $monthValue, $selectAttr, $optionAttr, $showEmpty);
 	}

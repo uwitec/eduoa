@@ -1,6 +1,6 @@
 #!/usr/bin/php -q
 <?php
-/* SVN FILE: $Id: bake.php 6305 2008-01-02 02:33:56Z phpnut $ */
+/* SVN FILE: $Id: bake.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Command-line code generation utility to automate programmer chores.
  *
@@ -11,7 +11,7 @@
  * PHP versions 4 and 5
  *
  * CakePHP(tm) :  Rapid Development Framework <http://www.cakephp.org/>
- * Copyright 2005-2008,	Cake Software Foundation, Inc.
+ * Copyright 2005-2007,	Cake Software Foundation, Inc.
  *								1785 E. Sahara Avenue, Suite 490-204
  *								Las Vegas, Nevada 89104
  *
@@ -19,14 +19,14 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @copyright		Copyright 2005-2007, Cake Software Foundation, Inc.
  * @link				http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
  * @package			cake
  * @subpackage		cake.cake.scripts.bake
  * @since			CakePHP(tm) v 0.10.0.1232
- * @version			$Revision: 6305 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2008-01-01 20:33:56 -0600 (Tue, 01 Jan 2008) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 	define ('DS', DIRECTORY_SEPARATOR);
@@ -371,6 +371,11 @@ class Bake {
 		$primaryKey = 'id';
 		$validate = array();
 		$associations = array();
+		/*$usingDefault = $this->getInput('Will your model be using a database connection setting other than the default?');
+		if (low($usingDefault) == 'y' || low($usingDefault) == 'yes')
+		{
+			$useDbConfig = $this->getInput('Please provide the name of the connection you wish to use.');
+		}*/
 		$useDbConfig = 'default';
 		$this->__doList($useDbConfig);
 
@@ -422,20 +427,16 @@ class Bake {
 			loadModel();
 			$tempModel = new Model(false, $useTable);
 			$modelFields = $db->describe($tempModel);
-
-			if (!array_key_exists('id', $modelFields)) {
-				foreach ($modelFields as $name => $field) {
-					break;
-				}
-				$primaryKey = $this->getInput('What is the primaryKey?', null, $name);
+			if (isset($modelFields[0]['name']) && $modelFields[0]['name'] != 'id') {
+				$primaryKey = $this->getInput('What is the primaryKey?', null, $modelFields[0]['name']);
 			}
 		}
 		$validate = array();
 
 		if (array_search($useTable, $this->__tables) !== false && (low($wannaDoValidation) == 'y' || low($wannaDoValidation) == 'yes')) {
-			foreach ($modelFields as $name => $field) {
+			foreach ($modelFields as $field) {
 				$this->stdout('');
-				$prompt = 'Name: ' . $name . "\n";
+				$prompt = 'Name: ' . $field['name'] . "\n";
 				$prompt .= 'Type: ' . $field['type'] . "\n";
 				$prompt .= '---------------------------------------------------------------'."\n";
 				$prompt .= 'Please select one of the following validation options:'."\n";
@@ -447,7 +448,7 @@ class Bake {
 				$prompt .= "5- Do not do any validation on this field.\n\n";
 				$prompt .= "... or enter in a valid regex validation string.\n\n";
 
-				if ($field['null'] == 1 || $name == $primaryKey || $name == 'created' || $name == 'modified') {
+				if ($field['null'] == 1 || $field['name'] == $primaryKey || $field['name'] == 'created' || $field['name'] == 'modified') {
 					$validation = $this->getInput($prompt, null, '5');
 				} else {
 					$validation = $this->getInput($prompt, null, '1');
@@ -455,21 +456,21 @@ class Bake {
 
 				switch ($validation) {
 					case '1':
-						$validate[$name] = 'VALID_NOT_EMPTY';
+						$validate[$field['name']] = 'VALID_NOT_EMPTY';
 						break;
 					case '2':
-						$validate[$name] = 'VALID_EMAIL';
+						$validate[$field['name']] = 'VALID_EMAIL';
 						break;
 					case '3':
-						$validate[$name] = 'VALID_NUMBER';
+						$validate[$field['name']] = 'VALID_NUMBER';
 						break;
 					case '4':
-						$validate[$name] = 'VALID_YEAR';
+						$validate[$field['name']] = 'VALID_YEAR';
 						break;
 					case '5':
 						break;
 					default:
-						$validate[$name] = $validation;
+						$validate[$field['name']] = $validation;
 					break;
 				}
 			}
@@ -480,35 +481,37 @@ class Bake {
 		if ((low($wannaDoAssoc) == 'y' || low($wannaDoAssoc) == 'yes')) {
 			$this->stdout('One moment while I try to detect any associations...');
 			$possibleKeys = array();
+			//Look for belongsTo
 			$i = 0;
-			foreach ($modelFields as $name => $field) {
-				$offset = strpos($name, '_id');
-				if ($name != $primaryKey && $offset !== false) {
-					$tmpModelName = $this->__modelNameFromKey($name);
+			foreach ($modelFields as $field) {
+				$offset = strpos($field['name'], '_id');
+				if ($field['name'] != $primaryKey && $offset !== false) {
+					$tmpModelName = $this->__modelNameFromKey($field['name']);
 					$associations['belongsTo'][$i]['alias'] = $tmpModelName;
 					$associations['belongsTo'][$i]['className'] = $tmpModelName;
-					$associations['belongsTo'][$i]['foreignKey'] = $name;
+					$associations['belongsTo'][$i]['foreignKey'] = $field['name'];
 					$i++;
 				}
 			}
+			//Look for hasOne and hasMany and hasAndBelongsToMany
 			$i = 0;
 			$j = 0;
 			foreach ($this->__tables as $otherTable) {
 				$tempOtherModel = & new Model(false, $otherTable);
 				$modelFieldsTemp = $db->describe($tempOtherModel);
-				foreach ($modelFieldsTemp as $name => $field) {
+				foreach ($modelFieldsTemp as $field) {
 					if ($field['type'] == 'integer' || $field['type'] == 'string') {
-						$possibleKeys[$otherTable][] = $name;
+						$possibleKeys[$otherTable][] = $field['name'];
 					}
-					if ($name != $primaryKey && $name == $this->__modelKey($currentModelName)) {
+					if ($field['name'] != $primaryKey && $field['name'] == $this->__modelKey($currentModelName)) {
 						$tmpModelName = $this->__modelName($otherTable);
 						$associations['hasOne'][$j]['alias'] = $tmpModelName;
 						$associations['hasOne'][$j]['className'] = $tmpModelName;
-						$associations['hasOne'][$j]['foreignKey'] = $name;
+						$associations['hasOne'][$j]['foreignKey'] = $field['name'];
 
 						$associations['hasMany'][$j]['alias'] = $tmpModelName;
 						$associations['hasMany'][$j]['className'] = $tmpModelName;
-						$associations['hasMany'][$j]['foreignKey'] = $name;
+						$associations['hasMany'][$j]['foreignKey'] = $field['name'];
 						$j++;
 					}
 				}
@@ -536,6 +539,7 @@ class Bake {
 			}
 			$this->stdout('Done.');
 			$this->hr();
+			//if none found...
 			if (empty($associations)) {
 				$this->stdout('None found.');
 			} else {
@@ -748,6 +752,9 @@ class Bake {
 
 		if (low($looksGood) == 'y' || low($looksGood) == 'yes') {
 			if ($useTable == Inflector::tableize($currentModelName)) {
+				// set it to null...
+				// putting $useTable in the model
+				// is unnecessary.
 				$useTable = null;
 			}
 			$this->bakeModel($currentModelName, $useDbConfig, $useTable, $primaryKey, $validate, $associations);
@@ -845,6 +852,7 @@ class Bake {
 			} else {
 				uses('controller'.DS.'controller');
 				loadController($controllerName);
+				//loadModels();
 				if ($admin) {
 					$this->__bakeViews($controllerName, $controllerPath, $admin, $admin_url);
 				}
@@ -904,8 +912,9 @@ class Bake {
 		$pluralHumanName = $this->__pluralHumanName($controllerName);
 
 		$fieldNames = $controllerObj->generateFieldNames(null, false);
-		$indexView = null;
 
+		//-------------------------[INDEX]-------------------------//
+		$indexView = null;
 		if (!empty($modelObj->alias)) {
 			foreach ($modelObj->alias as $key => $value) {
 				$alias[] = $key;
@@ -954,7 +963,10 @@ class Bake {
 		$indexView .= "\t<li><?php echo \$html->link('New {$singularHumanName}', '{$admin_url}/{$controllerPath}/add'); ?></li>\n";
 		$indexView .= "</ul>\n";
 		$indexView .= "</div>";
+
+		//-------------------------[VIEW]-------------------------//
 		$viewView = null;
+
 		$viewView .= "<div class=\"{$singularName}\">\n";
 		$viewView .= "<h2>View " . $singularHumanName . "</h2>\n\n";
 		$viewView .= "<dl>\n";
@@ -1066,6 +1078,7 @@ class Bake {
 
 			$viewView .= "</div>\n";
 		}
+		//-------------------------[ADD]-------------------------//
 		$addView = null;
 		$addView .= "<h2>New " . $singularHumanName . "</h2>\n";
 		$addView .= "<form action=\"<?php echo \$html->url('{$admin_url}/{$controllerPath}/add'); ?>\" method=\"post\">\n";
@@ -1086,6 +1099,7 @@ class Bake {
 			}
 		}
 		$addView .= "</ul>\n";
+		//-------------------------[EDIT]-------------------------//
 		$editView = null;
 		$editView .= "<h2>Edit " . $singularHumanName . "</h2>\n";
 		$editView .= "<form action=\"<?php echo \$html->url('{$admin_url}/{$controllerPath}/edit/'.\$html->tagValue('{$modelObj->name}/{$modelObj->primaryKey}')); ?>\" method=\"post\">\n";
@@ -1108,6 +1122,8 @@ class Bake {
 			}
 		}
 		$editView .= "</ul>\n";
+
+		//------------------------------------------------------------------------------------//
 
 		if (!file_exists(VIEWS.$controllerPath)) {
 			mkdir(VIEWS.$controllerPath);
@@ -1234,6 +1250,7 @@ class Bake {
 		}
 
 		if (low($wannaDoScaffolding) == 'y' || low($wannaDoScaffolding) == 'yes') {
+			//loadModels();
 			$actions = $this->__bakeActions($controllerName, null, null, $wannaUseSession);
 			if ($admin) {
 				$actions .= $this->__bakeActions($controllerName, $admin, $admin_url, $wannaUseSession);
@@ -1336,6 +1353,7 @@ class Bake {
 		$actions .= "\t\t\$this->set('".$singularName."', \$this->{$currentModelName}->read(null, \$id));\n";
 		$actions .= "\t}\n";
 		$actions .= "\n";
+		/* ADD ACTION */
 		$actions .= "\tfunction {$admin}add() {\n";
 		$actions .= "\t\tif (empty(\$this->data)) {\n";
 
@@ -1395,6 +1413,7 @@ class Bake {
 		$actions .= "\t\t}\n";
 		$actions .= "\t}\n";
 		$actions .= "\n";
+		/* EDIT ACTION */
 		$actions .= "\tfunction {$admin}edit(\$id = null) {\n";
 		$actions .= "\t\tif (empty(\$this->data)) {\n";
 		$actions .= "\t\t\tif (!\$id) {\n";
@@ -1821,12 +1840,7 @@ class Bake {
 			$this->stdout('');
 			$this->stdout($prompt . " $print_options \n" . "[$default] > ", false);
 		}
-		$result = fgets($this->stdin);
-
-		if($result === false){
-			exit;
-		}
-		$result = trim($result);
+		$result = trim(fgets($this->stdin));
 
 		if ($default != null && empty($result)) {
 			return $default;
@@ -2038,7 +2052,7 @@ class Bake {
 		if ( $required ) {
 			$divClass = "required";
 		}
-		$strError = "";
+		$strError = "";// initialize the error to empty.
 		$divTagInside = sprintf( "%s %s %s", $strError, $strLabel, $str );
 		return $this->divTag( $divClass, $divTagInside );
 	}
@@ -2062,7 +2076,7 @@ class Bake {
 		if ($required) {
 			$divClass = "required";
 		}
-		$strError = "";
+		$strError = "";// initialize the error to empty.
 		$divTagInside = sprintf( "%s %s %s", $strError, $strLabel, $str);
 		return $this->divTag( $divClass, $divTagInside );
 	}
@@ -2087,7 +2101,7 @@ class Bake {
 		if ($required) {
 			$divClass = "required";
 		}
-		$strError = "";
+		$strError = "";// initialize the error to empty.
 		$divTagInside = sprintf( "%s %s %s", $strError, $strLabel, $str );
 		return $this->divTag( $divClass, $divTagInside );
 	}
@@ -2135,7 +2149,7 @@ class Bake {
 		if ($required) {
 			$divClass = "required";
 		}
-		$strError = "";
+		$strError = "";// initialize the error to empty.
 		$divTagInside = sprintf( "%s %s %s", $strError, $strLabel, $str );
 		return $this->divTag( $divClass, $divTagInside );
 	}
@@ -2161,7 +2175,7 @@ class Bake {
 		if ($required) {
 			$divClass = "required";
 		}
-		$strError = "";
+		$strError = "";// initialize the error to empty.
 		$divTagInside = sprintf( "%s %s %s", $strError, $strLabel, $str );
 		return $this->divTag( $divClass, $divTagInside );
 	}
@@ -2206,7 +2220,7 @@ class Bake {
 		if ($required) {
 			$divClass = "required";
 		}
-		$strError = "";
+		$strError = "";// initialize the error to empty.
 		$divTagInside = sprintf( "%s %s %s", $strError, $strLabel, $str );
 		return $this->divTag( $divClass, $divTagInside );
 	}
@@ -2246,12 +2260,14 @@ class Bake {
 			$out = "array(";
 
 			for ($i = 0; $i < count($htmlAttributes); $i++) {
+				//don't put vars in quotes
 				if (substr($vals[$i], 0, 1) != '$') {
 					$out .= "'{$keys[$i]}' => '{$vals[$i]}', ";
 				} else {
 					$out .= "'{$keys[$i]}' => {$vals[$i]}, ";
 				}
 			}
+			//Chop off last comma
 			if (substr($out, -2, 1) == ',') {
 				$out = substr($out, 0, strlen($out) - 2);
 			}

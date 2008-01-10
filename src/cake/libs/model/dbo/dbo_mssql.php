@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_mssql.php 6305 2008-01-02 02:33:56Z phpnut $ */
+/* SVN FILE: $Id: dbo_mssql.php 5612 2007-08-30 01:49:55Z phpnut $ */
 
 /**
  * MS SQL layer for DBO
@@ -9,7 +9,7 @@
  * PHP versions 4 and 5
  *
  * CakePHP(tm) :  Rapid Development Framework <http://www.cakephp.org/>
- * Copyright 2005-2008, Cake Software Foundation, Inc.
+ * Copyright 2005-2007, Cake Software Foundation, Inc.
  *								1785 E. Sahara Avenue, Suite 490-204
  *								Las Vegas, Nevada 89104
  *
@@ -17,14 +17,14 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @copyright		Copyright 2005-2007, Cake Software Foundation, Inc.
  * @link				http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 0.10.5.1790
- * @version			$Revision: 6305 $
+ * @version			$Revision: 5612 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2008-01-01 20:33:56 -0600 (Tue, 01 Jan 2008) $
+ * @lastmodified	$Date: 2007-08-29 20:49:55 -0500 (Wed, 29 Aug 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -100,15 +100,13 @@ class DboMssql extends DboSource {
  * @param array $config Configuration data from app/config/databases.php
  * @return boolean True if connected successfully, false on error
  */
-	function __construct($config, $autoConnect = true) {
-		if ($autoConnect) {
-			if (!function_exists('mssql_min_message_severity')) {
-				trigger_error("PHP SQL Server interface is not installed, cannot continue.  For troubleshooting information, see http://php.net/mssql/", E_USER_WARNING);
-			}
-			mssql_min_message_severity(15);
-			mssql_min_error_severity(2);
+	function __construct($config) {
+		if (!function_exists('mssql_min_message_severity')) {
+			trigger_error("PHP SQL Server interface is not installed, cannot continue.  For troubleshooting information, see http://php.net/mssql/", E_USER_ERROR);
 		}
-		return parent::__construct($config, $autoConnect);
+		mssql_min_message_severity(15);
+		mssql_min_error_severity(2);
+		return parent::__construct($config);
 	}
 /**
  * Connects to the database using options in the given configuration array.
@@ -207,11 +205,11 @@ class DboMssql extends DboSource {
 		$cols = $this->fetchAll("SELECT COLUMN_NAME as Field, DATA_TYPE as Type, COL_LENGTH('" . $this->fullTableName($model, false) . "', COLUMN_NAME) as Length, IS_NULLABLE As [Null], COLUMN_DEFAULT as [Default], COLUMNPROPERTY(OBJECT_ID('" . $this->fullTableName($model, false) . "'), COLUMN_NAME, 'IsIdentity') as [Key], NUMERIC_SCALE as Size FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" . $this->fullTableName($model, false) . "'", false);
 
 		foreach ($cols as $column) {
-			$fields[$column[0]['Field']] = array(
+			$fields[] = array(
+				'name' => $column[0]['Field'],
 				'type' => $this->column($column[0]['Type']),
-				'null' => (strtoupper($column[0]['Null']) == 'YES'),
-				'default' => $column[0]['Default'],
-				'length' => $this->length($column[0]['Type']),
+				'null' => (up($column[0]['Null']) == 'YES'),
+				'default' => $column[0]['Default']
 			);
 		}
 		$this->__cacheDescription($this->fullTableName($model, false), $fields);
@@ -242,22 +240,13 @@ class DboMssql extends DboSource {
 			case 'boolean':
 				$data = $this->boolean((bool)$data);
 			break;
-			case 'datetime':
-				if ($data && (($timestamp = strtotime($data)) !== false)) {
-					$data =	date('Y-m-d\TH:i:s', $timestamp);
-				}
-			break;
 			default:
 				if (get_magic_quotes_gpc()) {
-					$data = stripslashes(str_replace("'", "''", $data));
+					$data = stripslashes(r("'", "''", $data));
 				} else {
-					$data = str_replace("'", "''", $data);
+					$data = r("'", "''", $data);
 				}
 			break;
-		}
-
-		if (in_array($column, array('integer', 'float')) && is_numeric($data)) {
-			return $data;
 		}
 		return "'" . $data . "'";
 	}
@@ -365,7 +354,7 @@ class DboMssql extends DboSource {
 		$error = mssql_get_last_message($this->connection);
 
 		if ($error) {
-			if (strpos(strtolower($error), 'changed database') === false) {
+			if (strpos(low($error), 'changed database') === false) {
 				return $error;
 			}
 		}
@@ -441,7 +430,7 @@ class DboMssql extends DboSource {
 			}
 			return $col;
 		}
-		$col                = str_replace(')', '', $real);
+		$col                = r(')', '', $real);
 		$limit              = null;
 		@list($col, $limit) = explode('(', $col);
 

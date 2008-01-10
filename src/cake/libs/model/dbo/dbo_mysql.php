@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_mysql.php 6305 2008-01-02 02:33:56Z phpnut $ */
+/* SVN FILE: $Id: dbo_mysql.php 5612 2007-08-30 01:49:55Z phpnut $ */
 /**
  * MySQL layer for DBO
  *
@@ -8,7 +8,7 @@
  * PHP versions 4 and 5
  *
  * CakePHP(tm) :  Rapid Development Framework <http://www.cakephp.org/>
- * Copyright 2005-2008, Cake Software Foundation, Inc.
+ * Copyright 2005-2007, Cake Software Foundation, Inc.
  *								1785 E. Sahara Avenue, Suite 490-204
  *								Las Vegas, Nevada 89104
  *
@@ -16,14 +16,14 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @copyright		Copyright 2005-2007, Cake Software Foundation, Inc.
  * @link				http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 0.10.5.1790
- * @version			$Revision: 6305 $
+ * @version			$Revision: 5612 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2008-01-01 20:33:56 -0600 (Tue, 01 Jan 2008) $
+ * @lastmodified	$Date: 2007-08-29 20:49:55 -0500 (Wed, 29 Aug 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -223,7 +223,7 @@ class DboMysql extends DboSource {
 			case 'integer' :
 			case 'float' :
 			case null :
-				if (is_numeric($data) && strpos($data, ',') === false && $data[0] != '0' && strpos($data, 'e') === false) {
+				if (is_numeric($data)) {
 					break;
 				}
 			default:
@@ -517,8 +517,13 @@ class DboMysql extends DboSource {
 					}
 
 				}
+				if (empty($index) && empty($primary)) {
+					$primary = 'id';
+					$col = array('type'=>'integer', 'key' => 'primary');
+					array_unshift($cols, $this->buildColumn($col));
+				}
 				if(empty($index) && !empty($primary)) {
-					$col = array('PRIMARY' => array('column'=> $primary, 'unique' => 1));
+					$col = array('PRIMARY'=> array('column'=> $primary, 'unique' => 1));
 					$index[] = $this->buildIndex($col);
 				}
 				$out .= "\t" . join(",\n\t", $cols) . ",\n\t". join(",\n\t", $index) . "\n);\n\n";
@@ -561,9 +566,7 @@ class DboMysql extends DboSource {
 						break;
 						case 'change':
 							foreach($column as $field => $col) {
-								if(!isset($col['name'])) {
-									$col['name'] = $field;
-								}
+								$col['name'] = $field;
 								$colList[] = 'CHANGE '. $this->name($field).' '.$this->buildColumn($col);
 							}
 						break;
@@ -645,7 +648,7 @@ class DboMysql extends DboSource {
 		} elseif (isset($column['null']) && $column['null'] == false) {
 			$out .= ' NOT NULL';
 		}
-
+		
 		return $out;
 	}
 /**
@@ -657,19 +660,18 @@ class DboMysql extends DboSource {
 	function buildIndex($indexes) {
 		$join = array();
 		foreach ($indexes as $name => $value) {
-			$out = '';
+			$out = null;
 			if ($name == 'PRIMARY') {
-				$out .= 'PRIMARY ';
-				$name = null;
+				$out .= 'PRIMARY KEY (' . $this->name($value['column']) . ')';
 			} else {
 				if (!empty($value['unique'])) {
 					$out .= 'UNIQUE ';
 				}
-			}
-			if (is_array($value['column'])) {
-				$out .= 'KEY '. $name .' (' . join(', ', array_map(array(&$this, 'name'), $value['column'])) . ')';
-			} else {
-				$out .= 'KEY '. $name .' (' . $this->name($value['column']) . ')';
+				if (is_array($value['column'])) {
+					$out .= 'KEY '. $name .' (' . join(', ', array_map(array(&$this, 'name'), $value['column'])) . ')';
+				} else {
+					$out .= 'KEY '. $name .' (' . $this->name($value['column']) . ')';
+				}
 			}
 			$join[] = $out;
 		}

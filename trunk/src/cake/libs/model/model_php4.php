@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: model_php4.php 6305 2008-01-02 02:33:56Z phpnut $ */
+/* SVN FILE: $Id: model_php4.php 5612 2007-08-30 01:49:55Z phpnut $ */
 /**
  * Object-relational mapper.
  *
@@ -8,7 +8,7 @@
  * PHP versions 4
  *
  * CakePHP(tm) :  Rapid Development Framework <http://www.cakephp.org/>
- * Copyright 2005-2008, Cake Software Foundation, Inc.
+ * Copyright 2005-2007, Cake Software Foundation, Inc.
  *								1785 E. Sahara Avenue, Suite 490-204
  *								Las Vegas, Nevada 89104
  *
@@ -16,14 +16,14 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @copyright		Copyright 2005-2007, Cake Software Foundation, Inc.
  * @link				http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
  * @package			cake
  * @subpackage		cake.cake.libs.model
  * @since			CakePHP(tm) v 0.10.0.0
- * @version			$Revision: 6305 $
+ * @version			$Revision: 5612 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2008-01-01 20:33:56 -0600 (Tue, 01 Jan 2008) $
+ * @lastmodified	$Date: 2007-08-29 20:49:55 -0500 (Wed, 29 Aug 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -157,12 +157,12 @@ class Model extends Object{
  */
 	var $keyToTable = array();
 /**
- * Alias name for model.
+ * Alias table names for model, for use in SQL JOIN statements.
  *
  * @var array
  * @access public
  */
-	var $alias = null;
+	var $alias = array();
 /**
  * Whether or not transactions for this model should be logged
  *
@@ -220,12 +220,6 @@ class Model extends Object{
  * @access public
  */
 	var $recursive = 1;
-/**
- * Whitelist of fields allowed to be saved
- *
- * @var array
- */
-	var $whitelist = array();
 /**
  * Enter description here...
  *
@@ -287,30 +281,19 @@ class Model extends Object{
 	function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct();
 
-		if (is_array($id) && isset($id['name'])) {
-			$options = array_merge(array('id' => false, 'table' => null, 'ds' => null, 'alias' => null), $id);
-			list($id, $table, $ds) = array($options['id'], $options['table'], $options['ds']);
-			$this->name = $options['name'];
-		}
-
 		if ($this->name === null) {
-			$this->name = get_class($this);
+				$this->name = get_class($this);
 		}
 
 		if ($this->primaryKey === null) {
-			$this->primaryKey = 'id';
+				$this->primaryKey = 'id';
 		}
 
-		if (isset($options['alias']) || !empty($options['alias'])) {
-			$this->alias = $options['alias'];
-			unset($options);
-		} else {
-			$this->alias = $this->name;
-		}
-		ClassRegistry::addObject($this->alias, $this);
+		$this->currentModel = Inflector::underscore($this->name);
+
+		ClassRegistry::addObject($this->currentModel, $this);
 
 		$this->id = $id;
-		unset($id);
 
 		if ($table === false) {
 			$this->useTable = false;
@@ -376,6 +359,7 @@ class Model extends Object{
  * @access public
  */
 	function bindModel($params) {
+
 		foreach ($params as $assoc => $model) {
 			$this->__backAssociation[$assoc] = $this->{$assoc};
 
@@ -418,7 +402,9 @@ class Model extends Object{
  */
 	function __createLinks() {
 
+		// Convert all string-based associations to array based
 		foreach ($this->__associations as $type) {
+
 			if (!is_array($this->{$type})) {
 				$this->{$type} = explode(',', $this->{$type});
 
@@ -459,23 +445,21 @@ class Model extends Object{
  * @access private
  */
 	function __constructLinkedModel($assoc, $className) {
-		if(empty($className)) {
-			$className = $assoc;
-		}
+		$colKey = Inflector::underscore($className);
 
 		if (!class_exists($className)) {
 			loadModel($className);
 		}
-		$colKey = Inflector::underscore($className);
-		$model = array('name' => $className, 'alias' => $assoc);
 
 		if (ClassRegistry::isKeySet($colKey)) {
 			$this->{$assoc} =& ClassRegistry::getObject($colKey);
 			$this->{$className} =& $this->{$assoc};
 		} else {
-			$this->{$assoc} =& new $className($model);
+			$this->{$assoc} =& new $className();
 			$this->{$className} =& $this->{$assoc};
 		}
+
+		$this->alias[$assoc] = $this->{$assoc}->table;
 		$this->tableToModel[$this->{$assoc}->table] = $className;
 		$this->modelToTable[$assoc] = $this->{$assoc}->table;
 	}
@@ -526,7 +510,7 @@ class Model extends Object{
 
 				if ($key == 'foreignKey' && !isset($this->keyToTable[$this->{$type}[$assocKey][$key]])) {
 					$this->keyToTable[$this->{$type}[$assocKey][$key]][0] = $this->{$class}->table;
-					$this->keyToTable[$this->{$type}[$assocKey][$key]][1] = $this->{$class}->alias;
+					$this->keyToTable[$this->{$type}[$assocKey][$key]][1] = $this->{$class}->name;
 				}
 			}
 		}
@@ -546,14 +530,14 @@ class Model extends Object{
 			$sources = $db->listSources();
 			if (is_array($sources) && !in_array(low($this->tablePrefix . $tableName), array_map('low', $sources))) {
 				return $this->cakeError('missingTable', array(array(
-												'className' => $this->alias,
+												'className' => $this->name,
 												'table' => $this->tablePrefix . $tableName)));
 
 			}
 			$this->_tableInfo = null;
 		}
 		$this->table = $this->useTable = $tableName;
-		$this->tableToModel[$this->table] = $this->alias;
+		$this->tableToModel[$this->table] = $this->name;
 		$this->loadInfo();
 	}
 /**
@@ -572,30 +556,29 @@ class Model extends Object{
 	function set($one, $two = null) {
 		if (is_array($one)) {
 			if (countdim($one) == 1) {
-				$data = array($this->alias => $one);
+				$data = array($this->name => $one);
 			} else {
 				$data = $one;
 			}
 		} else {
-			$data = array($this->alias => array($one => $two));
+			$data = array($this->name => array($one => $two));
 		}
 
 		foreach ($data as $n => $v) {
 			if (is_array($v)) {
 
 				foreach ($v as $x => $y) {
-					if (empty($this->whitelist) || (in_array($x, $this->whitelist) || $n !== $this->alias)) {
+					if ($n == $this->name) {
 						if (isset($this->validationErrors[$x])) {
 							unset ($this->validationErrors[$x]);
 						}
 
-						if ($n == $this->name || is_array($y)) {
-							if ($x === $this->primaryKey) {
-								$this->id = $y;
-							}
-							$this->data[$n][$x] = $y;
+						if ($x === $this->primaryKey) {
+							$this->id = $y;
 						}
 					}
+
+					$this->data[$n][$x] = $y;
 				}
 			}
 		}
@@ -734,7 +717,7 @@ class Model extends Object{
 
 		if ($this->id !== null && $this->id !== false) {
 			$db =& ConnectionManager::getDataSource($this->useDbConfig);
-			$field = $db->name($this->alias) . '.' . $db->name($this->primaryKey);
+			$field = $db->name($this->name) . '.' . $db->name($this->primaryKey);
 			return $this->find($field . ' = ' . $db->value($id, $this->getColumnType($this->primaryKey)), $fields);
 		} else {
 			return false;
@@ -750,15 +733,15 @@ class Model extends Object{
  * @access public
  */
 	function field($name, $conditions = null, $order = null) {
-		if ($conditions === null && $this->id !== false) {
-			$conditions = array($this->alias . '.' . $this->primaryKey => $this->id);
+		if ($conditions === null) {
+			$conditions = array($this->name . '.' . $this->primaryKey => $this->id);
 		}
 
 		if ($data = $this->find($conditions, $name, $order, 0)) {
 
 			if (strpos($name, '.') === false) {
-				if (isset($data[$this->alias][$name])) {
-					return $data[$this->alias][$name];
+				if (isset($data[$this->name][$name])) {
+					return $data[$this->name][$name];
 				} else {
 					return false;
 				}
@@ -785,7 +768,7 @@ class Model extends Object{
  * @access public
  */
 	function saveField($name, $value, $validate = false) {
-		return $this->save(array($this->alias => array($name => $value)), $validate);
+		return $this->save(array($this->name => array($name => $value)), $validate);
 	}
 /**
  * Saves model data to the database.
@@ -799,29 +782,22 @@ class Model extends Object{
  */
 	function save($data = null, $validate = true, $fieldList = array()) {
 		$db =& ConnectionManager::getDataSource($this->useDbConfig);
-		$_whitelist = $this->whitelist;
-
-		if (!empty($fieldList)) {
-			$this->whitelist = $fieldList;
-		} elseif ($fieldList === null) {
-			$this->whitelist = array();
-		}
 
 		if ($data) {
 			if (countdim($data) == 1) {
-				$this->set(array($this->alias => $data));
+				$this->set(array($this->name => $data));
 			} else {
 				$this->set($data);
 			}
 		}
 
+		$whitelist = !(empty($fieldList) || count($fieldList) == 0);
+
 		if ($validate && !$this->validates()) {
-			$this->whitelist = $_whitelist;
 			return false;
 		}
 
 		if (!$this->beforeSave()) {
-			$this->whitelist = $_whitelist;
 			return false;
 		}
 		$fields = $values = array();
@@ -832,12 +808,13 @@ class Model extends Object{
 		} else {
 			$weHaveMulti = false;
 		}
+		$habtm = count($this->hasAndBelongsToMany);
 
 		foreach ($this->data as $n => $v) {
-			if (isset($weHaveMulti) && isset($v[$n]) && in_array($n, array_keys($this->hasAndBelongsToMany))) {
+			if (isset($weHaveMulti) && isset($v[$n]) && $habtm > 0) {
 				$joined[] = $v;
 			} else {
-				if ($n === $this->alias) {
+				if ($n === $this->name) {
 					foreach (array('created', 'updated', 'modified') as $field) {
 						if (array_key_exists($field, $v) && (empty($v[$field]) || $v[$field] === null)) {
 							unset($v[$field]);
@@ -845,7 +822,7 @@ class Model extends Object{
 					}
 
 					foreach ($v as $x => $y) {
-						if ($this->hasField($x)) {
+						if ($this->hasField($x) && ($whitelist && in_array($x, $fieldList) || !$whitelist)) {
 							$fields[] = $x;
 							$values[] = $y;
 						}
@@ -855,17 +832,17 @@ class Model extends Object{
 		}
 		$exists = $this->exists();
 
-		if (!$exists && $this->hasField('created') && !in_array('created', $fields)) {
+		if (!$exists && $this->hasField('created') && !in_array('created', $fields) && ($whitelist && in_array('created', $fieldList) || !$whitelist)) {
 			$fields[] = 'created';
 			$values[] = date('Y-m-d H:i:s');
 		}
 
-		if ($this->hasField('modified') && !in_array('modified', $fields)) {
+		if ($this->hasField('modified') && !in_array('modified', $fields) && ($whitelist && in_array('modified', $fieldList) || !$whitelist)) {
 			$fields[] = 'modified';
 			$values[] = date('Y-m-d H:i:s');
 		}
 
-		if ($this->hasField('updated') && !in_array('updated', $fields)) {
+		if ($this->hasField('updated') && !in_array('updated', $fields) && ($whitelist && in_array('updated', $fieldList) || !$whitelist)) {
 			$fields[] = 'updated';
 			$values[] = date('Y-m-d H:i:s');
 		}
@@ -873,7 +850,6 @@ class Model extends Object{
 		if (!$exists) {
 			$this->id = false;
 		}
-		$this->whitelist = $_whitelist;
 
 		if (count($fields)) {
 			if (!empty($this->id)) {
@@ -1254,8 +1230,8 @@ class Model extends Object{
 
 		if (isset($data[0]['count'])) {
 			return $data[0]['count'];
-		} elseif (isset($data[$this->alias]['count'])) {
-			return $data[$this->alias]['count'];
+		} elseif (isset($data[$this->name]['count'])) {
+			return $data[$this->name]['count'];
 		}
 
 		return false;
@@ -1277,23 +1253,22 @@ class Model extends Object{
 /**
  * Private, recursive helper method for findAllThreaded.
  *
- * @param array $data Results of find operation
+ * @param array $data
  * @param string $root NULL or id for root node of operation
- * @param integer $index last processed index of $data
- * @return array Threaded results
+ * @return array
  * @access private
- * @see Model::findAllThreaded()
+ * @see findAllThreaded
  */
-	function __doThread($data, $root, $index = 0) {
+	function __doThread($data, $root) {
 		$out = array();
 		$sizeOf = sizeof($data);
 
-		for ($ii = $index; $ii < $sizeOf; $ii++) {
-			if (($data[$ii][$this->alias]['parent_id'] == $root) || (($root === null) && ($data[$ii][$this->alias]['parent_id'] == '0'))) {
+		for ($ii = 0; $ii < $sizeOf; $ii++) {
+			if (($data[$ii][$this->name]['parent_id'] == $root) || (($root === null) && ($data[$ii][$this->name]['parent_id'] == '0'))) {
 				$tmp = $data[$ii];
 
-				if (isset($data[$ii][$this->alias][$this->primaryKey])) {
-					$tmp['children'] = $this->__doThread($data, $data[$ii][$this->alias][$this->primaryKey], $ii);
+				if (isset($data[$ii][$this->name][$this->primaryKey])) {
+					$tmp['children'] = $this->__doThread($data, $data[$ii][$this->name][$this->primaryKey]);
 				} else {
 					$tmp['children'] = null;
 				}
@@ -1383,8 +1358,8 @@ class Model extends Object{
 			$data = $this->data;
 		}
 
-		if (isset($data[$this->alias])) {
-			$data = $data[$this->alias];
+		if (isset($data[$this->name])) {
+			$data = $data[$this->name];
 		}
 
 		foreach ($this->validate as $field_name => $validator) {
@@ -1464,11 +1439,11 @@ class Model extends Object{
 		}
 
 		if ($keyPath == null) {
-			$keyPath = '{n}.' . $this->alias . '.' . $this->primaryKey;
+			$keyPath = '{n}.' . $this->name . '.' . $this->primaryKey;
 		}
 
 		if ($valuePath == null) {
-			$valuePath = '{n}.' . $this->alias . '.' . $this->displayField;
+			$valuePath = '{n}.' . $this->name . '.' . $this->displayField;
 		}
 
 		$keys = Set::extract($result, $keyPath);
@@ -1489,7 +1464,7 @@ class Model extends Object{
  */
 	function escapeField($field) {
 		$db =& ConnectionManager::getDataSource($this->useDbConfig);
-		return $db->name($this->alias) . '.' . $db->name($field);
+		return $db->name($this->name) . '.' . $db->name($field);
 	}
 /**
  * Returns the current record's ID
@@ -1582,7 +1557,7 @@ class Model extends Object{
 		}
 
 		if (empty($db) || $db == null || !is_object($db)) {
-			return $this->cakeError('missingConnection', array(array('className' => $this->alias)));
+			return $this->cakeError('missingConnection', array(array('className' => $this->name)));
 		}
 	}
 /**
@@ -1668,7 +1643,7 @@ class Model extends Object{
 	function _clearCache($type = null) {
 		if ($type === null) {
 			if (defined('CACHE_CHECK') && CACHE_CHECK === true) {
-				$assoc[] = strtolower(Inflector::pluralize($this->alias));
+				$assoc[] = strtolower(Inflector::pluralize($this->name));
 
 				foreach ($this->__associations as $key => $association) {
 					foreach ($this->$association as $key => $className) {

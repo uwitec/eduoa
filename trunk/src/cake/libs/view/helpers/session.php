@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: session.php 6305 2008-01-02 02:33:56Z phpnut $ */
+/* SVN FILE: $Id: session.php 4757 2007-04-04 08:24:30Z phpnut $ */
 /**
  * Short description for file.
  *
@@ -8,7 +8,7 @@
  * PHP versions 4 and 5
  *
  * CakePHP(tm) :  Rapid Development Framework <http://www.cakephp.org/>
- * Copyright 2005-2008, Cake Software Foundation, Inc.
+ * Copyright 2005-2007, Cake Software Foundation, Inc.
  *								1785 E. Sahara Avenue, Suite 490-204
  *								Las Vegas, Nevada 89104
  *
@@ -16,14 +16,14 @@
  * Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @copyright		Copyright 2005-2007, Cake Software Foundation, Inc.
  * @link				http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 1.1.7.3328
- * @version			$Revision: 6305 $
+ * @version			$Revision: 4757 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2008-01-01 20:33:56 -0600 (Tue, 01 Jan 2008) $
+ * @lastmodified	$Date: 2007-04-04 03:24:30 -0500 (Wed, 04 Apr 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -35,9 +35,6 @@
  * @subpackage	cake.cake.libs.view.helpers
  *
  */
-if(!class_exists('cakesession')) {
-	uses('session');
-}
 class SessionHelper extends CakeSession {
 /**
  * List of helpers used by this helper
@@ -64,7 +61,7 @@ class SessionHelper extends CakeSession {
 		}
 	}
 /**
- * Turn sessions on if 'Session.start' is set to false in core.php
+ * Turn sessions on if AUTO_SESSION is set to false in core.php
  *
  * @param string $base
  */
@@ -83,7 +80,7 @@ class SessionHelper extends CakeSession {
  * @access public
  */
 	function read($name = null) {
-		if ($this->__active === true && $this->__start()) {
+		if ($this->__active === true) {
 			return parent::read($name);
 		}
 		return false;
@@ -98,7 +95,7 @@ class SessionHelper extends CakeSession {
  * @access public
  */
 	function check($name) {
-		if ($this->__active === true && $this->__start()) {
+		if ($this->__active === true) {
 			return parent::check($name);
 		}
 		return false;
@@ -112,7 +109,7 @@ class SessionHelper extends CakeSession {
  * @access public
  */
 	function error() {
-		if ($this->__active === true && $this->__start()) {
+		if ($this->__active === true) {
 			return parent::error();
 		}
 		return false;
@@ -128,7 +125,7 @@ class SessionHelper extends CakeSession {
  * @access public
  */
 	function flash($key = 'flash') {
-		if ($this->__active === true && $this->__start()) {
+		if ($this->__active === true) {
 			if (parent::check('Message.' . $key)) {
 				$flash = parent::read('Message.' . $key);
 
@@ -157,42 +154,9 @@ class SessionHelper extends CakeSession {
  * @access public
  */
 	function valid() {
-		if ($this->__active === true && $this->__start()) {
+		if ($this->__active === true) {
 			return parent::valid();
 		}
-	}
-/**
- * Override CakeSession::write().
- * This method should not be used in a view
- *
- * @return boolean
- * @access public
- */
-	function write() {
-		trigger_error(__('You can not write to a Session from the view', true), E_USER_WARNING);
-	}
-/**
- * Session id
- *
- * @return string Session id
- * @access public
- */
-	function id() {
-		return parent::id();
-	}
-/**
- * Determine if Session has been started
- * and attempt to start it if not
- *
- * @return boolean true if Session is already started, false if
- * Session could not be started
- * @access public
- */
-	function __start() {
-		if(!parent::started()) {
-			parent::start();
-		}
-		return true;
 	}
 }
 ?>

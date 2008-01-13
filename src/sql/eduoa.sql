@@ -96,3 +96,17 @@ create table users(
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='会员基本信息';
 
+CREATE TABLE `files` (
+  `id` int(10) NOT NULL auto_increment,
+  `created` datetime NOT NULL default '0000-00-00 00:00:00',
+  `updated` datetime NOT NULL default '0000-00-00 00:00:00',
+  `path` varchar(255) NOT NULL default '',
+  `name` varchar(255) NOT NULL default '',
+  `fspath` varchar(255) default NULL,
+  `type` varchar(255) NOT NULL default '',
+  `size` int(10) NOT NULL default '0',
+  `deleted` tinyint(4) NOT NULL default '0',
+  `comment` text,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `path_name_idx` (`path`,`name`)
+) ENGINE=MyISAM  DEFAULT charset=utf8 ;

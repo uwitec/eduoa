@@ -1,0 +1,55 @@
+<div id="content">
+<fieldset align=center>
+<legend>学校信息</legend> 
+<form action="<?php echo $html->url('/units/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/unit_name', '单位名称:');?>
+ 	<?php echo $html->input('Unit/unit_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Unit/unit_name', 'Please enter the Unit Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/tel_no', '电话:');?>
+ 	<?php echo $html->input('Unit/tel_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Unit/tel_no', 'Please enter the Tel No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/fax_no', '传真:');?>
+ 	<?php echo $html->input('Unit/fax_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Unit/fax_no', 'Please enter the Fax No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/post_no', '邮编:');?>
+ 	<?php echo $html->input('Unit/post_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Unit/post_no', 'Please enter the Post No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/address', '地址:');?>
+ 	<?php echo $html->input('Unit/address', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Unit/address', 'Please enter the Address.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/website', '网站:');?>
+ 	<?php echo $html->input('Unit/website', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Unit/website', 'Please enter the Website.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/email', '电子信箱:');?>
+ 	<?php echo $html->input('Unit/email', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Unit/email', 'Please enter the Email.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/bank_name', '开户行:');?>
+ 	<?php echo $html->input('Unit/bank_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Unit/bank_name', 'Please enter the Bank Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/bank_no', '账号:');?>
+ 	<?php echo $html->input('Unit/bank_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Unit/bank_no', 'Please enter the Bank No.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+</fieldset>
+</div>

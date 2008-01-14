@@ -1,0 +1,21 @@
+<h2>Edit Asset In Method</h2>
+<form action="<?php echo $html->url('/asset_in_methods/edit/'.$html->tagValue('AssetInMethod/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetInMethod/method_name', 'Method Name');?>
+ 	<?php echo $html->input('AssetInMethod/method_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetInMethod/method_name', 'Please enter the Method Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetInMethod/method_code', 'Method Code');?>
+ 	<?php echo $html->input('AssetInMethod/method_code', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetInMethod/method_code', 'Please enter the Method Code.');?>
+</div>
+<?php echo $html->hidden('AssetInMethod/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/asset_in_methods/delete/' . $html->tagValue('AssetInMethod/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AssetInMethod/id'));?>
+<li><?php echo $html->link('List Asset In Methods', '/asset_in_methods/index')?></li>
+</ul>

@@ -37,7 +37,7 @@ endif;
 <?php echo $cakeDebug?>
 </script>
 <script type="text/javascript">
-  window.onload=function(){window.history.forward(1);}
+  //window.onload=function(){window.history.forward(1);}
 </script>
 </body>
 </html>

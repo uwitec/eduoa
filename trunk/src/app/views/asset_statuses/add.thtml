@@ -1,0 +1,25 @@
+<div id="content">
+<fieldset align=center>
+<legend>新增资产使用状态</legend> 
+
+<form action="<?php echo $html->url('/asset_statuses/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetStatus/status_name', '资产使用状态名称:');?>
+ 	<?php echo $html->input('AssetStatus/status_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetStatus/status_name', 'Please enter the Status Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetStatus/status_code', '资产使用状态编码:');?>
+ 	<?php echo $html->input('AssetStatus/status_code', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetStatus/status_code', 'Please enter the Status Code.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+
+<ul class="actions">
+<li><?php echo $html->link('资产使用状态列表', '/asset_statuses/index')?></li>
+</ul>
+</fieldset>
+</div>

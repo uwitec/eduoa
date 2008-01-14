@@ -1,0 +1,31 @@
+<div class="assetIn">
+<h2>View Asset In</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $assetIn['AssetIn']['id']?></dd>
+	<dt>Asset</dt>
+	<dd>&nbsp;<?php echo $html->link($assetIn['Asset']['id'], '/assets/view/' .$assetIn['Asset']['id'])?></dd>
+	<dt>In Date</dt>
+	<dd>&nbsp;<?php echo $assetIn['AssetIn']['in_date']?></dd>
+	<dt>Department</dt>
+	<dd>&nbsp;<?php echo $html->link($assetIn['Department']['id'], '/departments/view/' .$assetIn['Department']['id'])?></dd>
+	<dt>Use Person</dt>
+	<dd>&nbsp;<?php echo $assetIn['AssetIn']['use_person']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $assetIn['AssetIn']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $assetIn['AssetIn']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Asset In',   '/asset_ins/edit/' . $assetIn['AssetIn']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Asset In', '/asset_ins/delete/' . $assetIn['AssetIn']['id'], null, 'Are you sure you want to delete: id ' . $assetIn['AssetIn']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Asset Ins',   '/asset_ins/index') ?> </li>
+	<li><?php echo $html->link('New Asset In',	'/asset_ins/add') ?> </li>
+	<li><?php echo $html->link('List Asset', '/assets/index/')?> </li>
+	<li><?php echo $html->link('New Assets', '/assets/add/')?> </li>
+	<li><?php echo $html->link('List Department', '/departments/index/')?> </li>
+	<li><?php echo $html->link('New Departments', '/departments/add/')?> </li>
+</ul>
+
+</div>

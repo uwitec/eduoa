@@ -1,0 +1,38 @@
+<div id="content">
+<fieldset align=center>
+<legend>部门信息</legend> 
+<form action="<?php echo $html->url('/departments/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Department/department_name', '部门名称:');?>
+ 	<?php echo $html->input('Department/department_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Department/department_name', 'Please enter the Department Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Department/english_name', '英文名:');?>
+ 	<?php echo $html->input('Department/english_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Department/english_name', 'Please enter the English Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Department/tel_no', '部门电话:');?>
+ 	<?php echo $html->input('Department/tel_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Department/tel_no', 'Please enter the Tel No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Department/fax_no', '部门传真:');?>
+ 	<?php echo $html->input('Department/fax_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Department/fax_no', 'Please enter the Fax No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Department/order_list', '部门排序:');?>
+ 	<?php echo $html->input('Department/order_list', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Department/order_list', 'Please enter the Order List.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('部门列表', '/departments/index')?></li>
+</ul>
+</fieldset>
+</div>

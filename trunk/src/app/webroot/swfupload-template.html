@@ -1,0 +1,21 @@
+<script type="text/javascript" src="/js/swfupload/SWFUpload.js"></script>
+<script type="text/javascript" src="/js/swfupload/callbacks.js"></script>
+<script type="text/javascript" src="/js/swfupload/init.js"></script>
+
+<!-- 
+	To spruce this up with some icons, download the tango package from http://james.revillini.com 
+	It can be unzipped and dropped into your web directory.  Then change the css reference below
+	to /css/swfupload-tango.css.  I'm trying to make this style sheet thing sort of modular so
+	that new icon packs and styles can just override the base styles.
+-->
+
+<link rel="stylesheet" type="text/css" href="/css/swfupload-base.css"></link>
+
+<div id="SWFUploadTarget">
+	<form action="upload.php" enctype="multipart/form-data" method="post">
+	    <input type="file" id="Filedata" name="Filedata" />
+	    <input type="submit" id="submit" name="submit" value="Upload" />
+	</form>	
+</div>
+<div id="queueinfo"><p>Click 'Browse' to select any files you wish to upload.</p></div>
+<div id="SWFUploadFileListingFiles"></div>

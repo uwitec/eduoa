@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 	$Route->connect('/', array('controller' => 'members', 'action' => 'login'));
 	$Route->connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));

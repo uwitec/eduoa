@@ -1,0 +1,37 @@
+<div class="unit">
+<h2>View Unit</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['id']?></dd>
+	<dt>Unit Name</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['unit_name']?></dd>
+	<dt>Tel No</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['tel_no']?></dd>
+	<dt>Fax No</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['fax_no']?></dd>
+	<dt>Post No</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['post_no']?></dd>
+	<dt>Address</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['address']?></dd>
+	<dt>Website</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['website']?></dd>
+	<dt>Email</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['email']?></dd>
+	<dt>Bank Name</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['bank_name']?></dd>
+	<dt>Bank No</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['bank_no']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $unit['Unit']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Unit',   '/units/edit/' . $unit['Unit']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Unit', '/units/delete/' . $unit['Unit']['id'], null, 'Are you sure you want to delete: id ' . $unit['Unit']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Units',   '/units/index') ?> </li>
+	<li><?php echo $html->link('New Unit',	'/units/add') ?> </li>
+</ul>
+
+</div>

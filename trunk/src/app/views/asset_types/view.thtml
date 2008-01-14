@@ -1,0 +1,19 @@
+<div class="assetType">
+<h2>View Asset Type</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $assetType['AssetType']['id']?></dd>
+	<dt>Type Name</dt>
+	<dd>&nbsp;<?php echo $assetType['AssetType']['type_name']?></dd>
+	<dt>Type Code</dt>
+	<dd>&nbsp;<?php echo $assetType['AssetType']['type_code']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Asset Type',   '/asset_types/edit/' . $assetType['AssetType']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Asset Type', '/asset_types/delete/' . $assetType['AssetType']['id'], null, 'Are you sure you want to delete: id ' . $assetType['AssetType']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Asset Types',   '/asset_types/index') ?> </li>
+	<li><?php echo $html->link('New Asset Type',	'/asset_types/add') ?> </li>
+</ul>
+
+</div>

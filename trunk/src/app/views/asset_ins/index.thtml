@@ -1,0 +1,36 @@
+<div class="assetIns">
+<h2>List Asset Ins</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Asset</th>
+	<th>In Date</th>
+	<th>Department</th>
+	<th>Use Person</th>
+	<th>Created</th>
+	<th>Modified</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($assetIns as $assetIn): ?>
+<tr>
+	<td><?php echo $assetIn['AssetIn']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($assetIn['Asset']['id'], '/assets/view/' .$assetIn['Asset']['id'])?></td>
+	<td><?php echo $assetIn['AssetIn']['in_date']; ?></td>
+	<td>&nbsp;<?php echo $html->link($assetIn['Department']['id'], '/departments/view/' .$assetIn['Department']['id'])?></td>
+	<td><?php echo $assetIn['AssetIn']['use_person']; ?></td>
+	<td><?php echo $assetIn['AssetIn']['created']; ?></td>
+	<td><?php echo $assetIn['AssetIn']['modified']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/asset_ins/view/' . $assetIn['AssetIn']['id'])?>
+		<?php echo $html->link('Edit','/asset_ins/edit/' . $assetIn['AssetIn']['id'])?>
+		<?php echo $html->link('Delete','/asset_ins/delete/' . $assetIn['AssetIn']['id'], null, 'Are you sure you want to delete id ' . $assetIn['AssetIn']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Asset In', '/asset_ins/add'); ?></li>
+</ul>
+</div>

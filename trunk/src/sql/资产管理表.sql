@@ -1,7 +1,7 @@
 -- --------------------------------------
 -- 资产类型表
 -- --------------------------------------
-CREATE TABLE asset_types (
+create table asset_types (
   id                    int(10)       not null auto_increment comment '资产类型编号',
   type_name             varchar(200)                          COMMENT '名称',
   type_code             varchar(200)                          COMMENT '编码',
@@ -12,7 +12,7 @@ CREATE TABLE asset_types (
 -- --------------------------------------
 -- 资产状态表
 -- --------------------------------------
-CREATE TABLE asset_status (
+create table asset_status (
   id                    int(10)       not null auto_increment comment '资产状态编号',
   status_name           varchar(200)                          comment '名称',
   status_code           varchar(200)                          comment '编码',
@@ -23,7 +23,7 @@ CREATE TABLE asset_status (
 -- ----------------------------
 -- 资产增加方式表
 -- ----------------------------
-CREATE TABLE asset_in_methods (
+create table asset_in_methods (
   id                    int(10)       not null auto_increment comment '资产状态编号',
   method_name           varchar(200)                          comment '名称',
   method_code           varchar(200)                          comment '编码',

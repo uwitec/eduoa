@@ -1,0 +1,35 @@
+<div id="adminhead">
+<h1>金色校园教育管理软件系统</h1>
+</div>
+
+<div class="wrap">
+
+	<form action="<?php echo $html->url('/members/login'); ?>" method="post">
+	
+	<center>
+	
+	<h3>欢迎使用金色校园教育管理软件 version 1.0</h3>
+	<table border=0>
+	<tr>
+	  <td>
+	    <label for="username">用户名：</label>
+	  </td><td>
+	    <?php echo $html->input('Member/username', array('size' => 20));?>
+	  </td>
+	</tr>
+	
+	<tr>
+	  <td>
+	    <label for="password">密  码：</label>
+	  </td><td>
+	    <?php echo $html->password('Member/password', array('size' =>20)); ?>
+	  </td>
+	</tr>
+	</table>
+	
+	  <div>
+	    <?php echo $html->submit('登录'); ?>
+	  </div>
+	</center>
+	</form>
+</div>

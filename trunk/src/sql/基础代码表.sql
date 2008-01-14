@@ -1,4 +1,15 @@
 -- --------------------------------------
+-- 行政区划
+-- --------------------------------------
+create table regions(
+  id               int(11)       not null auto_increment comment '主键',
+  region_name      varchar(30)   not null                comment '行政地区名称',
+  maximum          int(6)        not null default 0      comment '最大记录数',
+  flag             int(1)        not null                comment '有效标志',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='行政区划';
+
+-- --------------------------------------
 -- 民族
 -- --------------------------------------
 create table peoples(

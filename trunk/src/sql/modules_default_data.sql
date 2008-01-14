@@ -20,10 +20,10 @@ INSERT INTO `modules` (`id`, `module_name`, `module_type`, `parent_id`, `hierarc
 (40101, '类别管理', 1, 401, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
 (40102, '使用状态', 1, 401, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
 (40103, '增加方式', 1, 401, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
-(402, '资产管理', 1, 4, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
-(403, '资产借出', 1, 4, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
-(404, '资产归还', 1, 4, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
-(405, '资产维修', 1, 4, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
+(402, '资产管理', 1, 4, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
+(403, '资产借出', 1, 4, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
+(404, '资产归还', 1, 4, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
+(405, '资产维修', 1, 4, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
 
 (5, '教职工管理', 1, 0, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
 (501, '基本信息维护', 1, 5, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
@@ -128,7 +128,7 @@ INSERT INTO `modules` (`id`, `module_name`, `module_type`, `parent_id`, `hierarc
 (1406, '统计功能', 1, 14, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
 
 (15, '控制面板', 1, 0, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
-(1501, '更改登录密码', 1, 15, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
+(1501, '更改登录密码', 1, 15, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
 (1502, '管理学生密码', 1, 15, 1, 0, NULL, '/building.php', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),
 
 (16, '辅助办公', 1, 0, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1),

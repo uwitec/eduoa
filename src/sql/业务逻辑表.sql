@@ -94,6 +94,7 @@ create table semesters(
 /* 教师表 */
 create table teachers(
   id                    int(10)       not null auto_increment comment '教师编号',
+  user_id               int(10)                               comment '用户',
   teacher_type          int(1)        not null default 1      comment '教职工类型'
   teacher_name          varchar(20)   not null                comment '姓名',
   is_work               int(1)                                comment '是否在岗', 

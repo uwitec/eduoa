@@ -9,16 +9,6 @@
 /*  在使用0和1表示状态的时候，如无特殊说明0始终表示无效，1始终表示有效。
 /*********************************************************************************************
 
-/* 行政区划 */
-create table regions(
-  id               int(11)       not null auto_increment comment '主键',
-  region_name      varchar(30)   not null                comment '行政地区名称',
-  maximum          int(6)        not null default 0      comment '最大记录数',
-  flag             int(1)        not null                comment '有效标志',
-  primary key (id)
-) engine=MyISAM default charset=utf8 comment='行政区划';
-
-
 /* 角色表 */
 create table roles (
   id                   int(10)         not null auto_increment comment '主键',
@@ -95,18 +85,3 @@ create table users(
   flag             int(1)        not null default 1      comment '会员状态',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='会员基本信息';
-
-CREATE TABLE `files` (
-  `id` int(10) NOT NULL auto_increment,
-  `created` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated` datetime NOT NULL default '0000-00-00 00:00:00',
-  `path` varchar(255) NOT NULL default '',
-  `name` varchar(255) NOT NULL default '',
-  `fspath` varchar(255) default NULL,
-  `type` varchar(255) NOT NULL default '',
-  `size` int(10) NOT NULL default '0',
-  `deleted` tinyint(4) NOT NULL default '0',
-  `comment` text,
-  PRIMARY KEY  (`id`),
-  UNIQUE KEY `path_name_idx` (`path`,`name`)
-) ENGINE=MyISAM  DEFAULT charset=utf8 ;

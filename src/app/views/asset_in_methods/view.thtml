@@ -1,0 +1,19 @@
+<div class="assetInMethod">
+<h2>View Asset In Method</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $assetInMethod['AssetInMethod']['id']?></dd>
+	<dt>Method Name</dt>
+	<dd>&nbsp;<?php echo $assetInMethod['AssetInMethod']['method_name']?></dd>
+	<dt>Method Code</dt>
+	<dd>&nbsp;<?php echo $assetInMethod['AssetInMethod']['method_code']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Asset In Method',   '/asset_in_methods/edit/' . $assetInMethod['AssetInMethod']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Asset In Method', '/asset_in_methods/delete/' . $assetInMethod['AssetInMethod']['id'], null, 'Are you sure you want to delete: id ' . $assetInMethod['AssetInMethod']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Asset In Methods',   '/asset_in_methods/index') ?> </li>
+	<li><?php echo $html->link('New Asset In Method',	'/asset_in_methods/add') ?> </li>
+</ul>
+
+</div>

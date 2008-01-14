@@ -1,0 +1,38 @@
+<div class="assetOuts">
+<h2>List Asset Outs</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Asset</th>
+	<th>From Date</th>
+	<th>End Date</th>
+	<th>Department</th>
+	<th>Use Person</th>
+	<th>Created</th>
+	<th>Modified</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($assetOuts as $assetOut): ?>
+<tr>
+	<td><?php echo $assetOut['AssetOut']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($assetOut['Asset']['id'], '/assets/view/' .$assetOut['Asset']['id'])?></td>
+	<td><?php echo $assetOut['AssetOut']['from_date']; ?></td>
+	<td><?php echo $assetOut['AssetOut']['end_date']; ?></td>
+	<td>&nbsp;<?php echo $html->link($assetOut['Department']['id'], '/departments/view/' .$assetOut['Department']['id'])?></td>
+	<td><?php echo $assetOut['AssetOut']['use_person']; ?></td>
+	<td><?php echo $assetOut['AssetOut']['created']; ?></td>
+	<td><?php echo $assetOut['AssetOut']['modified']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/asset_outs/view/' . $assetOut['AssetOut']['id'])?>
+		<?php echo $html->link('Edit','/asset_outs/edit/' . $assetOut['AssetOut']['id'])?>
+		<?php echo $html->link('Delete','/asset_outs/delete/' . $assetOut['AssetOut']['id'], null, 'Are you sure you want to delete id ' . $assetOut['AssetOut']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Asset Out', '/asset_outs/add'); ?></li>
+</ul>
+</div>

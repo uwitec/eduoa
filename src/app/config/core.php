@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /* SVN FILE: $Id: core.php 6305 2008-01-02 02:33:56Z phpnut $ */
 /**
  * This is core configuration file.

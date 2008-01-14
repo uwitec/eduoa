@@ -1,0 +1,24 @@
+<?php
+  echo $javascript->codeBlock("
+    var swfupload_url = '" . $html->url('/js/swfupload/SWFUpload.swf') . "';
+	var upload_url = '" . $html->url('/files/upload') . "';
+	var file_info_url = '" . $html->url('/files/info') . "';");
+?>
+<?php echo $javascript->link('swfupload/SWFUpload'); ?>
+<?php echo $javascript->link('swfupload/callbacks'); ?>
+<?php echo $javascript->link('swfupload/init'); ?>
+<div id="wrapper">
+
+    <div id="contentContainer">
+        <div id="SWFUploadTarget">
+            <form action="<?php echo $html->url('/files/upload') ?>" method="post" onsubmit="return false" enctype="multipart/form-data">
+                <?php print $html->file("Filedata"); ?>
+                
+                <input type="submit" value="Upload" />
+            </form>
+        </div>
+        <div id="SWFUploadFileListingFiles">
+        </div>
+    </div>
+    
+</div>

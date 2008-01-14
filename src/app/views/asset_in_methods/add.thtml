@@ -1,0 +1,25 @@
+<div id="content">
+<fieldset align=center>
+<legend>新增资产类别增加方式</legend> 
+
+<form action="<?php echo $html->url('/asset_in_methods/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetInMethod/method_name', '增加方式名称:');?>
+ 	<?php echo $html->input('AssetInMethod/method_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetInMethod/method_name', 'Please enter the Method Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetInMethod/method_code', '增加方式编码:');?>
+ 	<?php echo $html->input('AssetInMethod/method_code', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetInMethod/method_code', 'Please enter the Method Code.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('新增');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('资产类别增加方式列表', '/asset_in_methods/index')?></li>
+</ul>
+
+</fieldset>
+</div>

@@ -1,0 +1,39 @@
+<div class="assetMaintenance">
+<h2>View Asset Maintenance</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['id']?></dd>
+	<dt>Asset</dt>
+	<dd>&nbsp;<?php echo $html->link($assetMaintenance['Asset']['id'], '/assets/view/' .$assetMaintenance['Asset']['id'])?></dd>
+	<dt>Send Date</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['send_date']?></dd>
+	<dt>Maintenance Date</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['maintenance_date']?></dd>
+	<dt>Reason</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['reason']?></dd>
+	<dt>Station</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['station']?></dd>
+	<dt>Accessories</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['accessories']?></dd>
+	<dt>Quantity</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['quantity']?></dd>
+	<dt>Price</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['price']?></dd>
+	<dt>Money</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['money']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $assetMaintenance['AssetMaintenance']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Asset Maintenance',   '/asset_maintenances/edit/' . $assetMaintenance['AssetMaintenance']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Asset Maintenance', '/asset_maintenances/delete/' . $assetMaintenance['AssetMaintenance']['id'], null, 'Are you sure you want to delete: id ' . $assetMaintenance['AssetMaintenance']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Asset Maintenances',   '/asset_maintenances/index') ?> </li>
+	<li><?php echo $html->link('New Asset Maintenance',	'/asset_maintenances/add') ?> </li>
+	<li><?php echo $html->link('List Asset', '/assets/index/')?> </li>
+	<li><?php echo $html->link('New Assets', '/assets/add/')?> </li>
+</ul>
+
+</div>

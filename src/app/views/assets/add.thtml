@@ -1,0 +1,94 @@
+<div id="content">
+<fieldset align=center>
+<legend>新建资产</legend>
+
+<form action="<?php echo $html->url('/assets/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/asset_name', 'Asset Name');?>
+ 	<?php echo $html->input('Asset/asset_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Asset/asset_name', 'Please enter the Asset Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/asset_code', 'Asset Code');?>
+ 	<?php echo $html->input('Asset/asset_code', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Asset/asset_code', 'Please enter the Asset Code.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/asset_type_id', 'Asset Type');?>
+ 	<?php echo $html->selectTag('Asset/asset_type_id', $assetTypes, $html->tagValue('Asset/asset_type_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Asset/asset_type_id', 'Please select the Asset Type.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/standard_code', 'Standard Code');?>
+ 	<?php echo $html->input('Asset/standard_code', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Asset/standard_code', 'Please enter the Standard Code.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/provider', 'Provider');?>
+ 	<?php echo $html->input('Asset/provider', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Asset/provider', 'Please enter the Provider.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/made_date', 'Made Date');?>
+ 	<?php echo $html->dateTimeOptionTag('Asset/made_date', 'MDY' , 'NONE', $html->tagValue('Asset/made_date'), array());?>
+	<?php echo $html->tagErrorMsg('Asset/made_date', 'Please select the Made Date.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/in_date', 'In Date');?>
+ 	<?php echo $html->dateTimeOptionTag('Asset/in_date', 'MDY' , 'NONE', $html->tagValue('Asset/in_date'), array());?>
+	<?php echo $html->tagErrorMsg('Asset/in_date', 'Please select the In Date.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/residual_rate', 'Residual Rate');?>
+ 	<?php echo $html->input('Asset/residual_rate', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Asset/residual_rate', 'Please enter the Residual Rate.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/use_years', 'Use Years');?>
+ 	<?php echo $html->input('Asset/use_years', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Asset/use_years', 'Please enter the Use Years.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/actual_value', 'Actual Value');?>
+ 	<?php echo $html->input('Asset/actual_value', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Asset/actual_value', 'Please enter the Actual Value.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/net_value', 'Net Value');?>
+ 	<?php echo $html->input('Asset/net_value', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Asset/net_value', 'Please enter the Net Value.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/location', 'Location');?>
+ 	<?php echo $html->input('Asset/location', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Asset/location', 'Please enter the Location.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/department_id', 'Department');?>
+ 	<?php echo $html->selectTag('Asset/department_id', $departments, $html->tagValue('Asset/department_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Asset/department_id', 'Please select the Department.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/asset_status_id', 'Asset Status');?>
+ 	<?php echo $html->selectTag('Asset/asset_status_id', $assetStatuses, $html->tagValue('Asset/asset_status_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Asset/asset_status_id', 'Please select the Asset Status.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/asset_in_method_id', 'Asset In Method');?>
+ 	<?php echo $html->selectTag('Asset/asset_in_method_id', $assetInMethods, $html->tagValue('Asset/asset_in_method_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Asset/asset_in_method_id', 'Please select the Asset In Method.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Asset/belong_user', 'Belong User');?>
+ 	<?php echo $html->input('Asset/belong_user', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Asset/belong_user', 'Please enter the Belong User.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('资产类别列表', '/assets/index')?></li>
+</ul>
+</fieldset>
+</div>

@@ -1,0 +1,120 @@
+/**
+ * Basic Styles for SWFUpload
+ * This style sheet provides some basic layout for your 
+ * SWFUpload application.  It should be used with the
+ * javascript files that accompanied it in the package
+ * you downloaded because the styles here are specific 
+ * to the HTML that the javascript will dynamically
+ * build.
+ *
+ * This style sheet is not copyrighted, but please leave
+ * my name and link in the header of the style sheet file
+ * so others can learn how to achieve this look and feel
+ * for SWFUpload from my website. Thanks.
+ *
+ * @author James Revillini http://james.revillini.com
+ * @version 1.0
+ */
+ 
+/* ---------------- document ------------------- */
+/* feel free to remove the document styles if they're messing with your layout */
+body {
+	font-family:"frutiger linotype","lucida grande",helvetica,arial,sans-serif;
+	font-size:76%;
+}
+ 
+/* ---------------- file queue ----------------- */
+#SWFUploadFileListingFiles {
+	border: 1px solid #666;
+	background-color: #ebebeb;
+	float: left;
+	min-height: 5em;
+	width: 95%;
+	padding: 1em;
+}
+
+#SWFUploadFileListingFiles h4 {
+	font-size: 150%;
+	color: #666;
+	margin: 0 0 .5em 0;
+	padding: 0;
+	line-height: 1em;	
+}
+
+#SWFUploadFileListingFiles ul {
+	float: left;
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#SWFUploadFileListingFiles li { 
+	border: 1px solid #ebebeb;
+	display: block;
+	float: left;
+	position: relative;
+	margin: 0 0 .5em 0;
+	padding: .2em;
+	width: 48%;
+}
+
+/* ---------------- buttons ----------------- */
+.swfuploadbtn {
+	color: #003D4C;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: center left;
+	line-height: 2em;
+	padding-left: 20px;
+	text-decoration: none;
+}
+
+.browsebtn {
+}
+
+.uploadbtn {	
+}
+
+.cancelbtn {
+	color: #aaa;
+	display: inline;
+	margin-left: 2em;
+}
+
+.uploadCompleted .cancelbtn {
+	display: none;
+}
+
+/* ---------------- progress ----------------- */
+.progressBar {
+	background-color: #999;
+	display: block;
+	height: .5em;
+	float: left;
+	width: 100%;
+}
+
+.progressMeter {
+	background-color: #9f0;
+	border: 0;
+	border-bottom: 1px solid #6c6;
+	display: block;
+	float: left;
+	height: .5em;
+	width: 0;
+}
+
+/* ---------------- files ----------------- */
+.fileInfo {
+	float: left;
+	line-height: 2em;
+	
+}
+
+.fileUploading {
+	border: 1px solid #dbdbdb;
+	background-color: #ecffec;
+	
+}

@@ -1,0 +1,31 @@
+<div class="department">
+<h2>View Department</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $department['Department']['id']?></dd>
+	<dt>Parent Id</dt>
+	<dd>&nbsp;<?php echo $department['Department']['parent_id']?></dd>
+	<dt>Department Name</dt>
+	<dd>&nbsp;<?php echo $department['Department']['department_name']?></dd>
+	<dt>English Name</dt>
+	<dd>&nbsp;<?php echo $department['Department']['english_name']?></dd>
+	<dt>Tel No</dt>
+	<dd>&nbsp;<?php echo $department['Department']['tel_no']?></dd>
+	<dt>Fax No</dt>
+	<dd>&nbsp;<?php echo $department['Department']['fax_no']?></dd>
+	<dt>Order List</dt>
+	<dd>&nbsp;<?php echo $department['Department']['order_list']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $department['Department']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $department['Department']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Department',   '/departments/edit/' . $department['Department']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Department', '/departments/delete/' . $department['Department']['id'], null, 'Are you sure you want to delete: id ' . $department['Department']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Departments',   '/departments/index') ?> </li>
+	<li><?php echo $html->link('New Department',	'/departments/add') ?> </li>
+</ul>
+
+</div>

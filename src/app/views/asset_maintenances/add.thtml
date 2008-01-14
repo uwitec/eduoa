@@ -1,0 +1,56 @@
+<h2>New Asset Maintenance</h2>
+<form action="<?php echo $html->url('/asset_maintenances/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetMaintenance/asset_id', 'Asset');?>
+ 	<?php echo $html->selectTag('AssetMaintenance/asset_id', $assets, $html->tagValue('AssetMaintenance/asset_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('AssetMaintenance/asset_id', 'Please select the Asset.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetMaintenance/send_date', 'Send Date');?>
+ 	<?php echo $html->dateTimeOptionTag('AssetMaintenance/send_date', 'MDY' , 'NONE', $html->tagValue('AssetMaintenance/send_date'), array());?>
+	<?php echo $html->tagErrorMsg('AssetMaintenance/send_date', 'Please select the Send Date.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetMaintenance/maintenance_date', 'Maintenance Date');?>
+ 	<?php echo $html->dateTimeOptionTag('AssetMaintenance/maintenance_date', 'MDY' , 'NONE', $html->tagValue('AssetMaintenance/maintenance_date'), array());?>
+	<?php echo $html->tagErrorMsg('AssetMaintenance/maintenance_date', 'Please select the Maintenance Date.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetMaintenance/reason', 'Reason');?>
+ 	<?php echo $html->input('AssetMaintenance/reason', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetMaintenance/reason', 'Please enter the Reason.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetMaintenance/station', 'Station');?>
+ 	<?php echo $html->input('AssetMaintenance/station', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetMaintenance/station', 'Please enter the Station.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetMaintenance/accessories', 'Accessories');?>
+ 	<?php echo $html->input('AssetMaintenance/accessories', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetMaintenance/accessories', 'Please enter the Accessories.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetMaintenance/quantity', 'Quantity');?>
+ 	<?php echo $html->input('AssetMaintenance/quantity', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetMaintenance/quantity', 'Please enter the Quantity.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetMaintenance/price', 'Price');?>
+ 	<?php echo $html->input('AssetMaintenance/price', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetMaintenance/price', 'Please enter the Price.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('AssetMaintenance/money', 'Money');?>
+ 	<?php echo $html->input('AssetMaintenance/money', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('AssetMaintenance/money', 'Please enter the Money.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Asset Maintenances', '/asset_maintenances/index')?></li>
+<li><?php echo $html->link('View Assets', '/assets/index/');?></li>
+<li><?php echo $html->link('Add Assets', '/assets/add/');?></li>
+</ul>

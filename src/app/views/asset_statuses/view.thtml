@@ -1,0 +1,19 @@
+<div class="assetStatus">
+<h2>View Asset Status</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $assetStatus['AssetStatus']['id']?></dd>
+	<dt>Status Name</dt>
+	<dd>&nbsp;<?php echo $assetStatus['AssetStatus']['status_name']?></dd>
+	<dt>Status Code</dt>
+	<dd>&nbsp;<?php echo $assetStatus['AssetStatus']['status_code']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Asset Status',   '/asset_statuses/edit/' . $assetStatus['AssetStatus']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Asset Status', '/asset_statuses/delete/' . $assetStatus['AssetStatus']['id'], null, 'Are you sure you want to delete: id ' . $assetStatus['AssetStatus']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Asset Statuses',   '/asset_statuses/index') ?> </li>
+	<li><?php echo $html->link('New Asset Status',	'/asset_statuses/add') ?> </li>
+</ul>
+
+</div>

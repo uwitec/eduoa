@@ -1,0 +1,33 @@
+<div class="assetOut">
+<h2>View Asset Out</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $assetOut['AssetOut']['id']?></dd>
+	<dt>Asset</dt>
+	<dd>&nbsp;<?php echo $html->link($assetOut['Asset']['id'], '/assets/view/' .$assetOut['Asset']['id'])?></dd>
+	<dt>From Date</dt>
+	<dd>&nbsp;<?php echo $assetOut['AssetOut']['from_date']?></dd>
+	<dt>End Date</dt>
+	<dd>&nbsp;<?php echo $assetOut['AssetOut']['end_date']?></dd>
+	<dt>Department</dt>
+	<dd>&nbsp;<?php echo $html->link($assetOut['Department']['id'], '/departments/view/' .$assetOut['Department']['id'])?></dd>
+	<dt>Use Person</dt>
+	<dd>&nbsp;<?php echo $assetOut['AssetOut']['use_person']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $assetOut['AssetOut']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $assetOut['AssetOut']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Asset Out',   '/asset_outs/edit/' . $assetOut['AssetOut']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Asset Out', '/asset_outs/delete/' . $assetOut['AssetOut']['id'], null, 'Are you sure you want to delete: id ' . $assetOut['AssetOut']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Asset Outs',   '/asset_outs/index') ?> </li>
+	<li><?php echo $html->link('New Asset Out',	'/asset_outs/add') ?> </li>
+	<li><?php echo $html->link('List Asset', '/assets/index/')?> </li>
+	<li><?php echo $html->link('New Assets', '/assets/add/')?> </li>
+	<li><?php echo $html->link('List Department', '/departments/index/')?> </li>
+	<li><?php echo $html->link('New Departments', '/departments/add/')?> </li>
+</ul>
+
+</div>

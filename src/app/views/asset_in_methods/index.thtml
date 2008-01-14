@@ -1,0 +1,27 @@
+<div id="content">
+<fieldset align=center>
+<legend>资产类别增加方式列表</legend> 
+
+<table cellpadding="0" cellspacing="0" width="90%">
+<tr>
+	<th>资产类别增加方式名称</th>
+	<th>资产类别增加方式编码</th>
+	<th>操作</th>
+</tr>
+<?php foreach ($assetInMethods as $assetInMethod): ?>
+<tr>
+	<td><?php echo $assetInMethod['AssetInMethod']['method_name']; ?></td>
+	<td><?php echo $assetInMethod['AssetInMethod']['method_code']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('编辑','/asset_in_methods/edit/' . $assetInMethod['AssetInMethod']['id'])?>
+		<?php echo $html->link('删除','/asset_in_methods/delete/' . $assetInMethod['AssetInMethod']['id'], null, 'Are you sure you want to delete id ' . $assetInMethod['AssetInMethod']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('新增资产类别增加方式', '/asset_in_methods/add'); ?></li>
+</ul>
+</fieldset>
+</div>

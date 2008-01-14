@@ -1,0 +1,63 @@
+<div class="asset">
+<h2>View Asset</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['id']?></dd>
+	<dt>Asset Name</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['asset_name']?></dd>
+	<dt>Asset Code</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['asset_code']?></dd>
+	<dt>Asset Type</dt>
+	<dd>&nbsp;<?php echo $html->link($asset['AssetType']['id'], '/asset_types/view/' .$asset['AssetType']['id'])?></dd>
+	<dt>Standard Code</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['standard_code']?></dd>
+	<dt>Provider</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['provider']?></dd>
+	<dt>Made Date</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['made_date']?></dd>
+	<dt>In Date</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['in_date']?></dd>
+	<dt>Residual Rate</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['residual_rate']?></dd>
+	<dt>Use Years</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['use_years']?></dd>
+	<dt>Actual Value</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['actual_value']?></dd>
+	<dt>Net Value</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['net_value']?></dd>
+	<dt>Location</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['location']?></dd>
+	<dt>Department</dt>
+	<dd>&nbsp;<?php echo $html->link($asset['Department']['id'], '/departments/view/' .$asset['Department']['id'])?></dd>
+	<dt>Asset Status</dt>
+	<dd>&nbsp;<?php echo $html->link($asset['AssetStatus']['id'], '/asset_statuses/view/' .$asset['AssetStatus']['id'])?></dd>
+	<dt>Asset In Method</dt>
+	<dd>&nbsp;<?php echo $html->link($asset['AssetInMethod']['id'], '/asset_in_methods/view/' .$asset['AssetInMethod']['id'])?></dd>
+	<dt>Belong User</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['belong_user']?></dd>
+	<dt>Clear Method Id</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['clear_method_id']?></dd>
+	<dt>Clear Date</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['clear_date']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Asset',   '/assets/edit/' . $asset['Asset']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Asset', '/assets/delete/' . $asset['Asset']['id'], null, 'Are you sure you want to delete: id ' . $asset['Asset']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Assets',   '/assets/index') ?> </li>
+	<li><?php echo $html->link('New Asset',	'/assets/add') ?> </li>
+	<li><?php echo $html->link('List Asset Type', '/asset_types/index/')?> </li>
+	<li><?php echo $html->link('New Asset Types', '/asset_types/add/')?> </li>
+	<li><?php echo $html->link('List Department', '/departments/index/')?> </li>
+	<li><?php echo $html->link('New Departments', '/departments/add/')?> </li>
+	<li><?php echo $html->link('List Asset Status', '/asset_statuses/index/')?> </li>
+	<li><?php echo $html->link('New Asset Statuses', '/asset_statuses/add/')?> </li>
+	<li><?php echo $html->link('List Asset In Method', '/asset_in_methods/index/')?> </li>
+	<li><?php echo $html->link('New Asset In Methods', '/asset_in_methods/add/')?> </li>
+</ul>
+
+</div>

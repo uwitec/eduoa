@@ -409,3 +409,99 @@ ul.checkboxMultiple li {
     width: 220px;
     margin: 0 8px 0 0;
 } 
+
+/* ---------------- file queue ----------------- */
+#SWFUploadFileListingFiles {
+	border: 1px solid #666;
+	background-color: #ebebeb;
+	float: left;
+	min-height: 5em;
+	width: 95%;
+	padding: 1em;
+}
+
+#SWFUploadFileListingFiles h4 {
+	font-size: 150%;
+	color: #666;
+	margin: 0 0 .5em 0;
+	padding: 0;
+	line-height: 1em;	
+}
+
+#SWFUploadFileListingFiles ul {
+	float: left;
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#SWFUploadFileListingFiles li { 
+	border: 1px solid #ebebeb;
+	display: block;
+	float: left;
+	position: relative;
+	margin: 0 0 .5em 0;
+	padding: .2em;
+	width: 48%;
+}
+
+/* ---------------- buttons ----------------- */
+.swfuploadbtn {
+	color: #003D4C;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: center left;
+	line-height: 2em;
+	padding-left: 20px;
+	text-decoration: none;
+}
+
+.browsebtn {
+}
+
+.uploadbtn {	
+}
+
+.cancelbtn {
+	color: #aaa;
+	display: inline;
+	margin-left: 2em;
+}
+
+.uploadCompleted .cancelbtn {
+	display: none;
+}
+
+/* ---------------- progress ----------------- */
+.progressBar {
+	background-color: #999;
+	display: block;
+	height: .5em;
+	float: left;
+	width: 100%;
+}
+
+.progressMeter {
+	background-color: #9f0;
+	border: 0;
+	border-bottom: 1px solid #6c6;
+	display: block;
+	float: left;
+	height: .5em;
+	width: 0;
+}
+
+/* ---------------- files ----------------- */
+.fileInfo {
+	float: left;
+	line-height: 2em;
+	
+}
+
+.fileUploading {
+	border: 1px solid #dbdbdb;
+	background-color: #ecffec;
+	
+}

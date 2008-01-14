@@ -1,0 +1,58 @@
+<div id="content">
+<fieldset align=center>
+<legend>资产类别列表</legend> 
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>资产名称</th>
+	<th>资产代码</th>
+	<th>状态</th>
+	<th>使用情况</th>
+	<th>类别</th>
+	<th>国标编码</th>
+	<th>生产厂商</th>
+	<th>生产日期</th>
+	<th>入帐日期</th>
+	<th>净残值率</th>
+	<th>预计使用年限</th>
+	<th>原值</th>
+	<th>净值</th>
+	<th>存放地点</th>
+	<th>使用部门</th>
+	<th>增加方式</th>
+	<th>保管人员</th>
+	<th>操作</th>
+</tr>
+<?php foreach ($assets as $asset): ?>
+<tr>
+	<td><?php echo $asset['Asset']['id']; ?></td>
+	<td><?php echo $asset['Asset']['asset_name']; ?></td>
+	<td><?php echo $asset['Asset']['asset_code']; ?></td>
+	<td>&nbsp;<?php echo $html->link($asset['AssetStatus']['id'], '/asset_statuses/view/' .$asset['AssetStatus']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($asset['AssetType']['id'], '/asset_types/view/' .$asset['AssetType']['id'])?></td>
+	<td><?php echo $asset['Asset']['standard_code']; ?></td>
+	<td><?php echo $asset['Asset']['provider']; ?></td>
+	<td><?php echo $asset['Asset']['made_date']; ?></td>
+	<td><?php echo $asset['Asset']['in_date']; ?></td>
+	<td><?php echo $asset['Asset']['residual_rate']; ?></td>
+	<td><?php echo $asset['Asset']['use_years']; ?></td>
+	<td><?php echo $asset['Asset']['actual_value']; ?></td>
+	<td><?php echo $asset['Asset']['net_value']; ?></td>
+	<td><?php echo $asset['Asset']['location']; ?></td>
+	<td>&nbsp;<?php echo $html->link($asset['Department']['id'], '/departments/view/' .$asset['Department']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($asset['AssetInMethod']['id'], '/asset_in_methods/view/' .$asset['AssetInMethod']['id'])?></td>
+	<td><?php echo $asset['Asset']['belong_user']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/assets/view/' . $asset['Asset']['id'])?>
+		<?php echo $html->link('Edit','/assets/edit/' . $asset['Asset']['id'])?>
+		<?php echo $html->link('Delete','/assets/delete/' . $asset['Asset']['id'], null, 'Are you sure you want to delete id ' . $asset['Asset']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('新增资产', '/assets/add'); ?></li>
+</ul>
+</fieldset>
+</div>

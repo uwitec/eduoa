@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 class DATABASE_CONFIG
 {
 	var $default = array('driver' => 'mysql',
@@ -15,7 +15,7 @@ class DATABASE_CONFIG
 							'host' => 'localhost',
 							'login' => 'root',
 							'password' => 'root',
-							'database' => 'eduoa-test',
+							'database' => 'eduoa',
 							'prefix' => '');
 }
 ?>

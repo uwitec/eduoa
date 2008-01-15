@@ -1,0 +1,21 @@
+<div id="content">
+<fieldset align=center>
+<legend>修改教室类型</legend>
+
+<form action="<?php echo $html->url('/classroom_types/edit/'.$html->tagValue('ClassroomType/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('ClassroomType/type_name', '类型名称');?>
+ 	<?php echo $html->input('ClassroomType/type_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('ClassroomType/type_name', 'Please enter the Type Name.');?>
+</div>
+<?php echo $html->hidden('ClassroomType/id')?>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+<ul class="actions">
+  <li><?php echo $html->link('教室类型列表', '/classroom_types/index')?></li>
+</ul>
+
+</fieldset>
+</div>

@@ -36,13 +36,5 @@ endif;
 	   ?>
 	</div>
 <?php echo $cakeDebug?>
-<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
-</script>
-<script type="text/javascript">
-_uacct = "UA-636211-3";
-urchinTracker();
-
-window.onload=function(){window.history.forward(1);}
-</script>
 </body>
 </html>

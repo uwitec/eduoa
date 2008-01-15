@@ -1,0 +1,35 @@
+<div id="content">
+<fieldset align=center>
+<legend>新增教室</legend>
+
+<form action="<?php echo $html->url('/classrooms/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Classroom/classroom_name', '教室名称:');?>
+ 	<?php echo $html->input('Classroom/classroom_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Classroom/classroom_name', 'Please enter the Classroom Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Classroom/classroom_type_id', '教室类型:');?>
+ 	<?php echo $html->selectTag('Classroom/classroom_type_id', $classroomTypes, $html->tagValue('Classroom/classroom_type_id'), array('style'=>'width: 150px'), array(), true);?>
+	<?php echo $html->tagErrorMsg('Classroom/classroom_type_id', 'Please select the Classroom Type.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Classroom/teaching_building_id', '所在教学楼:');?>
+ 	<?php echo $html->selectTag('Classroom/teaching_building_id', $teachingBuildings, $html->tagValue('Classroom/teaching_building_id'), array('style'=>'width: 150px'), array(), false);?>
+	<?php echo $html->tagErrorMsg('Classroom/teaching_building_id', 'Please select the Teaching Building.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Classroom/seating', '座位数:');?>
+ 	<?php echo $html->input('Classroom/seating', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Classroom/seating', 'Please enter the Seating.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('教室列表', '/classrooms/index')?></li>
+</ul>
+
+</fieldset>
+</div>

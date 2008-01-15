@@ -1,0 +1,17 @@
+<div class="classroomType">
+<h2>View Classroom Type</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $classroomType['ClassroomType']['id']?></dd>
+	<dt>Type Name</dt>
+	<dd>&nbsp;<?php echo $classroomType['ClassroomType']['type_name']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Classroom Type',   '/classroom_types/edit/' . $classroomType['ClassroomType']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Classroom Type', '/classroom_types/delete/' . $classroomType['ClassroomType']['id'], null, 'Are you sure you want to delete: id ' . $classroomType['ClassroomType']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Classroom Types',   '/classroom_types/index') ?> </li>
+	<li><?php echo $html->link('New Classroom Type',	'/classroom_types/add') ?> </li>
+</ul>
+
+</div>

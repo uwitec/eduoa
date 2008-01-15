@@ -1,6 +1,6 @@
 <div id="content">
 <fieldset align=center>
-<legend>资产类别列表</legend> 
+<legend>资产列表</legend> 
 
 <table cellpadding="0" cellspacing="0">
 <tr>
@@ -43,9 +43,9 @@
 	<td>&nbsp;<?php echo $html->link($asset['AssetInMethod']['id'], '/asset_in_methods/view/' .$asset['AssetInMethod']['id'])?></td>
 	<td><?php echo $asset['Asset']['belong_user']; ?></td>
 	<td class="actions">
-		<?php echo $html->link('View','/assets/view/' . $asset['Asset']['id'])?>
-		<?php echo $html->link('Edit','/assets/edit/' . $asset['Asset']['id'])?>
-		<?php echo $html->link('Delete','/assets/delete/' . $asset['Asset']['id'], null, 'Are you sure you want to delete id ' . $asset['Asset']['id'])?>
+		<?php echo $html->link('查看','/assets/view/' . $asset['Asset']['id'])?>
+		<?php echo $html->link('编辑','/assets/edit/' . $asset['Asset']['id'])?>
+		<?php echo $html->link('删除','/assets/delete/' . $asset['Asset']['id'], null, '你是否真要删除『 ' . $asset['Asset']['asset_name'] .' 』？')?>
 	</td>
 </tr>
 <?php endforeach; ?>

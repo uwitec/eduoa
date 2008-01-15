@@ -27,7 +27,7 @@ class AssetsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Asset->save($this->data)) {
-				$this->Session->setFlash('The Asset has been saved');
+				$this->Session->setFlash('资产保存成功！');
 				$this->redirect('/assets/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -71,7 +71,7 @@ class AssetsController extends AppController {
 			$this->redirect('/assets/index');
 		}
 		if ($this->Asset->del($id)) {
-			$this->Session->setFlash('The Asset deleted: id '.$id.'');
+			$this->Session->setFlash('删除完成！');
 			$this->redirect('/assets/index');
 		}
 	}

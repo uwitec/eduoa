@@ -1,9 +1,9 @@
 <div id="content">
 <fieldset align=center>
-<legend>资产类别列表</legend> 
+<legend>新增资产类别</legend> 
 <form action="<?php echo $html->url('/asset_types/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetType/type_name', '资产类别编码:');?>
+	<?php echo $form->labelTag('AssetType/type_name', '资产类别名称:');?>
  	<?php echo $html->input('AssetType/type_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetType/type_name', 'Please enter the Type Name.');?>
 </div>

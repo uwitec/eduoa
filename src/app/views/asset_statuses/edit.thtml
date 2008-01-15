@@ -1,21 +1,25 @@
-<h2>Edit Asset Status</h2>
+<div id="content">
+<fieldset align=center>
+<legend>使用状态</legend> 
 <form action="<?php echo $html->url('/asset_statuses/edit/'.$html->tagValue('AssetStatus/id')); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetStatus/status_name', 'Status Name');?>
+	<?php echo $form->labelTag('AssetStatus/status_name', '使用状态名称');?>
  	<?php echo $html->input('AssetStatus/status_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetStatus/status_name', 'Please enter the Status Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetStatus/status_code', 'Status Code');?>
+	<?php echo $form->labelTag('AssetStatus/status_code', '使用状态编码');?>
  	<?php echo $html->input('AssetStatus/status_code', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetStatus/status_code', 'Please enter the Status Code.');?>
 </div>
 <?php echo $html->hidden('AssetStatus/id')?>
 <div class="submit">
-	<?php echo $html->submit('Save');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('Delete','/asset_statuses/delete/' . $html->tagValue('AssetStatus/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AssetStatus/id'));?>
-<li><?php echo $html->link('List Asset Statuses', '/asset_statuses/index')?></li>
+<li><?php echo $html->link('删除','/asset_statuses/delete/' . $html->tagValue('AssetStatus/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AssetStatus/id'));?>
+<li><?php echo $html->link('使用状态列表', '/asset_statuses/index')?></li>
 </ul>
+</fieldset>
+</div>

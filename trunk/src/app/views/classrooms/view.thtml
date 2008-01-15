@@ -1,0 +1,31 @@
+<div class="classroom">
+<h2>View Classroom</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $classroom['Classroom']['id']?></dd>
+	<dt>Classroom Name</dt>
+	<dd>&nbsp;<?php echo $classroom['Classroom']['classroom_name']?></dd>
+	<dt>Classroom Type</dt>
+	<dd>&nbsp;<?php echo $html->link($classroom['ClassroomType']['id'], '/classroom_types/view/' .$classroom['ClassroomType']['id'])?></dd>
+	<dt>Teaching Building</dt>
+	<dd>&nbsp;<?php echo $html->link($classroom['TeachingBuilding']['id'], '/teaching_buildings/view/' .$classroom['TeachingBuilding']['id'])?></dd>
+	<dt>Seating</dt>
+	<dd>&nbsp;<?php echo $classroom['Classroom']['seating']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $classroom['Classroom']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $classroom['Classroom']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Classroom',   '/classrooms/edit/' . $classroom['Classroom']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Classroom', '/classrooms/delete/' . $classroom['Classroom']['id'], null, 'Are you sure you want to delete: id ' . $classroom['Classroom']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Classrooms',   '/classrooms/index') ?> </li>
+	<li><?php echo $html->link('New Classroom',	'/classrooms/add') ?> </li>
+	<li><?php echo $html->link('List Classroom Type', '/classroom_types/index/')?> </li>
+	<li><?php echo $html->link('New Classroom Types', '/classroom_types/add/')?> </li>
+	<li><?php echo $html->link('List Teaching Building', '/teaching_buildings/index/')?> </li>
+	<li><?php echo $html->link('New Teaching Buildings', '/teaching_buildings/add/')?> </li>
+</ul>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="teachingBuilding">
+<h2>View Teaching Building</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $teachingBuilding['TeachingBuilding']['id']?></dd>
+	<dt>Building No</dt>
+	<dd>&nbsp;<?php echo $teachingBuilding['TeachingBuilding']['building_no']?></dd>
+	<dt>Building Name</dt>
+	<dd>&nbsp;<?php echo $teachingBuilding['TeachingBuilding']['building_name']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $teachingBuilding['TeachingBuilding']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $teachingBuilding['TeachingBuilding']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Teaching Building',   '/teaching_buildings/edit/' . $teachingBuilding['TeachingBuilding']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Teaching Building', '/teaching_buildings/delete/' . $teachingBuilding['TeachingBuilding']['id'], null, 'Are you sure you want to delete: id ' . $teachingBuilding['TeachingBuilding']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Teaching Buildings',   '/teaching_buildings/index') ?> </li>
+	<li><?php echo $html->link('New Teaching Building',	'/teaching_buildings/add') ?> </li>
+</ul>
+
+</div>

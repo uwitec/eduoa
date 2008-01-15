@@ -1,0 +1,26 @@
+<div id="content">
+<fieldset align=center>
+<legend>新增教学楼</legend>
+
+<form action="<?php echo $html->url('/teaching_buildings/edit/'.$html->tagValue('TeachingBuilding/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('TeachingBuilding/building_no', '教学楼编号:');?>
+ 	<?php echo $html->input('TeachingBuilding/building_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeachingBuilding/building_no', 'Please enter the Building No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeachingBuilding/building_name', '教学楼名称:');?>
+ 	<?php echo $html->input('TeachingBuilding/building_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeachingBuilding/building_name', 'Please enter the Building Name.');?>
+</div>
+<?php echo $html->hidden('TeachingBuilding/id')?>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('教学楼列表', '/teaching_buildings/index')?></li>
+</ul>
+
+</fieldset>
+</div>

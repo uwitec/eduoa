@@ -1,21 +1,25 @@
-<h2>Edit Asset Type</h2>
+<div id="content">
+<fieldset align=center>
+<legend>资产类别</legend>
 <form action="<?php echo $html->url('/asset_types/edit/'.$html->tagValue('AssetType/id')); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetType/type_name', 'Type Name');?>
+	<?php echo $form->labelTag('AssetType/type_name', '资产类别名称');?>
  	<?php echo $html->input('AssetType/type_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetType/type_name', 'Please enter the Type Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetType/type_code', 'Type Code');?>
+	<?php echo $form->labelTag('AssetType/type_code', '资产类别编号');?>
  	<?php echo $html->input('AssetType/type_code', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetType/type_code', 'Please enter the Type Code.');?>
 </div>
 <?php echo $html->hidden('AssetType/id')?>
 <div class="submit">
-	<?php echo $html->submit('Save');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('Delete','/asset_types/delete/' . $html->tagValue('AssetType/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AssetType/id'));?>
-<li><?php echo $html->link('List Asset Types', '/asset_types/index')?></li>
+<li><?php echo $html->link('删除','/asset_types/delete/' . $html->tagValue('AssetType/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AssetType/id'));?>
+<li><?php echo $html->link('资产类别列表', '/asset_types/index')?></li>
 </ul>
+</fieldset>
+</div>

@@ -14,7 +14,7 @@
 	<td><?php echo $assetStatus['AssetStatus']['status_code']; ?></td>
 	<td class="actions">
 		<?php echo $html->link('编辑','/asset_statuses/edit/' . $assetStatus['AssetStatus']['id'])?>
-		<?php echo $html->link('删除','/asset_statuses/delete/' . $assetStatus['AssetStatus']['id'], null, 'Are you sure you want to delete id ' . $assetStatus['AssetStatus']['id'])?>
+		<?php echo $html->link('删除','/asset_statuses/delete/' . $assetStatus['AssetStatus']['id'], null, '你是否真要删除『 ' . $assetStatus['AssetStatus']['status_name'] .' 』？')?>
 	</td>
 </tr>
 <?php endforeach; ?>

@@ -14,7 +14,7 @@
 	<td><?php echo $assetType['AssetType']['type_code']; ?></td>
 	<td class="actions">
 		<?php echo $html->link('编辑','/asset_types/edit/' . $assetType['AssetType']['id'])?>
-		<?php echo $html->link('删除','/asset_types/delete/' . $assetType['AssetType']['id'], null, 'Are you sure you want to delete id ' . $assetType['AssetType']['id'])?>
+		<?php echo $html->link('删除','/asset_types/delete/' . $assetType['AssetType']['id'], null, '你是否真要删除『 ' . $assetType['AssetType']['type_name'] .  ' 』？')?>
 	</td>
 </tr>
 <?php endforeach; ?>

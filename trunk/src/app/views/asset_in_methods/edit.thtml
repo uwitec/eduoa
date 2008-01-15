@@ -1,21 +1,25 @@
-<h2>Edit Asset In Method</h2>
+<div id="content">
+<fieldset align=center>
+<legend>资产类别增加方式</legend> 
 <form action="<?php echo $html->url('/asset_in_methods/edit/'.$html->tagValue('AssetInMethod/id')); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetInMethod/method_name', 'Method Name');?>
+	<?php echo $form->labelTag('AssetInMethod/method_name', '方式名称');?>
  	<?php echo $html->input('AssetInMethod/method_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetInMethod/method_name', 'Please enter the Method Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetInMethod/method_code', 'Method Code');?>
+	<?php echo $form->labelTag('AssetInMethod/method_code', '方式编码');?>
  	<?php echo $html->input('AssetInMethod/method_code', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetInMethod/method_code', 'Please enter the Method Code.');?>
 </div>
 <?php echo $html->hidden('AssetInMethod/id')?>
 <div class="submit">
-	<?php echo $html->submit('Save');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('Delete','/asset_in_methods/delete/' . $html->tagValue('AssetInMethod/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AssetInMethod/id'));?>
-<li><?php echo $html->link('List Asset In Methods', '/asset_in_methods/index')?></li>
+<li><?php echo $html->link('删除','/asset_in_methods/delete/' . $html->tagValue('AssetInMethod/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AssetInMethod/id'));?>
+<li><?php echo $html->link('资产类别方式列表', '/asset_in_methods/index')?></li>
 </ul>
+</fieldset>
+</div>

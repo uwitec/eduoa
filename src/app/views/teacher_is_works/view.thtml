@@ -1,0 +1,31 @@
+<div class="teacherIsWork">
+<h2>View Teacher Is Work</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $teacherIsWork['TeacherIsWork']['id']?></dd>
+	<dt>Teacher</dt>
+	<dd>&nbsp;<?php echo $html->link($teacherIsWork['Teacher']['id'], '/teachers/view/' .$teacherIsWork['Teacher']['id'])?></dd>
+	<dt>Flag</dt>
+	<dd>&nbsp;<?php echo $teacherIsWork['TeacherIsWork']['flag']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $teacherIsWork['TeacherIsWork']['created']?></dd>
+	<dt>Reason</dt>
+	<dd>&nbsp;<?php echo $teacherIsWork['TeacherIsWork']['reason']?></dd>
+	<dt>Assessor</dt>
+	<dd>&nbsp;<?php echo $teacherIsWork['TeacherIsWork']['assessor']?></dd>
+	<dt>Remark</dt>
+	<dd>&nbsp;<?php echo $teacherIsWork['TeacherIsWork']['remark']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $teacherIsWork['TeacherIsWork']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Teacher Is Work',   '/teacher_is_works/edit/' . $teacherIsWork['TeacherIsWork']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Teacher Is Work', '/teacher_is_works/delete/' . $teacherIsWork['TeacherIsWork']['id'], null, 'Are you sure you want to delete: id ' . $teacherIsWork['TeacherIsWork']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Teacher Is Works',   '/teacher_is_works/index') ?> </li>
+	<li><?php echo $html->link('New Teacher Is Work',	'/teacher_is_works/add') ?> </li>
+	<li><?php echo $html->link('List Teacher', '/teachers/index/')?> </li>
+	<li><?php echo $html->link('New Teachers', '/teachers/add/')?> </li>
+</ul>
+
+</div>

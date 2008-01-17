@@ -1,0 +1,69 @@
+<div class="teacher">
+<h2>View Teacher</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['id']?></dd>
+	<dt>User</dt>
+	<dd>&nbsp;<?php echo $html->link($teacher['User']['id'], '/users/view/' .$teacher['User']['id'])?></dd>
+	<dt>Teacher Type</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['teacher_type']?></dd>
+	<dt>Teacher Name</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['teacher_name']?></dd>
+	<dt>Is Work</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['is_work']?></dd>
+	<dt>Birthday</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['birthday']?></dd>
+	<dt>Sex</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['sex']?></dd>
+	<dt>People</dt>
+	<dd>&nbsp;<?php echo $html->link($teacher['Person']['id'], '/people/view/' .$teacher['Person']['id'])?></dd>
+	<dt>Degree</dt>
+	<dd>&nbsp;<?php echo $html->link($teacher['Degree']['id'], '/degrees/view/' .$teacher['Degree']['id'])?></dd>
+	<dt>Duty</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['duty']?></dd>
+	<dt>Cert Number</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['cert_number']?></dd>
+	<dt>Get Busy Date</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['get_busy_date']?></dd>
+	<dt>Address</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['address']?></dd>
+	<dt>Email</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['email']?></dd>
+	<dt>Graduate The College</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['graduate_the_college']?></dd>
+	<dt>Specialty</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['specialty']?></dd>
+	<dt>Office Phone</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['office_phone']?></dd>
+	<dt>Department</dt>
+	<dd>&nbsp;<?php echo $html->link($teacher['Department']['id'], '/departments/view/' .$teacher['Department']['id'])?></dd>
+	<dt>File</dt>
+	<dd>&nbsp;<?php echo $html->link($teacher['File']['name'], '/files/view/' .$teacher['File']['id'])?></dd>
+	<dt>Password</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['password']?></dd>
+	<dt>Flag</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['flag']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Teacher',   '/teachers/edit/' . $teacher['Teacher']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Teacher', '/teachers/delete/' . $teacher['Teacher']['id'], null, 'Are you sure you want to delete: id ' . $teacher['Teacher']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Teachers',   '/teachers/index') ?> </li>
+	<li><?php echo $html->link('New Teacher',	'/teachers/add') ?> </li>
+	<li><?php echo $html->link('List User', '/users/index/')?> </li>
+	<li><?php echo $html->link('New Users', '/users/add/')?> </li>
+	<li><?php echo $html->link('List Person', '/people/index/')?> </li>
+	<li><?php echo $html->link('New Peoples', '/people/add/')?> </li>
+	<li><?php echo $html->link('List Degree', '/degrees/index/')?> </li>
+	<li><?php echo $html->link('New Degrees', '/degrees/add/')?> </li>
+	<li><?php echo $html->link('List Department', '/departments/index/')?> </li>
+	<li><?php echo $html->link('New Departments', '/departments/add/')?> </li>
+	<li><?php echo $html->link('List File', '/files/index/')?> </li>
+	<li><?php echo $html->link('New Files', '/files/add/')?> </li>
+</ul>
+
+</div>

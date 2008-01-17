@@ -1,0 +1,111 @@
+<h2>Edit Teacher</h2>
+<form action="<?php echo $html->url('/teachers/edit/'.$html->tagValue('Teacher/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/user_id', 'User');?>
+ 	<?php echo $html->selectTag('Teacher/user_id', $users, $html->tagValue('Teacher/user_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Teacher/user_id', 'Please select the User.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/teacher_type', 'Teacher Type');?>
+ 	<?php echo $html->input('Teacher/teacher_type', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/teacher_type', 'Please enter the Teacher Type.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/teacher_name', 'Teacher Name');?>
+ 	<?php echo $html->input('Teacher/teacher_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/teacher_name', 'Please enter the Teacher Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/is_work', 'Is Work');?>
+ 	<?php echo $html->input('Teacher/is_work', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/is_work', 'Please enter the Is Work.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/sex', 'Sex');?>
+ 	<?php echo $html->input('Teacher/sex', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/sex', 'Please enter the Sex.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/people_id', 'People');?>
+ 	<?php echo $html->selectTag('Teacher/people_id', $people, $html->tagValue('Teacher/people_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Teacher/people_id', 'Please select the People.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/degree_id', 'Degree');?>
+ 	<?php echo $html->selectTag('Teacher/degree_id', $degrees, $html->tagValue('Teacher/degree_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Teacher/degree_id', 'Please select the Degree.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/duty', 'Duty');?>
+ 	<?php echo $html->input('Teacher/duty', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/duty', 'Please enter the Duty.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/cert_number', 'Cert Number');?>
+ 	<?php echo $html->input('Teacher/cert_number', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/cert_number', 'Please enter the Cert Number.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/address', 'Address');?>
+ 	<?php echo $html->input('Teacher/address', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/address', 'Please enter the Address.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/email', 'Email');?>
+ 	<?php echo $html->input('Teacher/email', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/email', 'Please enter the Email.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/graduate_the_college', 'Graduate The College');?>
+ 	<?php echo $html->input('Teacher/graduate_the_college', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/graduate_the_college', 'Please enter the Graduate The College.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/specialty', 'Specialty');?>
+ 	<?php echo $html->input('Teacher/specialty', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/specialty', 'Please enter the Specialty.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/office_phone', 'Office Phone');?>
+ 	<?php echo $html->input('Teacher/office_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/office_phone', 'Please enter the Office Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/department_id', 'Department');?>
+ 	<?php echo $html->selectTag('Teacher/department_id', $departments, $html->tagValue('Teacher/department_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Teacher/department_id', 'Please select the Department.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/file_id', 'File');?>
+ 	<?php echo $html->selectTag('Teacher/file_id', $files, $html->tagValue('Teacher/file_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Teacher/file_id', 'Please select the File.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/password', 'Password');?>
+ 	<?php echo $html->input('Teacher/password', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/password', 'Please enter the Password.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/flag', 'Flag');?>
+ 	<?php echo $html->input('Teacher/flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/flag', 'Please enter the Flag.');?>
+</div>
+<?php echo $html->hidden('Teacher/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/teachers/delete/' . $html->tagValue('Teacher/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Teacher/id'));?>
+<li><?php echo $html->link('List Teachers', '/teachers/index')?></li>
+<li><?php echo $html->link('View Users', '/users/index/');?></li>
+<li><?php echo $html->link('Add Users', '/users/add/');?></li>
+<li><?php echo $html->link('View People', '/people/index/');?></li>
+<li><?php echo $html->link('Add People', '/people/add/');?></li>
+<li><?php echo $html->link('View Degrees', '/degrees/index/');?></li>
+<li><?php echo $html->link('Add Degrees', '/degrees/add/');?></li>
+<li><?php echo $html->link('View Departments', '/departments/index/');?></li>
+<li><?php echo $html->link('Add Departments', '/departments/add/');?></li>
+<li><?php echo $html->link('View Files', '/files/index/');?></li>
+<li><?php echo $html->link('Add Files', '/files/add/');?></li>
+</ul>

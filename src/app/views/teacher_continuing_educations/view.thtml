@@ -1,0 +1,37 @@
+<div class="teacherContinuingEducation">
+<h2>View Teacher Continuing Education</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['id']?></dd>
+	<dt>Teacher</dt>
+	<dd>&nbsp;<?php echo $html->link($teacherContinuingEducation['Teacher']['id'], '/teachers/view/' .$teacherContinuingEducation['Teacher']['id'])?></dd>
+	<dt>Start Date</dt>
+	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['start_date']?></dd>
+	<dt>End Date</dt>
+	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['end_date']?></dd>
+	<dt>Organization</dt>
+	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['organization']?></dd>
+	<dt>Address</dt>
+	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['address']?></dd>
+	<dt>Content</dt>
+	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['content']?></dd>
+	<dt>Certificate Info</dt>
+	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['certificate_info']?></dd>
+	<dt>Remark</dt>
+	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['remark']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Teacher Continuing Education',   '/teacher_continuing_educations/edit/' . $teacherContinuingEducation['TeacherContinuingEducation']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Teacher Continuing Education', '/teacher_continuing_educations/delete/' . $teacherContinuingEducation['TeacherContinuingEducation']['id'], null, 'Are you sure you want to delete: id ' . $teacherContinuingEducation['TeacherContinuingEducation']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Teacher Continuing Educations',   '/teacher_continuing_educations/index') ?> </li>
+	<li><?php echo $html->link('New Teacher Continuing Education',	'/teacher_continuing_educations/add') ?> </li>
+	<li><?php echo $html->link('List Teacher', '/teachers/index/')?> </li>
+	<li><?php echo $html->link('New Teachers', '/teachers/add/')?> </li>
+</ul>
+
+</div>

@@ -5,12 +5,12 @@
 <form action="<?php echo $html->url('/classrooms/add'); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('Classroom/classroom_name', '教室名称:');?>
- 	<?php echo $html->input('Classroom/classroom_name', array('size' => '60'));?>
+ 	<?php echo $html->input('Classroom/classroom_name', array('size' => '30'));?>
 	<?php echo $html->tagErrorMsg('Classroom/classroom_name', 'Please enter the Classroom Name.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Classroom/classroom_type_id', '教室类型:');?>
- 	<?php echo $html->selectTag('Classroom/classroom_type_id', $classroomTypes, $html->tagValue('Classroom/classroom_type_id'), array('style'=>'width: 150px'), array(), true);?>
+ 	<?php echo $html->selectTag('Classroom/classroom_type_id', $classroomTypes, $html->tagValue('Classroom/classroom_type_id'), array('style'=>'width: 150px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Classroom/classroom_type_id', 'Please select the Classroom Type.') ?>
 </div>
 <div class="optional"> 
@@ -20,7 +20,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Classroom/seating', '座位数:');?>
- 	<?php echo $html->input('Classroom/seating', array('size' => '60'));?>
+ 	<?php echo $html->input('Classroom/seating', array('size' => '30'));?>
 	<?php echo $html->tagErrorMsg('Classroom/seating', 'Please enter the Seating.');?>
 </div>
 <div class="submit">

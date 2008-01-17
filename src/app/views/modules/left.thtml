@@ -1,13 +1,13 @@
 <script  src="/js/dtree.js"></script>
-<table width="95%" align="center">
+<table width="95%" align="center" style="display: inline;">
 <tr>
 	<td>
-		<div id="dtree">
+		<div id="dtree" style="display: inline;">
 			<script type="text/javascript">
 				<!--
 
 				d = new dTree('d');
-				d.config.target = "right";
+				d.config.target = "table_index";
 
 				d.add(0,-1,'金色校园教育管理软件系统');
 

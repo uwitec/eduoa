@@ -10,6 +10,8 @@ class PagesController extends AppController{
 	 var $uses = null;
 
 	 function display() {
+		  $this->layout = 'ajax';
+
 		  if (!func_num_args()) {
 				$this->redirect('/');
 		  }
@@ -41,6 +43,7 @@ class PagesController extends AppController{
 		  $this->set('subpage', $subpage);
 		  $this->set('title', $title);
 		  $this->render(join('/', $path));
+
 	 }
 	 
 	 function admin_index() {

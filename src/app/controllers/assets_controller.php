@@ -19,10 +19,38 @@ class AssetsController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
-			$this->set('assetTypes', $this->Asset->AssetType->generateList());
-			$this->set('departments', $this->Asset->Department->generateList());
-			$this->set('assetStatuses', $this->Asset->AssetStatus->generateList());
-			$this->set('assetInMethods', $this->Asset->AssetInMethod->generateList());
+			$this->set('assetTypes', 
+						$this->Asset->AssetType->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.AssetType.id',
+							$valuePath = '{n}.AssetType.type_name')
+			);
+			$this->set('departments', 
+						$this->Asset->Department->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Department.id',
+							$valuePath = '{n}.Department.department_name')
+			);
+			$this->set('assetStatuses', 
+						$this->Asset->AssetStatus->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.AssetStatus.id',
+							$valuePath = '{n}.AssetStatus.status_name')
+			);
+			$this->set('assetInMethods', 
+						$this->Asset->AssetInMethod->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.AssetInMethod.id',
+							$valuePath = '{n}.AssetInMethod.method_name')
+			);
 			$this->render();
 		} else {
 			$this->cleanUpFields();

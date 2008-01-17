@@ -1,0 +1,51 @@
+<h2>New Teacher Continuing Education</h2>
+<form action="<?php echo $html->url('/teacher_continuing_educations/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherContinuingEducation/teacher_id', 'Teacher');?>
+ 	<?php echo $html->selectTag('TeacherContinuingEducation/teacher_id', $teachers, $html->tagValue('TeacherContinuingEducation/teacher_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/teacher_id', 'Please select the Teacher.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherContinuingEducation/start_date', 'Start Date');?>
+ 	<?php echo $html->dateTimeOptionTag('TeacherContinuingEducation/start_date', 'MDY' , 'NONE', $html->tagValue('TeacherContinuingEducation/start_date'), array());?>
+	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/start_date', 'Please select the Start Date.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherContinuingEducation/end_date', 'End Date');?>
+ 	<?php echo $html->dateTimeOptionTag('TeacherContinuingEducation/end_date', 'MDY' , 'NONE', $html->tagValue('TeacherContinuingEducation/end_date'), array());?>
+	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/end_date', 'Please select the End Date.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherContinuingEducation/organization', 'Organization');?>
+ 	<?php echo $html->input('TeacherContinuingEducation/organization', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/organization', 'Please enter the Organization.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherContinuingEducation/address', 'Address');?>
+ 	<?php echo $html->input('TeacherContinuingEducation/address', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/address', 'Please enter the Address.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherContinuingEducation/content', 'Content');?>
+ 	<?php echo $html->input('TeacherContinuingEducation/content', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/content', 'Please enter the Content.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherContinuingEducation/certificate_info', 'Certificate Info');?>
+ 	<?php echo $html->input('TeacherContinuingEducation/certificate_info', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/certificate_info', 'Please enter the Certificate Info.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherContinuingEducation/remark', 'Remark');?>
+ 	<?php echo $html->input('TeacherContinuingEducation/remark', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/remark', 'Please enter the Remark.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Teacher Continuing Educations', '/teacher_continuing_educations/index')?></li>
+<li><?php echo $html->link('View Teachers', '/teachers/index/');?></li>
+<li><?php echo $html->link('Add Teachers', '/teachers/add/');?></li>
+</ul>

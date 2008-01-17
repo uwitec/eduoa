@@ -1,0 +1,38 @@
+<h2>Edit Teacher Is Work</h2>
+<form action="<?php echo $html->url('/teacher_is_works/edit/'.$html->tagValue('TeacherIsWork/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherIsWork/teacher_id', 'Teacher');?>
+ 	<?php echo $html->selectTag('TeacherIsWork/teacher_id', $teachers, $html->tagValue('TeacherIsWork/teacher_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('TeacherIsWork/teacher_id', 'Please select the Teacher.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherIsWork/flag', 'Flag');?>
+ 	<?php echo $html->input('TeacherIsWork/flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeacherIsWork/flag', 'Please enter the Flag.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherIsWork/reason', 'Reason');?>
+ 	<?php echo $html->input('TeacherIsWork/reason', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeacherIsWork/reason', 'Please enter the Reason.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherIsWork/assessor', 'Assessor');?>
+ 	<?php echo $html->input('TeacherIsWork/assessor', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeacherIsWork/assessor', 'Please enter the Assessor.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('TeacherIsWork/remark', 'Remark');?>
+ 	<?php echo $html->input('TeacherIsWork/remark', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('TeacherIsWork/remark', 'Please enter the Remark.');?>
+</div>
+<?php echo $html->hidden('TeacherIsWork/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/teacher_is_works/delete/' . $html->tagValue('TeacherIsWork/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('TeacherIsWork/id'));?>
+<li><?php echo $html->link('List Teacher Is Works', '/teacher_is_works/index')?></li>
+<li><?php echo $html->link('View Teachers', '/teachers/index/');?></li>
+<li><?php echo $html->link('Add Teachers', '/teachers/add/');?></li>
+</ul>

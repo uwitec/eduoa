@@ -9,10 +9,11 @@ create table regions(
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='行政区划';
 
+
 -- --------------------------------------
 -- 民族
 -- --------------------------------------
-create table peoples(
+create table people(
   id                    int(10)       not null auto_increment comment '民族编号',
   people_name           varchar(20)   not null                comment '民族名称',
   primary key (id)
@@ -22,11 +23,12 @@ create table peoples(
 -- --------------------------------------
 -- 学位
 -- --------------------------------------
-create table degrees(
+create table degrees (
   id                    int(10)       not null auto_increment comment '学位编号',
   degree_name           varchar(20)   not null                comment '学位名称',
   primary key (id)
 )engine=MyISAM default charset=utf8 comment='学位';
+
 
 
 -- --------------------------------------

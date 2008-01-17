@@ -24,6 +24,7 @@ create table departments(
   english_name          varchar(100)                          comment '英文名',
   tel_no                varchar(100)                          comment '部门电话',
   fax_no                varchar(100)                          comment '部门传真',
+  order_list            int(2)                                comment '部门排序',
   created               timestamp                             comment '创建时间',
   modified              timestamp                             comment '修改时间',
   primary key (id)
@@ -37,6 +38,7 @@ create table teaching_buildings(
   building_name         varchar(100)                          comment '教学楼名称',
   created               timestamp                             comment '创建时间',
   modified              timestamp                             comment '修改时间',
+  primary key (id)
 )engine=MyISAM default charset=utf8 comment='教学楼';
 
 
@@ -52,8 +54,8 @@ create table classroom_types(
 create table classrooms(
   id                    int(10)       not null auto_increment comment '教室编号',
   classroom_name        varchar(100)                          comment '教室名称',
-  classroom_type_id     int(10)                               comment '教室类型名称',
-  teaching_building_id  int(10)                               comment '教学楼编号',
+  classroom_type_id     int(10)                               comment '教室类型',
+  teaching_building_id  int(10)                               comment '所在教学楼',
   seating               int(3)                                comment '座位数',
   created               timestamp                             comment '创建时间',
   modified              timestamp                             comment '修改时间',
@@ -95,7 +97,7 @@ create table semesters(
 create table teachers(
   id                    int(10)       not null auto_increment comment '教师编号',
   user_id               int(10)                               comment '用户',
-  teacher_type          int(1)        not null default 1      comment '教职工类型'
+  teacher_type          int(1)        not null default 1      comment '教职工类型(1:教师 2:职工)',
   teacher_name          varchar(20)   not null                comment '姓名',
   is_work               int(1)                                comment '是否在岗', 
   birthday              timestamp                             comment '出生日期',
@@ -103,7 +105,7 @@ create table teachers(
   people_id             int(10)                               comment '民族',
   degree_id             int(10)                               comment '学位',
   duty                  varchar(100)                          comment '职称',
-  cert_number           varchar(18)                           comment '身份证号'
+  cert_number           varchar(18)                           comment '身份证号',
   get_busy_date         timestamp                             comment '参加工作时间',
   address               varchar(100)                          comment '个人联系方式',
   email                 varchar(100)                          comment '电子邮箱',
@@ -123,7 +125,7 @@ create table teachers(
 /* 教职工离职(复职)信息调度 */
 create table teacher_is_works(
   id                    int(10)       not null auto_increment comment '教职工离职(复职)编号',
-  teacher_id            int(10)       not null                comment '教师名称',
+  teacher_id            int(10)       not null                comment '教师',
   flag                  int(1)        not null                comment '操作行为', 
   created               timestamp                             comment '离职(复职)时间',
   reason                varchar(1000)                         comment '离职(复职)原因',

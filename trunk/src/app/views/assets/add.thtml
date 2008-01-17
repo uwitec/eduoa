@@ -15,7 +15,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Asset/asset_type_id', '资产类别');?>
- 	<?php echo $html->selectTag('Asset/asset_type_id', $assetTypes, $html->tagValue('Asset/asset_type_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Asset/asset_type_id', $assetTypes, $html->tagValue('Asset/asset_type_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Asset/asset_type_id', 'Please select the Asset Type.') ?>
 </div>
 <div class="optional"> 
@@ -65,17 +65,17 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Asset/department_id', '使用部门');?>
- 	<?php echo $html->selectTag('Asset/department_id', $departments, $html->tagValue('Asset/department_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Asset/department_id', $departments, $html->tagValue('Asset/department_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Asset/department_id', 'Please select the Department.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Asset/asset_status_id', '使用情况');?>
- 	<?php echo $html->selectTag('Asset/asset_status_id', $assetStatuses, $html->tagValue('Asset/asset_status_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Asset/asset_status_id', $assetStatuses, $html->tagValue('Asset/asset_status_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Asset/asset_status_id', 'Please select the Asset Status.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Asset/asset_in_method_id', '增加方式');?>
- 	<?php echo $html->selectTag('Asset/asset_in_method_id', $assetInMethods, $html->tagValue('Asset/asset_in_method_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Asset/asset_in_method_id', $assetInMethods, $html->tagValue('Asset/asset_in_method_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Asset/asset_in_method_id', 'Please select the Asset In Method.') ?>
 </div>
 <div class="optional"> 
@@ -88,7 +88,7 @@
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('资产类别列表', '/assets/index')?></li>
+<li><?php echo $html->link('资产列表', '/assets/index')?></li>
 </ul>
 </fieldset>
 </div>

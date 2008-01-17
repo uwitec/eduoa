@@ -28,8 +28,8 @@
 	<td><?php echo $asset['Asset']['id']; ?></td>
 	<td><?php echo $asset['Asset']['asset_name']; ?></td>
 	<td><?php echo $asset['Asset']['asset_code']; ?></td>
-	<td>&nbsp;<?php echo $html->link($asset['AssetStatus']['id'], '/asset_statuses/view/' .$asset['AssetStatus']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($asset['AssetType']['id'], '/asset_types/view/' .$asset['AssetType']['id'])?></td>
+	<td>&nbsp;<?php echo $asset['AssetStatus']['status_name']?></td>
+	<td>&nbsp;<?php echo $asset['AssetType']['type_name']?></td>
 	<td><?php echo $asset['Asset']['standard_code']; ?></td>
 	<td><?php echo $asset['Asset']['provider']; ?></td>
 	<td><?php echo $asset['Asset']['made_date']; ?></td>
@@ -39,11 +39,10 @@
 	<td><?php echo $asset['Asset']['actual_value']; ?></td>
 	<td><?php echo $asset['Asset']['net_value']; ?></td>
 	<td><?php echo $asset['Asset']['location']; ?></td>
-	<td>&nbsp;<?php echo $html->link($asset['Department']['id'], '/departments/view/' .$asset['Department']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($asset['AssetInMethod']['id'], '/asset_in_methods/view/' .$asset['AssetInMethod']['id'])?></td>
+	<td>&nbsp;<?php echo $asset['Department']['department_name']?></td>
+	<td>&nbsp;<?php echo $asset['AssetInMethod']['method_name']?></td>
 	<td><?php echo $asset['Asset']['belong_user']; ?></td>
 	<td class="actions">
-		<?php echo $html->link('查看','/assets/view/' . $asset['Asset']['id'])?>
 		<?php echo $html->link('编辑','/assets/edit/' . $asset['Asset']['id'])?>
 		<?php echo $html->link('删除','/assets/delete/' . $asset['Asset']['id'], null, '你是否真要删除『 ' . $asset['Asset']['asset_name'] .' 』？')?>
 	</td>

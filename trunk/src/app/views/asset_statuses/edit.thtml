@@ -18,7 +18,6 @@
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('删除','/asset_statuses/delete/' . $html->tagValue('AssetStatus/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AssetStatus/id'));?>
 <li><?php echo $html->link('使用状态列表', '/asset_statuses/index')?></li>
 </ul>
 </fieldset>

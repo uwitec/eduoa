@@ -1,38 +1,38 @@
-<h2>New Asset Out</h2>
+<div id="content">
+<fieldset align=center>
+<legend>新增资产借出</legend>
 <form action="<?php echo $html->url('/asset_outs/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetOut/asset_id', 'Asset');?>
- 	<?php echo $html->selectTag('AssetOut/asset_id', $assets, $html->tagValue('AssetOut/asset_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('AssetOut/asset_id', '资产名称');?>
+ 	<?php echo $html->selectTag('AssetOut/asset_id', $assets, $html->tagValue('AssetOut/asset_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('AssetOut/asset_id', 'Please select the Asset.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetOut/from_date', 'From Date');?>
+	<?php echo $form->labelTag('AssetOut/from_date', '借出日期');?>
  	<?php echo $html->dateTimeOptionTag('AssetOut/from_date', 'MDY' , 'NONE', $html->tagValue('AssetOut/from_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetOut/from_date', 'Please select the From Date.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetOut/end_date', 'End Date');?>
+	<?php echo $form->labelTag('AssetOut/end_date', '归还日期');?>
  	<?php echo $html->dateTimeOptionTag('AssetOut/end_date', 'MDY' , 'NONE', $html->tagValue('AssetOut/end_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetOut/end_date', 'Please select the End Date.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetOut/department_id', 'Department');?>
- 	<?php echo $html->selectTag('AssetOut/department_id', $departments, $html->tagValue('AssetOut/department_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('AssetOut/department_id', '使用部门');?>
+ 	<?php echo $html->selectTag('AssetOut/department_id', $departments, $html->tagValue('AssetOut/department_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('AssetOut/department_id', 'Please select the Department.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetOut/use_person', 'Use Person');?>
+	<?php echo $form->labelTag('AssetOut/use_person', '使用人');?>
  	<?php echo $html->input('AssetOut/use_person', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetOut/use_person', 'Please enter the Use Person.');?>
 </div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('List Asset Outs', '/asset_outs/index')?></li>
-<li><?php echo $html->link('View Assets', '/assets/index/');?></li>
-<li><?php echo $html->link('Add Assets', '/assets/add/');?></li>
-<li><?php echo $html->link('View Departments', '/departments/index/');?></li>
-<li><?php echo $html->link('Add Departments', '/departments/add/');?></li>
+<li><?php echo $html->link('资产借出列表', '/asset_outs/index')?></li>
 </ul>
+</fieldset>
+</div>

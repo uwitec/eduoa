@@ -74,14 +74,42 @@ class AssetsController extends AppController {
 				$this->redirect('/assets/index');
 			}
 			$this->data = $this->Asset->read(null, $id);
-			$this->set('assetTypes', $this->Asset->AssetType->generateList());
-			$this->set('departments', $this->Asset->Department->generateList());
-			$this->set('assetStatuses', $this->Asset->AssetStatus->generateList());
-			$this->set('assetInMethods', $this->Asset->AssetInMethod->generateList());
+			$this->set('assetTypes', 
+						$this->Asset->AssetType->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.AssetType.id',
+							$valuePath = '{n}.AssetType.type_name')
+			);
+			$this->set('departments', 
+						$this->Asset->Department->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Department.id',
+							$valuePath = '{n}.Department.department_name')
+			);
+			$this->set('assetStatuses', 
+						$this->Asset->AssetStatus->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.AssetStatus.id',
+							$valuePath = '{n}.AssetStatus.status_name')
+			);
+			$this->set('assetInMethods', 
+						$this->Asset->AssetInMethod->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.AssetInMethod.id',
+							$valuePath = '{n}.AssetInMethod.method_name')
+			);
 		} else {
 			$this->cleanUpFields();
 			if ($this->Asset->save($this->data)) {
-				$this->Session->setFlash('The Asset has been saved');
+				$this->Session->setFlash('资产保存成功！');
 				$this->redirect('/assets/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -99,7 +127,7 @@ class AssetsController extends AppController {
 			$this->redirect('/assets/index');
 		}
 		if ($this->Asset->del($id)) {
-			$this->Session->setFlash('删除完成！');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/assets/index');
 		}
 	}

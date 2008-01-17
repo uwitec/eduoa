@@ -1,33 +1,33 @@
-<h2>New Asset In</h2>
+<div id="content">
+<fieldset align=center>
+<legend>新增资产归还</legend>
 <form action="<?php echo $html->url('/asset_ins/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetIn/asset_id', 'Asset');?>
- 	<?php echo $html->selectTag('AssetIn/asset_id', $assets, $html->tagValue('AssetIn/asset_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('AssetIn/asset_id', '资产名称');?>
+ 	<?php echo $html->selectTag('AssetIn/asset_id', $assets, $html->tagValue('AssetIn/asset_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('AssetIn/asset_id', 'Please select the Asset.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetIn/in_date', 'In Date');?>
+	<?php echo $form->labelTag('AssetIn/in_date', '入库日期');?>
  	<?php echo $html->dateTimeOptionTag('AssetIn/in_date', 'MDY' , 'NONE', $html->tagValue('AssetIn/in_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetIn/in_date', 'Please select the In Date.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetIn/department_id', 'Department');?>
- 	<?php echo $html->selectTag('AssetIn/department_id', $departments, $html->tagValue('AssetIn/department_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('AssetIn/department_id', '使用部门');?>
+ 	<?php echo $html->selectTag('AssetIn/department_id', $departments, $html->tagValue('AssetIn/department_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('AssetIn/department_id', 'Please select the Department.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetIn/use_person', 'Use Person');?>
+	<?php echo $form->labelTag('AssetIn/use_person', '使用人');?>
  	<?php echo $html->input('AssetIn/use_person', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetIn/use_person', 'Please enter the Use Person.');?>
 </div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('List Asset Ins', '/asset_ins/index')?></li>
-<li><?php echo $html->link('View Assets', '/assets/index/');?></li>
-<li><?php echo $html->link('Add Assets', '/assets/add/');?></li>
-<li><?php echo $html->link('View Departments', '/departments/index/');?></li>
-<li><?php echo $html->link('Add Departments', '/departments/add/');?></li>
+<li><?php echo $html->link('资产归还列表', '/asset_ins/index')?></li>
 </ul>
+</fieldset>
+</div>

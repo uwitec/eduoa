@@ -33,8 +33,7 @@
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('Delete','/departments/delete/' . $html->tagValue('Department/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Department/id'));?>
-<li><?php echo $html->link('List Departments', '/departments/index')?></li>
+<li><?php echo $html->link('部门信息列表', '/departments/index')?></li>
 </ul>
 </fieldset>
 </div>

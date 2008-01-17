@@ -19,12 +19,19 @@ class AssetMaintenancesController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
-			$this->set('assets', $this->AssetMaintenance->Asset->generateList());
+			$this->set('assets', 
+						$this->AssetMaintenance->Asset->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Asset.id',
+							$valuePath = '{n}.Asset.asset_name')
+			);
 			$this->render();
 		} else {
 			$this->cleanUpFields();
 			if ($this->AssetMaintenance->save($this->data)) {
-				$this->Session->setFlash('The Asset Maintenance has been saved');
+				$this->Session->setFlash('资产维修保存成功！');
 				$this->redirect('/asset_maintenances/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -40,11 +47,18 @@ class AssetMaintenancesController extends AppController {
 				$this->redirect('/asset_maintenances/index');
 			}
 			$this->data = $this->AssetMaintenance->read(null, $id);
-			$this->set('assets', $this->AssetMaintenance->Asset->generateList());
+			$this->set('assets', 
+						$this->AssetMaintenance->Asset->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Asset.id',
+							$valuePath = '{n}.Asset.asset_name')
+			);
 		} else {
 			$this->cleanUpFields();
 			if ($this->AssetMaintenance->save($this->data)) {
-				$this->Session->setFlash('The AssetMaintenance has been saved');
+				$this->Session->setFlash('资产维修保存成功！');
 				$this->redirect('/asset_maintenances/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -59,7 +73,7 @@ class AssetMaintenancesController extends AppController {
 			$this->redirect('/asset_maintenances/index');
 		}
 		if ($this->AssetMaintenance->del($id)) {
-			$this->Session->setFlash('The Asset Maintenance deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/asset_maintenances/index');
 		}
 	}

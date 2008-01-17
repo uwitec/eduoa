@@ -55,7 +55,7 @@ class AssetTypesController extends AppController {
 			$this->redirect('/asset_types/index');
 		}
 		if ($this->AssetType->del($id)) {
-			$this->Session->setFlash('删除完成！');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/asset_types/index');
 		}
 	}

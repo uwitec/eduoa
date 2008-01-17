@@ -119,7 +119,7 @@ class ClassroomsController extends AppController {
 			$this->redirect('/classrooms/index');
 		}
 		if ($this->Classroom->del($id)) {
-			$this->Session->setFlash('教室删除成功！');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/classrooms/index');
 		}
 	}

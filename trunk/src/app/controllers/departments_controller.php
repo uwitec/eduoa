@@ -55,7 +55,7 @@ class DepartmentsController extends AppController {
 			$this->redirect('/departments/index');
 		}
 		if ($this->Department->del($id)) {
-			$this->Session->setFlash('The Department deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/departments/index');
 		}
 	}

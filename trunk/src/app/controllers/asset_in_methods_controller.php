@@ -55,7 +55,7 @@ class AssetInMethodsController extends AppController {
 			$this->redirect('/asset_in_methods/index');
 		}
 		if ($this->AssetInMethod->del($id)) {
-			$this->Session->setFlash('删除完成！');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/asset_in_methods/index');
 		}
 	}

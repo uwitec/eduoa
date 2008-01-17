@@ -55,7 +55,7 @@ class ClassroomTypesController extends AppController {
 			$this->redirect('/classroom_types/index');
 		}
 		if ($this->ClassroomType->del($id)) {
-			$this->Session->setFlash('The Classroom Type deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/classroom_types/index');
 		}
 	}

@@ -1,36 +1,35 @@
-<div class="assetIns">
-<h2>List Asset Ins</h2>
+<div id="content">
+<fieldset align=center>
+<legend>资产归还</legend> 
 
 <table cellpadding="0" cellspacing="0">
 <tr>
-	<th>Id</th>
-	<th>Asset</th>
-	<th>In Date</th>
-	<th>Department</th>
-	<th>Use Person</th>
-	<th>Created</th>
-	<th>Modified</th>
-	<th>Actions</th>
+	<th>资产名称</th>
+	<th>入库时间</th>
+	<th>使用部门</th>
+	<th>使用人</th>
+	<th>创建时间</th>
+	<th>修改时间</th>
+	<th>操作</th>
 </tr>
 <?php foreach ($assetIns as $assetIn): ?>
 <tr>
-	<td><?php echo $assetIn['AssetIn']['id']; ?></td>
-	<td>&nbsp;<?php echo $html->link($assetIn['Asset']['id'], '/assets/view/' .$assetIn['Asset']['id'])?></td>
+	<td>&nbsp;<?php echo $assetIn['Asset']['asset_name']?></td>
 	<td><?php echo $assetIn['AssetIn']['in_date']; ?></td>
-	<td>&nbsp;<?php echo $html->link($assetIn['Department']['id'], '/departments/view/' .$assetIn['Department']['id'])?></td>
+	<td>&nbsp;<?php echo $assetIn['Department']['department_name']?></td>
 	<td><?php echo $assetIn['AssetIn']['use_person']; ?></td>
 	<td><?php echo $assetIn['AssetIn']['created']; ?></td>
 	<td><?php echo $assetIn['AssetIn']['modified']; ?></td>
 	<td class="actions">
-		<?php echo $html->link('View','/asset_ins/view/' . $assetIn['AssetIn']['id'])?>
-		<?php echo $html->link('Edit','/asset_ins/edit/' . $assetIn['AssetIn']['id'])?>
-		<?php echo $html->link('Delete','/asset_ins/delete/' . $assetIn['AssetIn']['id'], null, 'Are you sure you want to delete id ' . $assetIn['AssetIn']['id'])?>
+		<?php echo $html->link('编辑','/asset_ins/edit/' . $assetIn['AssetIn']['id'])?>
+		<?php echo $html->link('删除','/asset_ins/delete/' . $assetIn['AssetIn']['id'], null, '你是否真要删除资产归还记录『 ' . $assetIn['Asset']['asset_name'] .' 』？')?>
 	</td>
 </tr>
 <?php endforeach; ?>
 </table>
 
 <ul class="actions">
-	<li><?php echo $html->link('New Asset In', '/asset_ins/add'); ?></li>
+	<li><?php echo $html->link('新增资产归还', '/asset_ins/add'); ?></li>
 </ul>
+</fieldset>
 </div>

@@ -55,7 +55,7 @@ class AssetStatusesController extends AppController {
 			$this->redirect('/asset_statuses/index');
 		}
 		if ($this->AssetStatus->del($id)) {
-			$this->Session->setFlash('删除完成！');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/asset_statuses/index');
 		}
 	}

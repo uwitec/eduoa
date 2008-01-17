@@ -7,7 +7,6 @@
 	<th>资产名称</th>
 	<th>资产代码</th>
 	<th>状态</th>
-	<th>使用情况</th>
 	<th>类别</th>
 	<th>国标编码</th>
 	<th>生产厂商</th>
@@ -25,7 +24,6 @@
 </tr>
 <?php foreach ($assets as $asset): ?>
 <tr>
-	<td><?php echo $asset['Asset']['id']; ?></td>
 	<td><?php echo $asset['Asset']['asset_name']; ?></td>
 	<td><?php echo $asset['Asset']['asset_code']; ?></td>
 	<td>&nbsp;<?php echo $asset['AssetStatus']['status_name']?></td>

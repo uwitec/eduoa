@@ -55,7 +55,7 @@ class TeachingBuildingsController extends AppController {
 			$this->redirect('/teaching_buildings/index');
 		}
 		if ($this->TeachingBuilding->del($id)) {
-			$this->Session->setFlash('The Teaching Building deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/teaching_buildings/index');
 		}
 	}

@@ -1,58 +1,59 @@
-<h2>Edit Asset Maintenance</h2>
+<div id="content">
+<fieldset align=center>
+<legend>资产维修</legend>
 <form action="<?php echo $html->url('/asset_maintenances/edit/'.$html->tagValue('AssetMaintenance/id')); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetMaintenance/asset_id', 'Asset');?>
- 	<?php echo $html->selectTag('AssetMaintenance/asset_id', $assets, $html->tagValue('AssetMaintenance/asset_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('AssetMaintenance/asset_id', '资产名称');?>
+ 	<?php echo $html->selectTag('AssetMaintenance/asset_id', $assets, $html->tagValue('AssetMaintenance/asset_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/asset_id', 'Please select the Asset.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetMaintenance/send_date', 'Send Date');?>
+	<?php echo $form->labelTag('AssetMaintenance/send_date', '送修日期');?>
  	<?php echo $html->dateTimeOptionTag('AssetMaintenance/send_date', 'MDY' , 'NONE', $html->tagValue('AssetMaintenance/send_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/send_date', 'Please select the Send Date.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetMaintenance/maintenance_date', 'Maintenance Date');?>
+	<?php echo $form->labelTag('AssetMaintenance/maintenance_date', '维修日期');?>
  	<?php echo $html->dateTimeOptionTag('AssetMaintenance/maintenance_date', 'MDY' , 'NONE', $html->tagValue('AssetMaintenance/maintenance_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/maintenance_date', 'Please select the Maintenance Date.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetMaintenance/reason', 'Reason');?>
+	<?php echo $form->labelTag('AssetMaintenance/reason', '故障原因');?>
  	<?php echo $html->input('AssetMaintenance/reason', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/reason', 'Please enter the Reason.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetMaintenance/station', 'Station');?>
+	<?php echo $form->labelTag('AssetMaintenance/station', '维修单位');?>
  	<?php echo $html->input('AssetMaintenance/station', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/station', 'Please enter the Station.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetMaintenance/accessories', 'Accessories');?>
+	<?php echo $form->labelTag('AssetMaintenance/accessories', '配件名称');?>
  	<?php echo $html->input('AssetMaintenance/accessories', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/accessories', 'Please enter the Accessories.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetMaintenance/quantity', 'Quantity');?>
+	<?php echo $form->labelTag('AssetMaintenance/quantity', '数量');?>
  	<?php echo $html->input('AssetMaintenance/quantity', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/quantity', 'Please enter the Quantity.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetMaintenance/price', 'Price');?>
+	<?php echo $form->labelTag('AssetMaintenance/price', '单价');?>
  	<?php echo $html->input('AssetMaintenance/price', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/price', 'Please enter the Price.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetMaintenance/money', 'Money');?>
+	<?php echo $form->labelTag('AssetMaintenance/money', '金额');?>
  	<?php echo $html->input('AssetMaintenance/money', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/money', 'Please enter the Money.');?>
 </div>
 <?php echo $html->hidden('AssetMaintenance/id')?>
 <div class="submit">
-	<?php echo $html->submit('Save');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('Delete','/asset_maintenances/delete/' . $html->tagValue('AssetMaintenance/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('AssetMaintenance/id'));?>
-<li><?php echo $html->link('List Asset Maintenances', '/asset_maintenances/index')?></li>
-<li><?php echo $html->link('View Assets', '/assets/index/');?></li>
-<li><?php echo $html->link('Add Assets', '/assets/add/');?></li>
+<li><?php echo $html->link('资产维修列表', '/asset_maintenances/index')?></li>
 </ul>
+</fieldset>
+</div>

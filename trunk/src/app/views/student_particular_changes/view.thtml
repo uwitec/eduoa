@@ -1,0 +1,35 @@
+<div class="studentParticularChange">
+<h2>View Student Particular Change</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $studentParticularChange['StudentParticularChange']['id']?></dd>
+	<dt>Student</dt>
+	<dd>&nbsp;<?php echo $html->link($studentParticularChange['Student']['id'], '/students/view/' .$studentParticularChange['Student']['id'])?></dd>
+	<dt>Old Banji</dt>
+	<dd>&nbsp;<?php echo $html->link($studentParticularChange['OldClass']['id'], '/banjis/view/' .$studentParticularChange['OldClass']['id'])?></dd>
+	<dt>New Banji</dt>
+	<dd>&nbsp;<?php echo $html->link($studentParticularChange['NewClass']['id'], '/banjis/view/' .$studentParticularChange['NewClass']['id'])?></dd>
+	<dt>Change Reason</dt>
+	<dd>&nbsp;<?php echo $studentParticularChange['StudentParticularChange']['change_reason']?></dd>
+	<dt>Ratifier</dt>
+	<dd>&nbsp;<?php echo $studentParticularChange['StudentParticularChange']['ratifier']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $studentParticularChange['StudentParticularChange']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $studentParticularChange['StudentParticularChange']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Student Particular Change',   '/student_particular_changes/edit/' . $studentParticularChange['StudentParticularChange']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Student Particular Change', '/student_particular_changes/delete/' . $studentParticularChange['StudentParticularChange']['id'], null, 'Are you sure you want to delete: id ' . $studentParticularChange['StudentParticularChange']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Student Particular Changes',   '/student_particular_changes/index') ?> </li>
+	<li><?php echo $html->link('New Student Particular Change',	'/student_particular_changes/add') ?> </li>
+	<li><?php echo $html->link('List Student', '/students/index/')?> </li>
+	<li><?php echo $html->link('New Students', '/students/add/')?> </li>
+	<li><?php echo $html->link('List Banji', '/banjis/index/')?> </li>
+	<li><?php echo $html->link('New Banjis', '/banjis/add/')?> </li>
+	<li><?php echo $html->link('List Banji', '/banjis/index/')?> </li>
+	<li><?php echo $html->link('New Banjis', '/banjis/add/')?> </li>
+</ul>
+
+</div>

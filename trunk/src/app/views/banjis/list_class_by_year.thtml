@@ -1,0 +1,33 @@
+﻿<script  src="/js/dtree.js"></script>
+<table width="100%" align="center" style="display: inline;">
+<tr>
+  <td>
+    <?php 
+	 $url = $this->params['url']['target'];
+	?>
+	<div id="dtree" style="display: inline;">
+		<script type="text/javascript">
+			<!--
+			d = new dTree('d');
+			d.config.target = "student_main";
+			d.add(0,-1,'','','','','/img/tree/system.gif','/img/tree/system.gif');
+			<?php 
+			  if (!empty($years)){
+				  foreach ($years as $year):
+					  echo("d.add(". $year['Banji']['entrance_year']. ",0,'[" . $year['Banji']['entrance_year'] . "]','');\n");
+				  endforeach;
+			  }
+
+			  if (!empty($banjis)){
+				  foreach ($banjis as $banji):
+					  echo("d.add(". $banji['Banji']['id']. ",". $banji['Banji']['entrance_year'] .",'" . $banji['Banji']['class_name'] . "','$url". $banji['Banji']['id'] ."');\n");
+				  endforeach;
+			  }
+			?>
+			document.write(d);
+			//-->
+		</script>
+	</div>
+  </td>
+</tr>
+</table>

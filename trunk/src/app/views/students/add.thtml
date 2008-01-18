@@ -1,0 +1,170 @@
+<h2>New Student</h2>
+<form action="<?php echo $html->url('/students/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/student_no', 'Student No');?>
+ 	<?php echo $html->input('Student/student_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/student_no', 'Please enter the Student No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/file_no', 'File No');?>
+ 	<?php echo $html->input('Student/file_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/file_no', 'Please enter the File No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/banji_id', 'Banji');?>
+ 	<?php echo $html->selectTag('Student/banji_id', $banjis, $html->tagValue('Student/banji_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Student/banji_id', 'Please select the Banji.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/birthday', 'Birthday');?>
+ 	<?php echo $html->dateTimeOptionTag('Student/birthday', 'MDY' , 'NONE', $html->tagValue('Student/birthday'), array());?>
+	<?php echo $html->tagErrorMsg('Student/birthday', 'Please select the Birthday.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/sex', 'Sex');?>
+ 	<?php echo $html->input('Student/sex', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/sex', 'Please enter the Sex.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/people_id', 'People');?>
+ 	<?php echo $html->selectTag('Student/people_id', $people, $html->tagValue('Student/people_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Student/people_id', 'Please select the People.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/native_place', 'Native Place');?>
+ 	<?php echo $html->input('Student/native_place', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/native_place', 'Please enter the Native Place.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/total_score', 'Total Score');?>
+ 	<?php echo $html->input('Student/total_score', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/total_score', 'Please enter the Total Score.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/political_feature', 'Political Feature');?>
+ 	<?php echo $html->input('Student/political_feature', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/political_feature', 'Please enter the Political Feature.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/physical_condition', 'Physical Condition');?>
+ 	<?php echo $html->input('Student/physical_condition', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/physical_condition', 'Please enter the Physical Condition.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/cert_number', 'Cert Number');?>
+ 	<?php echo $html->input('Student/cert_number', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/cert_number', 'Please enter the Cert Number.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/graduate_the_college', 'Graduate The College');?>
+ 	<?php echo $html->input('Student/graduate_the_college', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/graduate_the_college', 'Please enter the Graduate The College.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/foreign_language', 'Foreign Language');?>
+ 	<?php echo $html->input('Student/foreign_language', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/foreign_language', 'Please enter the Foreign Language.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/enter_the_way', 'Enter The Way');?>
+ 	<?php echo $html->input('Student/enter_the_way', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/enter_the_way', 'Please enter the Enter The Way.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/origin', 'Origin');?>
+ 	<?php echo $html->input('Student/origin', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/origin', 'Please enter the Origin.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/address', 'Address');?>
+ 	<?php echo $html->input('Student/address', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/address', 'Please enter the Address.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/zip', 'Zip');?>
+ 	<?php echo $html->input('Student/zip', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/zip', 'Please enter the Zip.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/telphone', 'Telphone');?>
+ 	<?php echo $html->input('Student/telphone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/telphone', 'Please enter the Telphone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/email', 'Email');?>
+ 	<?php echo $html->input('Student/email', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/email', 'Please enter the Email.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/enter_date', 'Enter Date');?>
+ 	<?php echo $html->dateTimeOptionTag('Student/enter_date', 'MDY' , 'NONE', $html->tagValue('Student/enter_date'), array());?>
+	<?php echo $html->tagErrorMsg('Student/enter_date', 'Please select the Enter Date.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/remark', 'Remark');?>
+ 	<?php echo $html->input('Student/remark', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/remark', 'Please enter the Remark.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/student_phone', 'Student Phone');?>
+ 	<?php echo $html->input('Student/student_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/student_phone', 'Please enter the Student Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/father_name', 'Father Name');?>
+ 	<?php echo $html->input('Student/father_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/father_name', 'Please enter the Father Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/father_unit', 'Father Unit');?>
+ 	<?php echo $html->input('Student/father_unit', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/father_unit', 'Please enter the Father Unit.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/father_phone', 'Father Phone');?>
+ 	<?php echo $html->input('Student/father_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/father_phone', 'Please enter the Father Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/mother_name', 'Mother Name');?>
+ 	<?php echo $html->input('Student/mother_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/mother_name', 'Please enter the Mother Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/mother_unit', 'Mother Unit');?>
+ 	<?php echo $html->input('Student/mother_unit', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/mother_unit', 'Please enter the Mother Unit.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/mother_phone', 'Mother Phone');?>
+ 	<?php echo $html->input('Student/mother_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/mother_phone', 'Please enter the Mother Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/file_id', 'File');?>
+ 	<?php echo $html->selectTag('Student/file_id', $files, $html->tagValue('Student/file_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Student/file_id', 'Please select the File.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/password', 'Password');?>
+ 	<?php echo $html->input('Student/password', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/password', 'Please enter the Password.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Student/status', 'Status');?>
+ 	<?php echo $html->input('Student/status', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Student/status', 'Please enter the Status.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Students', '/students/index')?></li>
+<li><?php echo $html->link('View Banjis', '/banjis/index/');?></li>
+<li><?php echo $html->link('Add Banjis', '/banjis/add/');?></li>
+<li><?php echo $html->link('View People', '/people/index/');?></li>
+<li><?php echo $html->link('Add People', '/people/add/');?></li>
+<li><?php echo $html->link('View Files', '/files/index/');?></li>
+<li><?php echo $html->link('Add Files', '/files/add/');?></li>
+</ul>

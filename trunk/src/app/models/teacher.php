@@ -3,7 +3,6 @@ class Teacher extends AppModel {
 
 	var $name = 'Teacher';
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
 			'User' =>
 				array('className' => 'User',
@@ -48,6 +47,41 @@ class Teacher extends AppModel {
 						'fields' => '',
 						'order' => '',
 						'counterCache' => ''
+				),
+
+	);
+
+	var $hasAndBelongsToMany = array(
+			'Banji' =>
+				array('className' => 'Banji',
+						'joinTable' => 'tearcher_work_infos',
+						'foreignKey' => 'banji_id',
+						'associationForeignKey' => '',
+						'conditions' => '',
+						'fields' => '',
+						'order' => 'Banji.id',
+						'limit' => '',
+						'offset' => '',
+						'unique' => '',
+						'finderQuery' => '',
+						'deleteQuery' => '',
+						'insertQuery' => ''
+				),
+
+			'Course' =>
+				array('className' => 'Course',
+						'joinTable' => 'courses',
+						'foreignKey' => 'course_id',
+						'associationForeignKey' => '',
+						'conditions' => '',
+						'fields' => '',
+						'order' => 'Course.id',
+						'limit' => '',
+						'offset' => '',
+						'unique' => '',
+						'finderQuery' => '',
+						'deleteQuery' => '',
+						'insertQuery' => ''
 				),
 
 	);

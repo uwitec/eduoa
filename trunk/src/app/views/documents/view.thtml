@@ -1,0 +1,45 @@
+<div class="document">
+<h2>View Document</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $document['Document']['id']?></dd>
+	<dt>Document Type</dt>
+	<dd>&nbsp;<?php echo $html->link($document['DocumentType']['id'], '/document_types/view/' .$document['DocumentType']['id'])?></dd>
+	<dt>Rate</dt>
+	<dd>&nbsp;<?php echo $html->link($document['Rate']['id'], '/rates/view/' .$document['Rate']['id'])?></dd>
+	<dt>Course</dt>
+	<dd>&nbsp;<?php echo $html->link($document['Course']['id'], '/courses/view/' .$document['Course']['id'])?></dd>
+	<dt>Title</dt>
+	<dd>&nbsp;<?php echo $document['Document']['title']?></dd>
+	<dt>Subhead</dt>
+	<dd>&nbsp;<?php echo $document['Document']['subhead']?></dd>
+	<dt>Keyword</dt>
+	<dd>&nbsp;<?php echo $document['Document']['keyword']?></dd>
+	<dt>Content</dt>
+	<dd>&nbsp;<?php echo $document['Document']['content']?></dd>
+	<dt>Is Commons</dt>
+	<dd>&nbsp;<?php echo $document['Document']['is_commons']?></dd>
+	<dt>Is Sms</dt>
+	<dd>&nbsp;<?php echo $document['Document']['is_sms']?></dd>
+	<dt>Sms Date</dt>
+	<dd>&nbsp;<?php echo $document['Document']['sms_date']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $document['Document']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $document['Document']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Document',   '/documents/edit/' . $document['Document']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Document', '/documents/delete/' . $document['Document']['id'], null, 'Are you sure you want to delete: id ' . $document['Document']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Documents',   '/documents/index') ?> </li>
+	<li><?php echo $html->link('New Document',	'/documents/add') ?> </li>
+	<li><?php echo $html->link('List Document Type', '/document_types/index/')?> </li>
+	<li><?php echo $html->link('New Document Types', '/document_types/add/')?> </li>
+	<li><?php echo $html->link('List Rate', '/rates/index/')?> </li>
+	<li><?php echo $html->link('New Rates', '/rates/add/')?> </li>
+	<li><?php echo $html->link('List Course', '/courses/index/')?> </li>
+	<li><?php echo $html->link('New Courses', '/courses/add/')?> </li>
+</ul>
+
+</div>

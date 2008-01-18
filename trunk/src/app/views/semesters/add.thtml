@@ -1,0 +1,26 @@
+<h2>New Semester</h2>
+<form action="<?php echo $html->url('/semesters/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Semester/semester_name', 'Semester Name');?>
+ 	<?php echo $html->input('Semester/semester_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Semester/semester_name', 'Please enter the Semester Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Semester/is_current', 'Is Current');?>
+ 	<?php echo $html->input('Semester/is_current', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Semester/is_current', 'Please enter the Is Current.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Semester/semester_type_id', 'Semester Type');?>
+ 	<?php echo $html->selectTag('Semester/semester_type_id', $semesterTypes, $html->tagValue('Semester/semester_type_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Semester/semester_type_id', 'Please select the Semester Type.') ?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Semesters', '/semesters/index')?></li>
+<li><?php echo $html->link('View Semester Types', '/semester_types/index/');?></li>
+<li><?php echo $html->link('Add Semester Types', '/semester_types/add/');?></li>
+</ul>

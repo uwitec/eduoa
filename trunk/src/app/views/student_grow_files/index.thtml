@@ -1,0 +1,34 @@
+<div class="studentGrowFiles">
+<h2>List Student Grow Files</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Student</th>
+	<th>Semester</th>
+	<th>Grow File Type</th>
+	<th>Title</th>
+	<th>Description</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($studentGrowFiles as $studentGrowFile): ?>
+<tr>
+	<td><?php echo $studentGrowFile['StudentGrowFile']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($studentGrowFile['Student']['id'], '/students/view/' .$studentGrowFile['Student']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($studentGrowFile['Semester']['id'], '/semesters/view/' .$studentGrowFile['Semester']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($studentGrowFile['GrowFileType']['id'], '/grow_file_types/view/' .$studentGrowFile['GrowFileType']['id'])?></td>
+	<td><?php echo $studentGrowFile['StudentGrowFile']['title']; ?></td>
+	<td><?php echo $studentGrowFile['StudentGrowFile']['description']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/student_grow_files/view/' . $studentGrowFile['StudentGrowFile']['id'])?>
+		<?php echo $html->link('Edit','/student_grow_files/edit/' . $studentGrowFile['StudentGrowFile']['id'])?>
+		<?php echo $html->link('Delete','/student_grow_files/delete/' . $studentGrowFile['StudentGrowFile']['id'], null, 'Are you sure you want to delete id ' . $studentGrowFile['StudentGrowFile']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Student Grow File', '/student_grow_files/add'); ?></li>
+</ul>
+</div>

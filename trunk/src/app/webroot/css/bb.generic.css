@@ -355,15 +355,30 @@ fieldset legend
 	padding:3px 20px;
 }
 
-fieldset td{
-	border-right: 1px solid #ddd;
+fieldset table{
+	margin:0px auto;
+	color:#333333;
+	text-align:center;
+	border-collapse:collapse;
+	font-size: 12px;
+}
+
+fieldset table th{
+	border:1px solid #81BEEA;
+	background-image: url(/img/table_th_bg.jpg);
+	padding: 4px;
+}
+
+fieldset table td{
+    border:1px solid #81BEEA;
 	padding:4px 4px;
 	vertical-align:top;
 	text-align: center;
 }
 
+
 fieldset tr{
-	background-color:expression((this.sectionRowIndex%2==0)?"#F4F8FF":"#E6EFF7");
+	background-color:expression((this.sectionRowIndex%2==0)?"#F4FBFF":"#DEF0FC");
 }
 
 

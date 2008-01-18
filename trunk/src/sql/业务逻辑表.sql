@@ -77,6 +77,7 @@ create table courses(
 create table semester_types(
   id                    int(10)       not null auto_increment comment '学期类型编号',
   type_name             varchar(20)                           comment '学期名称',
+  flag                  int(1)                                comment '标志(1:学期 2:假期)',
   start_date            date                                  comment '开始时间',
   end_date              date                                  comment '结束时间',
   primary key (id)
@@ -168,7 +169,7 @@ create table teacher_continuing_educations(
 
 
 /* 班级 */
-create table classes(
+create table banjis(
   id                    int(10)       not null auto_increment comment '内部编号',
   class_no              varchar(10)                           comment '班级编号',
   class_name            varchar(100)  not null                comment '班级名称',
@@ -176,6 +177,8 @@ create table classes(
   teacher_id            int(10)       not null                comment '班主任',
   academic_year_id      int(10)                               comment '学年制',
   classroom_id          int(10)                               comment '固定教室',
+  class_size            int(3)                                comment '班级人数',
+  order_list            int(2)                                comment '班级排序',
   created               timestamp                             comment '创建时间',
   modified              timestamp                             comment '修改时间',
   primary key (id)
@@ -186,7 +189,7 @@ create table classes(
 create table tearcher_work_infos(
   id                    int(10)       not null auto_increment comment '编号',
   teacher_id            int(10)       not null                comment '教师',
-  class_id              int(10)       not null                comment '班级',
+  banji_id              int(10)       not null                comment '班级',
   course_id             int(10)       not null                comment '课程',
   primary key (id)
 )engine=MyISAM default charset=utf8 comment='教师任教信息';
@@ -197,7 +200,7 @@ create table students(
   id                    int(10)       not null auto_increment comment '内部编号',
   student_no            int(12)                               comment '学号(sp用)',
   file_no               varchar(20)                           comment '学号(档案编号)',
-  class_id              int(10)                               comment '班号'
+  banji_id              int(10)                               comment '所在班级',
   birthday              date                                  comment '出生日期',
   sex                   int(1)                                comment '性别',
   people_id             int(10)                               comment '民族',
@@ -225,7 +228,7 @@ create table students(
   mother_phone          varchar(50)                           comment '母亲电话',
   file_id               int(10)                               comment '照片',
   password              varchar(32)                           comment '口令',
-  status                int(1)                                comment '状态(9:新生 1:正常 2:毕业)'
+  status                int(1)                                comment '状态(9:新生 1:正常 2:毕业)',
   created               timestamp                             comment '创建时间',
   modified              timestamp                             comment '修改时间',
   primary key (id)
@@ -244,19 +247,23 @@ create table grow_file_types(
 /* 学生成长档案 */
 create table student_grow_files(
   id                    int(10)       not null auto_increment comment '档案编号',
+  student_id            int(10)       not null                comment '学生',
   semester_id           int(10)                               comment '学期',
   grow_file_type_id     int(10)       not null                comment '档案类型',
   title                 varchar(200)                          comment '标题',
   description           text                                  comment '描述',
+  created               timestamp                             comment '创建时间',
+  modified              timestamp                             comment '修改时间',
   primary key (id)
-)engine=MyISAM default charset=utf8 comment='学生成长档案类型';
+)engine=MyISAM default charset=utf8 comment='学生成长档案';
 
 
 /* 学生班级调整 */
 create table student_particular_changes(
   id                    int(10)       not null auto_increment comment '内部编号',
-  old_class_id          int(10)       not null                comment '原班级',
-  new_class_id          int(10)       not null                comment '新班级',
+  student_id            int(10)       not null                comment '学生',
+  old_banji_id          int(10)       not null                comment '原班级',
+  new_banji_id          int(10)       not null                comment '新班级',
   change_reason         varchar(200)                          comment '调班原因',
   ratifier              varchar(100)                          comment '批准人',
   created               timestamp                             comment '创建时间',
@@ -317,8 +324,8 @@ create table exam_results(
 /* 文档类型表 */
 create table document_types(
   id                    int(10)       not null auto_increment comment '文档类型编号',
-  type_name             varchar(100)  NOT NULL                COMMENT '文档类型名称',
-  flag                  int(1)                                COMMENT '有效标志',
+  type_name             varchar(100)  not null                comment '文档类型名称',
+  flag                  int(1)                                comment '有效标志',
   primary key (id)
 )engine=MyISAM default charset=utf8 comment='文档类型';
 
@@ -326,7 +333,7 @@ create table document_types(
 /* 文档表 */
 create table documents(
   id                    int(10)       not null auto_increment comment '文档编号',
-  document_type_id      int(10)                               comment '文档类型'
+  document_type_id      int(10)                               comment '文档类型',
   rate_id               int(10)                               comment '缓急',
   course_id             int(10)                               comment '课程',
   title                 varchar(2000)                         comment '标题', 
@@ -346,7 +353,7 @@ create table documents(
 create table doc_files(
   id                    int(10)       not null auto_increment comment '接收内部编号',
   document_id           int(10)       not null                comment '文档',
-  file_id               int(10)       not null                comment '附件'
+  file_id               int(10)       not null                comment '附件',
   primary key (id)
 )engine=MyISAM default charset=utf8 comment='文档附件';
 
@@ -355,6 +362,7 @@ create table doc_files(
 create table doc_class_receiving_logs(
   id                    int(10)       not null auto_increment comment '接收内部编号',
   document_id           int(10)       not null                comment '文档',
+
   created               timestamp                             comment '创建时间',
   modified              timestamp                             comment '修改时间',
   primary key (id)

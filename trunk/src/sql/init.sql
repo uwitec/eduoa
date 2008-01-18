@@ -15,3 +15,4 @@
 @附加功能表.sql;
 
 @init/modules_default_data.sql;
+@init/init_grow_file_types.sql;

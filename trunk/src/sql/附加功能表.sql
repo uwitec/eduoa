@@ -14,17 +14,17 @@ create table email_boxes (
 -- ----------------------------
 create table emails (
   id                    int(10)       not null auto_increment comment '邮件编号',
-  from_id               int(10)                               comment '',
-  to_id                 int(10)                               comment '',
-  cc_id                 varchar(1000)                         comment '',
-  bcc_id                varchar(1000)                         comment '',
-  subject               varchar(200)                          comment '',
-  content               mediumtext                            comment '',
-  send_time             timestamp                             comment '',
-  read_flag             char(1)                               comment '',
-  send_flag             char(1)                               comment '',
-  delete_flag           char(1)                               comment '',
-  email_box_id          int(10)                               comment '',
+  from_id               int(10)                               comment '发件人',
+  to_id                 int(10)                               comment '收件人',
+  cc_id                 varchar(1000)                         comment '抄送',
+  bcc_id                varchar(1000)                         comment '暗送',
+  subject               varchar(200)                          comment '主题',
+  content               mediumtext                            comment '内容',
+  send_time             timestamp                             comment '发送时间',
+  read_flag             char(1)                               comment '读取标志',
+  send_flag             char(1)                               comment '发送标志',
+  delete_flag           char(1)                               comment '删除标志',
+  email_box_id          int(10)                               comment '所在邮箱',
   primary key (id)
 )engine=MyISAM default charset=utf8 comment='内部邮件';
 
@@ -34,7 +34,7 @@ create table emails (
 -- ----------------------------
 create table email_attachments(
   id                    int(10)       not null auto_increment comment '邮件附件编号',
-  email_id              int(10)       NOT NULL                COMMENT '邮件',
+  email_id              int(10)       not null                comment '邮件',
   file_id               int(10)       not null                comment '文件',
   primary key (id)
 )engine=MyISAM default charset=utf8 comment='内部邮件';

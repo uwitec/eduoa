@@ -1,4 +1,4 @@
--- --------------------------------------
+﻿-- --------------------------------------
 -- 资产类型表
 -- --------------------------------------
 create table asset_types (
@@ -57,7 +57,7 @@ create table assets (
   created               timestamp                             comment '创建时间',
   modified              timestamp                             comment '修改时间',
   primary key (id)
-)engine=MyISAM default charset=utf8 comment='增加方式';
+)engine=MyISAM default charset=utf8 comment='资产表';
 
 
 -- ----------------------------

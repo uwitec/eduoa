@@ -1,0 +1,11 @@
+insert into `grow_file_types` values ('1', '奋斗目标', '1');
+insert into `grow_file_types` values ('2', '成长札记', '1');
+insert into `grow_file_types` values ('3', '成绩自我分析', '1');
+insert into `grow_file_types` values ('4', '教师评语', '1');
+insert into `grow_file_types` values ('5', '学业评价', '1');
+insert into `grow_file_types` values ('6', '阅读书籍', '1');
+insert into `grow_file_types` values ('7', '个性发展', '1');
+insert into `grow_file_types` values ('8', '实践活动', '1');
+insert into `grow_file_types` values ('9', '创造发明', '1');
+insert into `grow_file_types` values ('10', '得意作品', '1');
+insert into `grow_file_types` values ('11', '学习总结', '1');

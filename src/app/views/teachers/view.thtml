@@ -67,3 +67,61 @@
 </ul>
 
 </div>
+<div class="related">
+<h3>Related Banjis</h3>
+<?php if (!empty($teacher['Banji'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach ($teacher['Banji']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach ($teacher['Banji'] as $banji):?>
+<tr>
+	<?php foreach ($banji as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/banjis/view/' . $banji['id']);?>
+		<?php echo $html->link('Edit', '/banjis/edit/' . $banji['id']);?>
+		<?php echo $html->link('Delete', '/banjis/delete/' . $banji['id'], null, 'Are you sure you want to delete: id ' . $banji['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Banji', '/banjis/add/');?> </li>
+</ul>
+</div>
+<div class="related">
+<h3>Related Courses</h3>
+<?php if (!empty($teacher['Course'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach ($teacher['Course']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach ($teacher['Course'] as $course):?>
+<tr>
+	<?php foreach ($course as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/courses/view/' . $course['id']);?>
+		<?php echo $html->link('Edit', '/courses/edit/' . $course['id']);?>
+		<?php echo $html->link('Delete', '/courses/delete/' . $course['id'], null, 'Are you sure you want to delete: id ' . $course['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Course', '/courses/add/');?> </li>
+</ul>
+</div>

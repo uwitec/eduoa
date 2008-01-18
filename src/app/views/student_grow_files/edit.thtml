@@ -1,0 +1,42 @@
+<h2>Edit Student Grow File</h2>
+<form action="<?php echo $html->url('/student_grow_files/edit/'.$html->tagValue('StudentGrowFile/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('StudentGrowFile/student_id', 'Student');?>
+ 	<?php echo $html->selectTag('StudentGrowFile/student_id', $students, $html->tagValue('StudentGrowFile/student_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('StudentGrowFile/student_id', 'Please select the Student.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('StudentGrowFile/semester_id', 'Semester');?>
+ 	<?php echo $html->selectTag('StudentGrowFile/semester_id', $semesters, $html->tagValue('StudentGrowFile/semester_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('StudentGrowFile/semester_id', 'Please select the Semester.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('StudentGrowFile/grow_file_type_id', 'Grow File Type');?>
+ 	<?php echo $html->selectTag('StudentGrowFile/grow_file_type_id', $growFileTypes, $html->tagValue('StudentGrowFile/grow_file_type_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('StudentGrowFile/grow_file_type_id', 'Please select the Grow File Type.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('StudentGrowFile/title', 'Title');?>
+ 	<?php echo $html->input('StudentGrowFile/title', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('StudentGrowFile/title', 'Please enter the Title.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag( 'StudentGrowFile/description', 'Description' );?>
+ 	<?php echo $html->textarea('StudentGrowFile/description', array('cols' => '60', 'rows' => '10'));?>
+	<?php echo $html->tagErrorMsg('StudentGrowFile/description', 'Please enter the Description.');?>
+</div>
+<?php echo $html->hidden('StudentGrowFile/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/student_grow_files/delete/' . $html->tagValue('StudentGrowFile/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('StudentGrowFile/id'));?>
+<li><?php echo $html->link('List Student Grow Files', '/student_grow_files/index')?></li>
+<li><?php echo $html->link('View Students', '/students/index/');?></li>
+<li><?php echo $html->link('Add Students', '/students/add/');?></li>
+<li><?php echo $html->link('View Semesters', '/semesters/index/');?></li>
+<li><?php echo $html->link('Add Semesters', '/semesters/add/');?></li>
+<li><?php echo $html->link('View Grow File Types', '/grow_file_types/index/');?></li>
+<li><?php echo $html->link('Add Grow File Types', '/grow_file_types/add/');?></li>
+</ul>

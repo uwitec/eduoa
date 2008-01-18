@@ -1,0 +1,60 @@
+<h2>New Document</h2>
+<form action="<?php echo $html->url('/documents/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Document/document_type_id', 'Document Type');?>
+ 	<?php echo $html->selectTag('Document/document_type_id', $documentTypes, $html->tagValue('Document/document_type_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Document/document_type_id', 'Please select the Document Type.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Document/rate_id', 'Rate');?>
+ 	<?php echo $html->selectTag('Document/rate_id', $rates, $html->tagValue('Document/rate_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Document/rate_id', 'Please select the Rate.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Document/course_id', 'Course');?>
+ 	<?php echo $html->selectTag('Document/course_id', $courses, $html->tagValue('Document/course_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Document/course_id', 'Please select the Course.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Document/title', 'Title');?>
+ 	<?php echo $html->input('Document/title', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Document/title', 'Please enter the Title.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Document/subhead', 'Subhead');?>
+ 	<?php echo $html->input('Document/subhead', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Document/subhead', 'Please enter the Subhead.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Document/keyword', 'Keyword');?>
+ 	<?php echo $html->input('Document/keyword', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Document/keyword', 'Please enter the Keyword.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag( 'Document/content', 'Content' );?>
+ 	<?php echo $html->textarea('Document/content', array('cols' => '60', 'rows' => '10'));?>
+	<?php echo $html->tagErrorMsg('Document/content', 'Please enter the Content.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Document/is_commons', 'Is Commons');?>
+ 	<?php echo $html->input('Document/is_commons', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Document/is_commons', 'Please enter the Is Commons.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Document/is_sms', 'Is Sms');?>
+ 	<?php echo $html->input('Document/is_sms', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Document/is_sms', 'Please enter the Is Sms.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Documents', '/documents/index')?></li>
+<li><?php echo $html->link('View Document Types', '/document_types/index/');?></li>
+<li><?php echo $html->link('Add Document Types', '/document_types/add/');?></li>
+<li><?php echo $html->link('View Rates', '/rates/index/');?></li>
+<li><?php echo $html->link('Add Rates', '/rates/add/');?></li>
+<li><?php echo $html->link('View Courses', '/courses/index/');?></li>
+<li><?php echo $html->link('Add Courses', '/courses/add/');?></li>
+</ul>

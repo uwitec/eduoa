@@ -1,0 +1,21 @@
+<div class="semesterType">
+<h2>View Semester Type</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $semesterType['SemesterType']['id']?></dd>
+	<dt>Type Name</dt>
+	<dd>&nbsp;<?php echo $semesterType['SemesterType']['type_name']?></dd>
+	<dt>Start Date</dt>
+	<dd>&nbsp;<?php echo $semesterType['SemesterType']['start_date']?></dd>
+	<dt>End Date</dt>
+	<dd>&nbsp;<?php echo $semesterType['SemesterType']['end_date']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Semester Type',   '/semester_types/edit/' . $semesterType['SemesterType']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Semester Type', '/semester_types/delete/' . $semesterType['SemesterType']['id'], null, 'Are you sure you want to delete: id ' . $semesterType['SemesterType']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Semester Types',   '/semester_types/index') ?> </li>
+	<li><?php echo $html->link('New Semester Type',	'/semester_types/add') ?> </li>
+</ul>
+
+</div>

@@ -1,0 +1,40 @@
+<h2>New Student Particular Change</h2>
+<form action="<?php echo $html->url('/student_particular_changes/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('StudentParticularChange/student_id', 'Student');?>
+ 	<?php echo $html->selectTag('StudentParticularChange/student_id', $students, $html->tagValue('StudentParticularChange/student_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('StudentParticularChange/student_id', 'Please select the Student.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('StudentParticularChange/old_banji_id', 'Old Banji');?>
+ 	<?php echo $html->selectTag('StudentParticularChange/old_banji_id', $oldClasses, $html->tagValue('StudentParticularChange/old_banji_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('StudentParticularChange/old_banji_id', 'Please select the Old Banji.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('StudentParticularChange/new_banji_id', 'New Banji');?>
+ 	<?php echo $html->selectTag('StudentParticularChange/new_banji_id', $oldClasses, $html->tagValue('StudentParticularChange/new_banji_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('StudentParticularChange/new_banji_id', 'Please select the New Banji.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('StudentParticularChange/change_reason', 'Change Reason');?>
+ 	<?php echo $html->input('StudentParticularChange/change_reason', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('StudentParticularChange/change_reason', 'Please enter the Change Reason.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('StudentParticularChange/ratifier', 'Ratifier');?>
+ 	<?php echo $html->input('StudentParticularChange/ratifier', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('StudentParticularChange/ratifier', 'Please enter the Ratifier.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Student Particular Changes', '/student_particular_changes/index')?></li>
+<li><?php echo $html->link('View Students', '/students/index/');?></li>
+<li><?php echo $html->link('Add Students', '/students/add/');?></li>
+<li><?php echo $html->link('View Old Classes', '/old_classes/index/');?></li>
+<li><?php echo $html->link('Add Old Classes', '/old_classes/add/');?></li>
+<li><?php echo $html->link('View New Classes', '/new_classes/index/');?></li>
+<li><?php echo $html->link('Add New Classes', '/new_classes/add/');?></li>
+</ul>

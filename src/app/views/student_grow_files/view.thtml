@@ -1,0 +1,31 @@
+<div class="studentGrowFile">
+<h2>View Student Grow File</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $studentGrowFile['StudentGrowFile']['id']?></dd>
+	<dt>Student</dt>
+	<dd>&nbsp;<?php echo $html->link($studentGrowFile['Student']['id'], '/students/view/' .$studentGrowFile['Student']['id'])?></dd>
+	<dt>Semester</dt>
+	<dd>&nbsp;<?php echo $html->link($studentGrowFile['Semester']['id'], '/semesters/view/' .$studentGrowFile['Semester']['id'])?></dd>
+	<dt>Grow File Type</dt>
+	<dd>&nbsp;<?php echo $html->link($studentGrowFile['GrowFileType']['id'], '/grow_file_types/view/' .$studentGrowFile['GrowFileType']['id'])?></dd>
+	<dt>Title</dt>
+	<dd>&nbsp;<?php echo $studentGrowFile['StudentGrowFile']['title']?></dd>
+	<dt>Description</dt>
+	<dd>&nbsp;<?php echo $studentGrowFile['StudentGrowFile']['description']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Student Grow File',   '/student_grow_files/edit/' . $studentGrowFile['StudentGrowFile']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Student Grow File', '/student_grow_files/delete/' . $studentGrowFile['StudentGrowFile']['id'], null, 'Are you sure you want to delete: id ' . $studentGrowFile['StudentGrowFile']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Student Grow Files',   '/student_grow_files/index') ?> </li>
+	<li><?php echo $html->link('New Student Grow File',	'/student_grow_files/add') ?> </li>
+	<li><?php echo $html->link('List Student', '/students/index/')?> </li>
+	<li><?php echo $html->link('New Students', '/students/add/')?> </li>
+	<li><?php echo $html->link('List Semester', '/semesters/index/')?> </li>
+	<li><?php echo $html->link('New Semesters', '/semesters/add/')?> </li>
+	<li><?php echo $html->link('List Grow File Type', '/grow_file_types/index/')?> </li>
+	<li><?php echo $html->link('New Grow File Types', '/grow_file_types/add/')?> </li>
+</ul>
+
+</div>

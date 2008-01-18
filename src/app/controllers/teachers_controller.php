@@ -19,6 +19,10 @@ class TeachersController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
+			$this->set('banjis', $this->Teacher->Banji->generateList());
+			$this->set('selectedBanjis', null);
+			$this->set('courses', $this->Teacher->Course->generateList());
+			$this->set('selectedCourses', null);
 			$this->set('users', $this->Teacher->User->generateList());
 			$this->set('people', $this->Teacher->Person->generateList());
 			$this->set('degrees', $this->Teacher->Degree->generateList());
@@ -32,6 +36,12 @@ class TeachersController extends AppController {
 				$this->redirect('/teachers/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
+				$this->set('banjis', $this->Teacher->Banji->generateList());
+				if (empty($this->data['Banji']['Banji'])) { $this->data['Banji']['Banji'] = null; }
+				$this->set('selectedBanjis', $this->data['Banji']['Banji']);
+				$this->set('courses', $this->Teacher->Course->generateList());
+				if (empty($this->data['Course']['Course'])) { $this->data['Course']['Course'] = null; }
+				$this->set('selectedCourses', $this->data['Course']['Course']);
 				$this->set('users', $this->Teacher->User->generateList());
 				$this->set('people', $this->Teacher->Person->generateList());
 				$this->set('degrees', $this->Teacher->Degree->generateList());
@@ -48,6 +58,12 @@ class TeachersController extends AppController {
 				$this->redirect('/teachers/index');
 			}
 			$this->data = $this->Teacher->read(null, $id);
+			$this->set('banjis', $this->Teacher->Banji->generateList());
+			if (empty($this->data['Banji'])) { $this->data['Banji'] = null; }
+			$this->set('selectedBanjis', $this->_selectedArray($this->data['Banji']));
+			$this->set('courses', $this->Teacher->Course->generateList());
+			if (empty($this->data['Course'])) { $this->data['Course'] = null; }
+			$this->set('selectedCourses', $this->_selectedArray($this->data['Course']));
 			$this->set('users', $this->Teacher->User->generateList());
 			$this->set('people', $this->Teacher->Person->generateList());
 			$this->set('degrees', $this->Teacher->Degree->generateList());
@@ -60,6 +76,12 @@ class TeachersController extends AppController {
 				$this->redirect('/teachers/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
+				$this->set('banjis', $this->Teacher->Banji->generateList());
+				if (empty($this->data['Banji']['Banji'])) { $this->data['Banji']['Banji'] = null; }
+				$this->set('selectedBanjis', $this->data['Banji']['Banji']);
+				$this->set('courses', $this->Teacher->Course->generateList());
+				if (empty($this->data['Course']['Course'])) { $this->data['Course']['Course'] = null; }
+				$this->set('selectedCourses', $this->data['Course']['Course']);
 				$this->set('users', $this->Teacher->User->generateList());
 				$this->set('people', $this->Teacher->Person->generateList());
 				$this->set('degrees', $this->Teacher->Degree->generateList());

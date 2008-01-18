@@ -1,0 +1,23 @@
+<div class="semester">
+<h2>View Semester</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $semester['Semester']['id']?></dd>
+	<dt>Semester Name</dt>
+	<dd>&nbsp;<?php echo $semester['Semester']['semester_name']?></dd>
+	<dt>Is Current</dt>
+	<dd>&nbsp;<?php echo $semester['Semester']['is_current']?></dd>
+	<dt>Semester Type</dt>
+	<dd>&nbsp;<?php echo $html->link($semester['SemesterType']['id'], '/semester_types/view/' .$semester['SemesterType']['id'])?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Semester',   '/semesters/edit/' . $semester['Semester']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Semester', '/semesters/delete/' . $semester['Semester']['id'], null, 'Are you sure you want to delete: id ' . $semester['Semester']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Semesters',   '/semesters/index') ?> </li>
+	<li><?php echo $html->link('New Semester',	'/semesters/add') ?> </li>
+	<li><?php echo $html->link('List Semester Type', '/semester_types/index/')?> </li>
+	<li><?php echo $html->link('New Semester Types', '/semester_types/add/')?> </li>
+</ul>
+
+</div>

@@ -1,0 +1,24 @@
+<h2>New Semester Type</h2>
+<form action="<?php echo $html->url('/semester_types/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('SemesterType/type_name', 'Type Name');?>
+ 	<?php echo $html->input('SemesterType/type_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('SemesterType/type_name', 'Please enter the Type Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('SemesterType/start_date', 'Start Date');?>
+ 	<?php echo $html->dateTimeOptionTag('SemesterType/start_date', 'MDY' , 'NONE', $html->tagValue('SemesterType/start_date'), array());?>
+	<?php echo $html->tagErrorMsg('SemesterType/start_date', 'Please select the Start Date.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('SemesterType/end_date', 'End Date');?>
+ 	<?php echo $html->dateTimeOptionTag('SemesterType/end_date', 'MDY' , 'NONE', $html->tagValue('SemesterType/end_date'), array());?>
+	<?php echo $html->tagErrorMsg('SemesterType/end_date', 'Please select the End Date.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Semester Types', '/semester_types/index')?></li>
+</ul>

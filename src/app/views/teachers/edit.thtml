@@ -90,6 +90,16 @@
  	<?php echo $html->input('Teacher/flag', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Teacher/flag', 'Please enter the Flag.');?>
 </div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Banji/Banji', 'Related Banjis');?>
+ 	<?php echo $html->selectTag('Banji/Banji', $banjis, $selectedBanjis, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), true);?>
+	<?php echo $html->tagErrorMsg('Banji/Banji', 'Please select the Related Banjis.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Course/Course', 'Related Courses');?>
+ 	<?php echo $html->selectTag('Course/Course', $courses, $selectedCourses, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), true);?>
+	<?php echo $html->tagErrorMsg('Course/Course', 'Please select the Related Courses.');?>
+</div>
 <?php echo $html->hidden('Teacher/id')?>
 <div class="submit">
 	<?php echo $html->submit('Save');?>

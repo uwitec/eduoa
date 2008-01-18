@@ -1,4 +1,11 @@
 <script  src="/js/dtree.js"></script>
+<style type="text/css">
+<!--
+body {
+	background-color: #E3F4FE;
+}
+-->
+</style>
 <table width="100%" align="center" style="display: inline;">
 <tr>
 	<td>

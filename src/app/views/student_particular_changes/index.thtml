@@ -1,0 +1,38 @@
+<div class="studentParticularChanges">
+<h2>List Student Particular Changes</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Student</th>
+	<th>Old Banji</th>
+	<th>New Banji</th>
+	<th>Change Reason</th>
+	<th>Ratifier</th>
+	<th>Created</th>
+	<th>Modified</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($studentParticularChanges as $studentParticularChange): ?>
+<tr>
+	<td><?php echo $studentParticularChange['StudentParticularChange']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($studentParticularChange['Student']['id'], '/students/view/' .$studentParticularChange['Student']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($studentParticularChange['OldClass']['id'], '/banjis/view/' .$studentParticularChange['OldClass']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($studentParticularChange['NewClass']['id'], '/banjis/view/' .$studentParticularChange['NewClass']['id'])?></td>
+	<td><?php echo $studentParticularChange['StudentParticularChange']['change_reason']; ?></td>
+	<td><?php echo $studentParticularChange['StudentParticularChange']['ratifier']; ?></td>
+	<td><?php echo $studentParticularChange['StudentParticularChange']['created']; ?></td>
+	<td><?php echo $studentParticularChange['StudentParticularChange']['modified']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/student_particular_changes/view/' . $studentParticularChange['StudentParticularChange']['id'])?>
+		<?php echo $html->link('Edit','/student_particular_changes/edit/' . $studentParticularChange['StudentParticularChange']['id'])?>
+		<?php echo $html->link('Delete','/student_particular_changes/delete/' . $studentParticularChange['StudentParticularChange']['id'], null, 'Are you sure you want to delete id ' . $studentParticularChange['StudentParticularChange']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Student Particular Change', '/student_particular_changes/add'); ?></li>
+</ul>
+</div>

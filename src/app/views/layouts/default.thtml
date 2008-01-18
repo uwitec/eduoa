@@ -14,7 +14,7 @@ if(isset($javascript)):
     echo $javascript->link('prototype.js');
 endif;          
 ?> 
-<?php echo $html->css('pangu.generic');?>
+<?php echo $html->css('bb.generic');?>
 </head>
 <body>
 	<div id="container">

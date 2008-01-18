@@ -1,0 +1,87 @@
+<div class="student">
+<h2>View Student</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $student['Student']['id']?></dd>
+	<dt>Student No</dt>
+	<dd>&nbsp;<?php echo $student['Student']['student_no']?></dd>
+	<dt>File No</dt>
+	<dd>&nbsp;<?php echo $student['Student']['file_no']?></dd>
+	<dt>Banji</dt>
+	<dd>&nbsp;<?php echo $html->link($student['Banji']['id'], '/banjis/view/' .$student['Banji']['id'])?></dd>
+	<dt>Birthday</dt>
+	<dd>&nbsp;<?php echo $student['Student']['birthday']?></dd>
+	<dt>Sex</dt>
+	<dd>&nbsp;<?php echo $student['Student']['sex']?></dd>
+	<dt>People</dt>
+	<dd>&nbsp;<?php echo $html->link($student['Person']['id'], '/people/view/' .$student['Person']['id'])?></dd>
+	<dt>Native Place</dt>
+	<dd>&nbsp;<?php echo $student['Student']['native_place']?></dd>
+	<dt>Total Score</dt>
+	<dd>&nbsp;<?php echo $student['Student']['total_score']?></dd>
+	<dt>Political Feature</dt>
+	<dd>&nbsp;<?php echo $student['Student']['political_feature']?></dd>
+	<dt>Physical Condition</dt>
+	<dd>&nbsp;<?php echo $student['Student']['physical_condition']?></dd>
+	<dt>Cert Number</dt>
+	<dd>&nbsp;<?php echo $student['Student']['cert_number']?></dd>
+	<dt>Graduate The College</dt>
+	<dd>&nbsp;<?php echo $student['Student']['graduate_the_college']?></dd>
+	<dt>Foreign Language</dt>
+	<dd>&nbsp;<?php echo $student['Student']['foreign_language']?></dd>
+	<dt>Enter The Way</dt>
+	<dd>&nbsp;<?php echo $student['Student']['enter_the_way']?></dd>
+	<dt>Origin</dt>
+	<dd>&nbsp;<?php echo $student['Student']['origin']?></dd>
+	<dt>Address</dt>
+	<dd>&nbsp;<?php echo $student['Student']['address']?></dd>
+	<dt>Zip</dt>
+	<dd>&nbsp;<?php echo $student['Student']['zip']?></dd>
+	<dt>Telphone</dt>
+	<dd>&nbsp;<?php echo $student['Student']['telphone']?></dd>
+	<dt>Email</dt>
+	<dd>&nbsp;<?php echo $student['Student']['email']?></dd>
+	<dt>Enter Date</dt>
+	<dd>&nbsp;<?php echo $student['Student']['enter_date']?></dd>
+	<dt>Remark</dt>
+	<dd>&nbsp;<?php echo $student['Student']['remark']?></dd>
+	<dt>Student Phone</dt>
+	<dd>&nbsp;<?php echo $student['Student']['student_phone']?></dd>
+	<dt>Father Name</dt>
+	<dd>&nbsp;<?php echo $student['Student']['father_name']?></dd>
+	<dt>Father Unit</dt>
+	<dd>&nbsp;<?php echo $student['Student']['father_unit']?></dd>
+	<dt>Father Phone</dt>
+	<dd>&nbsp;<?php echo $student['Student']['father_phone']?></dd>
+	<dt>Mother Name</dt>
+	<dd>&nbsp;<?php echo $student['Student']['mother_name']?></dd>
+	<dt>Mother Unit</dt>
+	<dd>&nbsp;<?php echo $student['Student']['mother_unit']?></dd>
+	<dt>Mother Phone</dt>
+	<dd>&nbsp;<?php echo $student['Student']['mother_phone']?></dd>
+	<dt>File</dt>
+	<dd>&nbsp;<?php echo $html->link($student['File']['name'], '/files/view/' .$student['File']['id'])?></dd>
+	<dt>Password</dt>
+	<dd>&nbsp;<?php echo $student['Student']['password']?></dd>
+	<dt>Status</dt>
+	<dd>&nbsp;<?php echo $student['Student']['status']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $student['Student']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $student['Student']['modified']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Student',   '/students/edit/' . $student['Student']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Student', '/students/delete/' . $student['Student']['id'], null, 'Are you sure you want to delete: id ' . $student['Student']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Students',   '/students/index') ?> </li>
+	<li><?php echo $html->link('New Student',	'/students/add') ?> </li>
+	<li><?php echo $html->link('List Banji', '/banjis/index/')?> </li>
+	<li><?php echo $html->link('New Banjis', '/banjis/add/')?> </li>
+	<li><?php echo $html->link('List Person', '/people/index/')?> </li>
+	<li><?php echo $html->link('New Peoples', '/people/add/')?> </li>
+	<li><?php echo $html->link('List File', '/files/index/')?> </li>
+	<li><?php echo $html->link('New Files', '/files/add/')?> </li>
+</ul>
+
+</div>

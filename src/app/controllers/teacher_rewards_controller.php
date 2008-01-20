@@ -19,12 +19,20 @@ class TeacherRewardsController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
-			$this->set('teachers', $this->TeacherReward->Teacher->generateList());
+			$this->set('teachers', 
+						$this->TeacherReward->Teacher->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Teacher.id',
+							$valuePath = '{n}.Teacher.teacher_name')
+			);
+
 			$this->render();
 		} else {
 			$this->cleanUpFields();
 			if ($this->TeacherReward->save($this->data)) {
-				$this->Session->setFlash('The Teacher Reward has been saved');
+				$this->Session->setFlash('教职工奖惩信息新增成功！');
 				$this->redirect('/teacher_rewards/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -40,11 +48,18 @@ class TeacherRewardsController extends AppController {
 				$this->redirect('/teacher_rewards/index');
 			}
 			$this->data = $this->TeacherReward->read(null, $id);
-			$this->set('teachers', $this->TeacherReward->Teacher->generateList());
+			$this->set('teachers', 
+						$this->TeacherReward->Teacher->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Teacher.id',
+							$valuePath = '{n}.Teacher.teacher_name')
+			);
 		} else {
 			$this->cleanUpFields();
 			if ($this->TeacherReward->save($this->data)) {
-				$this->Session->setFlash('The TeacherReward has been saved');
+				$this->Session->setFlash('教职工奖惩信息保存成功！');
 				$this->redirect('/teacher_rewards/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -59,7 +74,7 @@ class TeacherRewardsController extends AppController {
 			$this->redirect('/teacher_rewards/index');
 		}
 		if ($this->TeacherReward->del($id)) {
-			$this->Session->setFlash('The Teacher Reward deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/teacher_rewards/index');
 		}
 	}

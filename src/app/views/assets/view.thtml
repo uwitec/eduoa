@@ -1,63 +1,47 @@
-<div class="asset">
-<h2>View Asset</h2>
+<div id="content">
+<fieldset align=center>
+<legend>资产详情</legend> 
 
 <dl>
-	<dt>Id</dt>
-	<dd>&nbsp;<?php echo $asset['Asset']['id']?></dd>
-	<dt>Asset Name</dt>
+	<dt>资产名称</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['asset_name']?></dd>
-	<dt>Asset Code</dt>
+	<dt>资产代码</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['asset_code']?></dd>
-	<dt>Asset Type</dt>
-	<dd>&nbsp;<?php echo $html->link($asset['AssetType']['id'], '/asset_types/view/' .$asset['AssetType']['id'])?></dd>
-	<dt>Standard Code</dt>
+	<dt>资产类别</dt>
+	<dd>&nbsp;<?php echo $asset['AssetType']['type_name']?></dd>
+	<dt>国际编码</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['standard_code']?></dd>
-	<dt>Provider</dt>
+	<dt>生产厂商</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['provider']?></dd>
-	<dt>Made Date</dt>
+	<dt>生产日期</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['made_date']?></dd>
-	<dt>In Date</dt>
+	<dt>入帐日期</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['in_date']?></dd>
-	<dt>Residual Rate</dt>
+	<dt>净残值率</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['residual_rate']?></dd>
-	<dt>Use Years</dt>
+	<dt>预计使用年限</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['use_years']?></dd>
-	<dt>Actual Value</dt>
+	<dt>原值</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['actual_value']?></dd>
-	<dt>Net Value</dt>
+	<dt>净值</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['net_value']?></dd>
-	<dt>Location</dt>
+	<dt>存放地点</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['location']?></dd>
-	<dt>Department</dt>
-	<dd>&nbsp;<?php echo $html->link($asset['Department']['id'], '/departments/view/' .$asset['Department']['id'])?></dd>
-	<dt>Asset Status</dt>
-	<dd>&nbsp;<?php echo $html->link($asset['AssetStatus']['id'], '/asset_statuses/view/' .$asset['AssetStatus']['id'])?></dd>
-	<dt>Asset In Method</dt>
-	<dd>&nbsp;<?php echo $html->link($asset['AssetInMethod']['id'], '/asset_in_methods/view/' .$asset['AssetInMethod']['id'])?></dd>
-	<dt>Belong User</dt>
+	<dt>使用部门</dt>
+	<dd>&nbsp;<?php echo $asset['Department']['department_name']?></dd>
+	<dt>使用情况</dt>
+	<dd>&nbsp;<?php echo $asset['AssetStatus']['status_name']?></dd>
+	<dt>增加方式</dt>
+	<dd>&nbsp;<?php echo $asset['AssetInMethod']['method_name']?></dd>
+	<dt>保管人员</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['belong_user']?></dd>
-	<dt>Clear Method Id</dt>
+	<dt>报废方式</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['clear_method_id']?></dd>
-	<dt>Clear Date</dt>
+	<dt>报废时间</dt>
 	<dd>&nbsp;<?php echo $asset['Asset']['clear_date']?></dd>
-	<dt>Created</dt>
-	<dd>&nbsp;<?php echo $asset['Asset']['created']?></dd>
-	<dt>Modified</dt>
-	<dd>&nbsp;<?php echo $asset['Asset']['modified']?></dd>
 </dl>
 <ul class="actions">
-	<li><?php echo $html->link('Edit Asset',   '/assets/edit/' . $asset['Asset']['id']) ?> </li>
-	<li><?php echo $html->link('Delete Asset', '/assets/delete/' . $asset['Asset']['id'], null, 'Are you sure you want to delete: id ' . $asset['Asset']['id'] . '?') ?> </li>
-	<li><?php echo $html->link('List Assets',   '/assets/index') ?> </li>
-	<li><?php echo $html->link('New Asset',	'/assets/add') ?> </li>
-	<li><?php echo $html->link('List Asset Type', '/asset_types/index/')?> </li>
-	<li><?php echo $html->link('New Asset Types', '/asset_types/add/')?> </li>
-	<li><?php echo $html->link('List Department', '/departments/index/')?> </li>
-	<li><?php echo $html->link('New Departments', '/departments/add/')?> </li>
-	<li><?php echo $html->link('List Asset Status', '/asset_statuses/index/')?> </li>
-	<li><?php echo $html->link('New Asset Statuses', '/asset_statuses/add/')?> </li>
-	<li><?php echo $html->link('List Asset In Method', '/asset_in_methods/index/')?> </li>
-	<li><?php echo $html->link('New Asset In Methods', '/asset_in_methods/add/')?> </li>
+	<li><?php echo $html->link('资产列表',   '/assets/index') ?> </li>
 </ul>
-
+</fieldset>
 </div>

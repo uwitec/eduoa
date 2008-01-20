@@ -24,15 +24,39 @@ class TeachersController extends AppController {
 			$this->set('courses', $this->Teacher->Course->generateList());
 			$this->set('selectedCourses', null);
 			$this->set('users', $this->Teacher->User->generateList());
-			$this->set('people', $this->Teacher->Person->generateList());
-			$this->set('degrees', $this->Teacher->Degree->generateList());
-			$this->set('departments', $this->Teacher->Department->generateList());
+			$this->set('people', 
+						$this->Teacher->Person->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Person.id',
+							$valuePath = '{n}.Person.people_name')
+			);
+
+			$this->set('degrees', 
+						$this->Teacher->Degree->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Degree.id',
+							$valuePath = '{n}.Degree.degree_name')
+			);
+
+
+			$this->set('departments', 
+						$this->Teacher->Department->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Department.id',
+							$valuePath = '{n}.Department.department_name')
+			);
 			$this->set('files', $this->Teacher->File->generateList());
 			$this->render();
 		} else {
 			$this->cleanUpFields();
 			if ($this->Teacher->save($this->data)) {
-				$this->Session->setFlash('The Teacher has been saved');
+				$this->Session->setFlash('教职工信息新增成功！');
 				$this->redirect('/teachers/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -65,14 +89,40 @@ class TeachersController extends AppController {
 			if (empty($this->data['Course'])) { $this->data['Course'] = null; }
 			$this->set('selectedCourses', $this->_selectedArray($this->data['Course']));
 			$this->set('users', $this->Teacher->User->generateList());
-			$this->set('people', $this->Teacher->Person->generateList());
-			$this->set('degrees', $this->Teacher->Degree->generateList());
-			$this->set('departments', $this->Teacher->Department->generateList());
+
+			$this->set('people', 
+						$this->Teacher->Person->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Person.id',
+							$valuePath = '{n}.Person.people_name')
+			);
+
+			$this->set('degrees', 
+						$this->Teacher->Degree->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Degree.id',
+							$valuePath = '{n}.Degree.degree_name')
+			);
+
+
+			$this->set('departments', 
+						$this->Teacher->Department->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Department.id',
+							$valuePath = '{n}.Department.department_name')
+			);
+
 			$this->set('files', $this->Teacher->File->generateList());
 		} else {
 			$this->cleanUpFields();
 			if ($this->Teacher->save($this->data)) {
-				$this->Session->setFlash('The Teacher has been saved');
+				$this->Session->setFlash('教职工信息修改成功！');
 				$this->redirect('/teachers/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -97,7 +147,7 @@ class TeachersController extends AppController {
 			$this->redirect('/teachers/index');
 		}
 		if ($this->Teacher->del($id)) {
-			$this->Session->setFlash('The Teacher deleted: id '.$id.'');
+			$this->Session->setFlash('教职工删除成功！');
 			$this->redirect('/teachers/index');
 		}
 	}

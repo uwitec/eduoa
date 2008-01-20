@@ -1,68 +1,36 @@
-<div class="teachers">
-<h2>List Teachers</h2>
+<div id="content">
+<fieldset align=center>
+<legend>教职工列表</legend> 
 
-<table cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-	<th>Id</th>
-	<th>User</th>
-	<th>Teacher Type</th>
-	<th>Teacher Name</th>
-	<th>Is Work</th>
-	<th>Birthday</th>
-	<th>Sex</th>
-	<th>People</th>
-	<th>Degree</th>
-	<th>Duty</th>
-	<th>Cert Number</th>
-	<th>Get Busy Date</th>
-	<th>Address</th>
-	<th>Email</th>
-	<th>Graduate The College</th>
-	<th>Specialty</th>
-	<th>Office Phone</th>
-	<th>Department</th>
-	<th>File</th>
-	<th>Password</th>
-	<th>Flag</th>
-	<th>Created</th>
-	<th>Modified</th>
-	<th>Actions</th>
+	<th>教师名称</th>
+	<th>姓名</th>
+	<th>性别</th>
+	<th>办公电话</th>
+	<th>所属部门</th>
+	<th>是否在岗</th>
+	<th>操作</th>
 </tr>
 <?php foreach ($teachers as $teacher): ?>
 <tr>
 	<td><?php echo $teacher['Teacher']['id']; ?></td>
-	<td>&nbsp;<?php echo $html->link($teacher['User']['id'], '/users/view/' .$teacher['User']['id'])?></td>
-	<td><?php echo $teacher['Teacher']['teacher_type']; ?></td>
 	<td><?php echo $teacher['Teacher']['teacher_name']; ?></td>
-	<td><?php echo $teacher['Teacher']['is_work']; ?></td>
-	<td><?php echo $teacher['Teacher']['birthday']; ?></td>
-	<td><?php echo $teacher['Teacher']['sex']; ?></td>
-	<td>&nbsp;<?php echo $html->link($teacher['Person']['id'], '/people/view/' .$teacher['Person']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($teacher['Degree']['id'], '/degrees/view/' .$teacher['Degree']['id'])?></td>
-	<td><?php echo $teacher['Teacher']['duty']; ?></td>
-	<td><?php echo $teacher['Teacher']['cert_number']; ?></td>
-	<td><?php echo $teacher['Teacher']['get_busy_date']; ?></td>
-	<td><?php echo $teacher['Teacher']['address']; ?></td>
-	<td><?php echo $teacher['Teacher']['email']; ?></td>
-	<td><?php echo $teacher['Teacher']['graduate_the_college']; ?></td>
-	<td><?php echo $teacher['Teacher']['specialty']; ?></td>
+	<td><?php echo $teacher['Teacher']['sex']==1?'男':'女' ; ?></td>
 	<td><?php echo $teacher['Teacher']['office_phone']; ?></td>
-	<td>&nbsp;<?php echo $html->link($teacher['Department']['id'], '/departments/view/' .$teacher['Department']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($teacher['File']['name'], '/files/view/' .$teacher['File']['id'])?></td>
-	<td><?php echo $teacher['Teacher']['password']; ?></td>
-	<td><?php echo $teacher['Teacher']['flag']; ?></td>
-	<td><?php echo $teacher['Teacher']['created']; ?></td>
-	<td><?php echo $teacher['Teacher']['modified']; ?></td>
+	<td>&nbsp;<?php echo $teacher['Department']['department_name']?></td>
+	<td><?php echo $teacher['Teacher']['is_work']==1?'离职(点击复职) 奖励处罚 继续教育':'离职(点击复职) 奖励处罚 继续教育' ; ?></td>
 	<td class="actions">
-		<?php echo $html->link('View','/teachers/view/' . $teacher['Teacher']['id'])?>
-		<?php echo $html->link('Edit','/teachers/edit/' . $teacher['Teacher']['id'])?>
-		<?php echo $html->link('Delete','/teachers/delete/' . $teacher['Teacher']['id'], null, 'Are you sure you want to delete id ' . $teacher['Teacher']['id'])?>
+		<?php echo $html->link('查看','/teachers/view/' . $teacher['Teacher']['id'])?>
+		<?php echo $html->link('编辑','/teachers/edit/' . $teacher['Teacher']['id'])?>
+		<?php echo $html->link('删除','/teachers/delete/' . $teacher['Teacher']['id'], null, '你是否真要删除资产维修记录『 ' . $teacher['Teacher']['teacher_name'] .' 』？')?>
 	</td>
 </tr>
 <?php endforeach; ?>
 </table>
 
 <ul class="actions">
-	<li><?php echo $html->link('New Teacher', '/teachers/add'); ?></li>
+	<li><?php echo $html->link('新增教职工', '/teachers/add'); ?></li>
 </ul>
+</fieldset>
 </div>

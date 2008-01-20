@@ -1,4 +1,6 @@
-<h2>Edit Teacher Is Work</h2>
+<div id="content">
+<fieldset align=center>
+<legend>教职工离职复职</legend> 
 <form action="<?php echo $html->url('/teacher_is_works/edit/'.$html->tagValue('TeacherIsWork/id')); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('TeacherIsWork/teacher_id', 'Teacher');?>
@@ -31,8 +33,6 @@
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('Delete','/teacher_is_works/delete/' . $html->tagValue('TeacherIsWork/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('TeacherIsWork/id'));?>
-<li><?php echo $html->link('List Teacher Is Works', '/teacher_is_works/index')?></li>
-<li><?php echo $html->link('View Teachers', '/teachers/index/');?></li>
-<li><?php echo $html->link('Add Teachers', '/teachers/add/');?></li>
-</ul>
+<li><?php echo $html->link('教职工离职复职列表', '/teacher_is_works/index')?></li>
+</fieldset>
+</div>

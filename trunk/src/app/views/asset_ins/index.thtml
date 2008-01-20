@@ -8,8 +8,6 @@
 	<th>入库时间</th>
 	<th>使用部门</th>
 	<th>使用人</th>
-	<th>创建时间</th>
-	<th>修改时间</th>
 	<th>操作</th>
 </tr>
 <?php foreach ($assetIns as $assetIn): ?>
@@ -18,8 +16,6 @@
 	<td><?php echo $assetIn['AssetIn']['in_date']; ?></td>
 	<td>&nbsp;<?php echo $assetIn['Department']['department_name']?></td>
 	<td><?php echo $assetIn['AssetIn']['use_person']; ?></td>
-	<td><?php echo $assetIn['AssetIn']['created']; ?></td>
-	<td><?php echo $assetIn['AssetIn']['modified']; ?></td>
 	<td class="actions">
 		<?php echo $html->link('编辑','/asset_ins/edit/' . $assetIn['AssetIn']['id'])?>
 		<?php echo $html->link('删除','/asset_ins/delete/' . $assetIn['AssetIn']['id'], null, '你是否真要删除资产归还记录『 ' . $assetIn['Asset']['asset_name'] .' 』？')?>

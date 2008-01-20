@@ -1,74 +1,58 @@
-<div class="teacher">
-<h2>View Teacher</h2>
-
+<div id="content">
+<fieldset align=center>
+<legend>教职工信息</legend> 
 <dl>
-	<dt>Id</dt>
-	<dd>&nbsp;<?php echo $teacher['Teacher']['id']?></dd>
+	<!--
 	<dt>User</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['User']['id'], '/users/view/' .$teacher['User']['id'])?></dd>
-	<dt>Teacher Type</dt>
-	<dd>&nbsp;<?php echo $teacher['Teacher']['teacher_type']?></dd>
-	<dt>Teacher Name</dt>
+	-->
+	<dt>姓名</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['teacher_name']?></dd>
-	<dt>Is Work</dt>
+	<dt>教职工类型</dt>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['teacher_type']?></dd>
+	<dt>是否在岗</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['is_work']?></dd>
-	<dt>Birthday</dt>
+	<dt>生日</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['birthday']?></dd>
-	<dt>Sex</dt>
+	<dt>性别</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['sex']?></dd>
-	<dt>People</dt>
+	<dt>民族</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['Person']['id'], '/people/view/' .$teacher['Person']['id'])?></dd>
-	<dt>Degree</dt>
+	<dt>学位</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['Degree']['id'], '/degrees/view/' .$teacher['Degree']['id'])?></dd>
-	<dt>Duty</dt>
+	<dt>职称</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['duty']?></dd>
-	<dt>Cert Number</dt>
+	<dt>身份证号码</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['cert_number']?></dd>
-	<dt>Get Busy Date</dt>
+	<dt>任教年限</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['get_busy_date']?></dd>
-	<dt>Address</dt>
+	<dt>联系地址</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['address']?></dd>
-	<dt>Email</dt>
+	<dt>电子邮箱</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['email']?></dd>
-	<dt>Graduate The College</dt>
+	<dt>毕业院校</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['graduate_the_college']?></dd>
-	<dt>Specialty</dt>
+	<dt>所学专业</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['specialty']?></dd>
-	<dt>Office Phone</dt>
+	<dt>办公电话</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['office_phone']?></dd>
-	<dt>Department</dt>
+	<dt>所属部门</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['Department']['id'], '/departments/view/' .$teacher['Department']['id'])?></dd>
-	<dt>File</dt>
+	<dt>照片</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['File']['name'], '/files/view/' .$teacher['File']['id'])?></dd>
-	<dt>Password</dt>
-	<dd>&nbsp;<?php echo $teacher['Teacher']['password']?></dd>
-	<dt>Flag</dt>
+	<dt>状态</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['flag']?></dd>
-	<dt>Created</dt>
-	<dd>&nbsp;<?php echo $teacher['Teacher']['created']?></dd>
-	<dt>Modified</dt>
-	<dd>&nbsp;<?php echo $teacher['Teacher']['modified']?></dd>
 </dl>
 <ul class="actions">
-	<li><?php echo $html->link('Edit Teacher',   '/teachers/edit/' . $teacher['Teacher']['id']) ?> </li>
-	<li><?php echo $html->link('Delete Teacher', '/teachers/delete/' . $teacher['Teacher']['id'], null, 'Are you sure you want to delete: id ' . $teacher['Teacher']['id'] . '?') ?> </li>
-	<li><?php echo $html->link('List Teachers',   '/teachers/index') ?> </li>
-	<li><?php echo $html->link('New Teacher',	'/teachers/add') ?> </li>
-	<li><?php echo $html->link('List User', '/users/index/')?> </li>
-	<li><?php echo $html->link('New Users', '/users/add/')?> </li>
-	<li><?php echo $html->link('List Person', '/people/index/')?> </li>
-	<li><?php echo $html->link('New Peoples', '/people/add/')?> </li>
-	<li><?php echo $html->link('List Degree', '/degrees/index/')?> </li>
-	<li><?php echo $html->link('New Degrees', '/degrees/add/')?> </li>
-	<li><?php echo $html->link('List Department', '/departments/index/')?> </li>
-	<li><?php echo $html->link('New Departments', '/departments/add/')?> </li>
-	<li><?php echo $html->link('List File', '/files/index/')?> </li>
-	<li><?php echo $html->link('New Files', '/files/add/')?> </li>
+	<li><?php echo $html->link('教职工列表',   '/teachers/index') ?> </li>
 </ul>
-
+</fieldset>
 </div>
-<div class="related">
-<h3>Related Banjis</h3>
+
+
+<div id="content">
+<fieldset align=center>
+<legend>任教班级</legend> 
 <?php if (!empty($teacher['Banji'])):?>
 <table cellpadding="0" cellspacing="0">
 <tr>
@@ -95,9 +79,13 @@
 <ul class="actions">
 	<li><?php echo $html->link('New Banji', '/banjis/add/');?> </li>
 </ul>
+</fieldset>
 </div>
-<div class="related">
-<h3>Related Courses</h3>
+
+
+<div id="content">
+<fieldset align=center>
+<legend>任教课程</legend> 
 <?php if (!empty($teacher['Course'])):?>
 <table cellpadding="0" cellspacing="0">
 <tr>
@@ -124,4 +112,5 @@
 <ul class="actions">
 	<li><?php echo $html->link('New Course', '/courses/add/');?> </li>
 </ul>
+</fieldset>
 </div>

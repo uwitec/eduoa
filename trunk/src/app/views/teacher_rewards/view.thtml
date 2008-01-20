@@ -1,31 +1,22 @@
-<div class="teacherReward">
-<h2>View Teacher Reward</h2>
-
+<div id="content">
+<fieldset align=center>
+<legend>查看教职工奖惩信息</legend> 
 <dl>
-	<dt>Id</dt>
-	<dd>&nbsp;<?php echo $teacherReward['TeacherReward']['id']?></dd>
-	<dt>Teacher</dt>
-	<dd>&nbsp;<?php echo $html->link($teacherReward['Teacher']['id'], '/teachers/view/' .$teacherReward['Teacher']['id'])?></dd>
-	<dt>Created</dt>
+	<dt>教师名称</dt>
+	<dd>&nbsp;<?php echo $teacherReward['Teacher']['teacher_name']?></dd>
+	<dt>奖惩日期</dt>
 	<dd>&nbsp;<?php echo $teacherReward['TeacherReward']['created']?></dd>
-	<dt>Flag</dt>
+	<dt>奖惩标记</dt>
 	<dd>&nbsp;<?php echo $teacherReward['TeacherReward']['flag']?></dd>
-	<dt>Content</dt>
+	<dt>奖惩内容</dt>
 	<dd>&nbsp;<?php echo $teacherReward['TeacherReward']['content']?></dd>
-	<dt>Reason</dt>
+	<dt>奖惩原因</dt>
 	<dd>&nbsp;<?php echo $teacherReward['TeacherReward']['reason']?></dd>
-	<dt>Remark</dt>
+	<dt>奖惩备注</dt>
 	<dd>&nbsp;<?php echo $teacherReward['TeacherReward']['remark']?></dd>
-	<dt>Modified</dt>
-	<dd>&nbsp;<?php echo $teacherReward['TeacherReward']['modified']?></dd>
 </dl>
 <ul class="actions">
-	<li><?php echo $html->link('Edit Teacher Reward',   '/teacher_rewards/edit/' . $teacherReward['TeacherReward']['id']) ?> </li>
-	<li><?php echo $html->link('Delete Teacher Reward', '/teacher_rewards/delete/' . $teacherReward['TeacherReward']['id'], null, 'Are you sure you want to delete: id ' . $teacherReward['TeacherReward']['id'] . '?') ?> </li>
-	<li><?php echo $html->link('List Teacher Rewards',   '/teacher_rewards/index') ?> </li>
-	<li><?php echo $html->link('New Teacher Reward',	'/teacher_rewards/add') ?> </li>
-	<li><?php echo $html->link('List Teacher', '/teachers/index/')?> </li>
-	<li><?php echo $html->link('New Teachers', '/teachers/add/')?> </li>
+<li><?php echo $html->link('教职工奖惩信息列表', '/teacher_rewards/index')?></li>
 </ul>
-
+</fieldset>
 </div>

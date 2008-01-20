@@ -1,121 +1,111 @@
-<h2>Edit Teacher</h2>
+<div id="content">
+<fieldset align=center>
+<legend>教职工信息</legend> 
 <form action="<?php echo $html->url('/teachers/edit/'.$html->tagValue('Teacher/id')); ?>" method="post">
+<!--
 <div class="optional"> 
 	<?php echo $form->labelTag('Teacher/user_id', 'User');?>
- 	<?php echo $html->selectTag('Teacher/user_id', $users, $html->tagValue('Teacher/user_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Teacher/user_id', $users, $html->tagValue('Teacher/user_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Teacher/user_id', 'Please select the User.') ?>
 </div>
+-->
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/teacher_type', 'Teacher Type');?>
- 	<?php echo $html->input('Teacher/teacher_type', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Teacher/teacher_type', 'Please enter the Teacher Type.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Teacher/teacher_name', 'Teacher Name');?>
+	<?php echo $form->labelTag('Teacher/teacher_name', '姓名');?>
  	<?php echo $html->input('Teacher/teacher_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Teacher/teacher_name', 'Please enter the Teacher Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/is_work', 'Is Work');?>
- 	<?php echo $html->input('Teacher/is_work', array('size' => '60'));?>
+	<?php echo $form->labelTag('Teacher/teacher_type', '教职工类型');?>
+	<?php echo $html->selectTag('Teacher/teacher_type', array('2' => '职工','1' => '教师'),array('2','1'),array(), array(), false);?> 	
+	<?php echo $html->tagErrorMsg('Teacher/teacher_type', 'Please enter the Teacher Type.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/is_work', '是否在岗');?>
+	<?php echo $html->selectTag('Teacher/is_work', array('0' => '离职','1' => '在岗'),array('0','1'),array(), array(), false);?> 	
 	<?php echo $html->tagErrorMsg('Teacher/is_work', 'Please enter the Is Work.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/sex', 'Sex');?>
- 	<?php echo $html->input('Teacher/sex', array('size' => '60'));?>
+	<?php echo $form->labelTag('Teacher/sex', '性别');?>
+	<?php echo $html->selectTag('Teacher/sex', array('1' => '男','0' => '女'),array('1','0'),array(), array(), false);?> 	
 	<?php echo $html->tagErrorMsg('Teacher/sex', 'Please enter the Sex.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/people_id', 'People');?>
- 	<?php echo $html->selectTag('Teacher/people_id', $people, $html->tagValue('Teacher/people_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('Teacher/people_id', '民族');?>
+ 	<?php echo $html->selectTag('Teacher/people_id', $people, $html->tagValue('Teacher/people_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Teacher/people_id', 'Please select the People.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/degree_id', 'Degree');?>
- 	<?php echo $html->selectTag('Teacher/degree_id', $degrees, $html->tagValue('Teacher/degree_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('Teacher/degree_id', '学位');?>
+ 	<?php echo $html->selectTag('Teacher/degree_id', $degrees, $html->tagValue('Teacher/degree_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Teacher/degree_id', 'Please select the Degree.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/duty', 'Duty');?>
+	<?php echo $form->labelTag('Teacher/duty', '职称');?>
  	<?php echo $html->input('Teacher/duty', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Teacher/duty', 'Please enter the Duty.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/cert_number', 'Cert Number');?>
+	<?php echo $form->labelTag('Teacher/cert_number', '身份证号码');?>
  	<?php echo $html->input('Teacher/cert_number', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Teacher/cert_number', 'Please enter the Cert Number.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/address', 'Address');?>
+	<?php echo $form->labelTag('Teacher/address', '联系地址');?>
  	<?php echo $html->input('Teacher/address', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Teacher/address', 'Please enter the Address.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/email', 'Email');?>
+	<?php echo $form->labelTag('Teacher/email', '电子邮箱');?>
  	<?php echo $html->input('Teacher/email', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Teacher/email', 'Please enter the Email.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/graduate_the_college', 'Graduate The College');?>
+	<?php echo $form->labelTag('Teacher/graduate_the_college', '毕业院校');?>
  	<?php echo $html->input('Teacher/graduate_the_college', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Teacher/graduate_the_college', 'Please enter the Graduate The College.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/specialty', 'Specialty');?>
+	<?php echo $form->labelTag('Teacher/specialty', '所学专业');?>
  	<?php echo $html->input('Teacher/specialty', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Teacher/specialty', 'Please enter the Specialty.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/office_phone', 'Office Phone');?>
+	<?php echo $form->labelTag('Teacher/office_phone', '办公电话');?>
  	<?php echo $html->input('Teacher/office_phone', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Teacher/office_phone', 'Please enter the Office Phone.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/department_id', 'Department');?>
- 	<?php echo $html->selectTag('Teacher/department_id', $departments, $html->tagValue('Teacher/department_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('Teacher/department_id', '所属部门');?>
+ 	<?php echo $html->selectTag('Teacher/department_id', $departments, $html->tagValue('Teacher/department_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Teacher/department_id', 'Please select the Department.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/file_id', 'File');?>
- 	<?php echo $html->selectTag('Teacher/file_id', $files, $html->tagValue('Teacher/file_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('Teacher/file_id', '照片');?>
+ 	<?php echo $html->selectTag('Teacher/file_id', $files, $html->tagValue('Teacher/file_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Teacher/file_id', 'Please select the File.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/password', 'Password');?>
- 	<?php echo $html->input('Teacher/password', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Teacher/password', 'Please enter the Password.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Teacher/flag', 'Flag');?>
+	<?php echo $form->labelTag('Teacher/flag', '状态');?>
  	<?php echo $html->input('Teacher/flag', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Teacher/flag', 'Please enter the Flag.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Banji/Banji', 'Related Banjis');?>
- 	<?php echo $html->selectTag('Banji/Banji', $banjis, $selectedBanjis, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), true);?>
+	<?php echo $form->labelTag('Banji/Banji', '任教班级');?>
+ 	<?php echo $html->selectTag('Banji/Banji', $banjis, $selectedBanjis, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Banji/Banji', 'Please select the Related Banjis.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Course/Course', 'Related Courses');?>
- 	<?php echo $html->selectTag('Course/Course', $courses, $selectedCourses, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), true);?>
+	<?php echo $form->labelTag('Course/Course', '任教课程');?>
+ 	<?php echo $html->selectTag('Course/Course', $courses, $selectedCourses, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Course/Course', 'Please select the Related Courses.');?>
 </div>
 <?php echo $html->hidden('Teacher/id')?>
 <div class="submit">
-	<?php echo $html->submit('Save');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('Delete','/teachers/delete/' . $html->tagValue('Teacher/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Teacher/id'));?>
-<li><?php echo $html->link('List Teachers', '/teachers/index')?></li>
-<li><?php echo $html->link('View Users', '/users/index/');?></li>
-<li><?php echo $html->link('Add Users', '/users/add/');?></li>
-<li><?php echo $html->link('View People', '/people/index/');?></li>
-<li><?php echo $html->link('Add People', '/people/add/');?></li>
-<li><?php echo $html->link('View Degrees', '/degrees/index/');?></li>
-<li><?php echo $html->link('Add Degrees', '/degrees/add/');?></li>
-<li><?php echo $html->link('View Departments', '/departments/index/');?></li>
-<li><?php echo $html->link('Add Departments', '/departments/add/');?></li>
-<li><?php echo $html->link('View Files', '/files/index/');?></li>
-<li><?php echo $html->link('Add Files', '/files/add/');?></li>
+<li><?php echo $html->link('教职工列表', '/teachers/index')?></li>
 </ul>
+</fieldset>
+</div>

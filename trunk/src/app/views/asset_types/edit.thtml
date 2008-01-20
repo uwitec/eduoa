@@ -1,6 +1,6 @@
 <div id="content">
 <fieldset align=center>
-<legend>资产类别</legend>
+<legend>编辑资产类别</legend>
 <form action="<?php echo $html->url('/asset_types/edit/'.$html->tagValue('AssetType/id')); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetType/type_name', '资产类别名称');?>

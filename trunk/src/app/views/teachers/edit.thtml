@@ -1,6 +1,6 @@
 <div id="content">
 <fieldset align=center>
-<legend>教职工信息</legend> 
+<legend>编辑教职工信息</legend> 
 <form action="<?php echo $html->url('/teachers/edit/'.$html->tagValue('Teacher/id')); ?>" method="post">
 <!--
 <div class="optional"> 

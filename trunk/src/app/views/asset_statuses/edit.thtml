@@ -1,6 +1,6 @@
 <div id="content">
 <fieldset align=center>
-<legend>使用状态</legend> 
+<legend>资产使用状态编辑</legend> 
 <form action="<?php echo $html->url('/asset_statuses/edit/'.$html->tagValue('AssetStatus/id')); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetStatus/status_name', '使用状态名称');?>

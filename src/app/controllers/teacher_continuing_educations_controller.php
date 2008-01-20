@@ -19,12 +19,19 @@ class TeacherContinuingEducationsController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
-			$this->set('teachers', $this->TeacherContinuingEducation->Teacher->generateList());
+			$this->set('teachers', 
+						$this->TeacherContinuingEducation->Teacher->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Teacher.id',
+							$valuePath = '{n}.Teacher.teacher_name')
+			);
 			$this->render();
 		} else {
 			$this->cleanUpFields();
 			if ($this->TeacherContinuingEducation->save($this->data)) {
-				$this->Session->setFlash('The Teacher Continuing Education has been saved');
+				$this->Session->setFlash('新增教职工继续教育记录成功！');
 				$this->redirect('/teacher_continuing_educations/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -40,11 +47,18 @@ class TeacherContinuingEducationsController extends AppController {
 				$this->redirect('/teacher_continuing_educations/index');
 			}
 			$this->data = $this->TeacherContinuingEducation->read(null, $id);
-			$this->set('teachers', $this->TeacherContinuingEducation->Teacher->generateList());
+			$this->set('teachers', 
+						$this->TeacherContinuingEducation->Teacher->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Teacher.id',
+							$valuePath = '{n}.Teacher.teacher_name')
+			);
 		} else {
 			$this->cleanUpFields();
 			if ($this->TeacherContinuingEducation->save($this->data)) {
-				$this->Session->setFlash('The TeacherContinuingEducation has been saved');
+				$this->Session->setFlash('教职工继续教育记录保存成功！');
 				$this->redirect('/teacher_continuing_educations/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -59,7 +73,7 @@ class TeacherContinuingEducationsController extends AppController {
 			$this->redirect('/teacher_continuing_educations/index');
 		}
 		if ($this->TeacherContinuingEducation->del($id)) {
-			$this->Session->setFlash('The Teacher Continuing Education deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/teacher_continuing_educations/index');
 		}
 	}

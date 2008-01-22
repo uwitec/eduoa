@@ -26,6 +26,17 @@ class StudentsController extends AppController {
 		}
 	}
 
+   function index_grow_files($id = null) {
+		$this->Student->recursive = 0;
+		if($id){
+			$this->set('students', $this->Student->findAll('Banji.id = '.$id));
+			$this->set('banji_id',$id);
+		}else{
+			$this->set('students', $this->Student->findAll());
+			$this->set('banji_id',null);
+		}
+   }
+
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash('Invalid id for Student.');

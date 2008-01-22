@@ -38,3 +38,35 @@ create table email_attachments(
   file_id               int(10)       not null                comment '文件',
   primary key (id)
 )engine=MyISAM default charset=utf8 comment='内部邮件';
+
+
+-- ----------------------------
+-- 栏目分类
+-- ----------------------------
+create table categories(
+  id                   int(10)       not null auto_increment comment '主键',
+  category_name        varchar(18)   not null default ''     comment '栏目分类名称',
+  category_nicename    varchar(66)   not null default ''     comment '栏目分类别名',
+  category_description longtext                              comment '栏目简介',
+  category_parent      int(10)                               comment '父亲栏目',
+  category_count       int(10)                               comment '栏目点击',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='栏目分类';
+
+
+-- ----------------------------
+-- 栏目文章
+-- ----------------------------
+create table posts(
+  id                   int(10)       not null auto_increment comment '主键',
+  category_id          varchar(18)   not null default ''     comment '栏目分类',
+  post_title           varchar(255)  not null                comment '标题',
+  post_content         longtext      not null                comment '内容',
+  post_status          enum('publish','draft','private','static','object','attachment') not null default 'publish' comment '发布状态',
+  post_count           int(10)       not null default 0      comment '点击次数',
+  valid_from   date                   ,  -- 生效日期
+  valid_thru   date                   ,  -- 终止日期
+  created              timestamp                             comment '创建时间',
+  modified             timestamp                             comment '修改时间',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='栏目文章';

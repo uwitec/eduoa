@@ -200,6 +200,7 @@ create table students(
   id                    int(10)       not null auto_increment comment '内部编号',
   student_no            int(12)                               comment '学号(sp用)',
   file_no               varchar(20)                           comment '学号(档案编号)',
+  student_name          varchar(30)                           comment '学生姓名',
   banji_id              int(10)                               comment '所在班级',
   birthday              date                                  comment '出生日期',
   sex                   int(1)                                comment '性别',
@@ -266,6 +267,7 @@ create table student_particular_changes(
   new_banji_id          int(10)       not null                comment '新班级',
   change_reason         varchar(200)                          comment '调班原因',
   ratifier              varchar(100)                          comment '批准人',
+  user_id               int(10)       not null                comment '创建人',
   created               timestamp                             comment '创建时间',
   modified              timestamp                             comment '修改时间',
   primary key (id)
@@ -292,8 +294,8 @@ create table weeks(
 /* 课程表 */
 create table curriculum_schedules(
   id                    int(10)       not null auto_increment comment '内部编号',
-  class_id              int(10)       not null                comment '班级'
-  hour_id               int(10)       not null                comment '科时',
+  class_id              int(10)       not null                comment '班级',
+  hour_id               int(10)       not null                comment '课时',
   week_id               int(10)       not null                comment '星期',
   teacher_id            int(10)       not null                comment '教师名称',
   primary key (id)  
@@ -362,7 +364,9 @@ create table doc_files(
 create table doc_class_receiving_logs(
   id                    int(10)       not null auto_increment comment '接收内部编号',
   document_id           int(10)       not null                comment '文档',
-
+  banji_id              int(10)                               comment '班级',
+  status                int(1)                                comment '接收状态',
+  receiving_date        timestamp                             comment '接收时间',
   created               timestamp                             comment '创建时间',
   modified              timestamp                             comment '修改时间',
   primary key (id)

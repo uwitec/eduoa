@@ -1,0 +1,28 @@
+<div class="exams">
+<h2>List Exams</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Semester</th>
+	<th>Exam Name</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($exams as $exam): ?>
+<tr>
+	<td><?php echo $exam['Exam']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($exam['Semester']['id'], '/semesters/view/' .$exam['Semester']['id'])?></td>
+	<td><?php echo $exam['Exam']['exam_name']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/exams/view/' . $exam['Exam']['id'])?>
+		<?php echo $html->link('Edit','/exams/edit/' . $exam['Exam']['id'])?>
+		<?php echo $html->link('Delete','/exams/delete/' . $exam['Exam']['id'], null, 'Are you sure you want to delete id ' . $exam['Exam']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Exam', '/exams/add'); ?></li>
+</ul>
+</div>

@@ -1,0 +1,48 @@
+<div id="content">
+<fieldset align="center">
+<legend>班级成绩管理使用说明</legend> 
+	<div>
+	  <p>
+	  1、选择要管理成绩的"<font color=red>学期</font>"、"<font color=red>班级</font>"和"<font color=red>课程</font>"；<br/>
+	  2、点击"<font color=red>进入班级成绩管理页面</font>"；<br/>
+	  3、然后进入<font color=red>班级成绩管理</font>；<br/>
+	  <font color=green>注：在输入框<font color=red>输入完分数</font>以后，以<font color=red>不用按其它按钮</font>，系统会<font color=red>自动保存数据</font></font>。<br/>
+	  </p>
+	</div>
+</fieldset>
+</div>
+
+<form action="<?php echo $html->url('/exam_results/import'); ?>" method="post" encType="multipart/form-data">
+
+<table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=560 style="border-collapse:collapse">
+  <tr>
+    <th colspan="2" style="text-align:left;font-size:14px;">班级成绩导入(请先选择学期、班级、课程，然后点击底行按钮，下载成绩文件)</th>
+  </tr>
+  <tr>
+    <td>当前学期:</td>
+    <td>
+ 	<?php echo $html->selectTag('ExamResult/semester_id', $semesters, $html->tagValue('ExamResult/semester_id'), array(), array(), false);?>
+    </td>
+  </tr>
+  <tr>
+    <td>选择班级：</td>
+    <td>
+ 	<?php echo $html->selectTag('Banji/class_id', $banjis, $html->tagValue('Banji/class_id'), array(), array(), false);?>
+    </td>
+  </tr>
+  <tr>
+    <td>选择课程：</td>
+    <td>
+ 	<?php echo $html->selectTag('ExamResult/course_id', $courses, $html->tagValue('ExamResult/course_id'), array(), array(), false);?>
+    </td>
+  </tr>
+  <tr>
+    <td align=middle  colspan=2>
+	  <div align="center">
+        <input title="进入班级成绩管理页面" type="submit" value="进入班级成绩管理页面"/>
+      </div>
+	</td>
+  </tr>
+</table>
+
+</form>

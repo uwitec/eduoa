@@ -1,0 +1,23 @@
+<h2>Edit Exam</h2>
+<form action="<?php echo $html->url('/exams/edit/'.$html->tagValue('Exam/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Exam/semester_id', 'Semester');?>
+ 	<?php echo $html->selectTag('Exam/semester_id', $semesters, $html->tagValue('Exam/semester_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Exam/semester_id', 'Please select the Semester.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Exam/exam_name', 'Exam Name');?>
+ 	<?php echo $html->input('Exam/exam_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Exam/exam_name', 'Please enter the Exam Name.');?>
+</div>
+<?php echo $html->hidden('Exam/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/exams/delete/' . $html->tagValue('Exam/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Exam/id'));?>
+<li><?php echo $html->link('List Exams', '/exams/index')?></li>
+<li><?php echo $html->link('View Semesters', '/semesters/index/');?></li>
+<li><?php echo $html->link('Add Semesters', '/semesters/add/');?></li>
+</ul>

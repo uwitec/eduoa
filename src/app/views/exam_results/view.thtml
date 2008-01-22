@@ -1,0 +1,33 @@
+<div class="examResult">
+<h2>View Exam Result</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $examResult['ExamResult']['id']?></dd>
+	<dt>Student</dt>
+	<dd>&nbsp;<?php echo $html->link($examResult['Student']['id'], '/students/view/' .$examResult['Student']['id'])?></dd>
+	<dt>Exam</dt>
+	<dd>&nbsp;<?php echo $html->link($examResult['Exam']['id'], '/exams/view/' .$examResult['Exam']['id'])?></dd>
+	<dt>Semester</dt>
+	<dd>&nbsp;<?php echo $html->link($examResult['Semester']['id'], '/semesters/view/' .$examResult['Semester']['id'])?></dd>
+	<dt>Course</dt>
+	<dd>&nbsp;<?php echo $html->link($examResult['Course']['id'], '/courses/view/' .$examResult['Course']['id'])?></dd>
+	<dt>Score</dt>
+	<dd>&nbsp;<?php echo $examResult['ExamResult']['score']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Exam Result',   '/exam_results/edit/' . $examResult['ExamResult']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Exam Result', '/exam_results/delete/' . $examResult['ExamResult']['id'], null, 'Are you sure you want to delete: id ' . $examResult['ExamResult']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Exam Results',   '/exam_results/index') ?> </li>
+	<li><?php echo $html->link('New Exam Result',	'/exam_results/add') ?> </li>
+	<li><?php echo $html->link('List Student', '/students/index/')?> </li>
+	<li><?php echo $html->link('New Students', '/students/add/')?> </li>
+	<li><?php echo $html->link('List Exam', '/exams/index/')?> </li>
+	<li><?php echo $html->link('New Exams', '/exams/add/')?> </li>
+	<li><?php echo $html->link('List Semester', '/semesters/index/')?> </li>
+	<li><?php echo $html->link('New Semesters', '/semesters/add/')?> </li>
+	<li><?php echo $html->link('List Course', '/courses/index/')?> </li>
+	<li><?php echo $html->link('New Courses', '/courses/add/')?> </li>
+</ul>
+
+</div>

@@ -1,39 +1,25 @@
-<div class="banji">
-<h2>View Banji</h2>
+<div id="content">
+<fieldset align=center>
+<legend>班级信息查阅</legend>
 
 <dl>
-	<dt>Id</dt>
-	<dd>&nbsp;<?php echo $banji['Banji']['id']?></dd>
-	<dt>Class No</dt>
+	<dt>班级编号</dt>
 	<dd>&nbsp;<?php echo $banji['Banji']['class_no']?></dd>
-	<dt>Class Name</dt>
+	<dt>班级名称</dt>
 	<dd>&nbsp;<?php echo $banji['Banji']['class_name']?></dd>
-	<dt>Entrance Year</dt>
+	<dt>入学年份</dt>
 	<dd>&nbsp;<?php echo $banji['Banji']['entrance_year']?></dd>
-	<dt>Teacher</dt>
-	<dd>&nbsp;<?php echo $html->link($banji['Teacher']['id'], '/teachers/view/' .$banji['Teacher']['id'])?></dd>
-	<dt>Academic Year</dt>
-	<dd>&nbsp;<?php echo $html->link($banji['AcademicYear']['id'], '/academic_years/view/' .$banji['AcademicYear']['id'])?></dd>
-	<dt>Classroom</dt>
-	<dd>&nbsp;<?php echo $html->link($banji['Classroom']['id'], '/classrooms/view/' .$banji['Classroom']['id'])?></dd>
-	<dt>Class Size</dt>
+	<dt>班主任</dt>
+	<dd>&nbsp;<?php echo $banji['Teacher']['teacher_name']; ?></dd>
+	<dt>学年制</dt>
+	<dd>&nbsp;<?php echo $banji['AcademicYear']['ay_name']; ?></dd>
+	<dt>固定教室</dt>
+	<dd>&nbsp;<?php echo $banji['Classroom']['classroom_name']; ?></dd>
+	<dt>班级人数</dt>
 	<dd>&nbsp;<?php echo $banji['Banji']['class_size']?></dd>
-	<dt>Created</dt>
-	<dd>&nbsp;<?php echo $banji['Banji']['created']?></dd>
-	<dt>Modified</dt>
-	<dd>&nbsp;<?php echo $banji['Banji']['modified']?></dd>
 </dl>
 <ul class="actions">
-	<li><?php echo $html->link('Edit Banji',   '/banjis/edit/' . $banji['Banji']['id']) ?> </li>
-	<li><?php echo $html->link('Delete Banji', '/banjis/delete/' . $banji['Banji']['id'], null, 'Are you sure you want to delete: id ' . $banji['Banji']['id'] . '?') ?> </li>
-	<li><?php echo $html->link('List Banjis',   '/banjis/index') ?> </li>
-	<li><?php echo $html->link('New Banji',	'/banjis/add') ?> </li>
-	<li><?php echo $html->link('List Teacher', '/teachers/index/')?> </li>
-	<li><?php echo $html->link('New Teachers', '/teachers/add/')?> </li>
-	<li><?php echo $html->link('List Academic Year', '/academic_years/index/')?> </li>
-	<li><?php echo $html->link('New Academic Years', '/academic_years/add/')?> </li>
-	<li><?php echo $html->link('List Classroom', '/classrooms/index/')?> </li>
-	<li><?php echo $html->link('New Classrooms', '/classrooms/add/')?> </li>
+	<li><?php echo $html->link('班级列表',   '/banjis/vlist') ?> </li>
 </ul>
-
+</fieldset>
 </div>

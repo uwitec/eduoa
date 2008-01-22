@@ -1,87 +1,64 @@
-<div class="student">
-<h2>View Student</h2>
-
+<div id="content">
+<fieldset align=center>
+<legend>查看学生信息</legend> 
 <dl>
-	<dt>Id</dt>
-	<dd>&nbsp;<?php echo $student['Student']['id']?></dd>
-	<dt>Student No</dt>
+	<dt>学号</dt>
 	<dd>&nbsp;<?php echo $student['Student']['student_no']?></dd>
-	<dt>File No</dt>
-	<dd>&nbsp;<?php echo $student['Student']['file_no']?></dd>
-	<dt>Banji</dt>
+	<dt>班级</dt>
 	<dd>&nbsp;<?php echo $html->link($student['Banji']['id'], '/banjis/view/' .$student['Banji']['id'])?></dd>
-	<dt>Birthday</dt>
+	<dt>出生日期</dt>
 	<dd>&nbsp;<?php echo $student['Student']['birthday']?></dd>
-	<dt>Sex</dt>
+	<dt>性别</dt>
 	<dd>&nbsp;<?php echo $student['Student']['sex']?></dd>
-	<dt>People</dt>
+	<dt>民族</dt>
 	<dd>&nbsp;<?php echo $html->link($student['Person']['id'], '/people/view/' .$student['Person']['id'])?></dd>
-	<dt>Native Place</dt>
+	<dt>籍贯</dt>
 	<dd>&nbsp;<?php echo $student['Student']['native_place']?></dd>
-	<dt>Total Score</dt>
-	<dd>&nbsp;<?php echo $student['Student']['total_score']?></dd>
-	<dt>Political Feature</dt>
+	<dt>政治面貌</dt>
 	<dd>&nbsp;<?php echo $student['Student']['political_feature']?></dd>
-	<dt>Physical Condition</dt>
+	<dt>健康状态</dt>
 	<dd>&nbsp;<?php echo $student['Student']['physical_condition']?></dd>
-	<dt>Cert Number</dt>
+	<dt>身份证号码</dt>
 	<dd>&nbsp;<?php echo $student['Student']['cert_number']?></dd>
-	<dt>Graduate The College</dt>
+	<dt>毕业学校</dt>
 	<dd>&nbsp;<?php echo $student['Student']['graduate_the_college']?></dd>
-	<dt>Foreign Language</dt>
+	<dt>外语语种</dt>
 	<dd>&nbsp;<?php echo $student['Student']['foreign_language']?></dd>
-	<dt>Enter The Way</dt>
+	<dt>入学方式</dt>
 	<dd>&nbsp;<?php echo $student['Student']['enter_the_way']?></dd>
-	<dt>Origin</dt>
+	<dt>学生来源</dt>
 	<dd>&nbsp;<?php echo $student['Student']['origin']?></dd>
-	<dt>Address</dt>
+	<dt>家庭住址</dt>
 	<dd>&nbsp;<?php echo $student['Student']['address']?></dd>
-	<dt>Zip</dt>
+	<dt>家庭邮编</dt>
 	<dd>&nbsp;<?php echo $student['Student']['zip']?></dd>
-	<dt>Telphone</dt>
+	<dt>家庭电话</dt>
 	<dd>&nbsp;<?php echo $student['Student']['telphone']?></dd>
-	<dt>Email</dt>
+	<dt>电子邮箱</dt>
 	<dd>&nbsp;<?php echo $student['Student']['email']?></dd>
-	<dt>Enter Date</dt>
+	<dt>入学日期</dt>
 	<dd>&nbsp;<?php echo $student['Student']['enter_date']?></dd>
-	<dt>Remark</dt>
+	<dt>备注</dt>
 	<dd>&nbsp;<?php echo $student['Student']['remark']?></dd>
-	<dt>Student Phone</dt>
+	<dt>学生电话</dt>
 	<dd>&nbsp;<?php echo $student['Student']['student_phone']?></dd>
-	<dt>Father Name</dt>
+	<dt>父亲姓名</dt>
 	<dd>&nbsp;<?php echo $student['Student']['father_name']?></dd>
-	<dt>Father Unit</dt>
+	<dt>父亲单位</dt>
 	<dd>&nbsp;<?php echo $student['Student']['father_unit']?></dd>
-	<dt>Father Phone</dt>
+	<dt>父亲电话</dt>
 	<dd>&nbsp;<?php echo $student['Student']['father_phone']?></dd>
-	<dt>Mother Name</dt>
+	<dt>母亲姓名</dt>
 	<dd>&nbsp;<?php echo $student['Student']['mother_name']?></dd>
-	<dt>Mother Unit</dt>
+	<dt>母亲单位</dt>
 	<dd>&nbsp;<?php echo $student['Student']['mother_unit']?></dd>
-	<dt>Mother Phone</dt>
+	<dt>母亲电话</dt>
 	<dd>&nbsp;<?php echo $student['Student']['mother_phone']?></dd>
-	<dt>File</dt>
-	<dd>&nbsp;<?php echo $html->link($student['File']['name'], '/files/view/' .$student['File']['id'])?></dd>
-	<dt>Password</dt>
-	<dd>&nbsp;<?php echo $student['Student']['password']?></dd>
-	<dt>Status</dt>
+	<dt>状态</dt>
 	<dd>&nbsp;<?php echo $student['Student']['status']?></dd>
-	<dt>Created</dt>
-	<dd>&nbsp;<?php echo $student['Student']['created']?></dd>
-	<dt>Modified</dt>
-	<dd>&nbsp;<?php echo $student['Student']['modified']?></dd>
 </dl>
 <ul class="actions">
-	<li><?php echo $html->link('Edit Student',   '/students/edit/' . $student['Student']['id']) ?> </li>
-	<li><?php echo $html->link('Delete Student', '/students/delete/' . $student['Student']['id'], null, 'Are you sure you want to delete: id ' . $student['Student']['id'] . '?') ?> </li>
-	<li><?php echo $html->link('List Students',   '/students/index') ?> </li>
-	<li><?php echo $html->link('New Student',	'/students/add') ?> </li>
-	<li><?php echo $html->link('List Banji', '/banjis/index/')?> </li>
-	<li><?php echo $html->link('New Banjis', '/banjis/add/')?> </li>
-	<li><?php echo $html->link('List Person', '/people/index/')?> </li>
-	<li><?php echo $html->link('New Peoples', '/people/add/')?> </li>
-	<li><?php echo $html->link('List File', '/files/index/')?> </li>
-	<li><?php echo $html->link('New Files', '/files/add/')?> </li>
+	<li><?php echo $html->link('学生列表',   '/students/index') ?> </li>
 </ul>
-
+</fieldset>
 </div>

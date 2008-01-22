@@ -1,0 +1,42 @@
+TABLE {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; WIDTH: 100%; BORDER-BOTTOM: #ccc 1px solid
+}
+TH {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 14px; BACKGROUND: url(images/icon-table-sort.png) #eee no-repeat 2px 8px; PADDING-BOTTOM: 4px; PADDING-TOP: 4px
+}
+TR {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 4px; PADDING-TOP: 4px; BACKGROUND-COLOR: #eee
+}
+TR.altRow {
+	BACKGROUND-COLOR: #fff
+}
+TD {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.rightAlign {
+	TEXT-ALIGN: right
+}
+.sortedASC {
+	BACKGROUND: url(images/icon-table-sort-asc.png) #eee no-repeat 2px 4px
+}
+.sortedDESC {
+	BACKGROUND: url(images/icon-table-sort-desc.png) #eee no-repeat 2px 10px
+}
+.tableHeaderOver {
+	CURSOR: pointer; COLOR: #354158
+}
+TR.over {
+	CURSOR: pointer; COLOR: #fff; BACKGROUND-COLOR: #354158
+}
+TR.hide {
+	DISPLAY: none
+}
+.tableFilter {
+	BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 5px 0px 10px; BORDER-LEFT: #ccc 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #ccc 1px solid
+}
+.tableFilter INPUT {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid
+}
+.tableFilter SELECT {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid
+}

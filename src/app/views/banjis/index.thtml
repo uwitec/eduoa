@@ -1,44 +1,48 @@
+<script src="/js/mootools.js" type=text/javascript></script>
+<script src="/js/sortabletable.js"  type=text/javascript></script>
 <div id="content">
 <fieldset align=center>
-<legend>资产列表</legend>
+<legend>班级列表</legend>
 
-<table cellpadding="0" cellspacing="0">
-<tr>
-	<th>Id</th>
-	<th>Class No</th>
-	<th>Class Name</th>
-	<th>Entrance Year</th>
-	<th>Teacher</th>
-	<th>Academic Year</th>
-	<th>Classroom</th>
-	<th>Class Size</th>
-	<th>Created</th>
-	<th>Modified</th>
-	<th>Actions</th>
-</tr>
+<table cellpadding="0" cellspacing="0" width="100%" id="myTable">
+ <thead>
+  <tr>
+	<th axis=string>班级编号</th>
+	<th axis=string>班级名称</th>
+	<th axis=string>入学年份</th>
+	<th axis=string>班主任</th>
+	<th axis=string>学年制</th>
+	<th axis=string>固定教室</th>
+	<th>班级人数</th>
+	<th>操作</th>
+  </tr>
+</thead>
+<tbody>
 <?php foreach ($banjis as $banji): ?>
 <tr>
-	<td><?php echo $banji['Banji']['id']; ?></td>
 	<td><?php echo $banji['Banji']['class_no']; ?></td>
 	<td><?php echo $banji['Banji']['class_name']; ?></td>
 	<td><?php echo $banji['Banji']['entrance_year']; ?></td>
-	<td>&nbsp;<?php echo $html->link($banji['Teacher']['id'], '/teachers/view/' .$banji['Teacher']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($banji['AcademicYear']['id'], '/academic_years/view/' .$banji['AcademicYear']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($banji['Classroom']['id'], '/classrooms/view/' .$banji['Classroom']['id'])?></td>
+	<td><?php echo $banji['Teacher']['teacher_name']?></td>
+	<td><?php echo $banji['AcademicYear']['ay_name']?></td>
+	<td><?php echo $banji['Classroom']['classroom_name']?></td>
 	<td><?php echo $banji['Banji']['class_size']; ?></td>
-	<td><?php echo $banji['Banji']['created']; ?></td>
-	<td><?php echo $banji['Banji']['modified']; ?></td>
 	<td class="actions">
-		<?php echo $html->link('View','/banjis/view/' . $banji['Banji']['id'])?>
-		<?php echo $html->link('Edit','/banjis/edit/' . $banji['Banji']['id'])?>
-		<?php echo $html->link('Delete','/banjis/delete/' . $banji['Banji']['id'], null, 'Are you sure you want to delete id ' . $banji['Banji']['id'])?>
+		<?php echo $html->link('编辑','/banjis/edit/' . $banji['Banji']['id'])?>
+		<?php echo $html->link('删除','/banjis/delete/' . $banji['Banji']['id'], null, '你是否真要删除『 ' . $banji['Banji']['class_name'] .' 』')?>
 	</td>
 </tr>
 <?php endforeach; ?>
+</tbody>
 </table>
+<SCRIPT type=text/javascript>
+  window.addEvent('domready', function(){
+	  myTable = new sortableTable('myTable', {overCls: 'over'});
+  });
+</SCRIPT>
 
 <ul class="actions">
-	<li><?php echo $html->link('New Banji', '/banjis/add'); ?></li>
+	<li><?php echo $html->link('新增班级', '/banjis/add'); ?></li>
 </ul>
 </fieldset>
 </div>

@@ -6,13 +6,24 @@ class StudentsController extends AppController {
 
 	function index($id = null) {
 		$this->Student->recursive = 0;
-		if($id == null) {
-			$this->set('students', $this->Student->findAll());			
-		}else {
-			$criteria = "Student.id = $id";
-			$this->set('students', $this->Student->findAll($criteria));
+		if($id){
+			$this->set('students', $this->Student->findAll('Banji.id = '.$id));
+			$this->set('banji_id',$id);
+		}else{
+			$this->set('students', $this->Student->findAll());
+			$this->set('banji_id',null);
 		}
+	}
 
+	function index_change($id = null) {
+		$this->Student->recursive = 0;
+		if($id){
+			$this->set('students', $this->Student->findAll('Banji.id = '.$id));
+			$this->set('banji_id',$id);
+		}else{
+			$this->set('students', $this->Student->findAll());
+			$this->set('banji_id',null);
+		}
 	}
 
 	function view($id = null) {

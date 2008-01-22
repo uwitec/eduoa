@@ -13,6 +13,15 @@ class StudentParticularChange extends AppModel {
 						'counterCache' => ''
 				),
 
+			'User' =>
+				array('className' => 'User',
+						'foreignKey' => 'user_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'counterCache' => ''
+				),
+
 			'OldClass' =>
 				array('className' => 'Banji',
 						'foreignKey' => 'old_banji_id',

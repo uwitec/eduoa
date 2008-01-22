@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 class StudentGrowFilesController extends AppController {
 
 	var $name = 'StudentGrowFiles';
@@ -17,11 +17,11 @@ class StudentGrowFilesController extends AppController {
 		$this->set('studentGrowFile', $this->StudentGrowFile->read(null, $id));
 	}
 
-	function add() {
+	function add($student_id = null,$type_id = null) {
 		if (empty($this->data)) {
-			$this->set('students', $this->StudentGrowFile->Student->generateList());
+			$this->set('students', $this->StudentGrowFile->Student->findById($student_id));
 			$this->set('semesters', $this->StudentGrowFile->Semester->generateList());
-			$this->set('growFileTypes', $this->StudentGrowFile->GrowFileType->generateList());
+			$this->set('growFileTypes', $this->StudentGrowFile->GrowFileType->findById($type_id));
 			$this->render();
 		} else {
 			$this->cleanUpFields();

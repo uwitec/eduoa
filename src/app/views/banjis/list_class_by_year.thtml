@@ -3,7 +3,7 @@
 <tr>
   <td>
     <?php 
-	 $url = $this->params['url']['target'];
+	 $url = $this->params['url']['target'].'&banji=';
 	?>
 	<div id="dtree" style="display: inline;">
 		<script type="text/javascript">

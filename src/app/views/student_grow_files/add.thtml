@@ -1,40 +1,37 @@
-<h2>New Student Grow File</h2>
+<div id="content">
+<fieldset align=center>
+<legend>新建成长档案</legend> 
+
 <form action="<?php echo $html->url('/student_grow_files/add'); ?>" method="post">
+<?php 
+  echo $html->hidden('StudentGrowFile/student_id',array('value' => $students['Student']['id']));
+  echo $html->hidden('StudentGrowFile/grow_file_type_id',array('value' => $growFileTypes['GrowFileType']['id']));
+?>
 <div class="optional"> 
-	<?php echo $form->labelTag('StudentGrowFile/student_id', 'Student');?>
- 	<?php echo $html->selectTag('StudentGrowFile/student_id', $students, $html->tagValue('StudentGrowFile/student_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('StudentGrowFile/student_id', 'Please select the Student.') ?>
+	<?php echo $form->labelTag('Student/student_no', '学号:');?>
+ 	<span><?php echo $students['Student']['student_no'];?></span>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('StudentGrowFile/semester_id', 'Semester');?>
- 	<?php echo $html->selectTag('StudentGrowFile/semester_id', $semesters, $html->tagValue('StudentGrowFile/semester_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('StudentGrowFile/semester_id', 'Please select the Semester.') ?>
+	<?php echo $form->labelTag('Student/student_name', '姓名:');?>
+ 	<span><?php echo $students['Student']['student_name'];?></span>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('StudentGrowFile/grow_file_type_id', 'Grow File Type');?>
- 	<?php echo $html->selectTag('StudentGrowFile/grow_file_type_id', $growFileTypes, $html->tagValue('StudentGrowFile/grow_file_type_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('StudentGrowFile/grow_file_type_id', 'Please select the Grow File Type.') ?>
+	<?php echo $form->labelTag('StudentGrowFile/grow_file_type_id', '类型:');?>
+ 	<span><?php echo $growFileTypes['GrowFileType']['type_name'];?></span>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('StudentGrowFile/title', 'Title');?>
- 	<?php echo $html->input('StudentGrowFile/title', array('size' => '60'));?>
+	<?php echo $form->labelTag('StudentGrowFile/title', '标题:');?>
+ 	<?php echo $html->input('StudentGrowFile/title', array('size' => '50'));?>
 	<?php echo $html->tagErrorMsg('StudentGrowFile/title', 'Please enter the Title.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag( 'StudentGrowFile/description', 'Description' );?>
- 	<?php echo $html->textarea('StudentGrowFile/description', array('cols' => '60', 'rows' => '10'));?>
+	<?php echo $form->labelTag( 'StudentGrowFile/description', '描述:' );?>
+ 	<?php echo $html->textarea('StudentGrowFile/description', array('cols' => '50', 'rows' => '10'));?>
 	<?php echo $html->tagErrorMsg('StudentGrowFile/description', 'Please enter the Description.');?>
 </div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
-<ul class="actions">
-<li><?php echo $html->link('List Student Grow Files', '/student_grow_files/index')?></li>
-<li><?php echo $html->link('View Students', '/students/index/');?></li>
-<li><?php echo $html->link('Add Students', '/students/add/');?></li>
-<li><?php echo $html->link('View Semesters', '/semesters/index/');?></li>
-<li><?php echo $html->link('Add Semesters', '/semesters/add/');?></li>
-<li><?php echo $html->link('View Grow File Types', '/grow_file_types/index/');?></li>
-<li><?php echo $html->link('Add Grow File Types', '/grow_file_types/add/');?></li>
-</ul>
+</fieldset>
+</div>

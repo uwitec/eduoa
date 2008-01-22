@@ -80,6 +80,7 @@ class BanjisController extends AppController {
 
 		$this->Banji->unbindModel(array('belongsTo' => array('Teacher','AcademicYear','Classroom')));
 		$this->set('banjis', $this->Banji->findAll('order by Banji.entrance_year desc,Banji.order_list'));
+
 	}
 
 }

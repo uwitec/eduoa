@@ -28,8 +28,9 @@ class StudentsController extends AppController {
 
    function index_grow_files($id = null) {
 		$this->Student->recursive = 0;
-		if($id){
-			$this->set('students', $this->Student->findAll('Banji.id = '.$id));
+		$banji = $this->params['url']['banji'];
+		if($banji){
+			$this->set('students', $this->Student->findAll('Banji.id = '.$banji));
 			$this->set('banji_id',$id);
 		}else{
 			$this->set('students', $this->Student->findAll());

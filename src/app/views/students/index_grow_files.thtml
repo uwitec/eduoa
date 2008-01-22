@@ -17,19 +17,27 @@
 	<td><?php echo $student['Student']['sex']==1?'男':'女'; ?></td>
 	<td><?php echo $student['Banji']['class_name']?></td>
 	<td class="actions">
-	  <?php if($this->params['url']['action']=='edit'):?>
-	  奋斗目标  成长札记  成绩自我分析  教师评语  学业评价  阅读书籍  个性发展  实践活动  创造发明  得意作品  学习总结
-	  <?php else:?>
-	  查看
-	  <?php endif;?>
+	  <?php 
+	  if($this->params['url']['action']=='edit'){
+		  echo $html->link('奋斗目标', '/student_grow_files/add/'.$student['Student']['id'].'/1').' ';
+		  echo $html->link('成长札记', '/student_grow_files/add/'.$student['Student']['id'].'/2').' ';
+		  echo $html->link('成绩自我分析', '/student_grow_files/add/'.$student['Student']['id'].'/3').' ';
+		  echo $html->link('教师评语', '/student_grow_files/add/'.$student['Student']['id'].'/4').' ';
+		  echo $html->link('学业评价', '/student_grow_files/add/'.$student['Student']['id'].'/5').' ';
+		  echo $html->link('阅读书籍', '/student_grow_files/add/'.$student['Student']['id'].'/6').' ';
+		  echo $html->link('个性发展', '/student_grow_files/add/'.$student['Student']['id'].'/7').' ';
+		  echo $html->link('实践活动', '/student_grow_files/add/'.$student['Student']['id'].'/8').' ';
+		  echo $html->link('创造发明', '/student_grow_files/add/'.$student['Student']['id'].'/9').' ';
+		  echo $html->link('得意作品', '/student_grow_files/add/'.$student['Student']['id'].'/10').' ';
+		  echo $html->link('学习总结', '/student_grow_files/add/'.$student['Student']['id'].'/11').' ';
+	  }else{
+		  echo $html->link('查看', '/people/view/');
+	  }
+	  ?> 
 	</td>
 </tr>
 <?php endforeach; ?>
 </table>
-
-<ul class="actions">
-	<li><?php echo $html->link('新增', '/students/add/'.$banji_id); ?></li>
-</ul>
 
 </fieldset>
 </div>

@@ -1,6 +1,6 @@
 <div id="content">
 <fieldset align=center>
-<legend>班级列表</legend>
+<legend>新增班级</legend>
 
 <form action="<?php echo $html->url('/banjis/add'); ?>" method="post">
 <div class="optional"> 
@@ -20,17 +20,17 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Banji/teacher_id', '班主任:');?>
- 	<?php echo $html->selectTag('Banji/teacher_id', $teachers, $html->tagValue('Banji/teacher_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Banji/teacher_id', $teachers, $html->tagValue('Banji/teacher_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Banji/teacher_id', 'Please select the Teacher.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Banji/academic_year_id', '学年制:');?>
- 	<?php echo $html->selectTag('Banji/academic_year_id', $academicYears, $html->tagValue('Banji/academic_year_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Banji/academic_year_id', $academicYears, $html->tagValue('Banji/academic_year_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Banji/academic_year_id', 'Please select the Academic Year.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Banji/classroom_id', '固定教室:');?>
- 	<?php echo $html->selectTag('Banji/classroom_id', $classrooms, $html->tagValue('Banji/classroom_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Banji/classroom_id', $classrooms, $html->tagValue('Banji/classroom_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Banji/classroom_id', 'Please select the Classroom.') ?>
 </div>
 <div class="optional"> 

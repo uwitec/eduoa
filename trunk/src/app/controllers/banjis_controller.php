@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class BanjisController extends AppController {
 
 	var $name = 'Banjis';
@@ -19,14 +19,40 @@ class BanjisController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
+			/*
 			$this->set('teachers', $this->Banji->Teacher->generateList());
 			$this->set('academicYears', $this->Banji->AcademicYear->generateList());
 			$this->set('classrooms', $this->Banji->Classroom->generateList());
+			*/
+			$this->set('teachers', 
+					   $this->Banji->Teacher->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.Teacher.id',
+						 $valuePath = '{n}.Teacher.teacher_name')
+			);
+			$this->set('academicYears', 
+					   $this->Banji->AcademicYear->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.AcademicYear.id',
+						 $valuePath = '{n}.AcademicYear.ay_name')
+			);
+			$this->set('classrooms', 
+					   $this->Banji->Classroom->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.Classroom.id',
+						 $valuePath = '{n}.Classroom.classroom_name')
+			);
 			$this->render();
 		} else {
 			$this->cleanUpFields();
 			if ($this->Banji->save($this->data)) {
-				$this->Session->setFlash('The Banji has been saved');
+				$this->Session->setFlash('班级新增成功！');
 				$this->redirect('/banjis/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -44,13 +70,34 @@ class BanjisController extends AppController {
 				$this->redirect('/banjis/index');
 			}
 			$this->data = $this->Banji->read(null, $id);
-			$this->set('teachers', $this->Banji->Teacher->generateList());
-			$this->set('academicYears', $this->Banji->AcademicYear->generateList());
-			$this->set('classrooms', $this->Banji->Classroom->generateList());
+			$this->set('teachers', 
+					   $this->Banji->Teacher->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.Teacher.id',
+						 $valuePath = '{n}.Teacher.teacher_name')
+			);
+			$this->set('academicYears', 
+					   $this->Banji->AcademicYear->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.AcademicYear.id',
+						 $valuePath = '{n}.AcademicYear.ay_name')
+			);
+			$this->set('classrooms', 
+					   $this->Banji->Classroom->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.Classroom.id',
+						 $valuePath = '{n}.Classroom.classroom_name')
+			);
 		} else {
 			$this->cleanUpFields();
 			if ($this->Banji->save($this->data)) {
-				$this->Session->setFlash('The Banji has been saved');
+				$this->Session->setFlash('班级信息保存成功！');
 				$this->redirect('/banjis/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -67,7 +114,7 @@ class BanjisController extends AppController {
 			$this->redirect('/banjis/index');
 		}
 		if ($this->Banji->del($id)) {
-			$this->Session->setFlash('The Banji deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/banjis/index');
 		}
 	}

@@ -1,0 +1,6 @@
+﻿"id","building_no","building_name"
+<br/>
+<?php foreach ($teachingBuildings as $teachingBuilding): ?>
+"<?php echo $teachingBuilding['TeachingBuilding']['id']?>","<?php echo $teachingBuilding['TeachingBuilding']['building_no']?>","<?php echo $teachingBuilding['TeachingBuilding']['building_name']?>"
+<br/>
+<?php endforeach; ?>

@@ -1,0 +1,34 @@
+<div class="examResults">
+<h2>List Exam Results</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Student</th>
+	<th>Exam</th>
+	<th>Semester</th>
+	<th>Course</th>
+	<th>Score</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($examResults as $examResult): ?>
+<tr>
+	<td><?php echo $examResult['ExamResult']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($examResult['Student']['id'], '/students/view/' .$examResult['Student']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($examResult['Exam']['id'], '/exams/view/' .$examResult['Exam']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($examResult['Semester']['id'], '/semesters/view/' .$examResult['Semester']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($examResult['Course']['id'], '/courses/view/' .$examResult['Course']['id'])?></td>
+	<td><?php echo $examResult['ExamResult']['score']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/exam_results/view/' . $examResult['ExamResult']['id'])?>
+		<?php echo $html->link('Edit','/exam_results/edit/' . $examResult['ExamResult']['id'])?>
+		<?php echo $html->link('Delete','/exam_results/delete/' . $examResult['ExamResult']['id'], null, 'Are you sure you want to delete id ' . $examResult['ExamResult']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Exam Result', '/exam_results/add'); ?></li>
+</ul>
+</div>

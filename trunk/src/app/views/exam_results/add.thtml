@@ -1,0 +1,42 @@
+<h2>New Exam Result</h2>
+<form action="<?php echo $html->url('/exam_results/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('ExamResult/student_id', 'Student');?>
+ 	<?php echo $html->selectTag('ExamResult/student_id', $students, $html->tagValue('ExamResult/student_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('ExamResult/student_id', 'Please select the Student.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('ExamResult/exam_id', 'Exam');?>
+ 	<?php echo $html->selectTag('ExamResult/exam_id', $exams, $html->tagValue('ExamResult/exam_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('ExamResult/exam_id', 'Please select the Exam.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('ExamResult/semester_id', 'Semester');?>
+ 	<?php echo $html->selectTag('ExamResult/semester_id', $semesters, $html->tagValue('ExamResult/semester_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('ExamResult/semester_id', 'Please select the Semester.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('ExamResult/course_id', 'Course');?>
+ 	<?php echo $html->selectTag('ExamResult/course_id', $courses, $html->tagValue('ExamResult/course_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('ExamResult/course_id', 'Please select the Course.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('ExamResult/score', 'Score');?>
+ 	<?php echo $html->input('ExamResult/score', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('ExamResult/score', 'Please enter the Score.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Exam Results', '/exam_results/index')?></li>
+<li><?php echo $html->link('View Students', '/students/index/');?></li>
+<li><?php echo $html->link('Add Students', '/students/add/');?></li>
+<li><?php echo $html->link('View Exams', '/exams/index/');?></li>
+<li><?php echo $html->link('Add Exams', '/exams/add/');?></li>
+<li><?php echo $html->link('View Semesters', '/semesters/index/');?></li>
+<li><?php echo $html->link('Add Semesters', '/semesters/add/');?></li>
+<li><?php echo $html->link('View Courses', '/courses/index/');?></li>
+<li><?php echo $html->link('Add Courses', '/courses/add/');?></li>
+</ul>

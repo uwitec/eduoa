@@ -1,0 +1,21 @@
+<div class="exam">
+<h2>View Exam</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $exam['Exam']['id']?></dd>
+	<dt>Semester</dt>
+	<dd>&nbsp;<?php echo $html->link($exam['Semester']['id'], '/semesters/view/' .$exam['Semester']['id'])?></dd>
+	<dt>Exam Name</dt>
+	<dd>&nbsp;<?php echo $exam['Exam']['exam_name']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Exam',   '/exams/edit/' . $exam['Exam']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Exam', '/exams/delete/' . $exam['Exam']['id'], null, 'Are you sure you want to delete: id ' . $exam['Exam']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Exams',   '/exams/index') ?> </li>
+	<li><?php echo $html->link('New Exam',	'/exams/add') ?> </li>
+	<li><?php echo $html->link('List Semester', '/semesters/index/')?> </li>
+	<li><?php echo $html->link('New Semesters', '/semesters/add/')?> </li>
+</ul>
+
+</div>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class StudentsController extends AppController {
 
 	var $name = 'Students';
@@ -55,7 +55,7 @@ class StudentsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Student->save($this->data)) {
-				$this->Session->setFlash('The Student has been saved');
+				$this->Session->setFlash('学生信息新增成功！');
 				$this->redirect('/students/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -79,7 +79,7 @@ class StudentsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Student->save($this->data)) {
-				$this->Session->setFlash('The Student has been saved');
+				$this->Session->setFlash('学生信息保存成功！');
 				$this->redirect('/students/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -96,7 +96,7 @@ class StudentsController extends AppController {
 			$this->redirect('/students/index');
 		}
 		if ($this->Student->del($id)) {
-			$this->Session->setFlash('The Student deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/students/index');
 		}
 	}

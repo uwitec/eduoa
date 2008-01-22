@@ -130,5 +130,10 @@ class BanjisController extends AppController {
 
 	}
 
+	function vlist() {
+		$this->Banji->recursive = 0;
+		$this->set('banjis', $this->Banji->findAll());
+	}
+
 }
 ?>

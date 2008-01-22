@@ -45,7 +45,7 @@
 	<td class="actions">
 		<?php echo $html->link('查看','/students/view/' . $student['Student']['id'])?>
 		<?php echo $html->link('编辑','/students/edit/' . $student['Student']['id'])?>
-		<?php echo $html->link('删除','/students/delete/' . $student['Student']['id'], null, 'Are you sure you want to delete id ' . $student['Student']['id'])?>
+		<?php echo $html->link('删除','/students/delete/' . $student['Student']['id'], null, '请确认是否真要删除『 ' . $student['Student']['student_name'] . ' 』？')?>
 	</td>
 </tr>
 <?php endforeach; ?>

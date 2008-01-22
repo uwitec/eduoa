@@ -1,26 +1,29 @@
-<h2>Edit Semester Type</h2>
+<div id="content">
+<fieldset align=center>
+<legend>编辑学期类型</legend> 
 <form action="<?php echo $html->url('/semester_types/edit/'.$html->tagValue('SemesterType/id')); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('SemesterType/type_name', 'Type Name');?>
+	<?php echo $form->labelTag('SemesterType/type_name', '学期类型名称');?>
  	<?php echo $html->input('SemesterType/type_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('SemesterType/type_name', 'Please enter the Type Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('SemesterType/start_date', 'Start Date');?>
+	<?php echo $form->labelTag('SemesterType/start_date', '开始日期');?>
  	<?php echo $html->dateTimeOptionTag('SemesterType/start_date', 'MDY' , 'NONE', $html->tagValue('SemesterType/start_date'), array());?>
 	<?php echo $html->tagErrorMsg('SemesterType/start_date', 'Please select the Start Date.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('SemesterType/end_date', 'End Date');?>
+	<?php echo $form->labelTag('SemesterType/end_date', '结束日期');?>
  	<?php echo $html->dateTimeOptionTag('SemesterType/end_date', 'MDY' , 'NONE', $html->tagValue('SemesterType/end_date'), array());?>
 	<?php echo $html->tagErrorMsg('SemesterType/end_date', 'Please select the End Date.');?>
 </div>
 <?php echo $html->hidden('SemesterType/id')?>
 <div class="submit">
-	<?php echo $html->submit('Save');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('Delete','/semester_types/delete/' . $html->tagValue('SemesterType/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('SemesterType/id'));?>
-<li><?php echo $html->link('List Semester Types', '/semester_types/index')?></li>
+<li><?php echo $html->link('学期类型列表', '/semester_types/index')?></li>
 </ul>
+</fieldset>
+</div>

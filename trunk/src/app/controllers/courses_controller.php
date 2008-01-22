@@ -23,7 +23,7 @@ class CoursesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Course->save($this->data)) {
-				$this->Session->setFlash('The Course has been saved');
+				$this->Session->setFlash('课程新增成功！');
 				$this->redirect('/courses/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -41,7 +41,7 @@ class CoursesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Course->save($this->data)) {
-				$this->Session->setFlash('The Course has been saved');
+				$this->Session->setFlash('课程保存成功！');
 				$this->redirect('/courses/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -55,7 +55,7 @@ class CoursesController extends AppController {
 			$this->redirect('/courses/index');
 		}
 		if ($this->Course->del($id)) {
-			$this->Session->setFlash('The Course deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/courses/index');
 		}
 	}

@@ -41,7 +41,7 @@ class SemesterTypesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->SemesterType->save($this->data)) {
-				$this->Session->setFlash('The SemesterType has been saved');
+				$this->Session->setFlash('学期类型修改成功！');
 				$this->redirect('/semester_types/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');

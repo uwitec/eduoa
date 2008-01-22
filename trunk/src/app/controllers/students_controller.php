@@ -1,12 +1,18 @@
-<?php
+﻿<?php
 class StudentsController extends AppController {
 
 	var $name = 'Students';
 	var $helpers = array('Html', 'Form' );
 
-	function index() {
+	function index($id = null) {
 		$this->Student->recursive = 0;
-		$this->set('students', $this->Student->findAll());
+		if($id == null) {
+			$this->set('students', $this->Student->findAll());			
+		}else {
+			$criteria = "Student.id = $id";
+			$this->set('students', $this->Student->findAll($criteria));
+		}
+
 	}
 
 	function view($id = null) {
@@ -70,6 +76,17 @@ class StudentsController extends AppController {
 			$this->Session->setFlash('The Student deleted: id '.$id.'');
 			$this->redirect('/students/index');
 		}
+	}
+
+	function slist($id = null) {
+		$this->Student->recursive = 0;
+		if($id == null) {
+			$this->set('students', $this->Student->findAll());			
+		}else {
+			$criteria = "Student.id = $id";
+			$this->set('students', $this->Student->findAll($criteria));
+		}
+
 	}
 
 }

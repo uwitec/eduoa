@@ -19,12 +19,19 @@ class SemestersController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
-			$this->set('semesterTypes', $this->Semester->SemesterType->generateList());
+			$this->set('semesterTypes', 
+					   $this->Semester->SemesterType->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.SemesterType.id',
+						 $valuePath = '{n}.SemesterType.type_name')
+			);
 			$this->render();
 		} else {
 			$this->cleanUpFields();
 			if ($this->Semester->save($this->data)) {
-				$this->Session->setFlash('The Semester has been saved');
+				$this->Session->setFlash('学期信息新增成功！');
 				$this->redirect('/semesters/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -40,15 +47,29 @@ class SemestersController extends AppController {
 				$this->redirect('/semesters/index');
 			}
 			$this->data = $this->Semester->read(null, $id);
-			$this->set('semesterTypes', $this->Semester->SemesterType->generateList());
+			$this->set('semesterTypes', 
+					   $this->Semester->SemesterType->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.SemesterType.id',
+						 $valuePath = '{n}.SemesterType.type_name')
+			);
 		} else {
 			$this->cleanUpFields();
 			if ($this->Semester->save($this->data)) {
-				$this->Session->setFlash('The Semester has been saved');
+				$this->Session->setFlash('学期信息保存成功！');
 				$this->redirect('/semesters/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
-				$this->set('semesterTypes', $this->Semester->SemesterType->generateList());
+				$this->set('semesterTypes', 
+						   $this->Semester->SemesterType->generateList(
+							 $conditions = null,
+							 $order = 'id',
+							 $limit = null,
+							 $keyPath = '{n}.SemesterType.id',
+							 $valuePath = '{n}.SemesterType.type_name')
+				);
 			}
 		}
 	}
@@ -59,7 +80,7 @@ class SemestersController extends AppController {
 			$this->redirect('/semesters/index');
 		}
 		if ($this->Semester->del($id)) {
-			$this->Session->setFlash('The Semester deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/semesters/index');
 		}
 	}

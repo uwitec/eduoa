@@ -1,24 +1,28 @@
-<h2>New Course</h2>
+<div id="content">
+<fieldset align=center>
+<legend>新增课程</legend> 
 <form action="<?php echo $html->url('/courses/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('Course/course_name', 'Course Name');?>
+	<?php echo $form->labelTag('Course/course_name', '课程名称');?>
  	<?php echo $html->input('Course/course_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Course/course_name', 'Please enter the Course Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Course/teaching_material', 'Teaching Material');?>
+	<?php echo $form->labelTag('Course/teaching_material', '所选教材');?>
  	<?php echo $html->input('Course/teaching_material', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Course/teaching_material', 'Please enter the Teaching Material.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Course/course_code', 'Course Code');?>
+	<?php echo $form->labelTag('Course/course_code', '课程代码');?>
  	<?php echo $html->input('Course/course_code', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Course/course_code', 'Please enter the Course Code.');?>
 </div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('List Courses', '/courses/index')?></li>
+<li><?php echo $html->link('课程列表', '/courses/index')?></li>
 </ul>
+</fieldset>
+</div>

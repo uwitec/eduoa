@@ -22,6 +22,7 @@
 
 <ul class="actions">
 	<li><?php echo $html->link('新增教学楼', '/teaching_buildings/add'); ?></li>
+	<li><?php echo $html->link('导出教学楼信息', '/teaching_buildings/csv'); ?></li>
 </ul>
 
 </fieldset>

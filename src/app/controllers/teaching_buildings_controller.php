@@ -2,7 +2,7 @@
 class TeachingBuildingsController extends AppController {
 
 	var $name = 'TeachingBuildings';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Csv' );
 
 	function index() {
 		$this->TeachingBuilding->recursive = 0;
@@ -58,6 +58,11 @@ class TeachingBuildingsController extends AppController {
 			$this->Session->setFlash('删除成功！');
 			$this->redirect('/teaching_buildings/index');
 		}
+	}
+
+	function csv() {
+		$this->TeachingBuilding->recursive = 0;
+		$this->set('teachingBuildings', $this->TeachingBuilding->findAll());
 	}
 
 }

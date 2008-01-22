@@ -1,0 +1,34 @@
+<div id="content">
+<fieldset align=center>
+<legend>学生列表</legend> 
+
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th>学号</th>
+	<th>姓名</th>
+	<th>班号</th>
+	<th>出生日期</th>
+	<th>性别</th>
+	<th>民族</th>
+	<th>操作</th>
+</tr>
+<?php foreach ($students as $student): ?>
+<tr>
+	<td><?php echo $student['Student']['student_no']; ?></td>
+	<td><?php echo $student['Student']['student_name']; ?></td>
+	<td><?php echo $student['Banji']['class_name'];?></td>
+	<td><?php echo $student['Student']['birthday']; ?></td>
+	<td><?php echo $student['Student']['sex']==1?'男':'女'; ?></td>
+	<td><?php echo $student['Person']['people_name'];?></td>
+	<td class="actions">
+		<?php echo $html->link('调班','/student_particular_changes/add/' . $student['Student']['id']);?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('新增', '/students/add/'.$banji_id); ?></li>
+</ul>
+</fieldset>
+</div>

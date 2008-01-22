@@ -1,24 +1,58 @@
 <div id="content">
 <fieldset align=center>
 <legend>学生列表</legend> 
-<table cellpadding="0" cellspacing="0" width="100%">
+
+<table cellpadding="0" cellspacing="0">
 <tr>
 	<th>学号</th>
 	<th>姓名</th>
-	<th>班号</th>
+	<th>出生日期</th>
 	<th>性别</th>
-	<th>成长档案</th>
+	<th>民族</th>
+	<th>籍贯</th>
+	<th>政治面貌</th>
+	<th>健康状况</th>
+	<th>身份证号</th>
+	<th>毕业学校</th>
+	<th>外语语种</th>
+	<th>入学方式</th>
+	<th>学生来源</th>
+	<th>家庭住址</th>
+	<th>家庭邮编</th>
+	<th>家庭电话</th>
+	<th>入学日期</th>
+	<th>操作</th>
 </tr>
 <?php foreach ($students as $student): ?>
 <tr>
-	<td><?php echo $student['Student']['file_no']; ?></td>
+	<td><?php echo $student['Student']['student_no']; ?></td>
 	<td><?php echo $student['Student']['student_name']; ?></td>
-	<td><?php echo $student['Banji']['class_name']?></td>
-	<td><?php echo $student['Student']['sex']; ?></td>
-	<td> 奋斗目标  成长札记  成绩自我分析  教师评语  学业评价  阅读书籍  个性发展  实践活动  创造发明  得意作品  学习总结</td>
+	<td><?php echo $student['Student']['birthday']; ?></td>
+	<td><?php echo $student['Student']['sex']==1?'男':'女'; ?></td>
+	<td>&nbsp;<?php echo $html->link($student['Person']['id'], '/people/view/' .$student['Person']['id'])?></td>
+	<td><?php echo $student['Student']['native_place']; ?></td>
+	<td><?php echo $student['Student']['political_feature']; ?></td>
+	<td><?php echo $student['Student']['physical_condition']; ?></td>
+	<td><?php echo $student['Student']['cert_number']; ?></td>
+	<td><?php echo $student['Student']['graduate_the_college']; ?></td>
+	<td><?php echo $student['Student']['foreign_language']; ?></td>
+	<td><?php echo $student['Student']['enter_the_way']; ?></td>
+	<td><?php echo $student['Student']['origin']; ?></td>
+	<td><?php echo $student['Student']['address']; ?></td>
+	<td><?php echo $student['Student']['zip']; ?></td>
+	<td><?php echo $student['Student']['telphone']; ?></td>
+	<td><?php echo $student['Student']['enter_date']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('查看','/students/view/' . $student['Student']['id'])?>
+		<?php echo $html->link('编辑','/students/edit/' . $student['Student']['id'])?>
+		<?php echo $html->link('删除','/students/delete/' . $student['Student']['id'], null, 'Are you sure you want to delete id ' . $student['Student']['id'])?>
+	</td>
 </tr>
 <?php endforeach; ?>
 </table>
 
+<ul class="actions">
+	<li><?php echo $html->link('新增', '/students/add/'.$banji_id); ?></li>
+</ul>
 </fieldset>
 </div>

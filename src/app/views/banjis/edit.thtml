@@ -1,52 +1,49 @@
-<h2>Edit Banji</h2>
+<div id="content">
+<fieldset align=center>
+<legend>编辑班级</legend>
 <form action="<?php echo $html->url('/banjis/edit/'.$html->tagValue('Banji/id')); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('Banji/class_no', 'Class No');?>
+	<?php echo $form->labelTag('Banji/class_no', '班级编号');?>
  	<?php echo $html->input('Banji/class_no', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Banji/class_no', 'Please enter the Class No.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Banji/class_name', 'Class Name');?>
+	<?php echo $form->labelTag('Banji/class_name', '班级名称');?>
  	<?php echo $html->input('Banji/class_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Banji/class_name', 'Please enter the Class Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Banji/entrance_year', 'Entrance Year');?>
+	<?php echo $form->labelTag('Banji/entrance_year', '入学年份');?>
  	<?php echo $html->input('Banji/entrance_year', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Banji/entrance_year', 'Please enter the Entrance Year.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Banji/teacher_id', 'Teacher');?>
- 	<?php echo $html->selectTag('Banji/teacher_id', $teachers, $html->tagValue('Banji/teacher_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('Banji/teacher_id', '班主任');?>
+ 	<?php echo $html->selectTag('Banji/teacher_id', $teachers, $html->tagValue('Banji/teacher_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Banji/teacher_id', 'Please select the Teacher.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Banji/academic_year_id', 'Academic Year');?>
- 	<?php echo $html->selectTag('Banji/academic_year_id', $academicYears, $html->tagValue('Banji/academic_year_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('Banji/academic_year_id', '学年制');?>
+ 	<?php echo $html->selectTag('Banji/academic_year_id', $academicYears, $html->tagValue('Banji/academic_year_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Banji/academic_year_id', 'Please select the Academic Year.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Banji/classroom_id', 'Classroom');?>
- 	<?php echo $html->selectTag('Banji/classroom_id', $classrooms, $html->tagValue('Banji/classroom_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('Banji/classroom_id', '固定教室');?>
+ 	<?php echo $html->selectTag('Banji/classroom_id', $classrooms, $html->tagValue('Banji/classroom_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Banji/classroom_id', 'Please select the Classroom.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Banji/class_size', 'Class Size');?>
+	<?php echo $form->labelTag('Banji/class_size', '班级人数');?>
  	<?php echo $html->input('Banji/class_size', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Banji/class_size', 'Please enter the Class Size.');?>
 </div>
 <?php echo $html->hidden('Banji/id')?>
 <div class="submit">
-	<?php echo $html->submit('Save');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('Delete','/banjis/delete/' . $html->tagValue('Banji/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Banji/id'));?>
-<li><?php echo $html->link('List Banjis', '/banjis/index')?></li>
-<li><?php echo $html->link('View Teachers', '/teachers/index/');?></li>
-<li><?php echo $html->link('Add Teachers', '/teachers/add/');?></li>
-<li><?php echo $html->link('View Academic Years', '/academic_years/index/');?></li>
-<li><?php echo $html->link('Add Academic Years', '/academic_years/add/');?></li>
-<li><?php echo $html->link('View Classrooms', '/classrooms/index/');?></li>
-<li><?php echo $html->link('Add Classrooms', '/classrooms/add/');?></li>
+<li><?php echo $html->link('班级列表', '/banjis/index')?></li>
 </ul>
+</fieldset>
+</div>

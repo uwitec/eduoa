@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 class StudentParticularChangesController extends AppController {
 
 	var $name = 'StudentParticularChanges';
@@ -17,9 +17,9 @@ class StudentParticularChangesController extends AppController {
 		$this->set('studentParticularChange', $this->StudentParticularChange->read(null, $id));
 	}
 
-	function add() {
+	function add($id = null) {
 		if (empty($this->data)) {
-			$this->set('students', $this->StudentParticularChange->Student->generateList());
+			$this->set('students', $this->StudentParticularChange->Student->findById($id));
 			$this->set('oldClasses', $this->StudentParticularChange->OldClass->generateList());
 			$this->set('newClasses', $this->StudentParticularChange->NewClass->generateList());
 			$this->render();

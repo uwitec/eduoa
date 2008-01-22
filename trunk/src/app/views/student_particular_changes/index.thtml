@@ -1,38 +1,31 @@
-<div class="studentParticularChanges">
-<h2>List Student Particular Changes</h2>
+<div id="content">
+<fieldset align=center>
+<legend>学生调班记录</legend> 
 
-<table cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-	<th>Id</th>
-	<th>Student</th>
-	<th>Old Banji</th>
-	<th>New Banji</th>
-	<th>Change Reason</th>
-	<th>Ratifier</th>
-	<th>Created</th>
-	<th>Modified</th>
-	<th>Actions</th>
+	<th>学号</th>
+	<th>姓名</th>
+	<th>原班级</th>
+	<th>新班级</th>
+	<th>调班原因</th>
+	<th>批准人</th>
+	<th>创建人</th>
+	<th>创建时间</th>
 </tr>
 <?php foreach ($studentParticularChanges as $studentParticularChange): ?>
 <tr>
-	<td><?php echo $studentParticularChange['StudentParticularChange']['id']; ?></td>
-	<td>&nbsp;<?php echo $html->link($studentParticularChange['Student']['id'], '/students/view/' .$studentParticularChange['Student']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($studentParticularChange['OldClass']['id'], '/banjis/view/' .$studentParticularChange['OldClass']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($studentParticularChange['NewClass']['id'], '/banjis/view/' .$studentParticularChange['NewClass']['id'])?></td>
+	<td><?php echo $studentParticularChange['Student']['student_no'];?></td>
+	<td><?php echo $studentParticularChange['Student']['student_name'];?></td>
+	<td><?php echo $studentParticularChange['OldClass']['class_name'];?></td>
+	<td><?php echo $studentParticularChange['NewClass']['class_name'];?></td>
 	<td><?php echo $studentParticularChange['StudentParticularChange']['change_reason']; ?></td>
 	<td><?php echo $studentParticularChange['StudentParticularChange']['ratifier']; ?></td>
+	<td><?php echo $studentParticularChange['User']['user_name'];?></td>
 	<td><?php echo $studentParticularChange['StudentParticularChange']['created']; ?></td>
-	<td><?php echo $studentParticularChange['StudentParticularChange']['modified']; ?></td>
-	<td class="actions">
-		<?php echo $html->link('View','/student_particular_changes/view/' . $studentParticularChange['StudentParticularChange']['id'])?>
-		<?php echo $html->link('Edit','/student_particular_changes/edit/' . $studentParticularChange['StudentParticularChange']['id'])?>
-		<?php echo $html->link('Delete','/student_particular_changes/delete/' . $studentParticularChange['StudentParticularChange']['id'], null, 'Are you sure you want to delete id ' . $studentParticularChange['StudentParticularChange']['id'])?>
-	</td>
 </tr>
 <?php endforeach; ?>
 </table>
 
-<ul class="actions">
-	<li><?php echo $html->link('New Student Particular Change', '/student_particular_changes/add'); ?></li>
-</ul>
+</fieldset>
 </div>

@@ -1,90 +1,24 @@
-<div class="students">
-<h2>List Students</h2>
-
-<table cellpadding="0" cellspacing="0">
+<div id="content">
+<fieldset align=center>
+<legend>学生列表</legend> 
+<table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-	<th>Id</th>
-	<th>Student No</th>
-	<th>File No</th>
-	<th>Banji</th>
-	<th>Birthday</th>
-	<th>Sex</th>
-	<th>People</th>
-	<th>Native Place</th>
-	<th>Total Score</th>
-	<th>Political Feature</th>
-	<th>Physical Condition</th>
-	<th>Cert Number</th>
-	<th>Graduate The College</th>
-	<th>Foreign Language</th>
-	<th>Enter The Way</th>
-	<th>Origin</th>
-	<th>Address</th>
-	<th>Zip</th>
-	<th>Telphone</th>
-	<th>Email</th>
-	<th>Enter Date</th>
-	<th>Remark</th>
-	<th>Student Phone</th>
-	<th>Father Name</th>
-	<th>Father Unit</th>
-	<th>Father Phone</th>
-	<th>Mother Name</th>
-	<th>Mother Unit</th>
-	<th>Mother Phone</th>
-	<th>File</th>
-	<th>Password</th>
-	<th>Status</th>
-	<th>Created</th>
-	<th>Modified</th>
-	<th>Actions</th>
+	<th>学号</th>
+	<th>姓名</th>
+	<th>班号</th>
+	<th>性别</th>
+	<th>成长档案</th>
 </tr>
 <?php foreach ($students as $student): ?>
 <tr>
-	<td><?php echo $student['Student']['id']; ?></td>
-	<td><?php echo $student['Student']['student_no']; ?></td>
 	<td><?php echo $student['Student']['file_no']; ?></td>
-	<td>&nbsp;<?php echo $html->link($student['Banji']['id'], '/banjis/view/' .$student['Banji']['id'])?></td>
-	<td><?php echo $student['Student']['birthday']; ?></td>
+	<td><?php echo $student['Student']['student_name']; ?></td>
+	<td><?php echo $student['Banji']['class_name']?></td>
 	<td><?php echo $student['Student']['sex']; ?></td>
-	<td>&nbsp;<?php echo $html->link($student['Person']['id'], '/people/view/' .$student['Person']['id'])?></td>
-	<td><?php echo $student['Student']['native_place']; ?></td>
-	<td><?php echo $student['Student']['total_score']; ?></td>
-	<td><?php echo $student['Student']['political_feature']; ?></td>
-	<td><?php echo $student['Student']['physical_condition']; ?></td>
-	<td><?php echo $student['Student']['cert_number']; ?></td>
-	<td><?php echo $student['Student']['graduate_the_college']; ?></td>
-	<td><?php echo $student['Student']['foreign_language']; ?></td>
-	<td><?php echo $student['Student']['enter_the_way']; ?></td>
-	<td><?php echo $student['Student']['origin']; ?></td>
-	<td><?php echo $student['Student']['address']; ?></td>
-	<td><?php echo $student['Student']['zip']; ?></td>
-	<td><?php echo $student['Student']['telphone']; ?></td>
-	<td><?php echo $student['Student']['email']; ?></td>
-	<td><?php echo $student['Student']['enter_date']; ?></td>
-	<td><?php echo $student['Student']['remark']; ?></td>
-	<td><?php echo $student['Student']['student_phone']; ?></td>
-	<td><?php echo $student['Student']['father_name']; ?></td>
-	<td><?php echo $student['Student']['father_unit']; ?></td>
-	<td><?php echo $student['Student']['father_phone']; ?></td>
-	<td><?php echo $student['Student']['mother_name']; ?></td>
-	<td><?php echo $student['Student']['mother_unit']; ?></td>
-	<td><?php echo $student['Student']['mother_phone']; ?></td>
-	<td>&nbsp;<?php echo $html->link($student['File']['name'], '/files/view/' .$student['File']['id'])?></td>
-	<td><?php echo $student['Student']['password']; ?></td>
-	<td><?php echo $student['Student']['status']; ?></td>
-	<td><?php echo $student['Student']['created']; ?></td>
-	<td><?php echo $student['Student']['modified']; ?></td>
-	<td class="actions">
-		<?php echo $html->link('View','/students/view/' . $student['Student']['id'])?>
-		<?php echo $html->link('Edit','/students/edit/' . $student['Student']['id'])?>
-		<?php echo $html->link('Delete','/students/delete/' . $student['Student']['id'], null, 'Are you sure you want to delete id ' . $student['Student']['id'])?>
-	</td>
+	<td> 奋斗目标  成长札记  成绩自我分析  教师评语  学业评价  阅读书籍  个性发展  实践活动  创造发明  得意作品  学习总结</td>
 </tr>
 <?php endforeach; ?>
 </table>
 
-<ul class="actions">
-	<li><?php echo $html->link('New Student', '/students/add'); ?></li>
-</ul>
+</fieldset>
 </div>

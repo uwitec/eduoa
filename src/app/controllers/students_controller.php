@@ -7,7 +7,7 @@ class StudentsController extends AppController {
 	function index($id = null) {
 		$this->Student->recursive = 0;
 		if($id){
-			$this->set('students', $this->Student->findAll('Banji.id = '.$id));
+			$this->set('students', $this->Student->findAll('banji.id = '.$id));
 			$this->set('banji_id',$id);
 		}else{
 			$this->set('students', $this->Student->findAll());
@@ -48,8 +48,22 @@ class StudentsController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
-			$this->set('banjis', $this->Student->Banji->generateList());
-			$this->set('people', $this->Student->Person->generateList());
+			$this->set('banjis', 
+					   $this->Student->Banji->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.Banji.id',
+						 $valuePath = '{n}.Banji.class_name')
+			);
+			$this->set('people', 
+					   $this->Student->Person->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.Person.id',
+						 $valuePath = '{n}.Person.people_name')
+			);
 			$this->set('files', $this->Student->File->generateList());
 			$this->render();
 		} else {
@@ -73,8 +87,22 @@ class StudentsController extends AppController {
 				$this->redirect('/students/index');
 			}
 			$this->data = $this->Student->read(null, $id);
-			$this->set('banjis', $this->Student->Banji->generateList());
-			$this->set('people', $this->Student->Person->generateList());
+			$this->set('banjis', 
+					   $this->Student->Banji->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.Banji.id',
+						 $valuePath = '{n}.Banji.class_name')
+			);
+			$this->set('people', 
+					   $this->Student->Person->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.Person.id',
+						 $valuePath = '{n}.Person.people_name')
+			);
 			$this->set('files', $this->Student->File->generateList());
 		} else {
 			$this->cleanUpFields();

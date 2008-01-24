@@ -1,21 +1,16 @@
-<div class="course">
-<h2>View Course</h2>
-
+<div id="content">
+<fieldset align=center>
+<legend>课程查看</legend> 
 <dl>
-	<dt>Id</dt>
-	<dd>&nbsp;<?php echo $course['Course']['id']?></dd>
-	<dt>Course Name</dt>
+	<dt>课程名称</dt>
 	<dd>&nbsp;<?php echo $course['Course']['course_name']?></dd>
-	<dt>Teaching Material</dt>
+	<dt>所选教材</dt>
 	<dd>&nbsp;<?php echo $course['Course']['teaching_material']?></dd>
-	<dt>Course Code</dt>
+	<dt>课程代码</dt>
 	<dd>&nbsp;<?php echo $course['Course']['course_code']?></dd>
 </dl>
 <ul class="actions">
-	<li><?php echo $html->link('Edit Course',   '/courses/edit/' . $course['Course']['id']) ?> </li>
-	<li><?php echo $html->link('Delete Course', '/courses/delete/' . $course['Course']['id'], null, 'Are you sure you want to delete: id ' . $course['Course']['id'] . '?') ?> </li>
-	<li><?php echo $html->link('List Courses',   '/courses/index') ?> </li>
-	<li><?php echo $html->link('New Course',	'/courses/add') ?> </li>
+	<li><?php echo $html->link('课程列表',   '/courses/vlist') ?> </li>
 </ul>
-
+</fieldset>
 </div>

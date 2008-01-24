@@ -1,0 +1,24 @@
+<div id="content">
+<fieldset align=center>
+<legend>课程查看</legend> 
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th>课程名称</th>
+	<th>所选教材</th>
+	<th>课程代码</th>
+	<th>操作</th>
+</tr>
+<?php foreach ($courses as $course): ?>
+<tr>
+	<td><?php echo $course['Course']['course_name']; ?></td>
+	<td><?php echo $course['Course']['teaching_material']; ?></td>
+	<td><?php echo $course['Course']['course_code']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('查看','/courses/view/' . $course['Course']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+</fieldset>
+</div>

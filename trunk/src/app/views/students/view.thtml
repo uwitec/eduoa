@@ -5,13 +5,13 @@
 	<dt>学号</dt>
 	<dd>&nbsp;<?php echo $student['Student']['student_no']?></dd>
 	<dt>班级</dt>
-	<dd>&nbsp;<?php echo $html->link($student['Banji']['id'], '/banjis/view/' .$student['Banji']['id'])?></dd>
+	<dd>&nbsp;<?php echo $student['Banji']['class_name']?></dd>
 	<dt>出生日期</dt>
 	<dd>&nbsp;<?php echo $student['Student']['birthday']?></dd>
 	<dt>性别</dt>
 	<dd>&nbsp;<?php echo $student['Student']['sex']?></dd>
 	<dt>民族</dt>
-	<dd>&nbsp;<?php echo $html->link($student['Person']['id'], '/people/view/' .$student['Person']['id'])?></dd>
+	<dd>&nbsp;<?php echo $student['Person']['people_name']?></dd>
 	<dt>籍贯</dt>
 	<dd>&nbsp;<?php echo $student['Student']['native_place']?></dd>
 	<dt>政治面貌</dt>

@@ -15,7 +15,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Student/banji_id', '班号:');?>
- 	<?php echo $html->selectTag('Student/banji_id', $banjis, $html->tagValue('Student/banji_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Student/banji_id', $banjis, $html->tagValue('Student/banji_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Student/banji_id', 'Please select the Banji.') ?>
 </div>
 <div class="optional"> 
@@ -30,7 +30,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Student/people_id', '民族:');?>
- 	<?php echo $html->selectTag('Student/people_id', $people, $html->tagValue('Student/people_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Student/people_id', $people, $html->tagValue('Student/people_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Student/people_id', 'Please select the People.') ?>
 </div>
 <div class="optional"> 

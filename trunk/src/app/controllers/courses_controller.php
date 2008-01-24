@@ -60,5 +60,10 @@ class CoursesController extends AppController {
 		}
 	}
 
+	function vlist() {
+		$this->Course->recursive = 0;
+		$this->set('courses', $this->Course->findAll());
+	}
+
 }
 ?>

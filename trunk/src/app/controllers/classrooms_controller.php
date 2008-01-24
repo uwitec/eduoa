@@ -124,5 +124,10 @@ class ClassroomsController extends AppController {
 		}
 	}
 
+	function vlist() {
+		$this->Classroom->recursive = 0;
+		$this->set('classrooms', $this->Classroom->findAll());
+	}
+
 }
 ?>

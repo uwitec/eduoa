@@ -1,0 +1,60 @@
+<h2>Edit Curriculum Schedule</h2>
+<form action="<?php echo $html->url('/curriculum_schedules/edit/'.$html->tagValue('CurriculumSchedule/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('CurriculumSchedule/banji_id', 'Banji');?>
+ 	<?php echo $html->selectTag('CurriculumSchedule/banji_id', $banjis, $html->tagValue('CurriculumSchedule/banji_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('CurriculumSchedule/banji_id', 'Please select the Banji.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('CurriculumSchedule/semester_id', 'Semester');?>
+ 	<?php echo $html->selectTag('CurriculumSchedule/semester_id', $semesters, $html->tagValue('CurriculumSchedule/semester_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('CurriculumSchedule/semester_id', 'Please select the Semester.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('CurriculumSchedule/classroom_id', 'Classroom');?>
+ 	<?php echo $html->selectTag('CurriculumSchedule/classroom_id', $classrooms, $html->tagValue('CurriculumSchedule/classroom_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('CurriculumSchedule/classroom_id', 'Please select the Classroom.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('CurriculumSchedule/course_id', 'Course');?>
+ 	<?php echo $html->selectTag('CurriculumSchedule/course_id', $courses, $html->tagValue('CurriculumSchedule/course_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('CurriculumSchedule/course_id', 'Please select the Course.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('CurriculumSchedule/teacher_id', 'Teacher');?>
+ 	<?php echo $html->selectTag('CurriculumSchedule/teacher_id', $teachers, $html->tagValue('CurriculumSchedule/teacher_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('CurriculumSchedule/teacher_id', 'Please select the Teacher.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('CurriculumSchedule/hour_id', 'Hour');?>
+ 	<?php echo $html->selectTag('CurriculumSchedule/hour_id', $hours, $html->tagValue('CurriculumSchedule/hour_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('CurriculumSchedule/hour_id', 'Please select the Hour.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('CurriculumSchedule/week_id', 'Week');?>
+ 	<?php echo $html->selectTag('CurriculumSchedule/week_id', $weeks, $html->tagValue('CurriculumSchedule/week_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('CurriculumSchedule/week_id', 'Please select the Week.') ?>
+</div>
+<?php echo $html->hidden('CurriculumSchedule/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/curriculum_schedules/delete/' . $html->tagValue('CurriculumSchedule/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('CurriculumSchedule/id'));?>
+<li><?php echo $html->link('List Curriculum Schedules', '/curriculum_schedules/index')?></li>
+<li><?php echo $html->link('View Banjis', '/banjis/index/');?></li>
+<li><?php echo $html->link('Add Banjis', '/banjis/add/');?></li>
+<li><?php echo $html->link('View Semesters', '/semesters/index/');?></li>
+<li><?php echo $html->link('Add Semesters', '/semesters/add/');?></li>
+<li><?php echo $html->link('View Classrooms', '/classrooms/index/');?></li>
+<li><?php echo $html->link('Add Classrooms', '/classrooms/add/');?></li>
+<li><?php echo $html->link('View Courses', '/courses/index/');?></li>
+<li><?php echo $html->link('Add Courses', '/courses/add/');?></li>
+<li><?php echo $html->link('View Teachers', '/teachers/index/');?></li>
+<li><?php echo $html->link('Add Teachers', '/teachers/add/');?></li>
+<li><?php echo $html->link('View Hours', '/hours/index/');?></li>
+<li><?php echo $html->link('Add Hours', '/hours/add/');?></li>
+<li><?php echo $html->link('View Weeks', '/weeks/index/');?></li>
+<li><?php echo $html->link('Add Weeks', '/weeks/add/');?></li>
+</ul>

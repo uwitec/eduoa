@@ -1,0 +1,38 @@
+<div class="curriculumSchedules">
+<h2>List Curriculum Schedules</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Banji</th>
+	<th>Semester</th>
+	<th>Classroom</th>
+	<th>Course</th>
+	<th>Teacher</th>
+	<th>Hour</th>
+	<th>Week</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($curriculumSchedules as $curriculumSchedule): ?>
+<tr>
+	<td><?php echo $curriculumSchedule['CurriculumSchedule']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Banji']['id'], '/banjis/view/' .$curriculumSchedule['Banji']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Semester']['id'], '/semesters/view/' .$curriculumSchedule['Semester']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Classroom']['id'], '/classrooms/view/' .$curriculumSchedule['Classroom']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Course']['id'], '/courses/view/' .$curriculumSchedule['Course']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Teacher']['id'], '/teachers/view/' .$curriculumSchedule['Teacher']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Hour']['id'], '/hours/view/' .$curriculumSchedule['Hour']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Week']['id'], '/weeks/view/' .$curriculumSchedule['Week']['id'])?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/curriculum_schedules/view/' . $curriculumSchedule['CurriculumSchedule']['id'])?>
+		<?php echo $html->link('Edit','/curriculum_schedules/edit/' . $curriculumSchedule['CurriculumSchedule']['id'])?>
+		<?php echo $html->link('Delete','/curriculum_schedules/delete/' . $curriculumSchedule['CurriculumSchedule']['id'], null, 'Are you sure you want to delete id ' . $curriculumSchedule['CurriculumSchedule']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Curriculum Schedule', '/curriculum_schedules/add'); ?></li>
+</ul>
+</div>

@@ -1,0 +1,48 @@
+<div class="hour">
+<h2>View Hour</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $hour['Hour']['id']?></dd>
+	<dt>Hour Name</dt>
+	<dd>&nbsp;<?php echo $hour['Hour']['hour_name']?></dd>
+	<dt>Order List</dt>
+	<dd>&nbsp;<?php echo $hour['Hour']['order_list']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Hour',   '/hours/edit/' . $hour['Hour']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Hour', '/hours/delete/' . $hour['Hour']['id'], null, 'Are you sure you want to delete: id ' . $hour['Hour']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Hours',   '/hours/index') ?> </li>
+	<li><?php echo $html->link('New Hour',	'/hours/add') ?> </li>
+</ul>
+
+</div>
+<div class="related">
+<h3>Related Weeks</h3>
+<?php if (!empty($hour['Week'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach ($hour['Week']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach ($hour['Week'] as $week):?>
+<tr>
+	<?php foreach ($week as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/weeks/view/' . $week['id']);?>
+		<?php echo $html->link('Edit', '/weeks/edit/' . $week['id']);?>
+		<?php echo $html->link('Delete', '/weeks/delete/' . $week['id'], null, 'Are you sure you want to delete: id ' . $week['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Week', '/weeks/add/');?> </li>
+</ul>
+</div>

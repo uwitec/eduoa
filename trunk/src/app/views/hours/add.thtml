@@ -1,0 +1,24 @@
+<h2>New Hour</h2>
+<form action="<?php echo $html->url('/hours/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Hour/hour_name', 'Hour Name');?>
+ 	<?php echo $html->input('Hour/hour_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Hour/hour_name', 'Please enter the Hour Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Hour/order_list', 'Order List');?>
+ 	<?php echo $html->input('Hour/order_list', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Hour/order_list', 'Please enter the Order List.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Week/Week', 'Related Weeks');?>
+ 	<?php echo $html->selectTag('Week/Week', $weeks, $selectedWeeks, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), true);?>
+	<?php echo $html->tagErrorMsg('Week/Week', 'Please select the Related Weeks.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Hours', '/hours/index')?></li>
+</ul>

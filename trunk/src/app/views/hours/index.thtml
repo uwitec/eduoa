@@ -1,0 +1,23 @@
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>课节</th>
+	<th>星期一</th>
+	<th>星期二</th>
+	<th>星期三</th>
+	<th>星期四</th>
+	<th>星期五</th>
+	<th>星期六</th>
+	<th>星期日</th>
+</tr>
+<?php foreach ($hours as $hour): ?>
+<tr>
+	<td><?php echo $hour['Hour']['hour_name']; ?></td>
+	<?php foreach ($weeks as $week):?>
+	<td>
+	<?php echo $html->checkBox('CurriculumSchedule/emailhidden', null, array('checked' => (false ? 'checked' : false), 'value' => 1)) ?>
+	</td>
+	<?php endforeach;?>
+</tr>
+<?php endforeach; ?>
+</table>

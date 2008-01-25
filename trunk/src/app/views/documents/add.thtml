@@ -1,18 +1,39 @@
-<h2>New Document</h2>
+<?php
+switch($type) {
+	case 1:
+		$bt = '班级公告';
+		break;
+	case 2:
+		$bt = '学生作业';
+		break;
+	case 3:
+		$bt = '课件下载';
+		break;
+	case 4:
+		$bt = '同步练习';
+		break;
+	default:
+		$bt = '班级公告';
+		break;
+}
+?>
+<div id="content">
+<fieldset align=center>
+<legend><?=$bt?></legend>
 <form action="<?php echo $html->url('/documents/add'); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('Document/document_type_id', 'Document Type');?>
- 	<?php echo $html->selectTag('Document/document_type_id', $documentTypes, $html->tagValue('Document/document_type_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Document/document_type_id', $documentTypes, $html->tagValue('Document/document_type_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Document/document_type_id', 'Please select the Document Type.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Document/rate_id', 'Rate');?>
- 	<?php echo $html->selectTag('Document/rate_id', $rates, $html->tagValue('Document/rate_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Document/rate_id', $rates, $html->tagValue('Document/rate_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Document/rate_id', 'Please select the Rate.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Document/course_id', 'Course');?>
- 	<?php echo $html->selectTag('Document/course_id', $courses, $html->tagValue('Document/course_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('Document/course_id', $courses, $html->tagValue('Document/course_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Document/course_id', 'Please select the Course.') ?>
 </div>
 <div class="optional"> 
@@ -46,15 +67,11 @@
 	<?php echo $html->tagErrorMsg('Document/is_sms', 'Please enter the Is Sms.');?>
 </div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('List Documents', '/documents/index')?></li>
-<li><?php echo $html->link('View Document Types', '/document_types/index/');?></li>
-<li><?php echo $html->link('Add Document Types', '/document_types/add/');?></li>
-<li><?php echo $html->link('View Rates', '/rates/index/');?></li>
-<li><?php echo $html->link('Add Rates', '/rates/add/');?></li>
-<li><?php echo $html->link('View Courses', '/courses/index/');?></li>
-<li><?php echo $html->link('Add Courses', '/courses/add/');?></li>
+<li><?php echo $html->link('列表', '/documents/index')?></li>
 </ul>
+</fieldset>
+</div>

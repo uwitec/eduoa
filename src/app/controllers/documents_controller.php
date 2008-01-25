@@ -24,7 +24,14 @@ class DocumentsController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
-			$this->set('documentTypes', $this->Document->DocumentType->generateList());
+			$this->set('documentTypes', 
+						$this->Document->DocumentType->generateList(
+				         $conditions = null,
+			             $order = 'id',
+			             $limit = null,
+			             $keyPath = '{n}.DocumentType.id',
+			             $valuePath = '{n}.DocumentType.type_name')
+			);
 			$this->set('rates', $this->Document->Rate->generateList());
 			$this->set('courses', 
 				       $this->Document->Course->generateList(

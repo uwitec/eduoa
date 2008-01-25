@@ -4,9 +4,14 @@ class DocumentsController extends AppController {
 	var $name = 'Documents';
 	var $helpers = array('Html', 'Form' );
 
-	function index() {
+	function index($id = null) {
 		$this->Document->recursive = 0;
-		$this->set('documents', $this->Document->findAll());
+		if($id) {
+			$this->set('documents', $this->Document->findAll('document_type_id = '.$id));
+		}else {
+			$this->set('documents', $this->Document->findAll());
+		}
+		
 	}
 
 	function view($id = null) {
@@ -21,12 +26,19 @@ class DocumentsController extends AppController {
 		if (empty($this->data)) {
 			$this->set('documentTypes', $this->Document->DocumentType->generateList());
 			$this->set('rates', $this->Document->Rate->generateList());
-			$this->set('courses', $this->Document->Course->generateList());
+			$this->set('courses', 
+				       $this->Document->Course->generateList(
+				         $conditions = null,
+			             $order = 'id',
+			             $limit = null,
+			             $keyPath = '{n}.Course.id',
+			             $valuePath = '{n}.Course.course_name')
+			);
 			$this->render();
 		} else {
 			$this->cleanUpFields();
 			if ($this->Document->save($this->data)) {
-				$this->Session->setFlash('The Document has been saved');
+				$this->Session->setFlash('新增成功！');
 				$this->redirect('/documents/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -50,7 +62,7 @@ class DocumentsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Document->save($this->data)) {
-				$this->Session->setFlash('The Document has been saved');
+				$this->Session->setFlash('保存成功！');
 				$this->redirect('/documents/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -67,10 +79,11 @@ class DocumentsController extends AppController {
 			$this->redirect('/documents/index');
 		}
 		if ($this->Document->del($id)) {
-			$this->Session->setFlash('The Document deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/documents/index');
 		}
 	}
 
 }
+
 ?>

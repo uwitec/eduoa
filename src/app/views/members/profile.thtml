@@ -1,11 +1,6 @@
 <fieldset align=center>
 <legend>修改个人资料</legend>
 <form action="<?php echo $html->url('/members/profile/'.$html->tagValue('Member/uid')); ?>" method="post" onsubmit="return check()">
-<div class="optional"> 
-	<?php echo $form->labelTag('User/region_id', '所属地区：');?>
- 	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), false);?>
-	<?php echo $html->tagErrorMsg('User/region_id', 'Please select the Region.') ?>
-</div>
 <div class="required"> 
 	<?php echo $form->labelTag('Member/username', '登录名：');?>
  	<?php echo $html->input('Member/username', array('size' => '60','readOnly' => 'true'));?>
@@ -18,7 +13,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/cert_number', '身份证号码：');?>
- 	<?php echo $html->input('User/cert_number', array('size' => '60','maxlength' => '18','readOnly' => 'true'));?>
+ 	<?php echo $html->input('User/cert_number', array('size' => '60','maxlength' => '18'));?>
 	<?php echo $html->tagErrorMsg('User/cert_number', 'Please enter the Cert Number.');?>
 </div>
 <div class="optional"> 
@@ -48,25 +43,11 @@
  	<?php echo $html->input('User/home_phone', array('size' => '45','maxlength' => '12'));?><span style='color:red'>格式：区号-号码</span>
 	<?php echo $html->tagErrorMsg('User/home_phone', 'Please enter the Home Phone.');?>
 </div>
-<div class="optional"> 
-	<?php echo $form->labelTag('User/bank_accounts', '开户银行：');?>
- 	<?php echo $html->input('User/bank_accounts', array('size' => '60','readOnly' => 'true'));?>
-	<?php echo $html->tagErrorMsg('User/bank_accounts', 'Please enter the Bank Accounts.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('User/accounts', '银行帐号：');?>
- 	<?php echo $html->input('User/accounts', array('size' => '60','maxlength' => '19','readOnly' => 'true'));?>
-	<?php echo $html->tagErrorMsg('User/accounts', 'Please enter the Accounts.');?>
-</div>
 <?php echo $html->hidden('Member/uid')?>
 <div class="submit">
 	<?php echo $html->submit('保存');?>
 </div>
 </form>
-<ul>
- <li><?php echo $html->link('个人业绩','/users/performance/' . $this->controller->Session->read('User.id') . '?u=personal')?></li>
- <li><?php echo $html->link('会员网络','/users/network/' . $this->controller->Session->read('User.id') . '?u=personal')?></li>
-</ul>
 
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">
@@ -144,24 +125,6 @@ function check(){
 			$('UserHomePhone').focus();
 			return false;
 		}
-	}
-
-	if($F('UserAccounts')==''){
-		alert('银行帐号不能为空！');
-		$('UserAccounts').focus();
-		return false;
-	}	
-	
-	if(isNaN($F('UserAccounts'))){
-		alert('银行帐号必须为数字！');
-		$('UserAccounts').focus();
-		return false;
-	}
-
-	if( $F('UserAccounts').length !=19 ){
-		alert('银行帐号位数不对，必须为19位邮政储蓄卡！');
-		$('UserAccounts').focus();
-		return false;
 	}
 
 }

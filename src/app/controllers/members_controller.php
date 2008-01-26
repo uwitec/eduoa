@@ -208,11 +208,11 @@ class MembersController extends AppController {
 			$password = md5($this->data['Member']['new']);
 			$this->data = $this->Member->read(null, $this->Session->read('User.id'));
 			if($old_password != $this->data['Member']['password']){
-				$this->Session->setFlash('会员原口令不正确！');
+				$this->Session->setFlash('原口令不正确！');
 			}else{
 			  	$sql = "update members set password = '$password' where uid = " .$this->Session->read('User.id');
 			  	$this->Member->execute($sql);
-			  	$this->Session->setFlash('会员口令修改成功！');		
+			  	$this->Session->setFlash('口令修改成功！');		
 			}			
 		}
    }   

@@ -25,7 +25,6 @@ class Member extends AppModel {
 						'order' => '',
 						'dependent' => ''
 				),
-
 	);
 
 	function afterSave(){

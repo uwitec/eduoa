@@ -1,37 +1,48 @@
-<div class="unit">
-<h2>View Unit</h2>
+<div id="content">
+<fieldset align=center>
+<legend>单位信息</legend> 
 
-<dl>
-	<dt>Id</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['id']?></dd>
-	<dt>Unit Name</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['unit_name']?></dd>
-	<dt>Tel No</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['tel_no']?></dd>
-	<dt>Fax No</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['fax_no']?></dd>
-	<dt>Post No</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['post_no']?></dd>
-	<dt>Address</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['address']?></dd>
-	<dt>Website</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['website']?></dd>
-	<dt>Email</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['email']?></dd>
-	<dt>Bank Name</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['bank_name']?></dd>
-	<dt>Bank No</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['bank_no']?></dd>
-	<dt>Created</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['created']?></dd>
-	<dt>Modified</dt>
-	<dd>&nbsp;<?php echo $unit['Unit']['modified']?></dd>
-</dl>
-<ul class="actions">
-	<li><?php echo $html->link('Edit Unit',   '/units/edit/' . $unit['Unit']['id']) ?> </li>
-	<li><?php echo $html->link('Delete Unit', '/units/delete/' . $unit['Unit']['id'], null, 'Are you sure you want to delete: id ' . $unit['Unit']['id'] . '?') ?> </li>
-	<li><?php echo $html->link('List Units',   '/units/index') ?> </li>
-	<li><?php echo $html->link('New Unit',	'/units/add') ?> </li>
-</ul>
+<table width="450px" align="center">
+    <tr>
+      <td nowrap colspan="2"><b>&nbsp;单位信息</b></td>
+    </tr>
+   <tr>
+    <td nowrap width="80">单位名称：</td>
+    <td nowrap><?php echo $unit['Unit']['unit_name']?></td>
+   </tr>
+   <tr>
+    <td nowrap>电话：</td>
+    <td nowrap><?php echo $unit['Unit']['tel_no']?></td>
+   </tr>
+   <tr>
+    <td nowrap>传真：</td>
+    <td nowrap><?php echo $unit['Unit']['fax_no']?></td>
+   </tr>
+   <tr>
+    <td nowrap>邮编：</td>
+    <td nowrap><?php echo $unit['Unit']['post_no']?></td>
+   </tr>
+   <tr>
+    <td nowrap>地址：</td>
+    <td nowrap><?php echo $unit['Unit']['address']?></td>
+   </tr>
+   <tr>
+    <td nowrap>网站：</td>
+    <td nowrap><?php echo $unit['Unit']['website']?></td>
+   </tr>
+   <tr>
+    <td nowrap>电子信箱：</td>
+    <td nowrap><?php echo $unit['Unit']['email']?></td>
+   </tr>
+   <tr>
+    <td nowrap>开户行：</td>
+    <td nowrap><?php echo $unit['Unit']['bank_name']?></td>
+   </tr>
+   <tr>
+    <td nowrap>账号：</td>
+    <td nowrap><?php echo $unit['Unit']['bank_no']?></td>
+   </tr>
+</table>
 
+</fieldset>
 </div>

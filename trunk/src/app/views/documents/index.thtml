@@ -1,20 +1,63 @@
+<?php
+	switch($this->params['url']['type']){
+		case 1:
+			$title = "班级公告";
+			$v_name = "公告标题";
+			$v_content = "主要内容";
+			break;
+		case 2:
+			$title = "学生作业";
+			$v_name = "重点难点";
+			$v_content = "作业内容";
+			break;
+		case 3:
+			$title = "课件下载";
+			$v_name = "资料名称";
+			$v_content = "内容";
+			$v_fujian = "附件";
+			break;
+		case 4:
+			$title = "同步练习";
+			$v_name = "章节";
+			$v_content = "内容";
+			break;
+	}
+?>
 <div id="content">
 <fieldset align=center>
-<legend>班级公告列表</legend> 
+<legend><?=$title?>列表</legend> 
 
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
+	<?php	if($title == "班级公告"){?>
 	<th>紧急程度</th>
-	<th>标题</th>
-	<th>主要内容</th>
+	<?php	}?>
+	<th>发布对象</th>
+	<?php	if($title == "学生作业"){?>
+	<th>作业课目</th>
+	<?php	}?>
+	<th><?=$v_name?></th>
+	<th><?=$v_content?></th>
+	<?php	if($title == "课件下载"){?>
+	<th>附件</th>
+	<?php	}?>
 	<th>发布日期</th>
 	<th>操作</th>
 </tr>
 <?php foreach ($documents as $document): ?>
 <tr>
+	<?php	if($title == "班级公告"){?>
 	<td><?php echo $document['Rate']['id']; ?></td>
+	<?php	}?>
+	<td><?php echo $document['Document']['rate_id']; ?></td>
+	<?php	if($title == "学生作业"){?>
+	<td><?php echo $document['Course']['course_name']; ?></td>
+	<?php	}?>
 	<td><?php echo $document['Document']['title']; ?></td>
 	<td><?php echo $document['Document']['content']; ?></td>
+	<?php	if($title == "课件下载"){?>
+	<td>附件名称</td>
+	<?php	}?>
 	<td><?php echo $document['Document']['created']; ?></td>
 	<td class="actions">
 		<?php echo $html->link('查看','/documents/view/' . $document['Document']['id'])?>
@@ -24,9 +67,8 @@
 </tr>
 <?php endforeach; ?>
 </table>
-
 <ul class="actions">
-	<li><?php echo $html->link('新增', '/documents/add'); ?></li>
+	<li><?php echo $html->link('新增'.$title, '/documents/add/'.$this->params['url']['type']); ?></li>
 </ul>
 </fieldset>
 </div>

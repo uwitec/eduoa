@@ -1,0 +1,28 @@
+<div id="content">
+<fieldset align=center>
+<legend>教职工列表</legend> 
+
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th>教师编码</th>
+	<th>姓名</th>
+	<th>所教课程</th>
+	<th>所带班级</th>
+	<th>操作</th>
+</tr>
+<?php foreach ($teachers as $teacher): ?>
+<tr>
+	<td><?php echo $teacher['Teacher']['id']; ?></td>
+	<td><?php echo $teacher['Teacher']['teacher_name']; ?></td>
+	<td><?php foreach ($teacher['Course'] as $course){echo $course['course_name'].' ';}?></td>
+	<td><?php foreach ($teacher['Banji'] as $banji){echo $banji['class_name'].' ';}?></td>
+	<td class="actions">
+		<?php echo $html->link('查看','/teachers/view/' . $teacher['Teacher']['id'])?>
+		<?php echo $html->link('编辑','/teachers/teaching_edit/' . $teacher['Teacher']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+</fieldset>
+</div>

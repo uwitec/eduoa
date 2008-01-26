@@ -85,11 +85,6 @@
 	<?php echo $html->tagErrorMsg('Teacher/file_id', 'Please select the File.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Teacher/flag', '状态');?>
- 	<?php echo $html->input('Teacher/flag', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Teacher/flag', 'Please enter the Flag.');?>
-</div>
-<div class="optional"> 
 	<?php echo $form->labelTag('Banji/Banji', '任教班级');?>
  	<?php echo $html->selectTag('Banji/Banji', $banjis, $selectedBanjis, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Banji/Banji', 'Please select the Related Banjis.');?>

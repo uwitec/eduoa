@@ -7,8 +7,8 @@ class Hour extends AppModel {
 			'Week' =>
 				array('className' => 'Week',
 						'joinTable' => 'curriculum_schedules',
-						'foreignKey' => '',
-						'associationForeignKey' => 'hour_id',
+						'foreignKey' => 'hour_id',
+						'associationForeignKey' => 'week_id',
 						'conditions' => '',
 						'fields' => '',
 						'order' => '',

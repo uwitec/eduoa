@@ -6,9 +6,9 @@ class HoursController extends AppController {
 	var $uses = array('Hour','Week');
 
 	function index() {
-		$this->Hour->recursive = 0;
+		//$this->Hour->recursive = 0;
 		$this->set('hours', $this->Hour->findAll());
-		$this->set('weeks', $this->Week->findAll());
+		//$this->set('weeks', $this->Week->findAll());
 	}
 
 	function view($id = null) {

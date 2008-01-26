@@ -52,14 +52,15 @@ class Teacher extends AppModel {
 	);
 
 	var $hasAndBelongsToMany = array(
+
 			'Banji' =>
 				array('className' => 'Banji',
-						'joinTable' => 'tearcher_work_infos',
-						'foreignKey' => 'banji_id',
-						'associationForeignKey' => '',
+						'joinTable' => 'banji_tearchers',
+						'foreignKey' => 'teacher_id',
+						'associationForeignKey' => 'banji_id',
 						'conditions' => '',
 						'fields' => '',
-						'order' => 'Banji.id',
+						'order' => '',
 						'limit' => '',
 						'offset' => '',
 						'unique' => '',
@@ -70,12 +71,12 @@ class Teacher extends AppModel {
 
 			'Course' =>
 				array('className' => 'Course',
-						'joinTable' => 'courses',
-						'foreignKey' => 'course_id',
-						'associationForeignKey' => '',
+						'joinTable' => 'course_tearchers',
+						'foreignKey' => 'teacher_id',
+						'associationForeignKey' => 'course_id',
 						'conditions' => '',
 						'fields' => '',
-						'order' => 'Course.id',
+						'order' => '',
 						'limit' => '',
 						'offset' => '',
 						'unique' => '',

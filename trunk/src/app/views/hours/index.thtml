@@ -13,7 +13,7 @@
 <?php foreach ($hours as $hour): ?>
 <tr>
 	<td><?php echo $hour['Hour']['hour_name']; ?></td>
-	<?php foreach ($weeks as $week):?>
+	<?php foreach ($hour['Week'] as $week):?>
 	<td>
 	<?php echo $html->checkBox('CurriculumSchedule/emailhidden', null, array('checked' => (false ? 'checked' : false), 'value' => 1)) ?>
 	</td>

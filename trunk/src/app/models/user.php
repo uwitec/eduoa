@@ -35,7 +35,6 @@ class User extends AppModel {
 				),
 
 	);
-
 	
 	function getPerformance($user_id = null, $start_date = null, $end_date = null){
 

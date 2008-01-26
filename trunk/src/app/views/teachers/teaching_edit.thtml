@@ -1,0 +1,27 @@
+<div id="content">
+<fieldset align=center>
+<legend>编辑教职工信息</legend> 
+<form action="<?php echo $html->url('/teachers/teaching_edit/'.$html->tagValue('Teacher/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Teacher/teacher_name', '姓名');?>
+ 	<?php echo $html->input('Teacher/teacher_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Teacher/teacher_name', 'Please enter the Teacher Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Banji/Banji', '任教班级');?>
+ 	<?php echo $html->selectTag('Banji/Banji', $banjis, $selectedBanjis, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), false);?>
+	<?php echo $html->tagErrorMsg('Banji/Banji', 'Please select the Related Banjis.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Course/Course', '任教课程');?>
+ 	<?php echo $html->selectTag('Course/Course', $courses, $selectedCourses, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), false);?>
+	<?php echo $html->tagErrorMsg('Course/Course', 'Please select the Related Courses.');?>
+</div>
+<?php echo $html->hidden('Teacher/id')?>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+
+</fieldset>
+</div>

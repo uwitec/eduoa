@@ -195,6 +195,28 @@ create table tearcher_work_infos(
 )engine=MyISAM default charset=utf8 comment='教师任教信息';
 
 
+-- ----------------------------
+-- 教师所带班级
+-- ----------------------------
+create table banji_tearchers(
+  id                    int(10)       not null auto_increment comment '编号',
+  teacher_id            int(10)       not null                comment '教师',
+  banji_id              int(10)       not null                comment '班级',
+  primary key (id)
+)engine=MyISAM default charset=utf8 comment='教师所带班级';
+
+
+-- ----------------------------
+-- 教师所教课程
+-- ----------------------------
+create table course_tearchers(
+  id                    int(10)       not null auto_increment comment '编号',
+  teacher_id            int(10)       not null                comment '教师',
+  course_id             int(10)       not null                comment '班级',
+  primary key (id)
+)engine=MyISAM default charset=utf8 comment='教师所教课程';
+
+
 /* 学生档案 */
 create table students(
   id                    int(10)       not null auto_increment comment '内部编号',
@@ -294,10 +316,13 @@ create table weeks(
 /* 课程表 */
 create table curriculum_schedules(
   id                    int(10)       not null auto_increment comment '内部编号',
-  class_id              int(10)       not null                comment '班级',
+  banji_id              int(10)       not null                comment '班级',
+  semester_id           int(10)                               comment '学期',
+  classroom_id          int(10)                               comment '固定教室',
+  course_id             int(10)                               comment '课程',
+  teacher_id            int(10)       not null                comment '教师名称',
   hour_id               int(10)       not null                comment '课时',
   week_id               int(10)       not null                comment '星期',
-  teacher_id            int(10)       not null                comment '教师名称',
   primary key (id)  
 )engine=MyISAM default charset=utf8 comment='课程表';
 

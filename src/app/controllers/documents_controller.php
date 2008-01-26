@@ -4,8 +4,17 @@ class DocumentsController extends AppController {
 	var $name = 'Documents';
 	var $helpers = array('Html', 'Form' );
 
-	function index($id = null) {
+	function index() {
+		$id = $this->params['url']['type'];
 		$this->Document->recursive = 0;
+		$this->set('courses', 
+				   $this->Document->Course->generateList(
+					 $conditions = null,
+					 $order = 'id',
+					 $limit = null,
+					 $keyPath = '{n}.Course.id',
+					 $valuePath = '{n}.Course.course_name')
+		);
 		if($id) {
 			$this->set('documents', $this->Document->findAll('document_type_id = '.$id));
 		}else {
@@ -22,7 +31,7 @@ class DocumentsController extends AppController {
 		$this->set('document', $this->Document->read(null, $id));
 	}
 
-	function add() {
+	function add($id = null) {
 		if (empty($this->data)) {
 			$this->set('documentTypes', 
 						$this->Document->DocumentType->generateList(
@@ -43,10 +52,11 @@ class DocumentsController extends AppController {
 			);
 			$this->render();
 		} else {
+			$this->data['Document']['document_type_id'] = $id;
 			$this->cleanUpFields();
 			if ($this->Document->save($this->data)) {
 				$this->Session->setFlash('新增成功！');
-				$this->redirect('/documents/index');
+				$this->redirect('/documents/index/?type='.$type);
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 				$this->set('documentTypes', $this->Document->DocumentType->generateList());

@@ -3,14 +3,14 @@
 <legend>新增</legend>
 <form action="<?php echo $html->url('/documents/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('Document/document_type_id', '类型');?>
- 	<?php echo $html->selectTag('Document/document_type_id', $documentTypes, $html->tagValue('Document/document_type_id'), array(), array(), false);?>
-	<?php echo $html->tagErrorMsg('Document/document_type_id', 'Please select the Document Type.') ?>
-</div>
-<div class="optional"> 
 	<?php echo $form->labelTag('Document/rate_id', '紧急程度');?>
  	<?php echo $html->selectTag('Document/rate_id', $rates, $html->tagValue('Document/rate_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Document/rate_id', 'Please select the Rate.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Document/course_id', '作业课程');?>
+ 	<?php echo $html->selectTag('Document/course_id', $courses, $html->tagValue('Document/course_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Document/course_id', 'Please select the Course.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Document/title', '标题');?>

@@ -22,6 +22,7 @@
  	<?php echo $html->textarea('Document/content', array('cols' => '60', 'rows' => '10'));?>
 	<?php echo $html->tagErrorMsg('Document/content', 'Please enter the Content.');?>
 </div>
+<?php echo $html->hidden('Document/document_type_id', array('value' => $this->params['pass'][0]));?>
 <div class="submit">
 	<?php echo $html->submit('保存');?>
 </div>

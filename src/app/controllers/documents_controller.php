@@ -52,11 +52,10 @@ class DocumentsController extends AppController {
 			);
 			$this->render();
 		} else {
-			$this->data['Document']['document_type_id'] = $id;
 			$this->cleanUpFields();
 			if ($this->Document->save($this->data)) {
 				$this->Session->setFlash('新增成功！');
-				$this->redirect('/documents/index/?type='.$type);
+				$this->redirect('/documents/index/?type='.$this->data['Document']['document_type_id']);
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 				$this->set('documentTypes', $this->Document->DocumentType->generateList());

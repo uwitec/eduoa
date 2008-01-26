@@ -1,0 +1,28 @@
+<h2>Edit Email Box</h2>
+<form action="<?php echo $html->url('/email_boxes/edit/'.$html->tagValue('EmailBox/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('EmailBox/box_name', 'Box Name');?>
+ 	<?php echo $html->input('EmailBox/box_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('EmailBox/box_name', 'Please enter the Box Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('EmailBox/order_list', 'Order List');?>
+ 	<?php echo $html->input('EmailBox/order_list', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('EmailBox/order_list', 'Please enter the Order List.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('EmailBox/user_id', 'User');?>
+ 	<?php echo $html->selectTag('EmailBox/user_id', $users, $html->tagValue('EmailBox/user_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('EmailBox/user_id', 'Please select the User.') ?>
+</div>
+<?php echo $html->hidden('EmailBox/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/email_boxes/delete/' . $html->tagValue('EmailBox/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('EmailBox/id'));?>
+<li><?php echo $html->link('List Email Boxes', '/email_boxes/index')?></li>
+<li><?php echo $html->link('View Users', '/users/index/');?></li>
+<li><?php echo $html->link('Add Users', '/users/add/');?></li>
+</ul>

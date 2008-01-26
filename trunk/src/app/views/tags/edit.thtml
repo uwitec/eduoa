@@ -1,0 +1,21 @@
+<h2>Edit Tag</h2>
+<form action="<?php echo $html->url('/tags/edit/'.$html->tagValue('Tag/id')); ?>" method="post">
+<div class="required"> 
+	<?php echo $form->labelTag('Tag/tag', 'Tag');?>
+ 	<?php echo $html->input('Tag/name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Tag/name', 'Please enter the Tag.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Post/Post', 'Related Posts');?>
+	 <?php echo $habtm->checkboxMultiple('Post/Post', $posts, $selectedPosts, array('multiple' => 'multiple', 'class' => 'selectMultiple'));?>
+	<?php echo $html->tagErrorMsg('Post/Post', 'Please select the Related Posts.');?>
+</div>
+<?php echo $html->hidden('Tag/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/tags/delete/' . $html->tagValue('Tag/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Tag/id'));?>
+<li><?php echo $html->link('List Tags', '/tags/index')?></li>
+</ul>

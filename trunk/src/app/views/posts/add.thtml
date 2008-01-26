@@ -1,0 +1,29 @@
+<h2>New Post</h2>
+<form action="<?php echo $html->url('/posts/add'); ?>" method="post">
+<div class="required"> 
+	<?php echo $form->labelTag('Post/title', 'Title');?>
+ 	<?php echo $html->input('Post/title', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Post/title', 'Please enter the Title.');?>
+</div>
+<div class="required"> 
+	<?php echo $form->labelTag( 'Post/body', 'Body' );?>
+ 	<?php echo $html->textarea('Post/body', array('cols' => '60', 'rows' => '10'));?>
+	<?php echo $html->tagErrorMsg('Post/body', 'Please enter the Body.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Post/status', null, array());?>
+	<?php echo $form->labelTag('Post/status', 'Status');?>
+ 	<?php echo $html->tagErrorMsg('Post/status', 'Please check the Status.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Tag/Tag', 'Related Tags');?>
+	<?php echo $habtm->checkboxMultiple('Tag/Tag', $tags, $selectedTags, array('multiple' => 'multiple', 'class' => 'selectMultiple'));?>
+	<?php echo $html->tagErrorMsg('Tag/Tag', 'Please select the Related Tags.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Posts', '/posts/index')?></li>
+</ul>

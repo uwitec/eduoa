@@ -1,0 +1,33 @@
+<div id="content">
+<fieldset align=center>
+<legend>班级列表</legend>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Box Name</th>
+	<th>Order List</th>
+	<th>User</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($emailBoxes as $emailBox): ?>
+<tr>
+	<td><?php echo $emailBox['EmailBox']['id']; ?></td>
+	<td><?php echo $emailBox['EmailBox']['box_name']; ?></td>
+	<td><?php echo $emailBox['EmailBox']['order_list']; ?></td>
+	<td>&nbsp;<?php echo $html->link($emailBox['User']['id'], '/users/view/' .$emailBox['User']['id'])?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/email_boxes/view/' . $emailBox['EmailBox']['id'])?>
+		<?php echo $html->link('Edit','/email_boxes/edit/' . $emailBox['EmailBox']['id'])?>
+		<?php echo $html->link('Delete','/email_boxes/delete/' . $emailBox['EmailBox']['id'], null, 'Are you sure you want to delete id ' . $emailBox['EmailBox']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Email Box', '/email_boxes/add'); ?></li>
+</ul>
+
+</fieldset>
+</div>

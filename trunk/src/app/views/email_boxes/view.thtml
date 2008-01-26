@@ -1,0 +1,23 @@
+<div class="emailBox">
+<h2>View Email Box</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $emailBox['EmailBox']['id']?></dd>
+	<dt>Box Name</dt>
+	<dd>&nbsp;<?php echo $emailBox['EmailBox']['box_name']?></dd>
+	<dt>Order List</dt>
+	<dd>&nbsp;<?php echo $emailBox['EmailBox']['order_list']?></dd>
+	<dt>User</dt>
+	<dd>&nbsp;<?php echo $html->link($emailBox['User']['id'], '/users/view/' .$emailBox['User']['id'])?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Email Box',   '/email_boxes/edit/' . $emailBox['EmailBox']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Email Box', '/email_boxes/delete/' . $emailBox['EmailBox']['id'], null, 'Are you sure you want to delete: id ' . $emailBox['EmailBox']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Email Boxes',   '/email_boxes/index') ?> </li>
+	<li><?php echo $html->link('New Email Box',	'/email_boxes/add') ?> </li>
+	<li><?php echo $html->link('List User', '/users/index/')?> </li>
+	<li><?php echo $html->link('New Users', '/users/add/')?> </li>
+</ul>
+
+</div>

@@ -33,5 +33,25 @@ class Banji extends AppModel {
 
 	);
 
+	var $hasAndBelongsToMany = array(
+
+			'Document' =>
+				array('className' => 'Document',
+						'joinTable' => 'doc_class_receiving_logs',
+						'foreignKey' => 'banji_id',
+						'associationForeignKey' => 'document_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'limit' => '',
+						'offset' => '',
+						'unique' => '',
+						'finderQuery' => '',
+						'deleteQuery' => '',
+						'insertQuery' => ''
+				),
+
+	);
+
 }
 ?>

@@ -115,6 +115,21 @@ class CurriculumSchedulesController extends AppController {
 		return $this->CurriculumSchedule->find($criteria);
 	}
 
+	function findScheduleByBanji($banji = null, $semester = null, $hour = null, $week = null){
+		$criteria = "CurriculumSchedule.banji_id = $banji and CurriculumSchedule.semester_id = $semester and CurriculumSchedule.hour_id = $hour and CurriculumSchedule.week_id = $week";
+		return $this->CurriculumSchedule->find($criteria);
+	}
+
+	function findScheduleByClassroom($classroom = null, $semester = null, $hour = null, $week = null){
+		$criteria = "CurriculumSchedule.classroom_id = $classroom and CurriculumSchedule.semester_id = $semester and CurriculumSchedule.hour_id = $hour and CurriculumSchedule.week_id = $week";
+		return $this->CurriculumSchedule->find($criteria);
+	}
+
+	function findStatisticsByTeacher($teacher = null, $semester = null){
+		$criteria = "CurriculumSchedule.teacher_id = $teacher and CurriculumSchedule.semester_id = $semester";
+		return $this->CurriculumSchedule->findCount($criteria);
+	}
+
    function teacher() {
 		$this->set('semesters', $this->CurriculumSchedule->Semester->generateList(
 							$conditions = null,
@@ -133,12 +148,47 @@ class CurriculumSchedulesController extends AppController {
    }
 
    function banji() {
+		$this->set('semesters', $this->CurriculumSchedule->Semester->generateList(
+							$conditions = null,
+							$order = 'is_current desc',
+							$limit = null,
+							$KeyPath = '{n}.Semester.id',
+							$valuePath = '{n}.Semester.semester_name')
+		);
+		$this->set('banjis', $this->CurriculumSchedule->Banji->findAll());
+   }
+
+   function banji_view() {
+		$this->CurriculumSchedule->recursive = 0;
+		$this->set('hours', $this->Hour->findAll());
+		$this->set('weeks', $this->Week->findAll());
    }
 
    function classroom() {
+		$this->set('semesters', $this->CurriculumSchedule->Semester->generateList(
+							$conditions = null,
+							$order = 'is_current desc',
+							$limit = null,
+							$KeyPath = '{n}.Semester.id',
+							$valuePath = '{n}.Semester.semester_name')
+		);
+		$this->set('classrooms', $this->CurriculumSchedule->Classroom->findAll());
    }
 
-   function statistics() {
+   function classroom_view() {
+		$this->CurriculumSchedule->recursive = 0;
+		$this->set('hours', $this->Hour->findAll());
+		$this->set('weeks', $this->Week->findAll());
+   }
+
+   function statistics($id = null, $semester_name = null) {
+	   $this->set('semesters', $this->CurriculumSchedule->Semester->findAll());
+	   if($id!=null){
+		   $this->set('teachers', $this->CurriculumSchedule->Teacher->findAll());
+		   $this->set('semester_name', $semester_name);
+	   }else{
+		   $this->set('teachers', null);
+	   }
    }
 
 }

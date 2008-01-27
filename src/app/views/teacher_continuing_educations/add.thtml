@@ -9,12 +9,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('TeacherContinuingEducation/start_date', '教育开始日期');?>
- 	<?php echo $html->dateTimeOptionTag('TeacherContinuingEducation/start_date', 'MDY' , 'NONE', $html->tagValue('TeacherContinuingEducation/start_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('TeacherContinuingEducation/start_date', 'YMD' , 'NONE', $html->tagValue('TeacherContinuingEducation/start_date'), array());?>
 	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/start_date', 'Please select the Start Date.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('TeacherContinuingEducation/end_date', '教育结束日期');?>
- 	<?php echo $html->dateTimeOptionTag('TeacherContinuingEducation/end_date', 'MDY' , 'NONE', $html->tagValue('TeacherContinuingEducation/end_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('TeacherContinuingEducation/end_date', 'YMD' , 'NONE', $html->tagValue('TeacherContinuingEducation/end_date'), array());?>
 	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/end_date', 'Please select the End Date.');?>
 </div>
 <div class="optional"> 

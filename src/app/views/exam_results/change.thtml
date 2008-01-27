@@ -39,7 +39,7 @@
   <tr>
     <td align=middle  colspan=2>
 	  <div align="center">
-        <input title="进入班级成绩管理页面" type="submit" value="进入班级成绩管理页面"/>
+        <input title="进入班级成绩管理页面" type="button" value="进入班级成绩管理页面"/>
       </div>
 	</td>
   </tr>

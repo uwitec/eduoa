@@ -38,61 +38,15 @@
 	<dd>&nbsp;<?php echo $teacher['Teacher']['office_phone']?></dd>
 	<dt>所属部门</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['Department']['id'], '/departments/view/' .$teacher['Department']['id'])?></dd>
+	<!--
 	<dt>照片</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['File']['name'], '/files/view/' .$teacher['File']['id'])?></dd>
+	-->
 	<dt>状态</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['flag']?></dd>
 </dl>
 <ul class="actions">
 	<li><?php echo $html->link('教职工列表',   '/teachers/index') ?> </li>
 </ul>
-</fieldset>
-</div>
-
-
-<div id="content">
-<fieldset align=center>
-<legend>任教班级</legend> 
-<?php if (!empty($teacher['Banji'])):?>
-<table cellpadding="0" cellspacing="0">
-<tr>
-<?php foreach ($teacher['Banji']['0'] as $column => $value): ?>
-<th><?php echo $column?></th>
-<?php endforeach; ?>
-</tr>
-<?php foreach ($teacher['Banji'] as $banji):?>
-<tr>
-	<?php foreach ($banji as $column => $value):?>
-		<td><?php echo $value;?></td>
-	<?php endforeach;?>
-</tr>
-<?php endforeach; ?>
-</table>
-<?php endif; ?>
-
-</fieldset>
-</div>
-
-
-<div id="content">
-<fieldset align=center>
-<legend>任教课程</legend> 
-<?php if (!empty($teacher['Course'])):?>
-<table cellpadding="0" cellspacing="0">
-<tr>
-<?php foreach ($teacher['Course']['0'] as $column => $value): ?>
-<th><?php echo $column?></th>
-<?php endforeach; ?>
-</tr>
-<?php foreach ($teacher['Course'] as $course):?>
-<tr>
-	<?php foreach ($course as $column => $value):?>
-		<td><?php echo $value;?></td>
-	<?php endforeach;?>
-</tr>
-<?php endforeach; ?>
-</table>
-<?php endif; ?>
-
 </fieldset>
 </div>

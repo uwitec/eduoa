@@ -21,6 +21,16 @@
 			$v_name = "章节";
 			$v_content = "内容";
 			break;
+		case 5:
+			$title = "公告通知";
+			$v_name = "公告标题";
+			$v_content = "公告内容";
+			break;
+		case 6:
+			$title = "新闻";
+			$v_name = "新闻标题";
+			$v_content = "新闻内容";
+			break;
 	}
 ?>
 <div id="content">
@@ -29,7 +39,9 @@
 
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
+	<?php	if($title != "新闻" && $title != "公告通知"){?>
 	<th>发布对象</th>
+	<?php	}?>
 	<?php	if($title == "班级公告"){?>
 	<th>紧急程度</th>
 	<?php	}?>
@@ -46,7 +58,9 @@
 </tr>
 <?php foreach ($documents as $document): ?>
 <tr>
+	<?php	if($title != "新闻" && $title != "公告通知"){?>
 	<td><?php foreach ($document['Banji'] as $banji){echo $banji['class_name'].' ';}?></td>	
+	<?php	}?>
 	<?php	if($title == "班级公告"){?>
 	<td><?php echo $document['Rate']['rate_name']; ?></td>
 	<?php	}?>

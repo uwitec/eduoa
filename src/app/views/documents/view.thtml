@@ -21,6 +21,16 @@
 			$v_name = "章节";
 			$v_content = "内容";
 			break;
+		case 5:
+			$title = "公告通知";
+			$v_name = "公告标题";
+			$v_content = "公告内容";
+			break;
+		case 6:
+			$title = "新闻";
+			$v_name = "新闻标题";
+			$v_content = "新闻内容";
+			break;
 	}
 ?>
 <div id="content">
@@ -28,8 +38,10 @@
 <legend>查看<?=$title?></legend> 
 
 <dl>
+	<?php	if($title != "新闻" && $title != "公告通知"){?>
 	<dt>发布对象</dt>
 	<dd><?php foreach ($document['Banji'] as $banji){echo $banji['class_name'].' ';}?></dd>
+	<?php	}?>
 	<?php	if($title == "班级公告"){?>
 	<dt>紧急程度</dt>
 	<dd>&nbsp;<?php echo $document['Rate']['rate_name']?></dd>

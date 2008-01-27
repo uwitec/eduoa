@@ -132,5 +132,76 @@ class AssetsController extends AppController {
 		}
 	}
 
+	//书籍管理处理
+
+	function book_index() {
+		$this->Asset->recursive = 0;
+		$this->set('assets', $this->Asset->findAll('asset_type_id = 99999'));
+	}
+
+	function book_add() {
+		if (empty($this->data)) {
+			$this->render();
+		} else {
+			$this->cleanUpFields();
+			$this->data['Asset']['asset_type_id'] = 99999;
+			if ($this->Asset->save($this->data)) {
+				$this->Session->setFlash('书籍保存成功！');
+				$this->redirect('/assets/book_index');
+			} else {
+				$this->Session->setFlash('Please correct errors below.');
+			}
+		}
+	}
+
+	function book_edit($id = null) {
+		if (empty($this->data)) {
+			if (!$id) {
+				$this->Session->setFlash('Invalid id for Asset');
+				$this->redirect('/assets/index');
+			}
+			$this->data = $this->Asset->read(null, $id);
+		} else {
+			$this->cleanUpFields();
+			$this->data['Asset']['asset_type_id'] = 99999;
+			if ($this->Asset->save($this->data)) {
+				$this->Session->setFlash('书籍保存成功！');
+				$this->redirect('/assets/book_index');
+			} else {
+				$this->Session->setFlash('Please correct errors below.');
+			}
+		}
+	}
+
+	function book_view($id = null) {
+		if (!$id) {
+			$this->Session->setFlash('Invalid id for Asset.');
+			$this->redirect('/assets/book_index');
+		}
+		$this->set('asset', $this->Asset->read(null, $id));
+	}
+
+	function book_delete($id = null) {
+		if (!$id) {
+			$this->Session->setFlash('Invalid id for Asset');
+			$this->redirect('/assets/book_index');
+		}
+		if ($this->Asset->del($id)) {
+			$this->Session->setFlash('删除成功！');
+			$this->redirect('/assets/book_index');
+		}
+	}
+
+	function book_in_out() {
+		$this->Asset->recursive = 0;
+		$this->set('assets', $this->Asset->findAll('asset_type_id = 99999'));
+	}
+
+	function book_search() {
+		$this->Asset->recursive = 0;
+		$this->set('assets', $this->Asset->findAll('asset_type_id = 99999'));
+	}
+
+
 }
 ?>

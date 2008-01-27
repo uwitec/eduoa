@@ -1,0 +1,23 @@
+<div id="content">
+<fieldset align=center>
+<legend>书籍详情</legend> 
+
+<dl>
+	<dt>书籍名称</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['asset_name']?></dd>
+	<dt>书籍代码</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['asset_code']?></dd>
+	<dt>ISBN编码</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['standard_code']?></dd>
+	<dt>出版社</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['provider']?></dd>
+	<dt>出版日期</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['made_date']?></dd>
+	<dt>入库日期</dt>
+	<dd>&nbsp;<?php echo $asset['Asset']['in_date']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('书籍列表',   '/assets/book_index') ?> </li>
+</ul>
+</fieldset>
+</div>

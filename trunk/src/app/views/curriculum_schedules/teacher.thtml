@@ -1,0 +1,35 @@
+<div id="content">
+<fieldset align=center>
+<legend>教师课表查询</legend> 
+
+ <table width="100%">
+ <tr>
+	<th colspan='5'>教师课表查询（点击直接查看教师课表）当前学期: 
+	<?php echo $html->selectTag('Semester/id', $semesters, $html->tagValue('Semester/id'), array(), array(), false);?>
+	</th>
+ </tr>
+ <?php
+   $count = 0;
+   $size = sizeof($teachers);
+   foreach ($teachers as $teacher){
+	   if($count % 5 == 0){
+		   echo "<tr>";
+		   echo "<td>" . $html->link($teacher['Teacher']['teacher_name'], '/curriculum_schedules/teacher_view/'.$teacher['Teacher']['id'],array('target' => '_blank')) ."</td>";
+	   }else{
+		   echo "<td>" . $html->link($teacher['Teacher']['teacher_name'], '/curriculum_schedules/teacher_view/'.$teacher['Teacher']['id'],array('target' => '_blank')) ."</td>";
+	   }
+	   $count++;
+	   if($size == $count && $count % 5 != 0){
+		   for($i=0;$i<=$count % 5;$i++){
+			   echo("<td></td>");
+		   }
+	   }
+	   if($count % 5 == 0 ||  $size == $count){
+		   echo "</tr>";
+	   }
+   }
+ ?>
+ </table>
+
+</fieldset>
+</div>

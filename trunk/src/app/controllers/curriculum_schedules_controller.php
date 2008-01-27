@@ -60,37 +60,8 @@ class CurriculumSchedulesController extends AppController {
 		$this->data['CurriculumSchedule']['week_id'] = $week_id;
 
 		if ($this->CurriculumSchedule->save($this->data)) {
-			//$this->Session->setFlash('The Curriculum Schedule has been saved');
-			//$this->redirect('/curriculum_schedules/index');
 		}
 
-		/*
-		if (empty($this->data)) {
-			$this->set('banjis', $this->CurriculumSchedule->Banji->generateList());
-			$this->set('semesters', $this->CurriculumSchedule->Semester->generateList());
-			$this->set('classrooms', $this->CurriculumSchedule->Classroom->generateList());
-			$this->set('courses', $this->CurriculumSchedule->Course->generateList());
-			$this->set('teachers', $this->CurriculumSchedule->Teacher->generateList());
-			$this->set('hours', $this->CurriculumSchedule->Hour->generateList());
-			$this->set('weeks', $this->CurriculumSchedule->Week->generateList());
-			$this->render();
-		} else {
-			$this->cleanUpFields();
-			if ($this->CurriculumSchedule->save($this->data)) {
-				$this->Session->setFlash('The Curriculum Schedule has been saved');
-				$this->redirect('/curriculum_schedules/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('banjis', $this->CurriculumSchedule->Banji->generateList());
-				$this->set('semesters', $this->CurriculumSchedule->Semester->generateList());
-				$this->set('classrooms', $this->CurriculumSchedule->Classroom->generateList());
-				$this->set('courses', $this->CurriculumSchedule->Course->generateList());
-				$this->set('teachers', $this->CurriculumSchedule->Teacher->generateList());
-				$this->set('hours', $this->CurriculumSchedule->Hour->generateList());
-				$this->set('weeks', $this->CurriculumSchedule->Week->generateList());
-			}
-		}
-		*/
 	}
 
 	function edit($id = null) {
@@ -138,6 +109,37 @@ class CurriculumSchedulesController extends AppController {
 		$criteria = "banji_id = $banji and semester_id = $semester and hour_id = $hour and week_id = $week";
 		return $this->CurriculumSchedule->find($criteria);
 	}
+
+	function findScheduleByTeacher($teacher = null, $semester = null, $hour = null, $week = null){
+		$criteria = "CurriculumSchedule.teacher_id = $teacher and CurriculumSchedule.semester_id = $semester and CurriculumSchedule.hour_id = $hour and CurriculumSchedule.week_id = $week";
+		return $this->CurriculumSchedule->find($criteria);
+	}
+
+   function teacher() {
+		$this->set('semesters', $this->CurriculumSchedule->Semester->generateList(
+							$conditions = null,
+							$order = 'is_current desc',
+							$limit = null,
+							$KeyPath = '{n}.Semester.id',
+							$valuePath = '{n}.Semester.semester_name')
+		);
+		$this->set('teachers', $this->CurriculumSchedule->Teacher->findAll());
+   }
+
+   function teacher_view() {
+		$this->CurriculumSchedule->recursive = 0;
+		$this->set('hours', $this->Hour->findAll());
+		$this->set('weeks', $this->Week->findAll());
+   }
+
+   function banji() {
+   }
+
+   function classroom() {
+   }
+
+   function statistics() {
+   }
 
 }
 ?>

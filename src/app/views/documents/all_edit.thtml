@@ -1,49 +1,27 @@
 <?php
 	switch($this->params['url']['type']){
 		case 1:
-			$title = "班级公告";
+			$title = "班级公告(全校)";
 			$v_name = "公告标题";
 			$v_content = "主要内容";
 			break;
-		case 2:
-			$title = "学生作业";
-			$v_name = "重点难点";
-			$v_content = "作业内容";
-			break;
 		case 3:
-			$title = "课件下载";
+			$title = "课件下载(全校)";
 			$v_name = "资料名称";
 			$v_content = "内容";
 			$v_fujian = "附件";
-			break;
-		case 4:
-			$title = "同步练习";
-			$v_name = "章节";
-			$v_content = "内容";
 			break;
 	}
 ?>
 <div id="content">
 <fieldset align=center>
 <legend>编辑<?=$title?></legend> 
-<form action="<?php echo $html->url('/documents/edit/'.$html->tagValue('Document/id')); ?>" method="post">
-<div class="optional"> 
-	<?php echo $form->labelTag('Banji/Banji', '发布对象');?>
- 	<?php echo $html->selectTag('Banji/Banji', $banjis, $selectedBanjis, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), false);?>
-	<?php echo $html->tagErrorMsg('Banji/Banji', 'Please select the Related Banjis.');?>
-</div>
-<?php	if($title == "班级公告"){?>
+<form action="<?php echo $html->url('/documents/all_edit/'.$html->tagValue('Document/id')); ?>" method="post">
+<?php	if($title == "班级公告(全校)"){?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Document/rate_id', '紧急程度');?>
  	<?php echo $html->selectTag('Document/rate_id', $rates, $html->tagValue('Document/rate_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Document/rate_id', 'Please select the Rate.') ?>
-</div>
-<?php	}?>
-<?php	if($title == "学生作业"){?>
-<div class="optional"> 
-	<?php echo $form->labelTag('Document/course_id', '作业课程');?>
- 	<?php echo $html->selectTag('Document/course_id', $courses, $html->tagValue('Document/course_id'), array(), array(), false);?>
-	<?php echo $html->tagErrorMsg('Document/course_id', 'Please select the Course.') ?>
 </div>
 <?php	}?>
 <div class="optional"> 
@@ -63,7 +41,7 @@
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link($title.'列表', '/documents/index/?type='.$this->params['url']['type'])?></li>
+<li><?php echo $html->link($title.'列表', '/documents/all_index/?type='.$this->params['url']['type'])?></li>
 </ul>
 </fieldset>
 </div>

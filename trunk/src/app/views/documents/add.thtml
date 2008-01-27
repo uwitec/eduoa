@@ -21,17 +21,29 @@
 			$v_name = "章节";
 			$v_content = "内容";
 			break;
+		case 5:
+			$title = "公告通知";
+			$v_name = "公告标题";
+			$v_content = "公告内容";
+			break;
+		case 6:
+			$title = "新闻";
+			$v_name = "新闻标题";
+			$v_content = "新闻内容";
+			break;
 	}
 ?>
 <div id="content">
 <fieldset align=center>
 <legend>新增<?=$title?></legend>
 <form action="<?php echo $html->url('/documents/add'); ?>" method="post">
+<?php	if($title != "新闻" && $title != "公告通知"){?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Banji/Banji', '发布对象');?>
  	<?php echo $html->selectTag('Banji/Banji', $banjis, $selectedBanjis, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Banji/Banji', 'Please select the Related Banjis.');?>
 </div>
+<?php	}?>
 <?php	if($title == "班级公告"){?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Document/rate_id', '紧急程度');?>

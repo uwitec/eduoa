@@ -52,7 +52,7 @@
   <tr>
     <td align=middle  colspan=2>
 	  <div align="center">
-        <input class=smallbutton title=点击提交成绩 type=submit value="点击提交成绩" name=button>
+        <input class=smallbutton title=点击提交成绩 type=button value="点击提交成绩" name=button>
       </div>
 	</td>
   </tr>

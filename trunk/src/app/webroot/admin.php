@@ -7,17 +7,17 @@
 </head>
 
 <frameset rows="62,27,*,20" cols="*" frameborder="no" border="0" framespacing="0" id="frame1">
-  <frame src="/frames/top" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" /><!--//顶部页面  -->
-  <frame src="/frames/head" name="headFrame" scrolling="No" noresize="noresize" id="headFrame" /><!--//顶部下页面  -->
+  <frame src="frames/top" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" /><!--//顶部页面  -->
+  <frame src="frames/head" name="headFrame" scrolling="No" noresize="noresize" id="headFrame" /><!--//顶部下页面  -->
   <frameset rows="*" cols="7,190,5,9,*,0" framespacing="0" frameborder="no" border="0" id="frame2">
-    <frame src="/pages/blank_left" name="menu_leftbar" scrolling="No" noresize="noresize" id="menu_leftbar"/><!- //菜单左边条 -->
-	<frame src="/modules/left" name="function_panel_index" scrolling="Auto" noresize="noresize" id="function_panel_index" /><!--//左边的菜单页 -->
-    <frame src="/pages/blank_right" name="menu_rightbar" scrolling="No" noresize="noresize" id="menu_rightbar" /><!-//菜单右边条 -->
-	<frame src="/pages/control" name="controlmenu" frameborder="0" scrolling="No" noresize="noresize" id="controlmenu" /> <!--//中间页，控制左边菜单的显隐 --> 
-	<frame src="/demo.php" name="table_index" frameborder="0" scrolling="Auto" noresize="noresize" id="table_index" /><!--//右边的内容页面，显示菜单点击页面 -->
-	<frame src="/pages/blank" name="table_right" frameborder="0" scrolling="No" noresize="noresize" id="table_right" /></frame><!-- //右边条 -->      
+    <frame src="pages/blank_left" name="menu_leftbar" scrolling="No" noresize="noresize" id="menu_leftbar"/><!- //菜单左边条 -->
+	<frame src="modules/left" name="function_panel_index" scrolling="Auto" noresize="noresize" id="function_panel_index" /><!--//左边的菜单页 -->
+    <frame src="pages/blank_right" name="menu_rightbar" scrolling="No" noresize="noresize" id="menu_rightbar" /><!-//菜单右边条 -->
+	<frame src="pages/control" name="controlmenu" frameborder="0" scrolling="No" noresize="noresize" id="controlmenu" /> <!--//中间页，控制左边菜单的显隐 --> 
+	<frame src="demo.php" name="table_index" frameborder="0" scrolling="Auto" noresize="noresize" id="table_index" /><!--//右边的内容页面，显示菜单点击页面 -->
+	<frame src="pages/blank" name="table_right" frameborder="0" scrolling="No" noresize="noresize" id="table_right" /></frame><!-- //右边条 -->      
   </frameset>
-  <frame src="/frames/status_bar" name="status_bar" scrolling="No" noresize="noresize" id="status_bar" /></frame><!--//底部的状态页面 -->
+  <frame src="frames/status_bar" name="status_bar" scrolling="No" noresize="noresize" id="status_bar" /></frame><!--//底部的状态页面 -->
 </frameset>
 
 <noframes>您的浏览器不支持框架页面，请使用IE6.0以上的浏览器！</noframes>

@@ -2,5 +2,64 @@
 <fieldset align=center>
 <legend>课时统计</legend> 
 
+<table width="100%">
+ <tr>
+	<th colspan='4'>所有学期列表</th>
+ </tr>
+ <?php
+   $count = 0;
+   $size = sizeof($semesters);
+   foreach ($semesters as $semester){
+	   if($count % 4 == 0){
+		   echo "<tr>";
+		   echo "<td>" . $html->link($semester['Semester']['semester_name'], '/curriculum_schedules/statistics/'.$semester['Semester']['id'].'/'.$semester['Semester']['semester_name']) .'</td>';
+	   }else{
+		   echo "<td>" . $html->link($semester['Semester']['semester_name'], '/curriculum_schedules/statistics/'.$semester['Semester']['id'].'/'.$semester['Semester']['semester_name']) .'</td>';
+	   }
+	   $count++;
+	   if($size == $count && $count % 4 != 0){
+		   for($i=0;$i<(4-($count % 4));$i++){
+			   echo("<td></td>");
+		   }
+	   }
+	   if($count % 4 == 0 ||  $size == $count){
+		   echo "</tr>";
+	   }
+   }
+ ?>
+ </table>
+<br/><br/>
+
+<?php if($teachers!=null):?>
+<table width="100%">
+ <tr>
+	<th colspan='4'>教师课时信息统计 当前学期:<?=$semester_name?></th>
+ </tr>
+ <?php
+   $count = 0;
+   $size = sizeof($teachers);
+   foreach ($teachers as $teacher){
+	   if($count % 2 == 0){
+		   echo "<tr>";
+		   echo "<td width='25%'>" . $teacher['Teacher']['teacher_name'] ."</td>";
+	   }else{
+		   echo "<td width='25%'>" . $teacher['Teacher']['teacher_name'] ."</td>";
+	   }
+	   echo "<td width='25%'>". $this->controller->findStatisticsByTeacher($teacher['Teacher']['id'],$this->params['pass'][0]) ."</td>";
+	   $count++;
+	   if($size == $count && $count % 2 != 0){
+		   for($i=0;$i<(2-($count % 2));$i++){
+			   echo("<td></td><td></td>");
+		   }
+	   }
+	   if($count % 2 == 0 ||  $size == $count){
+		   echo "</tr>";
+	   }
+   }
+ ?>
+</table>
+<?php endif;?>
+
+
 </fieldset>
 </div>

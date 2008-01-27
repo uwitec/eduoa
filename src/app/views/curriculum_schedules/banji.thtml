@@ -2,5 +2,34 @@
 <fieldset align=center>
 <legend>班级课表查询</legend> 
 
+ <table width="100%">
+ <tr>
+	<th colspan='5'>班级课表查询（点击直接查看班级课表）当前学期:
+	<?php echo $html->selectTag('Semester/id', $semesters, $html->tagValue('Semester/id'), array(), array(), false);?>
+	</th>
+ </tr>
+ <?php
+   $count = 0;
+   $size = sizeof($banjis);
+   foreach ($banjis as $banji){
+	   if($count % 5 == 0){
+		   echo "<tr>";
+		   echo "<td>" . $html->link($banji['Banji']['class_name'], '/curriculum_schedules/banji_view/'.$banji['Banji']['id'],array('target' => '_blank')) ."</td>";
+	   }else{
+		   echo "<td>" . $html->link($banji['Banji']['class_name'], '/curriculum_schedules/banji_view/'.$banji['Banji']['id'],array('target' => '_blank')) ."</td>";
+	   }
+	   $count++;
+	   if($size == $count && $count % 5 != 0){
+		   for($i=0;$i<(5-($count % 5));$i++){
+			   echo("<td></td>");
+		   }
+	   }
+	   if($count % 5 == 0 ||  $size == $count){
+		   echo "</tr>";
+	   }
+   }
+ ?>
+ </table>
+
 </fieldset>
 </div>

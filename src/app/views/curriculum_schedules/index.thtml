@@ -1,38 +1,100 @@
-<div class="curriculumSchedules">
-<h2>List Curriculum Schedules</h2>
+<div id="content">
+<fieldset align=center>
+<legend>班级排课[班级：<?=$this->params['pass'][1]?>]</legend> 
 
-<table cellpadding="0" cellspacing="0">
+<form>
+<script language="JavaScript">
+<!--
+  function updateSchedule(i){
+
+	  
+	  if(!$("CurriculumScheduleSchedule" + i).checked){
+ 
+ 		  $("CurriculumScheduleSchedule" + i).checked = true;
+		  $("schedule" + i).innerHTML='';
+		  var url = '/curriculum_schedules/delete';
+		  url = url + '/' + $F('CurriculumScheduleBanjiId') + '/' + $F('CurriculumScheduleSemesterId');
+		  url = url + '/' + $F('CurriculumScheduleSchedule' + i);
+		  $("CurriculumScheduleSchedule" + i).checked = false;
+
+    	  var myAjax = new Ajax.Request(url,{
+			  method: 'get',
+			  onComplete: null,
+			  asynchronous: false
+		  });
+
+	  }
+
+	  if($F('CurriculumScheduleTeacherId')=='' && $("CurriculumScheduleSchedule" + i).checked){
+		  alert("请先选择任课老师！");
+		  $("CurriculumScheduleSchedule" + i).checked = false;
+		  return false;
+	  }else{
+		  if($("CurriculumScheduleSchedule" + i).checked){
+			  value = $('CurriculumScheduleCourseId').options[$('CurriculumScheduleCourseId').selectedIndex].text;
+			  $("schedule" + i).innerHTML= value;
+			  var url = '/curriculum_schedules/add';
+			  url = url + '/' + $F('CurriculumScheduleBanjiId') + '/' + $F('CurriculumScheduleSemesterId');
+			  url = url + '/' + $F('CurriculumScheduleClassroomId') + '/' + $F('CurriculumScheduleCourseId');
+			  url = url + '/' + $F('CurriculumScheduleTeacherId') + '/' + $F('CurriculumScheduleSchedule' + i);
+			  var myAjax = new Ajax.Request(url,{
+				  method: 'get',
+				  onComplete: null,
+				  asynchronous: false
+			  });
+		  }
+	  }
+  }
+//-->
+</script>
+<?php echo $html->hidden('CurriculumSchedule/semester_id',array('value' => '1'))?>
+<?php echo $html->hidden('CurriculumSchedule/banji_id',array('value' => $this->params['pass'][0]))?>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+	<td>固定教室<?php echo $html->selectTag('CurriculumSchedule/classroom_id', $classrooms, $html->tagValue('CurriculumSchedule/classroom_id'), array(), array(), false);?></td>
+	<td>选择课程<?php echo $html->selectTag('CurriculumSchedule/course_id', $courses, $html->tagValue('CurriculumSchedule/course_id'), array(), array(), false);?></td>
+	<td>选择教师<?php echo $html->selectTag('CurriculumSchedule/teacher_id', $teachers, $html->tagValue('CurriculumSchedule/teacher_id'), array(), array(), true);?></td>
+	<td><input type="button" value="课表预览"></td>
+  </tr>
+</table>
+<br/>
+<table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-	<th>Id</th>
-	<th>Banji</th>
-	<th>Semester</th>
-	<th>Classroom</th>
-	<th>Course</th>
-	<th>Teacher</th>
-	<th>Hour</th>
-	<th>Week</th>
-	<th>Actions</th>
+	<th>课节</th>
+	<th>星期一</th>
+	<th>星期二</th>
+	<th>星期三</th>
+	<th>星期四</th>
+	<th>星期五</th>
+	<th>星期六</th>
+	<th>星期日</th>
 </tr>
-<?php foreach ($curriculumSchedules as $curriculumSchedule): ?>
+<?php $i = 0 ;?>
+<?php foreach ($hours as $hour): ?>
 <tr>
-	<td><?php echo $curriculumSchedule['CurriculumSchedule']['id']; ?></td>
-	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Banji']['id'], '/banjis/view/' .$curriculumSchedule['Banji']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Semester']['id'], '/semesters/view/' .$curriculumSchedule['Semester']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Classroom']['id'], '/classrooms/view/' .$curriculumSchedule['Classroom']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Course']['id'], '/courses/view/' .$curriculumSchedule['Course']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Teacher']['id'], '/teachers/view/' .$curriculumSchedule['Teacher']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Hour']['id'], '/hours/view/' .$curriculumSchedule['Hour']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($curriculumSchedule['Week']['id'], '/weeks/view/' .$curriculumSchedule['Week']['id'])?></td>
-	<td class="actions">
-		<?php echo $html->link('View','/curriculum_schedules/view/' . $curriculumSchedule['CurriculumSchedule']['id'])?>
-		<?php echo $html->link('Edit','/curriculum_schedules/edit/' . $curriculumSchedule['CurriculumSchedule']['id'])?>
-		<?php echo $html->link('Delete','/curriculum_schedules/delete/' . $curriculumSchedule['CurriculumSchedule']['id'], null, 'Are you sure you want to delete id ' . $curriculumSchedule['CurriculumSchedule']['id'])?>
-	</td>
+	<td><?php echo $hour['Hour']['hour_name']; ?></td>
+	<?php
+	foreach($weeks as $week){
+		echo '<td>';
+		$i++;
+		$this->data = $this->controller->findFlag($this->params['pass'][0], 1, $hour['Hour']['id'], $week['Week']['id']);
+		$flag = false;
+		if($this->data){
+			$flag = true;
+		}
+		echo $html->checkBox('CurriculumSchedule/schedule'.$i,null,array('checked' => ($flag ? 'checked' : false), 'value' => $hour['Hour']['id'].'/'.$week['Week']['id'] , 'onClick' => 'updateSchedule('.$i.')'));
+		if($flag){
+			echo '<div id="schedule'.$i.'" style="position:relative; overflow-y:auto;border:0px;">'. $this->data['Course']['course_name'] .'</div>';
+		}else{
+			echo '<div id="schedule'.$i.'" style="position:relative; overflow-y:auto;border:0px;"/>';
+		}
+		echo '</td>';
+	}
+	?>
 </tr>
 <?php endforeach; ?>
 </table>
 
-<ul class="actions">
-	<li><?php echo $html->link('New Curriculum Schedule', '/curriculum_schedules/add'); ?></li>
-</ul>
+</form>
+</fieldset>
 </div>

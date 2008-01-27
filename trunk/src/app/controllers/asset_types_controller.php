@@ -6,7 +6,7 @@ class AssetTypesController extends AppController {
 
 	function index() {
 		$this->AssetType->recursive = 0;
-		$this->set('assetTypes', $this->AssetType->findAll());
+		$this->set('assetTypes', $this->AssetType->findAll('id <> 99999'));
 	}
 
 	function view($id = null) {

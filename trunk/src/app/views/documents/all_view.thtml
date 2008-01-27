@@ -1,25 +1,15 @@
 <?php
 	switch($this->params['url']['type']){
 		case 1:
-			$title = "班级公告";
+			$title = "班级公告(全校)";
 			$v_name = "公告标题";
 			$v_content = "主要内容";
 			break;
-		case 2:
-			$title = "学生作业";
-			$v_name = "重点难点";
-			$v_content = "作业内容";
-			break;
 		case 3:
-			$title = "课件下载";
+			$title = "课件下载(全校)";
 			$v_name = "资料名称";
 			$v_content = "内容";
 			$v_fujian = "附件";
-			break;
-		case 4:
-			$title = "同步练习";
-			$v_name = "章节";
-			$v_content = "内容";
 			break;
 	}
 ?>
@@ -28,15 +18,9 @@
 <legend>查看<?=$title?></legend> 
 
 <dl>
-	<dt>发布对象</dt>
-	<dd><?php foreach ($document['Banji'] as $banji){echo $banji['class_name'].' ';}?></dd>
-	<?php	if($title == "班级公告"){?>
+	<?php	if($title == "班级公告(全校)"){?>
 	<dt>紧急程度</dt>
 	<dd>&nbsp;<?php echo $document['Rate']['rate_name']?></dd>
-	<?php	}?>
-	<?php	if($title == "学生作业"){?>
-	<dt>作业课程</dt>
-	<dd>&nbsp;<?php echo $document['Course']['course_name']?></dd>
 	<?php	}?>
 	<dt><?=$v_name?></dt>
 	<dd>&nbsp;<?php echo $document['Document']['title']?></dd>
@@ -46,7 +30,7 @@
 	<dd>&nbsp;<?php echo $document['Document']['created']?></dd>
 </dl>
 <ul class="actions">
-	<li><?php echo $html->link($title.'列表',   '/documents/index/?type='.$this->params['url']['type']) ?> </li>
+	<li><?php echo $html->link($title.'列表',   '/documents/all_index/?type='.$this->params['url']['type']) ?> </li>
 </ul>
 
 </fieldset>

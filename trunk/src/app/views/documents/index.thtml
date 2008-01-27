@@ -29,16 +29,16 @@
 
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
+	<th>发布对象</th>
 	<?php	if($title == "班级公告"){?>
 	<th>紧急程度</th>
 	<?php	}?>
-	<th>发布对象</th>
 	<?php	if($title == "学生作业"){?>
 	<th>作业课目</th>
 	<?php	}?>
 	<th><?=$v_name?></th>
 	<th><?=$v_content?></th>
-	<?php	if($title == "课件下载"){?>
+	<?php	if(($title == "课件下载") || ($title == "同步练习")){?>
 	<th>附件</th>
 	<?php	}?>
 	<th>发布日期</th>
@@ -46,29 +46,29 @@
 </tr>
 <?php foreach ($documents as $document): ?>
 <tr>
+	<td><?php foreach ($document['Banji'] as $banji){echo $banji['class_name'].' ';}?></td>	
 	<?php	if($title == "班级公告"){?>
-	<td><?php echo $document['Rate']['id']; ?></td>
+	<td><?php echo $document['Rate']['rate_name']; ?></td>
 	<?php	}?>
-	<td><?php echo $document['Document']['rate_id']; ?></td>
 	<?php	if($title == "学生作业"){?>
 	<td><?php echo $document['Course']['course_name']; ?></td>
 	<?php	}?>
 	<td><?php echo $document['Document']['title']; ?></td>
 	<td><?php echo $document['Document']['content']; ?></td>
-	<?php	if($title == "课件下载"){?>
-	<td>附件名称</td>
+	<?php	if(($title == "课件下载") || ($title == "同步练习")){?>
+	<td>……</td>
 	<?php	}?>
 	<td><?php echo $document['Document']['created']; ?></td>
 	<td class="actions">
-		<?php echo $html->link('查看','/documents/view/' . $document['Document']['id'])?>
-		<?php echo $html->link('编辑','/documents/edit/' . $document['Document']['id'])?>
-		<?php echo $html->link('删除','/documents/delete/' . $document['Document']['id'], null, '请确认是否真要删除『 ' . $document['Document']['title'] . ' 』？')?>
+		<?php echo $html->link('查看','/documents/view/' . $document['Document']['id'].'&type='.$this->params['url']['type'])?>
+		<?php echo $html->link('编辑','/documents/edit/' . $document['Document']['id'].'&type='.$this->params['url']['type'])?>
+		<?php echo $html->link('删除','/documents/delete/' . $document['Document']['id'].'/'.$this->params['url']['type'], null, '请确认是否真要删除『 ' . $document['Document']['title'] . ' 』？')?>
 	</td>
 </tr>
 <?php endforeach; ?>
 </table>
 <ul class="actions">
-	<li><?php echo $html->link('新增'.$title, '/documents/add/'.$this->params['url']['type']); ?></li>
+	<li><?php echo $html->link('新增'.$title, '/documents/add/?type='.$this->params['url']['type']); ?></li>
 </ul>
 </fieldset>
 </div>

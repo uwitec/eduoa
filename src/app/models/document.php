@@ -1,9 +1,8 @@
-<?php
+﻿<?php
 class Document extends AppModel {
 
 	var $name = 'Document';
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
 			'DocumentType' =>
 				array('className' => 'DocumentType',
@@ -30,6 +29,26 @@ class Document extends AppModel {
 						'fields' => '',
 						'order' => '',
 						'counterCache' => ''
+				),
+
+	);
+
+	var $hasAndBelongsToMany = array(
+
+			'Banji' =>
+				array('className' => 'Banji',
+						'joinTable' => 'doc_class_receiving_logs',
+						'foreignKey' => 'document_id',
+						'associationForeignKey' => 'banji_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'limit' => '',
+						'offset' => '',
+						'unique' => '',
+						'finderQuery' => '',
+						'deleteQuery' => '',
+						'insertQuery' => ''
 				),
 
 	);

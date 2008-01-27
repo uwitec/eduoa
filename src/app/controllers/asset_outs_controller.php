@@ -6,7 +6,7 @@ class AssetOutsController extends AppController {
 
 	function index() {
 		$this->AssetOut->recursive = 0;
-		$this->set('assetOuts', $this->AssetOut->findAll());
+		$this->set('assetOuts', $this->AssetOut->findAll('asset_type_id <> 99999'));
 	}
 
 	function view($id = null) {
@@ -21,7 +21,7 @@ class AssetOutsController extends AppController {
 		if (empty($this->data)) {
 			$this->set('assets', 
 						$this->AssetOut->Asset->generateList(
-							$conditions = null,
+							$conditions = 'asset_type_id <> 99999',
 							$order = 'id',
 							$limit = null,
 							$KeyPath = '{n}.Asset.id',
@@ -58,7 +58,7 @@ class AssetOutsController extends AppController {
 			$this->data = $this->AssetOut->read(null, $id);
 			$this->set('assets', 
 						$this->AssetOut->Asset->generateList(
-							$conditions = null,
+							$conditions = 'asset_type_id <> 99999',
 							$order = 'id',
 							$limit = null,
 							$KeyPath = '{n}.Asset.id',

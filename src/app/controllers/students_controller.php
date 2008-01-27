@@ -140,5 +140,37 @@ class StudentsController extends AppController {
 
 	}
 
+	function password($id = null) {
+		$this->Student->recursive = 0;
+		if($id){
+			$this->set('students', $this->Student->findAll('banji.id = '.$id));
+			$this->set('banji_id',$id);
+		}else{
+			$this->set('students', $this->Student->findAll());
+			$this->set('banji_id',null);
+		}
+	}
+
+	//修改密码还有点bug
+	function edit_password($id = null) {
+		$this->set('student', $this->Student->read(null, $id));
+		if (empty($this->data)) {
+			if (!$id) {
+				$this->Session->setFlash('Invalid id for Student');
+				$this->redirect('/students/password');
+			}
+			$this->data = $this->Student->read(null, $id);
+		} else {
+			$this->cleanUpFields();
+			$old_password = md5($this->data['Student']['old']);
+			$password = md5($this->data['Student']['new']);
+			$sql = "update students set password = '$password' where id = " .$id;
+			$this->Student->execute($sql);
+			$this->Session->setFlash('口令修改成功！');	
+			$this->redirect('/students/password');
+		}
+
+	}   
+
 }
 ?>

@@ -6,7 +6,7 @@ class AssetMaintenancesController extends AppController {
 
 	function index() {
 		$this->AssetMaintenance->recursive = 0;
-		$this->set('assetMaintenances', $this->AssetMaintenance->findAll());
+		$this->set('assetMaintenances', $this->AssetMaintenance->findAll('asset_type_id <> 99999'));
 	}
 
 	function view($id = null) {
@@ -21,7 +21,7 @@ class AssetMaintenancesController extends AppController {
 		if (empty($this->data)) {
 			$this->set('assets', 
 						$this->AssetMaintenance->Asset->generateList(
-							$conditions = null,
+							$conditions = 'asset_type_id <> 99999',
 							$order = 'id',
 							$limit = null,
 							$KeyPath = '{n}.Asset.id',
@@ -49,7 +49,7 @@ class AssetMaintenancesController extends AppController {
 			$this->data = $this->AssetMaintenance->read(null, $id);
 			$this->set('assets', 
 						$this->AssetMaintenance->Asset->generateList(
-							$conditions = null,
+							$conditions = 'asset_type_id <> 99999',
 							$order = 'id',
 							$limit = null,
 							$KeyPath = '{n}.Asset.id',

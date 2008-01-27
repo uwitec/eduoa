@@ -20,7 +20,7 @@
 
 			  if (!empty($banjis)){
 				  foreach ($banjis as $banji):
-					  echo("d.add(". $banji['Banji']['id']. ",". $banji['Banji']['entrance_year'] .",'" . $banji['Banji']['class_name'] . "','$url". $banji['Banji']['id'] ."');\n");
+					  echo("d.add(". $banji['Banji']['id']. ",". $banji['Banji']['entrance_year'] .",'" . $banji['Banji']['class_name'] . "','$url". $banji['Banji']['id'] . "/" . $banji['Banji']['class_name']  ."');\n");
 				  endforeach;
 			  }
 			?>

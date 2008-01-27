@@ -22,6 +22,5 @@ class Week extends AppModel {
 				),
 
 	);
-
 }
 ?>

@@ -3,7 +3,6 @@ class CurriculumSchedule extends AppModel {
 
 	var $name = 'CurriculumSchedule';
 
-/*
 	var $belongsTo = array(
 			'Banji' =>
 				array('className' => 'Banji',
@@ -50,7 +49,6 @@ class CurriculumSchedule extends AppModel {
 						'counterCache' => ''
 				),
 			
-			/*
 			'Hour' =>
 				array('className' => 'Hour',
 						'foreignKey' => 'hour_id',
@@ -68,9 +66,8 @@ class CurriculumSchedule extends AppModel {
 						'order' => '',
 						'counterCache' => ''
 				),
-		*/
 
-	//);
+	);
 
 }
 ?>

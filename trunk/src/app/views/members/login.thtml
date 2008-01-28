@@ -1,35 +1,50 @@
-<div id="adminhead">
-<h1>金色校园教育管理软件系统</h1>
-</div>
-
-<div class="wrap">
-
-	<form action="<?php echo $html->url('/members/login'); ?>" method="post">
-	
-	<center>
-	
-	<h3>欢迎使用金色校园教育管理软件 version 1.0</h3>
-	<table border=0>
+<style type="text/css">
+<!--
+body {
+	background-color: #F3F3F5;
+}
+-->
+</style>
+<form action="<?php echo $html->url('/members/login'); ?>" method="post">
+<table border=0 cellpadding=0 cellspacing=0 width=100% height=100%>
+<tr>
+  <td align=center>
+  <table border=0 cellpadding=0 cellspacing=0 width=705>
+  <tr>
+    <td align=right><img src="<?=$html->url('/img/login/login_top_logo.jpg')?>" width="363" height="53"></td>
+  </tr>
+  <tr>
+    <td>
+	<table border=0 cellpadding=0 cellspacing=0 width=705 background="/img/login/login_pannel_bg.jpg">
 	<tr>
+	  <td width=117><img src="<?=$html->url('/img/login/login_pannel_left.jpg')?>"></td>
 	  <td>
-	    <label for="username">用户名：</label>
-	  </td><td>
-	    <?php echo $html->input('Member/username', array('size' => 20));?>
+	  <table border=0 cellpadding=0 cellspacing=0>
+	  <tr>
+	    <td style="color:#ffffff" align=right>用户名:&nbsp;</td>
+		<td><?php echo $html->input('Member/username', array('style' => 'border:1px solid #003366;width:266px;height:20px'));?></td>
+	  </tr>
+	  <tr>
+	    <td height=10></td>
+	  </tr>
+	  <tr>
+	    <td style="color:#ffffff" align=right>密码:&nbsp;</td>
+		<td><?php echo $html->password('Member/password', array('style' => 'border:1px solid #003366;width:266px;height:20px')); ?></td>
+	  </tr>
+	  </table>
 	  </td>
-	</tr>
-	
-	<tr>
-	  <td>
-	    <label for="password">密  码：</label>
-	  </td><td>
-	    <?php echo $html->password('Member/password', array('size' =>20)); ?>
-	  </td>
+	  <td align=center><input type="image" name="imageField" id="imageField" src="<?=$html->url('/img/login/login_button1.gif')?>"/></td>
+	  <td align=center><img src="<?=$html->url('/img/login/login_button2.gif')?>"></td>
+	  <td width=23><img src="<?=$html->url('/img/login/login_pannel_right.jpg')?>"></td>
 	</tr>
 	</table>
-	
-	  <div>
-	    <?php echo $html->submit('登录'); ?>
-	  </div>
-	</center>
-	</form>
-</div>
+	</td>
+  </tr>
+  <tr>
+    <td align=center style="color:#243A45" height=25>技术提高效率 科技创造未来 </td>
+  </tr>
+  </table>
+  </td>
+</tr>
+</table>
+</form>

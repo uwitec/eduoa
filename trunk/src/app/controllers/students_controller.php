@@ -170,7 +170,18 @@ class StudentsController extends AppController {
 			$this->redirect('/students/password');
 		}
 
-	}   
+	}
+
+   function import() {
+		$this->set('banjis', 
+				   $this->Student->Banji->generateList(
+					 $conditions = null,
+					 $order = 'id',
+					 $limit = null,
+					 $keyPath = '{n}.Banji.id',
+					 $valuePath = '{n}.Banji.class_name')
+		);
+   }
 
 }
 ?>

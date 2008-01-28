@@ -15,9 +15,9 @@ if(isset($javascript)):
 	echo $javascript->link('tiny_mce/tiny_mce.js');
 endif;          
 ?> 
-<?php echo $html->css('pangu.generic');?>
+<?php echo $html->css('bb.generic');?>
 </head>
-<body>
+<body scroll='no'>
 	<div id="container">
 	   <?php
 	   if ($session->check('Message.flash')){

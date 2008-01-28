@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>金色校园</title>
-<link rel="stylesheet" type="text/css" href="/css/magoa.css" />
+<?php echo $html->css('magoa');?>
 </head>
-<body background="/img/bottom_bg.jpg">
+<body background="<?=$html->url('/img/bottom_bg.jpg')?>">
 <table width="100%" style="display: inline;">
 <tr>
 	<td align="center" valign="top">

@@ -3,8 +3,8 @@
 <SCRIPT language=JavaScript>
 	var AUTO_HIDE_MENU=0;
 
-var arrowpic1="/img/control-button.gif";
-var arrowpic2="/img/control-button.gif"
+var arrowpic1="<?=$html->url('/img/control-button.gif')?>";
+var arrowpic2="<?=$html->url('/img/control-button.gif')?>";
 
 //--------------------- 状态初始 ----------------------
 var MENU_SWITCH;
@@ -76,11 +76,10 @@ function DB_Display()
 
 </SCRIPT>
 
-<META content="MSHTML 6.00.6000.16587" name=GENERATOR></HEAD>
+</HEAD>
 <BODY oncontextmenu="DB_Display();return false;" onselectstart="return false" 
 leftMargin=0 topMargin=0 onload=panel_menu_open()>
-<TABLE onmousemove=enter_menu_ctrl() 
-style="BACKGROUND: url(../theme/1/images/table-bg.jpg) repeat-x 50% top" 
+<TABLE onmousemove=enter_menu_ctrl() style="BACKGROUND: url(../theme/1/images/table-bg.jpg) repeat-x 50% top" 
 height="100%" cellSpacing=0 cellPadding=0 width=9 border=0>
   <TBODY>
   <TR style="CURSOR: hand" onclick=panel_menu_ctrl()>

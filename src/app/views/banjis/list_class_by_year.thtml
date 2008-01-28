@@ -1,9 +1,14 @@
-﻿<script  src="/js/dtree.js"></script>
+﻿<?php echo $javascript->link('dtree.js');?>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	var iPath = <?=$html->url('/')?>;
+//-->
+</SCRIPT>
 <table width="100%" align="center" style="display: inline;">
 <tr>
   <td>
     <?php 
-	 $url = $this->params['url']['target'];
+	 $url = $html->url($this->params['url']['target']);
 	?>
 	<div id="dtree" style="display: inline;">
 		<script type="text/javascript">
@@ -20,7 +25,7 @@
 
 			  if (!empty($banjis)){
 				  foreach ($banjis as $banji):
-					  echo("d.add(". $banji['Banji']['id']. ",". $banji['Banji']['entrance_year'] .",'" . $banji['Banji']['class_name'] . "','$url". $banji['Banji']['id'] . "/" . $banji['Banji']['class_name']  ."');\n");
+					  echo("d.add(". $banji['Banji']['id']. ",". $banji['Banji']['entrance_year'] .",'" . $banji['Banji']['class_name'] . "','$url/". $banji['Banji']['id'] . "/" . $banji['Banji']['class_name']  ."');\n");
 				  endforeach;
 			  }
 			?>

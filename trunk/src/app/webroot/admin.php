@@ -14,7 +14,7 @@
 	<frame src="modules/left" name="function_panel_index" scrolling="Auto" noresize="noresize" id="function_panel_index" /><!--//左边的菜单页 -->
     <frame src="pages/blank_right" name="menu_rightbar" scrolling="No" noresize="noresize" id="menu_rightbar" /><!-//菜单右边条 -->
 	<frame src="pages/control" name="controlmenu" frameborder="0" scrolling="No" noresize="noresize" id="controlmenu" /> <!--//中间页，控制左边菜单的显隐 --> 
-	<frame src="demo.php" name="table_index" frameborder="0" scrolling="Auto" noresize="noresize" id="table_index" /><!--//右边的内容页面，显示菜单点击页面 -->
+	<frame src="pages/demo" name="table_index" frameborder="0" scrolling="Auto" noresize="noresize" id="table_index" /><!--//右边的内容页面，显示菜单点击页面 -->
 	<frame src="pages/blank" name="table_right" frameborder="0" scrolling="No" noresize="noresize" id="table_right" /></frame><!-- //右边条 -->      
   </frameset>
   <frame src="frames/status_bar" name="status_bar" scrolling="No" noresize="noresize" id="status_bar" /></frame><!--//底部的状态页面 -->

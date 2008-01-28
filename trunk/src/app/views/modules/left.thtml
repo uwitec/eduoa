@@ -1,3 +1,8 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	var iPath = <?=$html->url('/')?>;
+//-->
+</SCRIPT>
 <?php echo $javascript->link('dtree.js');?>
 <style type="text/css">
 <!--

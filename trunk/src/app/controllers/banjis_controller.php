@@ -2,7 +2,7 @@
 class BanjisController extends AppController {
 
 	var $name = 'Banjis';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Javascript' );
 
 	function index() {
 		$this->Banji->recursive = 0;

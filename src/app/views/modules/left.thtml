@@ -1,6 +1,7 @@
 <SCRIPT LANGUAGE="JavaScript">
 <!--
-	var iPath = <?=$html->url('/')?>;
+	var iPath = "<?=$html->url('/')?>";
+	if(iPath=="/")iPath="";
 //-->
 </SCRIPT>
 <?php echo $javascript->link('dtree.js');?>

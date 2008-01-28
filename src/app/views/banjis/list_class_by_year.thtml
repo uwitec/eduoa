@@ -1,9 +1,10 @@
-﻿<?php echo $javascript->link('dtree.js');?>
-<SCRIPT LANGUAGE="JavaScript">
+﻿<SCRIPT LANGUAGE="JavaScript">
 <!--
-	var iPath = <?=$html->url('/')?>;
+	var iPath = "<?=$html->url('/')?>";
+	if(iPath=="/")iPath="";
 //-->
 </SCRIPT>
+<?php echo $javascript->link('dtree.js');?>
 <table width="100%" align="center" style="display: inline;">
 <tr>
   <td>

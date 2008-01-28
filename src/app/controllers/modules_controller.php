@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 class ModulesController extends AppController {
 
 	var $name = 'Modules';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Javascript');
 
 	function index() {
 		$this->Module->recursive = 0;

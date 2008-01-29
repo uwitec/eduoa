@@ -1,4 +1,30 @@
+<?php 
+  $url = $html->url($this->params['url']['target']);
+  $action = $this->params['url']['action'];
+
+  if(1==$action){
+	  $i = 2;
+  }else{
+	  $i = 1;
+  }
+?>
+<script language="JavaScript">
+<!--
+  function gotoUrl(id,url){
+	  alert(id + url);
+	  alert($('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].value);
+  }
+
+  function gotoUrl2(id,url){
+	  alert(id + url);
+	  alert($('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].value);
+  }
+//-->
+</script>
+
 <div id="content">
+<?php switch($this->params['url']['target']):?>
+<?php case 'list':?>
 <fieldset align="center">
 <legend>班级成绩查询使用说明</legend> 
 	<div>
@@ -10,44 +36,117 @@
 	  </p>
 	</div>
 </fieldset>
+<?php break;?>
+<?php case 'semester':?>
+<fieldset align="center">
+<legend>全年级成绩查询使用说明</legend> 
+	<div>
+	  <p>
+	  1、选择要查询的<font color=red>年级信息</font>；<br />
+	  2、全年级成绩明细提供：<font color=red>分科目成绩列表</font>，<font color=red>总成绩列表</font>。<br />
+	  </p>
+	</div>
+</fieldset>
+<?php break;?>
+<?php case 'statistics':?>
+<fieldset align="center">
+<legend>全年级成绩查询使用说明</legend> 
+	<div>
+	  <p>
+	  1、选择要查询的<font color=red>年级信息</font>；<br />
+	  2、全年级成绩分析提供：<font color=red>分数区间人数统计及其累计</font>，<font color=red>区间人数百分比及其累计</font>。
+	  </p>
+	</div>
+</fieldset>
+<?php break;?>
+<?php case 'flunk_list':?>
+<fieldset align="center">
+<legend>不及格名单使用说明</legend> 
+	<div>
+	  <p>
+	  1、选择要查询的<font color=red>年级信息</font>；<br />
+	  2、不及格名单模块提供：<font color=red>全年级不及格人员名单</font>，<font color=red>提供人员名单班级明细</font>。
+	  </p>
+	</div>
+</fieldset>
+<?php break;?>
+<?php case 'flunk_stat':?>
+<fieldset align="center">
+<legend>不及格人数使用说明</legend> 
+	<div>
+	  <p>
+	  1、选择要查询的<font color=red>年级信息</font>；<br />
+	  2、不及格人数模块提供：<font color=red>全年级不及格人员人数</font>，<font color=red>提供分科目明细</font>。
+	  </p>
+	</div>
+</fieldset>
+<?php break;?>
+<?php case 'single_list':?>
+<fieldset align="center">
+<legend>单科成绩排序使用说明</legend> 
+	<div>
+	  <p>
+	  1、选择要查询的<font color=red>年级信息</font>；然后选择<font color=red>学期信息</font>进入查询页面<br />
+	  2、主页面提供一个包含<font color=red>所有课目的列表</font>，点击每一个科目之后，进入<font color=red>分科目明细</font>。
+	  </p>
+	</div>
+</fieldset>
+<?php break;?>
+<?php case 'average':?>
+<fieldset align="center">
+<legend>全年级平均成绩使用说明</legend> 
+	<div>
+	  <p>
+	  1、选择要查询的<font color=red>学期信息</font>；<br />
+	  2、全年级平均成绩模块提供：<font color=red>按年级分类不同计算出每科目的平均成绩</font>。
+	  </p>
+	</div>
+</fieldset>
+<?php break;?>
+<?php endswitch;?>
 </div>
 
 <form action="<?php echo $html->url('/exam_results/import'); ?>" method="post" encType="multipart/form-data">
 
 <table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=90% style="border-collapse:collapse">
   <tr>
-    <th colspan="2" style="text-align:left;font-size:14px;">
+    <th colspan="<?=$i?>" style="text-align:left;font-size:14px;">
 		班级成绩查询(点击直接查看班级成绩) &nbsp;&nbsp; 当前学期:
 		<?php echo $html->selectTag('ExamResult/semester_id', $semesters, $html->tagValue('ExamResult/semester_id'), array(), array(), false);?>
 	</th>
   </tr>
+  <?php if(1==$action):?>
   <tr>
-    <td width="10%">入学年份</td>
-    <td>班级</td>
+    <td width="10%" style="text-align:center">入学年份</td>
+    <td style="text-align:center">班级</td>
   </tr>
+  <?php endif;?>
+  <?php foreach($years as $year):?>
   <tr>
-    <td>2007</td>
     <td>
-
-	
-		<table border=0 cellspacing=0 class=small bordercolor=#000000 cellpadding=0 align=center width=100% style="border-collapse:collapse">
-		  <tr>
-			<td>aaa</td>
-			<td>aaa</td>
-			<td>aaa</td>
-			<td>aaa</td>
-		  </tr>
-		  <tr>
-			<td>aaa</td>
-			<td>aaa</td>
-			<td>aaa</td>
-			<td>aaa</td>
-		  </tr>
-		</table>
-
-
+	  <?php
+	   if(1==$action){
+		   echo $year['Banji']['entrance_year'];
+	   }else{
+		   echo '年级级别：'.$year['Banji']['entrance_year'].' ['.$html->link('点击进入查询',"javascript:gotoUrl(". $year['Banji']['entrance_year'] .",'".$url."')").']';
+	   }
+	  ?>
 	</td>
+	<?php
+	if(1==$action){
+		echo "<td>";
+		$banjis = $this->controller->Banji->findByYear($year['Banji']['entrance_year']);
+		foreach ($banjis as $banji){
+			echo $html->link($banji['Banji']['class_name'],"javascript:gotoUrl(".$banji['Banji']['id'].",'".$url."')");
+			echo " ";
+			echo $html->link('[成绩分析]',"javascript:gotoUrl2(".$banji['Banji']['id'].",'".$url."')");
+			echo " | ";
+		}
+		echo "</td>";
+	}
+	?>
   </tr>
+  <?php endforeach;?>
 </table>
 
 </form>

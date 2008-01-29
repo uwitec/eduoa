@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class StudentGrowFilesController extends AppController {
 
 	var $name = 'StudentGrowFiles';
@@ -9,12 +9,17 @@ class StudentGrowFilesController extends AppController {
 		$this->set('studentGrowFiles', $this->StudentGrowFile->findAll());
 	}
 
-	function view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash('Invalid id for Student Grow File.');
-			$this->redirect('/student_grow_files/index');
+	function view($id = null,$type = null) {
+		$this->set('student', $this->StudentGrowFile->Student->read(null,$id));
+		$this->set('growFileTypes', $this->StudentGrowFile->GrowFileType->findAll());
+
+		if($type!=null){
+			$conditions = "StudentGrowFile.student_id = $id and StudentGrowFile.grow_file_type_id = $type";
+		}else{
+			$conditions = "StudentGrowFile.student_id = $id";
 		}
-		$this->set('studentGrowFile', $this->StudentGrowFile->read(null, $id));
+
+		$this->set('studentGrowFiles', $this->StudentGrowFile->findAll($conditions));
 	}
 
 	function add($student_id = null,$type_id = null) {
@@ -26,8 +31,8 @@ class StudentGrowFilesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->StudentGrowFile->save($this->data)) {
-				$this->Session->setFlash('The Student Grow File has been saved');
-				$this->redirect('/student_grow_files/index');
+				$this->Session->setFlash('学生成长档案保存成功！');
+				$this->redirect('/students/index_grow_files/?action=edit&banji');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 				$this->set('students', $this->StudentGrowFile->Student->generateList());

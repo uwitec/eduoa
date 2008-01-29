@@ -1,31 +1,34 @@
-<div class="studentGrowFile">
-<h2>View Student Grow File</h2>
+<div id="content">
+<fieldset align=center>
+<legend>学生成长档案查看[学生姓名：<?=$student['Student']['student_name']?>　　学号：<?=$student['Student']['student_no']?>]</legend> 
+<table width="100%">
+<tr>
+    <td><?php echo $html->link('全部项目','/student_grow_files/view/'.$student['Student']['id'])?></td>
+    <?php foreach($growFileTypes as $growFileType):?>
+	<td><?php echo $html->link($growFileType['GrowFileType']['type_name'],'/student_grow_files/view/'.$student['Student']['id'].'/'.$growFileType['GrowFileType']['id']);?></td>
+	<?php endforeach;?>
+</tr>
+</table>
 
-<dl>
-	<dt>Id</dt>
-	<dd>&nbsp;<?php echo $studentGrowFile['StudentGrowFile']['id']?></dd>
-	<dt>Student</dt>
-	<dd>&nbsp;<?php echo $html->link($studentGrowFile['Student']['id'], '/students/view/' .$studentGrowFile['Student']['id'])?></dd>
-	<dt>Semester</dt>
-	<dd>&nbsp;<?php echo $html->link($studentGrowFile['Semester']['id'], '/semesters/view/' .$studentGrowFile['Semester']['id'])?></dd>
-	<dt>Grow File Type</dt>
-	<dd>&nbsp;<?php echo $html->link($studentGrowFile['GrowFileType']['id'], '/grow_file_types/view/' .$studentGrowFile['GrowFileType']['id'])?></dd>
-	<dt>Title</dt>
-	<dd>&nbsp;<?php echo $studentGrowFile['StudentGrowFile']['title']?></dd>
-	<dt>Description</dt>
-	<dd>&nbsp;<?php echo $studentGrowFile['StudentGrowFile']['description']?></dd>
-</dl>
-<ul class="actions">
-	<li><?php echo $html->link('Edit Student Grow File',   '/student_grow_files/edit/' . $studentGrowFile['StudentGrowFile']['id']) ?> </li>
-	<li><?php echo $html->link('Delete Student Grow File', '/student_grow_files/delete/' . $studentGrowFile['StudentGrowFile']['id'], null, 'Are you sure you want to delete: id ' . $studentGrowFile['StudentGrowFile']['id'] . '?') ?> </li>
-	<li><?php echo $html->link('List Student Grow Files',   '/student_grow_files/index') ?> </li>
-	<li><?php echo $html->link('New Student Grow File',	'/student_grow_files/add') ?> </li>
-	<li><?php echo $html->link('List Student', '/students/index/')?> </li>
-	<li><?php echo $html->link('New Students', '/students/add/')?> </li>
-	<li><?php echo $html->link('List Semester', '/semesters/index/')?> </li>
-	<li><?php echo $html->link('New Semesters', '/semesters/add/')?> </li>
-	<li><?php echo $html->link('List Grow File Type', '/grow_file_types/index/')?> </li>
-	<li><?php echo $html->link('New Grow File Types', '/grow_file_types/add/')?> </li>
-</ul>
+<?php foreach($studentGrowFiles as $studentGrowFile):?>
+<br/>
+<table width="550px">
+<tr>
+	<td>[<?=$studentGrowFile['GrowFileType']['type_name']?>]</td>
+	<td>标题:</td>
+	<td><?=$studentGrowFile['StudentGrowFile']['title']?></td>
+	<td>学期</td>
+	<td><?=$studentGrowFile['Semester']['semester_name']?></td>
+	<td>创建时间</td>
+	<td><?=$studentGrowFile['StudentGrowFile']['created']?></td>
+</tr>
+<tr>
+	<td colspan="7" style="text-align:left"><?=$studentGrowFile['StudentGrowFile']['description']?></td>
+</tr>
+</table>
+<?php endforeach;?>
 
+<br/>
+<input type="button" value="返回学生列表" onClick="javascript:history.go(-1)">
+</fieldset>
 </div>

@@ -27,7 +27,11 @@ body {
 				<?php 
 				  if (!empty($modules)){
 					  foreach ($modules as $module):
-						  $url = $module['Module']['url']==''?'':$html->url($module['Module']['url']);
+						  if(2==$module['Module']['module_type']){
+						    $url = $module['Module']['url']==''?'':$module['Module']['url'];
+					      }else{
+							$url = $module['Module']['url']==''?'':$html->url($module['Module']['url']);
+						  }
 						  echo("d.add(". $module['Module']['id']. ",". $module['Module']['parent_id'] . ",'" . $module['Module']['module_name'] . "','" . $url . "');\n");
 					  endforeach;
 				  }

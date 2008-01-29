@@ -20,7 +20,7 @@ body {
 				<!--
 
 				d = new dTree('d');
-				d.config.target = "table_index";
+				d.config.target = "frameMain";
 
 				d.add(0,-1,'金色校园管理软件系统');
 

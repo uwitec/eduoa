@@ -340,20 +340,12 @@ textarea,input,select
 
 fieldset
 {
-	border:1px solid #658c10;
-	background:#fff;
-	margin:10px;
-	*margin-top:-20px;
-	padding:20px;
+BORDER-RIGHT: #83B5CD 1px solid; PADDING-RIGHT: 20px; BORDER-TOP: #83B5CD 1px solid; PADDING-LEFT: 20px; BACKGROUND: #fff; PADDING-BOTTOM: 20px; MARGIN: -20px 10px 10px; BORDER-LEFT: #83B5CD 1px solid; PADDING-TOP: 20px; BORDER-BOTTOM: #83B5CD 1px solid
 }
 
 fieldset legend
 {
-	color:#e5f7c6;
-	font-weight:700;
-	border:2px solid #e5f7c6;
-	background:#658c10;
-	padding:3px 20px;
+BORDER-RIGHT: #EBF1F6 2px solid; PADDING-RIGHT: 20px; BORDER-TOP: #EBF1F6 2px solid; PADDING-LEFT: 20px; FONT-WEIGHT: 700; BACKGROUND: #3887C0; PADDING-BOTTOM: 3px; BORDER-LEFT: #EBF1F6 2px solid; COLOR: #ffffff; PADDING-TOP: 5px; BORDER-BOTTOM: #EBF1F6 2px solid;margin-bottom:5px;
 }
 
 fieldset table{

@@ -14,5 +14,9 @@ class FramesController extends AppController {
 	function status_bar() {
 		$this->layout = 'blank';
 	}
+
+	function desktop() {
+		$this->layout = 'blank';
+	}
 }
 ?>

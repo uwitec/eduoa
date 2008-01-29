@@ -207,13 +207,10 @@ class ExamResultsController extends AppController {
 							$KeyPath = '{n}.Course.id',
 							$valuePath = '{n}.Course.course_name')
 			);
-			$this->set('banjis', $this->Banji->generateList(
-							$conditions = null,
-							$order = 'id',
-							$limit = null,
-							$KeyPath = '{n}.Banji.id',
-							$valuePath = '{n}.Banji.class_name')
-			);
+			
+			$this->Banji->recursive = 0;
+			$this->set('years', $this->Banji->findAll('group by Banji.entrance_year'));
+
 			$this->render();
 		} else {
 			$this->cleanUpFields();

@@ -135,5 +135,7 @@ class BanjisController extends AppController {
 		$this->set('banjis', $this->Banji->findAll());
 	}
 
+
+
 }
 ?>

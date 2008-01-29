@@ -53,5 +53,9 @@ class Banji extends AppModel {
 
 	);
 
+	function findByYear($year = null){
+		return $this->findAll("entrance_year = $year order by order_list");
+	}
+
 }
 ?>

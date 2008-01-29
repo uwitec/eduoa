@@ -15,7 +15,9 @@
 	<td style="padding-right:5px;" align=right>
 	<table border=0 cellpadding=0 cellspacing=0>
 	<tr>
-      <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button1.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button1_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button1.gif')?>'"></td>
+      <td style="padding-bottom:5px">
+	  <img src="<?=$html->url('/img/frame/main_top_button1.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button1_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button1.gif')?>'">
+	  </td>
 	  <td width=10></td>
 	  <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button2.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button2_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button2.gif')?>'"></td>
 	  <td width=10></td>
@@ -84,7 +86,7 @@
 	  </td>
 	</tr>
 	<tr>
-	  <td style="border-left:1px solid #0378AE;border-right:1px solid #0378AE;border-bottom:1px solid #0378AE;" bgcolor="#ffffff"><iframe src="/frames/desktop" frameborder=0 scrolling="auto" name="frameMain" style="width:100%;height:100%"></iframe></td>
+	  <td style="border-left:1px solid #0378AE;border-right:1px solid #0378AE;border-bottom:1px solid #0378AE;" bgcolor="#ffffff"><iframe src="<?=$html->url('/frames/desktop')?>" frameborder=0 scrolling="auto" name="frameMain" style="width:100%;height:100%"></iframe></td>
 	</tr>
 	</table>
 	</td>

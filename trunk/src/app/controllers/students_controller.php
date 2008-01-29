@@ -7,7 +7,7 @@ class StudentsController extends AppController {
 	function index($id = null) {
 		$this->Student->recursive = 0;
 		if($id){
-			$this->set('students', $this->Student->findAll('banji.id = '.$id));
+			$this->set('students', $this->Student->findAll('Banji.id = '.$id));
 			$this->set('banji_id',$id);
 		}else{
 			$this->set('students', $this->Student->findAll());

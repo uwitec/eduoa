@@ -1,43 +1,6 @@
-<div class="curriculumSchedule">
-<h2>View Curriculum Schedule</h2>
+<div id="content">
+<fieldset align=center>
+<legend>学生成长档案查看[学生姓名：赵张瑜　　学号：20011732361]</legend> 
 
-<dl>
-	<dt>Id</dt>
-	<dd>&nbsp;<?php echo $curriculumSchedule['CurriculumSchedule']['id']?></dd>
-	<dt>Banji</dt>
-	<dd>&nbsp;<?php echo $html->link($curriculumSchedule['Banji']['id'], '/banjis/view/' .$curriculumSchedule['Banji']['id'])?></dd>
-	<dt>Semester</dt>
-	<dd>&nbsp;<?php echo $html->link($curriculumSchedule['Semester']['id'], '/semesters/view/' .$curriculumSchedule['Semester']['id'])?></dd>
-	<dt>Classroom</dt>
-	<dd>&nbsp;<?php echo $html->link($curriculumSchedule['Classroom']['id'], '/classrooms/view/' .$curriculumSchedule['Classroom']['id'])?></dd>
-	<dt>Course</dt>
-	<dd>&nbsp;<?php echo $html->link($curriculumSchedule['Course']['id'], '/courses/view/' .$curriculumSchedule['Course']['id'])?></dd>
-	<dt>Teacher</dt>
-	<dd>&nbsp;<?php echo $html->link($curriculumSchedule['Teacher']['id'], '/teachers/view/' .$curriculumSchedule['Teacher']['id'])?></dd>
-	<dt>Hour</dt>
-	<dd>&nbsp;<?php echo $html->link($curriculumSchedule['Hour']['id'], '/hours/view/' .$curriculumSchedule['Hour']['id'])?></dd>
-	<dt>Week</dt>
-	<dd>&nbsp;<?php echo $html->link($curriculumSchedule['Week']['id'], '/weeks/view/' .$curriculumSchedule['Week']['id'])?></dd>
-</dl>
-<ul class="actions">
-	<li><?php echo $html->link('Edit Curriculum Schedule',   '/curriculum_schedules/edit/' . $curriculumSchedule['CurriculumSchedule']['id']) ?> </li>
-	<li><?php echo $html->link('Delete Curriculum Schedule', '/curriculum_schedules/delete/' . $curriculumSchedule['CurriculumSchedule']['id'], null, 'Are you sure you want to delete: id ' . $curriculumSchedule['CurriculumSchedule']['id'] . '?') ?> </li>
-	<li><?php echo $html->link('List Curriculum Schedules',   '/curriculum_schedules/index') ?> </li>
-	<li><?php echo $html->link('New Curriculum Schedule',	'/curriculum_schedules/add') ?> </li>
-	<li><?php echo $html->link('List Banji', '/banjis/index/')?> </li>
-	<li><?php echo $html->link('New Banjis', '/banjis/add/')?> </li>
-	<li><?php echo $html->link('List Semester', '/semesters/index/')?> </li>
-	<li><?php echo $html->link('New Semesters', '/semesters/add/')?> </li>
-	<li><?php echo $html->link('List Classroom', '/classrooms/index/')?> </li>
-	<li><?php echo $html->link('New Classrooms', '/classrooms/add/')?> </li>
-	<li><?php echo $html->link('List Course', '/courses/index/')?> </li>
-	<li><?php echo $html->link('New Courses', '/courses/add/')?> </li>
-	<li><?php echo $html->link('List Teacher', '/teachers/index/')?> </li>
-	<li><?php echo $html->link('New Teachers', '/teachers/add/')?> </li>
-	<li><?php echo $html->link('List Hour', '/hours/index/')?> </li>
-	<li><?php echo $html->link('New Hours', '/hours/add/')?> </li>
-	<li><?php echo $html->link('List Week', '/weeks/index/')?> </li>
-	<li><?php echo $html->link('New Weeks', '/weeks/add/')?> </li>
-</ul>
-
+</fieldset>
 </div>

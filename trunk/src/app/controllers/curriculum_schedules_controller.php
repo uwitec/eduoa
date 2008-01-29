@@ -36,11 +36,8 @@ class CurriculumSchedulesController extends AppController {
 	}
 
 	function view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash('Invalid id for Curriculum Schedule.');
-			$this->redirect('/curriculum_schedules/index');
-		}
-		$this->set('curriculumSchedule', $this->CurriculumSchedule->read(null, $id));
+
+
 	}
 
 	function add($banji_id = null, 

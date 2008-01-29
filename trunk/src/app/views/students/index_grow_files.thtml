@@ -31,7 +31,7 @@
 		  echo $html->link('得意作品', '/student_grow_files/add/'.$student['Student']['id'].'/10').' ';
 		  echo $html->link('学习总结', '/student_grow_files/add/'.$student['Student']['id'].'/11').' ';
 	  }else{
-		  echo $html->link('查看', '/people/view/');
+		  echo $html->link('查看', '/student_grow_files/view/'.$student['Student']['id']);
 	  }
 	  ?> 
 	</td>

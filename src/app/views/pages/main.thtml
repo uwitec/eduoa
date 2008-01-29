@@ -21,11 +21,23 @@
 	  <td width=10></td>
 	  <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button2.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button2_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button2.gif')?>'"></td>
 	  <td width=10></td>
-	  <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button3.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button3_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button3.gif')?>'"></td>
+	  <td style="padding-bottom:5px">
+	    <a href="<?=$html->url('/frames/desktop')?>" target="frameMain">
+	    <img src="<?=$html->url('/img/frame/main_top_button3.gif')?>" border="0" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button3_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button3.gif')?>'"/>
+		</a>
+	  </td>
 	  <td width=10></td>
-	  <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button4.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button4_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button4.gif')?>'"></td>
+	  <td style="padding-bottom:5px">
+	    <a href="<?=$html->url('/')?>">
+	    <img src="<?=$html->url('/img/frame/main_top_button4.gif')?>" border="0" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button4_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button4.gif')?>'"/>
+		</a>
+	  </td>
 	  <td width=10></td>
-	  <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button5.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button5_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button5.gif')?>'"></td>
+	  <td style="padding-bottom:5px">
+	    <a href="/">
+	    <img src="<?=$html->url('/img/frame/main_top_button5.gif')?>"  border="0" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button5_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button5.gif')?>'"/>
+		</a>
+	  </td>
 	</tr>
 	</table>
 	</td>

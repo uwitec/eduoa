@@ -260,7 +260,7 @@ class CsvHelper extends Helper {
 		}
 		
 		$this->clear();
-		
+	
 		return $this->output($output);
 	}
 

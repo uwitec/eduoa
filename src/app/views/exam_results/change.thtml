@@ -12,7 +12,7 @@
 </fieldset>
 </div>
 
-<form action="<?php echo $html->url('/exam_results/import'); ?>" method="post" encType="multipart/form-data">
+<form action="<?php echo $html->url('/exam_results/student'); ?>" method="post">
 
 <table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=560 style="border-collapse:collapse">
   <tr>
@@ -21,25 +21,25 @@
   <tr>
     <td>当前学期:</td>
     <td>
- 	<?php echo $html->selectTag('ExamResult/semester_id', $semesters, $html->tagValue('ExamResult/semester_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('ExamResult/semester', $semesters, $html->tagValue('ExamResult/semester'), array(), array(), false);?>
     </td>
   </tr>
   <tr>
     <td>选择班级：</td>
     <td>
- 	<?php echo $html->selectTag('Banji/class_id', $banjis, $html->tagValue('Banji/class_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('ExamResult/banji', $banjis, $html->tagValue('ExamResult/banji'), array(), array(), false);?>
     </td>
   </tr>
   <tr>
     <td>选择课程：</td>
     <td>
- 	<?php echo $html->selectTag('ExamResult/course_id', $courses, $html->tagValue('ExamResult/course_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('ExamResult/course', $courses, $html->tagValue('ExamResult/course'), array(), array(), false);?>
     </td>
   </tr>
   <tr>
     <td align=middle  colspan=2>
 	  <div align="center">
-        <input title="进入班级成绩管理页面" type="button" value="进入班级成绩管理页面"/>
+	    <?php echo $html->submit('进入班级成绩管理页面');?>
       </div>
 	</td>
   </tr>

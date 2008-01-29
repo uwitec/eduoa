@@ -1,0 +1,14 @@
+<?php
+	$line = array('内部编号', '学号', '姓名', '成绩'); 
+	$csv->addRow($line);
+
+	foreach($students as $student){
+		$line = array($student['Student']['id'], $student['Student']['student_no'], $student['Student']['student_name'], ''); 
+		$csv->addRow($line);
+	}
+
+	$filename = $banji_name.'['.$semester_name.']'.$course_name.'.csv';
+	$filename = iconv('UTF-8','gb2312',$filename);
+
+	echo $csv->render($filename,'gb2312','UTF-8');
+?>

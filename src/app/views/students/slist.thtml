@@ -1,24 +1,19 @@
-<div id="content">
-<fieldset align=center>
-<legend>学生列表</legend> 
-<table cellpadding="0" cellspacing="0" width="100%">
-<tr>
-	<th>学号</th>
-	<th>姓名</th>
-	<th>班号</th>
-	<th>性别</th>
-	<th>成长档案</th>
-</tr>
-<?php foreach ($students as $student): ?>
-<tr>
-	<td><?php echo $student['Student']['file_no']; ?></td>
-	<td><?php echo $student['Student']['student_name']; ?></td>
-	<td><?php echo $student['Banji']['class_name']?></td>
-	<td><?php echo $student['Student']['sex']; ?></td>
-	<td>  查看成长档案 </td>
-</tr>
-<?php endforeach; ?>
-</table>
+﻿<?php
+    $xls->setHeader('text_'.date('Y_m_d').'.xls'); 
 
-</fieldset>
-</div>
+    // XLS Data Cell 
+    $xls->BOF(); 
+    $xls->writeLabel(1,0,"Student Register"); 
+    $xls->writeLabel(2,0,"COURSENO : "); 
+    $xls->writeLabel(2,1,"123"); 
+    $xls->writeLabel(3,0,"TITLE : "); 
+    $xls->writeLabel(3,0,"BlaBlaBla"); 
+    $xls->writeLabel(4,0,"SETION : "); 
+    $xls->writeLabel(6,0,"NO"); 
+    $xls->writeLabel(6,1,"ID"); 
+    $xls->writeLabel(6,2,"Gender"); 
+    $xls->writeLabel(6,3,"Name"); 
+    $xls->writeLabel(6,4,"Lastname"); 
+    $xls->EOF(); 
+    exit(); 
+?>

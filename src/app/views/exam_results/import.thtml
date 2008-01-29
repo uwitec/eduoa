@@ -1,3 +1,14 @@
+<script language="javascript">
+function download(){
+	var url = "<?php echo $html->url('/exam_results/download');?>";
+	url += "/" + $('ExamResultBanji').options[$('ExamResultBanji').selectedIndex].value;
+	url += "/" + $('ExamResultBanji').options[$('ExamResultBanji').selectedIndex].text;
+	url += "/" + $('ExamResultSemester').options[$('ExamResultSemester').selectedIndex].text;
+	url += "/" + $('ExamResultCourse').options[$('ExamResultCourse').selectedIndex].text;
+	alert(url);
+	location = url;
+}
+</script>
 <div id="content">
 <fieldset align=center>
 <legend>成绩输入使用说明</legend> 
@@ -23,36 +34,37 @@
   <tr>
     <td>当前学期:</td>
     <td>
- 	<?php echo $html->selectTag('ExamResult/semester_id', $semesters, $html->tagValue('ExamResult/semester_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('ExamResult/semester', $semesters, $html->tagValue('ExamResult/semester'), array(), array(), false);?>
     </td>
   </tr>
   <tr>
     <td>选择班级：</td>
     <td>
- 	<?php echo $html->selectTag('Banji/class_id', $banjis, $html->tagValue('Banji/class_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('ExamResult/banji', $banjis, $html->tagValue('ExamResult/banji'), array(), array(), false);?>
     </td>
   </tr>
   <tr>
     <td>选择课程：</td>
     <td>
- 	<?php echo $html->selectTag('ExamResult/course_id', $courses, $html->tagValue('ExamResult/course_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('ExamResult/course', $courses, $html->tagValue('ExamResult/course'), array(), array(), false);?>
     </td>
   </tr>
   <tr>
     <td align=left colspan=2>
-	  <input type="button" value="下载成绩数据导入模版文件(CSV)" class="SmallButton" onClick="OpenTemplates();">
+	  <input type="button" value="下载成绩数据导入模版文件(CSV)" onClick="download();">
       <font color=red>首先点击左边按键下载CSV模版文件</font>
 	</td>
   </tr>
   <tr>
     <td align=left>选择文件：</td>
-    <td colspan=1><input name='exam_content' type=file size=25 class=smallinput/></td>
+    <td colspan=1>
+	  <?php print $html->file("Filedata",array("size" => 25)); ?> 
+	</td>
   </tr>
-  <input type=hidden class=smallinput name=curxueqi value="">
   <tr>
     <td align=middle  colspan=2>
 	  <div align="center">
-        <input class=smallbutton title=点击提交成绩 type=button value="点击提交成绩" name=button>
+	    <?php echo $html->submit('点击提交成绩');?>
       </div>
 	</td>
   </tr>

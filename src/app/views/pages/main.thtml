@@ -1,9 +1,119 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Language" content="zh-cn">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>金色校园</title>
+<?php echo $html->css('frame');?>
 </head>
-<body>
-<br><br><br><br><div align="center">欢迎进入金色校园教育管理系统！</div>
+<body bgcolor="#F3F3F5" scroll="no">
+<table border=0 cellpadding=0 cellspacing=0 width=100% height=100% style="display: inline;">
+<tr>
+  <td height=64 background="<?=$html->url('/img/frame/main_top_bg.jpg')?>">
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td align=left><img src="<?=$html->url('/img/frame/main_top_logo.jpg')?>"></td>
+	<td style="padding-right:5px;" align=right>
+	<table border=0 cellpadding=0 cellspacing=0>
+	<tr>
+      <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button1.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button1_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button1.gif')?>'"></td>
+	  <td width=10></td>
+	  <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button2.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button2_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button2.gif')?>'"></td>
+	  <td width=10></td>
+	  <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button3.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button3_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button3.gif')?>'"></td>
+	  <td width=10></td>
+	  <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button4.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button4_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button4.gif')?>'"></td>
+	  <td width=10></td>
+	  <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button5.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button5_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button5.gif')?>'"></td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+  </table>
+  </td>
+</tr>
+<tr>
+  <td>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% HEIGHT=100%>
+  <tr>
+    <td width=198 id="leftpannel">
+	<table border=0 cellpadding=0 cellspacing=0 width=100% height=100%>
+	<tr>
+	  <td width=13 height=9><img src="<?=$html->url('/img/frame/main_left_top_left.gif')?>"></td>
+	  <td background="<?=$html->url('/img/frame/main_left_top_bg.gif')?>"></td>
+	  <td width=7 height=9><img src="<?=$html->url('/img/frame/main_left_top_right.gif')?>"></td>
+	</tr>
+	<tr>
+	  <td valign=top background="<?=$html->url('/img/frame/main_left_middle_left_bg.gif')?>"><img src="<?=$html->url('/img/frame/main_left_middle_left_top.gif')?>"></td>
+	  <td bgcolor="#30ABC5">
+	  <table border=0 cellpadding=0 cellspacing=0 width=100% height=100%>
+	  <tr>
+		<td style="border:1px solid #067CAF;" bgcolor="#ffffff">
+		<iframe src="<?=$html->url('/modules/left')?>" frameborder=0 style="width:100%;height:100%" id="leftmenuframe"></iframe>
+		</td>
+	  </tr>
+	  </table>
+	  </td>
+	  <td valign=top background="<?=$html->url('/img/frame/main_left_middle_right_bg.gif')?>"><img src="<?=$html->url('/img/frame/main_left_middle_right_top.gif')?>"></td>
+	</tr>
+	<tr>
+	  <td width=13 height=7><img src="<?=$html->url('/img/frame/main_left_bottom_left.jpg')?>"></td>
+	  <td background="<?=$html->url('/img/frame/main_left_bottom_bg.gif')?>"></td>
+	  <td><img src="<?=$html->url('/img/frame/main_left_bottom_right.gif')?>"></td>
+	</tr>
+	</table>
+	</td>
+	<td valign=middle width=10><img src="<?=$html->url('/img/frame/main_middle_button1.gif')?>" id="middlebutton" onMouseOver="middleover()" onMouseOut="middleout()" onClick="middleclick()"></td>
+	<td style="padding-right:4px;padding-bottom:2px">
+	<table border=0 cellpadding=0 cellspacing=0 width=100% height=100%>
+	<tr>
+	  <td height=38 style="background:url(<?=$html->url('/img/frame/right_content/top_bg.gif')?>)" >
+	  <table brder=0 cellpadding=0 cellspacing=0 width=100%>
+	  <tr>
+		<td width=4><img src="<?=$html->url('/img/frame/right_content/top_words_left.gif')?>"></td>
+		<td background="<?=$html->url('/img/frame/right_content/top_words_bg.gif')?>" style="color:#ffffff;padding-top:8px;padding-left:5px;padding-right:5px">
+		<table border=0 cellpadding=0 cellspacing=0 width=100%>
+		<tr>
+		  <td align=left style="color:#ffffff">欢迎您，系统管理员 </td>
+		  <td align=right style="color:#ffffff">12:26:23</td>
+		</tr>
+		</table>
+		</td>
+		<td width=5><img src="<?=$html->url('/img/frame/right_content/top_words_right.jpg')?>"></td>
+	  </tr>
+	  </table>
+	  </td>
+	</tr>
+	<tr>
+	  <td style="border-left:1px solid #0378AE;border-right:1px solid #0378AE;border-bottom:1px solid #0378AE;" bgcolor="#ffffff"><iframe src="/frames/desktop" frameborder=0 scrolling="auto" name="frameMain" style="width:100%;height:100%"></iframe></td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+  </TABLE>
+  </td>
+</tr>
+</table>
 </body>
 </html>
+<script>
+leftmain=1;
+eval("middlebutton.src='<?=$html->url('/img/frame/main_middle_button"+ leftmain +".gif')?>'");
+function middleover(){
+  eval("middlebutton.src='<?=$html->url('/img/frame/main_middle_overbutton"+ leftmain +".gif')?>'");
+}
+function middleout(){
+  eval("middlebutton.src='<?=$html->url('/img/frame/main_middle_button"+ leftmain +".gif')?>'");
+}
+function middleclick(){
+  if(leftmain==1){
+    leftmain=2;
+	leftpannel.style.display="none";
+  }else{
+    leftmain=1;
+	leftpannel.style.display="block";
+  }
+  eval("middlebutton.src='<?=$html->url('/img/frame/main_middle_button"+ leftmain +".gif')?>'");
+}
+
+location = "#";
+</script>

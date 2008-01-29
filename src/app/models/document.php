@@ -53,5 +53,73 @@ class Document extends AppModel {
 
 	);
 
+	function afterSave(){
+		if ($document_id = $this->getLastInsertID()){
+
+			if($this->data['Document']['is_sms'] == 1) {
+				$strSQL = "
+							insert into phs_submit(
+													sSchoolCode,
+													nNeddReport,
+													nPriority,
+													sServerID,
+													nMsgFormat,
+													sFeeType,
+													sFeeCode,
+													sFixedFee,
+													sSendTime,
+													sChargeTermID,
+													sDestTermID,
+													sReplyPath,
+													nMsgLength,
+													cMsgCont,
+													nMsgType,
+													sInsertTime,
+													sError,
+													sState,
+													sDoor
+												)
+										select 				
+											(SELECT bank_no FROM units),
+											0,
+											0,
+											'950000',
+											'15',
+											'00',
+											'000000',
+											'000000',
+											documents.sms_date,
+											students.father_phone,
+											students.father_phone,
+											students.father_phone,
+											length(documents.title),
+											documents.title,
+											0,
+											now(),
+											0,
+											0,
+											'T02' 
+							";
+				if($this->data['Document']['is_commons'] == 1){
+					$strSQL .= " FROM 
+											students,documents
+										WHERE 
+											documents.id = ".$document_id;
+				}else {
+					$strSQL .= " FROM 
+											students,documents,doc_class_receiving_logs
+										WHERE 
+											students.banji_id = doc_class_receiving_logs.banji_id
+											AND documents.id = doc_class_receiving_logs.document_id
+											AND documents.id = ".$document_id;			
+				}
+
+				$this->execute($strSQL);
+			}
+
+
+		}
+	}
+
 }
 ?>

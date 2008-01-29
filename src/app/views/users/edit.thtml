@@ -1,0 +1,32 @@
+<fieldset>
+<legend>编辑管理员资料</legend> 
+<form action="<?php echo $html->url('/users/edit/'.$html->tagValue('User/id')); ?>" method="post" >
+<div class="optional"> 
+	<?php echo $form->labelTag('User/login_name', '登录名：');?>
+ 	<?php echo $html->input('User/login_name', array('size' => '60','readOnly' => 'true'));?>
+	<?php echo $html->tagErrorMsg('User/login_name', 'Please enter the Login Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/user_name', '真实姓名：');?>
+ 	<?php echo $html->input('User/user_name', array('size' => '60','maxlength' => '20'));?>
+	<?php echo $html->tagErrorMsg('User/user_name', 'Please enter the User Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/mobile', '移动电话：');?>
+ 	<?php echo $html->input('User/mobile', array('size' => '60','maxlength' => '11'));?>
+	<?php echo $html->tagErrorMsg('User/mobile', 'Please enter the Mobile.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/email', '电子邮箱：');?>
+ 	<?php echo $html->input('User/email', array('size' => '45','maxlength' => '100'));?>
+	<?php echo $html->tagErrorMsg('User/email', 'Please enter the Office Phone.');?>
+</div>
+<?php echo $html->hidden('User/id')?>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('用户列表', '/members/index') ?> </li>
+</ul>
+</fieldset>

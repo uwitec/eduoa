@@ -32,7 +32,25 @@
 			$v_content = "新闻内容";
 			break;
 	}
+
+	$arrSmsID = array(1,2,4);
 ?>
+<script type="text/javascript" src="/js/datechooser.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/datechooser.css" />
+<?php	if(in_array($this->params['url']['type'],$arrSmsID)) { ?>
+	<SCRIPT LANGUAGE="JavaScript">
+	<!--
+		events.add(window, 'load', WindowLoad);
+		function WindowLoad(){
+			var smsDate = document.getElementById('smsDate');
+			smsDate.DateChooser = new DateChooser();
+			smsDate.DateChooser.setUpdateField(['DocumentsmsDateMonth', 'DocumentsmsDateDay', 'DocumentsmsDateYear'], ['m', 'd', 'Y']);
+			//smsDate.DateChooser.setIcon('/img/datechooser.png', 'DocumentsmsDateDay',true,'点击选择日期');
+		}
+	//-->
+	</SCRIPT>
+<?php	}?>
+
 <div id="content">
 <fieldset align=center>
 <legend>新增<?=$title?></legend>
@@ -63,6 +81,15 @@
  	<?php echo $html->input('Document/title', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Document/title', 'Please enter the Title.');?>
 </div>
+<?php	if(in_array($this->params['url']['type'],$arrSmsID)){?>
+<div class="optional" id="smsDate"> 
+	<?php echo $form->labelTag( 'Document/is_sms', '短信发送');?>
+	<?php echo $html->radio('Document/is_sms',array('1'=>'是','0'=>'否'),null,array('value'=>'0'));?> 
+	<?php echo '&nbsp;&nbsp;&nbsp;发送时间';?>
+ 	<?php echo $html->dateTimeOptionTag('Document/sms_date', 'YMD' , '24', mktime(date("G")+1, 0, 0, date("m"), date("d")+1, date("Y")), array());?>
+	<?php echo $html->tagErrorMsg('Document/sms_date', 'Please select the sms_date.');?>
+</div>
+<?php	}?>
 <div class="optional"> 
 	<?php echo $form->labelTag( 'Document/content', $v_content);?>
  	<?php echo $html->textarea('Document/content', array('cols' => '60', 'rows' => '10'));?>

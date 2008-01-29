@@ -193,6 +193,47 @@ class ExamResultsController extends AppController {
 		}
 	}
 
+
+   function exam_query() {
+		if (empty($this->data)) {
+			$this->set('semesters', $this->ExamResult->Semester->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Semester.id',
+							$valuePath = '{n}.Semester.semester_name')
+			);
+			$this->set('courses', $this->ExamResult->Course->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Course.id',
+							$valuePath = '{n}.Course.course_name')
+			);
+			$this->set('banjis', $this->Banji->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Banji.id',
+							$valuePath = '{n}.Banji.class_name')
+			);
+			$this->render();
+		} else {
+			$this->cleanUpFields();
+			if ($this->ExamResult->save($this->data)) {
+				$this->Session->setFlash('The Exam Result has been saved');
+				$this->redirect('/exam_results/index');
+			} else {
+				$this->Session->setFlash('Please correct errors below.');
+				$this->set('students', $this->ExamResult->Student->generateList());
+				$this->set('exams', $this->ExamResult->Exam->generateList());
+				$this->set('semesters', $this->ExamResult->Semester->generateList());
+				$this->set('courses', $this->ExamResult->Course->generateList());
+			}
+		}
+   }
+
+
 	function download($banji_id = null, $banji_name = null, $semester_name = null, $course_name = null) {
 		$this->layout = 'ajax_gb';
 		$this->set('students', $this->ExamResult->Student->findAllByBanjiId($banji_id));
@@ -211,5 +252,6 @@ class ExamResultsController extends AppController {
 		$conditions = "student_id=$student_id and semester_id = $semester_id and course_id = $course_id";
 		return $this->ExamResult->field('score', $conditions);
     }
+
 }
 ?>

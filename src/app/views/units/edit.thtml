@@ -38,13 +38,8 @@
 	<?php echo $html->tagErrorMsg('Unit/email', 'Please enter the Email.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Unit/bank_name', '开户行:');?>
- 	<?php echo $html->input('Unit/bank_name', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Unit/bank_name', 'Please enter the Bank Name.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Unit/bank_no', '账号:');?>
- 	<?php echo $html->input('Unit/bank_no', array('size' => '60'));?>
+	<?php echo $form->labelTag('Unit/bank_no', '短信特号:');?>
+ 	<?php echo $html->input('Unit/bank_no', array('size' => '60','maxlength' => '6'));?>
 	<?php echo $html->tagErrorMsg('Unit/bank_no', 'Please enter the Bank No.');?>
 </div>
 <?php echo $html->hidden('Unit/id')?>

@@ -1,0 +1,53 @@
+<div id="content">
+<fieldset align="center">
+<legend>班级成绩查询使用说明</legend> 
+	<div>
+	  <p>
+	  1、选择要查询的"<font color=red>学期名称信息</font>"；<br/>
+	  2、选择对应的"<font color=red>班级信息</font>"；<br/>
+	  3、班级成绩明细提供："<font color=red>分科目成绩列表</font>"，"<font color=red>总成绩列表</font>；<br/>
+	  4、班级成绩缝隙提供：："<font color=red>分数区间人数统计及其累计</font>"，"<font color=red>分数区间人数百分比及其累计</font>。<br/>
+	  </p>
+	</div>
+</fieldset>
+</div>
+
+<form action="<?php echo $html->url('/exam_results/import'); ?>" method="post" encType="multipart/form-data">
+
+<table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=90% style="border-collapse:collapse">
+  <tr>
+    <th colspan="2" style="text-align:left;font-size:14px;">
+		班级成绩查询(点击直接查看班级成绩) &nbsp;&nbsp; 当前学期:
+		<?php echo $html->selectTag('ExamResult/semester_id', $semesters, $html->tagValue('ExamResult/semester_id'), array(), array(), false);?>
+	</th>
+  </tr>
+  <tr>
+    <td width="10%">入学年份</td>
+    <td>班级</td>
+  </tr>
+  <tr>
+    <td>2007</td>
+    <td>
+
+	
+		<table border=0 cellspacing=0 class=small bordercolor=#000000 cellpadding=0 align=center width=100% style="border-collapse:collapse">
+		  <tr>
+			<td>aaa</td>
+			<td>aaa</td>
+			<td>aaa</td>
+			<td>aaa</td>
+		  </tr>
+		  <tr>
+			<td>aaa</td>
+			<td>aaa</td>
+			<td>aaa</td>
+			<td>aaa</td>
+		  </tr>
+		</table>
+
+
+	</td>
+  </tr>
+</table>
+
+</form>

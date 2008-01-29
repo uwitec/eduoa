@@ -1,6 +1,6 @@
 <fieldset align=center>
 <legend>
-会员列表
+管理员列表
 </legend> 
 <div align="left">
 	<form action="<?php echo $html->url('/members/index/'); ?>" method="post">
@@ -22,27 +22,18 @@
 	<td><?php echo $member['User']['user_name']; ?></td>
 	<td><?php echo $member['Member']['email']; ?></td>
 	<td class="actions">
-		<?php echo $html->link('查看','/users/view/' . $member['Member']['uid'])?>
 		<?php echo $html->link('编辑','/users/edit/' . $member['Member']['uid'])?>
-		<?php echo $html->link('个人业绩','/users/performance/' . $member['Member']['uid'])?>
-		<?php echo $html->link('会员网络','/users/network/' . $member['Member']['uid'])?>
 		<span style="color:red;cursor:hand" onclick="initpwd('<?=$member['Member']['username']?>',<?=$member['Member']['uid']?>)">重置口令</span>
 	</td>
 </tr>
 <?php endforeach; ?>
 </table>
 <p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
-<!--
-<ul class="actions">
-	<li><?php echo $html->link('添加新会员', '/members/add'); ?></li>
-	<li><?php echo $html->link('新会员注册', '/members/register'); ?></li>
-</ul>
--->
 </fieldset>
 <script language="Javascript">
 <!--
   function initpwd(username,id){
-  	if(window.confirm('是否要将会员：' + username + ' 口令重置为888888？')){
+  	if(window.confirm('是否要将管理员：' + username + ' 口令重置为888888？')){
         var url = '/members/initpassword/' + id;
 		var myAjax = new Ajax.Request(url,{
 			method: 'get',

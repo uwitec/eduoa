@@ -5,7 +5,9 @@
 </head>
 
 <body scroll="no">
-请选择班级
+<fieldset align=center>
+<legend>请选择班级</legend>
+<h1 align="center">请先点击年份，选择左边的班级</h1>
+</fieldset>
 </body>
-
 </html>

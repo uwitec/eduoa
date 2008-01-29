@@ -115,5 +115,4 @@ function middleclick(){
   eval("middlebutton.src='<?=$html->url('/img/frame/main_middle_button"+ leftmain +".gif')?>'");
 }
 
-location = "#";
 </script>

@@ -11,13 +11,11 @@
 <script language="JavaScript">
 <!--
   function gotoUrl(id,url){
-	  alert(id + url);
-	  alert($('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].value);
+	  location =  url + '/' + id + '/' + $('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].value + '/' + $('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].text;
   }
 
   function gotoUrl2(id,url){
-	  alert(id + url);
-	  alert($('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].value);
+	  location =  url + '2/' + id + '/' + $('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].value + '/' + $('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].text;
   }
 //-->
 </script>

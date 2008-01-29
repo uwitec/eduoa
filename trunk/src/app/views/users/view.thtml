@@ -1,0 +1,51 @@
+<fieldset align=center>
+<legend>
+会员资料
+</legend> 
+<dl>
+	<dt>会员编号：</dt>
+	<dd>&nbsp;<?php echo $user['User']['member_no']?></dd>
+	<dt>登录名：</dt>
+	<dd>&nbsp;<?php echo $user['User']['login_name']?></dd>
+	<dt>真实姓名：</dt>
+	<dd>&nbsp;<?php echo $user['User']['user_name']?></dd>
+	<dt>性别：</dt>
+	<dd><?php echo $user['User']['sex']==1?'男':'女'?></dd>
+	<dt>身份证号码：</dt>
+	<dd>&nbsp;<?php echo $user['User']['cert_number']?></dd>
+	<dt>推荐人：</dt>
+	<dd>&nbsp;<?php echo $this->controller->getUserName($user['User']['referees'])?></dd>
+	<dt>会员等级：</dt>
+	<dd><?php echo $user['MemberGrade']['grade_name'];?></dd>
+	<dt>所属地区：</dt>
+	<dd>&nbsp;
+	<?php echo $user['Region']['region_name'];?>
+	</dd>
+	<!--
+	<dt>联系电话：</dt>
+	<dd>&nbsp;<?php echo $user['User']['telephone']?></dd>
+	-->
+	<dt>移动电话：</dt>
+	<dd>&nbsp;<?php echo $user['User']['mobile']?></dd>
+	<dt>办公电话：</dt>
+	<dd>&nbsp;<?php echo $user['User']['office_phone']?></dd>
+	<dt>家庭电话：</dt>
+	<dd>&nbsp;<?php echo $user['User']['home_phone']?></dd>
+	<dt>开户银行：</dt>
+	<dd>&nbsp;<?php echo $user['User']['bank_accounts']?></dd>
+	<dt>银行帐号：</dt>
+	<dd>&nbsp;<?php echo $user['User']['accounts']?></dd>
+	<dt>注册时间：</dt>
+	<dd>&nbsp;<?php echo $user['User']['created']?></dd>
+</dl>
+<?php	if(empty($_GET['cw'])){?>
+<ul class="actions">
+	<li><?php echo $html->link('个人业绩','/users/performance/' . $user['User']['id'])?></li>
+	<li><?php echo $html->link('会员网络','/users/network/' . $user['User']['id'])?></li>
+</ul>
+<?php	}else{?>
+<ul class="actions">
+	<li><?php echo $html->link('分红期数列表', '/lotteries/index')?></li>
+</ul>
+<?php	}?>
+</fieldset>

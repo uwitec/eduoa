@@ -151,7 +151,6 @@ class StudentsController extends AppController {
 		}
 	}
 
-	//修改密码还有点bug
 	function edit_password($id = null) {
 		$this->set('student', $this->Student->read(null, $id));
 		if (empty($this->data)) {
@@ -227,6 +226,21 @@ class StudentsController extends AppController {
 		  }
 	  }
    }
+
+
+  function initpassword($id = null, $pwd = null){
+  	$this->layout = 'ajax';
+  	if($pwd == null){
+  		$pwd = md5('888888');
+  	}else{
+  		$pwd = md5($pwd);
+  	}
+  	
+  	$sql = "update students set password = '$pwd' where id = $id";
+  	$this->Student->execute($sql);
+  
+  }
+
 
    function download() {
 	$this->layout = 'ajax';

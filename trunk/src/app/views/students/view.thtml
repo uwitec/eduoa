@@ -42,6 +42,9 @@
 	<dd>&nbsp;<?php echo $student['Student']['remark']?></dd>
 	<dt>学生电话</dt>
 	<dd>&nbsp;<?php echo $student['Student']['student_phone']?></dd>
+	<dt>家长手机</dt>
+	<dd>&nbsp;<?php echo $student['Student']['father_phone']?></dd>
+<!--
 	<dt>父亲姓名</dt>
 	<dd>&nbsp;<?php echo $student['Student']['father_name']?></dd>
 	<dt>父亲单位</dt>
@@ -54,11 +57,17 @@
 	<dd>&nbsp;<?php echo $student['Student']['mother_unit']?></dd>
 	<dt>母亲电话</dt>
 	<dd>&nbsp;<?php echo $student['Student']['mother_phone']?></dd>
+-->
 	<dt>状态</dt>
 	<dd>&nbsp;<?php echo $student['Student']['status']?></dd>
 </dl>
 <ul class="actions">
-	<li><?php echo $html->link('学生列表',   '/students/index') ?> </li>
+	<?php	if(empty($this->params['url']['search'])) {?>
+		<li><?php echo $html->link('学生列表',   '/students/index') ?> </li>
+	<?php	}else{?>
+		<li><?php echo $html->link('学生列表',   '/students/index/?search=cx') ?> </li>
+	<?php	}?>
+
 </ul>
 </fieldset>
 </div>

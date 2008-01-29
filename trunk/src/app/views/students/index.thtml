@@ -20,6 +20,7 @@
 	<th>家庭住址</th>
 	<th>家庭邮编</th>
 	<th>家庭电话</th>
+	<th>家长手机</th>
 	<th>入学日期</th>
 	<th>操作</th>
 </tr>
@@ -29,7 +30,7 @@
 	<td><?php echo $student['Student']['student_name']; ?></td>
 	<td><?php echo $student['Student']['birthday']; ?></td>
 	<td><?php echo $student['Student']['sex']==1?'男':'女'; ?></td>
-	<td>&nbsp;<?php echo $html->link($student['Person']['id'], '/people/view/' .$student['Person']['id'])?></td>
+	<td><?php echo $student['Person']['people_name']?></td>
 	<td><?php echo $student['Student']['native_place']; ?></td>
 	<td><?php echo $student['Student']['political_feature']; ?></td>
 	<td><?php echo $student['Student']['physical_condition']; ?></td>
@@ -41,19 +42,25 @@
 	<td><?php echo $student['Student']['address']; ?></td>
 	<td><?php echo $student['Student']['zip']; ?></td>
 	<td><?php echo $student['Student']['telphone']; ?></td>
+	<td><?php echo $student['Student']['father_phone']; ?></td>
 	<td><?php echo $student['Student']['enter_date']; ?></td>
 	<td class="actions">
-		<?php echo $html->link('查看','/students/view/' . $student['Student']['id'])?>
-		<?php echo $html->link('编辑','/students/edit/' . $student['Student']['id'])?>
-		<?php echo $html->link('删除','/students/delete/' . $student['Student']['id'], null, '请确认是否真要删除『 ' . $student['Student']['student_name'] . ' 』？')?>
+		<?php	if(empty($this->params['url']['search'])) {?>
+			<?php echo $html->link('查看','/students/view/' . $student['Student']['id'])?>
+			<?php echo $html->link('编辑','/students/edit/' . $student['Student']['id'])?>
+			<?php echo $html->link('删除','/students/delete/' . $student['Student']['id'], null, '请确认是否真要删除『 ' . $student['Student']['student_name'] . ' 』？')?>
+		<?php	}else{?>
+			<?php echo $html->link('查看','/students/view/' . $student['Student']['id'].'&search=cx')?>
+		<?php	}?>
 	</td>
 </tr>
 <?php endforeach; ?>
 </table>
-
+<?php	if(empty($this->params['url']['search'])) {?>
 <ul class="actions">
 	<li><?php echo $html->link('新增', '/students/add/'.$banji_id); ?></li>
 	<li><?php echo $html->link('导入', '/students/import'); ?></li>
 </ul>
+<?php	}?>
 </fieldset>
 </div>

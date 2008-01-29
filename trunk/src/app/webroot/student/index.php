@@ -55,7 +55,7 @@
 						
 						$sql_bjgg = "
 								select 
-									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
+									a.title,DATE_FORMAT(a.created,'%Y-%m-%d'),a.id 
 								from 
 									documents a,students b,doc_class_receiving_logs c
 								where 
@@ -69,7 +69,7 @@
 					?>
                       <tr>
                         <td width="7%" align="center"><img src="images/items.gif" width="16" height="14" /></td>
-                        <td width="93%" height="25"><?=$arr_bjgg[0]?> [<?=$arr_bjgg[1]?>]</td>
+                        <td width="93%" height="25"><a href="view.php?id=<?=$arr_bjgg[2]?>" target="_blank"><?=$arr_bjgg[0]?></a> [<?=$arr_bjgg[1]?>]</td>
                       </tr>
 					<?php
 						}
@@ -95,7 +95,7 @@
 						
 						$sql_wdzy = "
 								select 
-									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
+									a.title,DATE_FORMAT(a.created,'%Y-%m-%d'),a.id 
 								from 
 									documents a,students b,doc_class_receiving_logs c
 								where 
@@ -109,7 +109,7 @@
 					?>
                       <tr>
                         <td width="7%" align="center"><img src="images/items.gif" width="16" height="14" /></td>
-                        <td width="93%" height="25"><?=$arr_wdzy[0]?> [<?=$arr_wdzy[1]?>]</td>
+                        <td width="93%" height="25"><a href="view.php?id=<?=$arr_wdzy[2]?>" target="_blank"><?=$arr_wdzy[0]?></a> [<?=$arr_wdzy[1]?>]</td>
                       </tr>
 					<?php
 						}
@@ -178,7 +178,7 @@
 						
 						$sql_tblx = "
 								select 
-									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
+									a.title,DATE_FORMAT(a.created,'%Y-%m-%d'),a.id 
 								from 
 									documents a,students b,doc_class_receiving_logs c
 								where 
@@ -192,10 +192,7 @@
 					?>
                                 <tr>
                                   <td width="7%" align="center"><img src="images/items.gif" alt="1" width="16" height="14" /></td>
-                                  <td width="93%" height="25"><?=$arr_tblx[0]?>
-                                    [
-                                  <?=$arr_tblx[1]?>
-                                    ]</td>
+                                  <td width="93%" height="25"><a href="view.php?id=<?=$arr_tblx[2]?>" target="_blank"><?=$arr_tblx[0]?></a> [<?=$arr_tblx[1]?>]</td>
                                 </tr>
                                 <?php
 						}
@@ -219,7 +216,7 @@
 						
 						$sql_jfxz = "
 								select 
-									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
+									a.title,DATE_FORMAT(a.created,'%Y-%m-%d'),a.id 
 								from 
 									documents a,students b,doc_class_receiving_logs c
 								where 
@@ -233,10 +230,7 @@
 					?>
                                 <tr>
                                   <td width="7%" align="center"><img src="images/items.gif" alt="1" width="16" height="14" /></td>
-                                  <td width="93%" height="25"><?=$arr_jfxz[0]?>
-                                    [
-                                  <?=$arr_jfxz[1]?>
-                                    ]</td>
+                                  <td width="93%" height="25"><a href="view.php?id=<?=$arr_jfxz[2]?>" target="_blank"><?=$arr_jfxz[0]?></a> [<?=$arr_jfxz[1]?>]</td>
                                 </tr>
                                 <?php
 						}

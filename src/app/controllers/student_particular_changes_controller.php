@@ -20,8 +20,23 @@ class StudentParticularChangesController extends AppController {
 	function add($id = null) {
 		if (empty($this->data)) {
 			$this->set('students', $this->StudentParticularChange->Student->findById($id));
-			$this->set('oldClasses', $this->StudentParticularChange->OldClass->generateList());
-			$this->set('newClasses', $this->StudentParticularChange->NewClass->generateList());
+			$this->set('oldClasses', 
+						$this->StudentParticularChange->OldClass->generateList(
+				         $conditions = null,
+			             $order = 'id',
+			             $limit = null,
+			             $keyPath = '{n}.Banji.id',
+			             $valuePath = '{n}.Banji.class_name')
+			);
+			$this->set('newClasses', 
+						$this->StudentParticularChange->Banji->generateList(
+				         $conditions = null,
+			             $order = 'id',
+			             $limit = null,
+			             $keyPath = '{n}.Banji.id',
+			             $valuePath = '{n}.Banji.class_name')
+			);
+
 			$this->render();
 		} else {
 			$this->cleanUpFields();

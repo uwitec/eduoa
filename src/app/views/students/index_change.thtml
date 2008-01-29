@@ -26,9 +26,5 @@
 </tr>
 <?php endforeach; ?>
 </table>
-
-<ul class="actions">
-	<li><?php echo $html->link('新增', '/students/add/'.$banji_id); ?></li>
-</ul>
 </fieldset>
 </div>

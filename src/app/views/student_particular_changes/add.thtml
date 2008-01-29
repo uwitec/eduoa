@@ -1,55 +1,46 @@
-<h2>New Student Particular Change</h2>
+<div id="content">
+<fieldset align=center>
+<legend>学生班级调整</legend> 
 <form action="<?php echo $html->url('/student_particular_changes/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('StudentParticularChange/change_reason', '学号:');?>
- 	<?php echo $html->input('StudentParticularChange/change_reason', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('StudentParticularChange/change_reason', 'Please enter the Change Reason.');?>
+	<?php echo $form->labelTag('StudentParticularChange/student_no', '学号:');?>
+ 	<?php echo $html->input('StudentParticularChange/student_no', array('size' => '60','value' => $students['Student']['student_no'],'readonly' => 'true'));?>
+	<?php echo $html->tagErrorMsg('StudentParticularChange/student_no', 'Please enter the Change Reason.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('StudentParticularChange/change_reason', '姓名:');?>
- 	<?php echo $html->input('StudentParticularChange/change_reason', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('StudentParticularChange/change_reason', 'Please enter the Change Reason.');?>
+	<?php echo $form->labelTag('StudentParticularChange/student_name', '姓名:');?>
+ 	<?php echo $html->input('StudentParticularChange/student_name', array('size' => '60','value' => $students['Student']['student_name'],'readonly' => 'true'));?>
+	<?php echo $html->tagErrorMsg('StudentParticularChange/change_name', 'Please enter the Change Reason.');?>
+</div>
+<?php echo $html->hidden('StudentParticularChange/student_id', array('value' => $students['Student']['id']));?>
+<div class="optional"> 
+	<?php echo $form->labelTag('StudentParticularChange/old_banji_id', '原班级:');?>
+ 	<?php echo $html->selectTag('StudentParticularChange/old_banji_id', $oldClasses, $html->tagValue('StudentParticularChange/old_banji_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('StudentParticularChange/old_banji_id', 'Please enter the Change Reason.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('StudentParticularChange/change_reason', '原班级:');?>
- 	<?php echo $html->input('StudentParticularChange/change_reason', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('StudentParticularChange/change_reason', 'Please enter the Change Reason.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('StudentParticularChange/student_id', 'Student');?>
- 	<?php echo $html->selectTag('StudentParticularChange/student_id', $students, $html->tagValue('StudentParticularChange/student_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('StudentParticularChange/student_id', 'Please select the Student.') ?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('StudentParticularChange/old_banji_id', 'Old Banji');?>
- 	<?php echo $html->selectTag('StudentParticularChange/old_banji_id', $oldClasses, $html->tagValue('StudentParticularChange/old_banji_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('StudentParticularChange/old_banji_id', 'Please select the Old Banji.') ?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('StudentParticularChange/new_banji_id', 'New Banji');?>
- 	<?php echo $html->selectTag('StudentParticularChange/new_banji_id', $oldClasses, $html->tagValue('StudentParticularChange/new_banji_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('StudentParticularChange/new_banji_id', '新班级');?>
+ 	<?php echo $html->selectTag('StudentParticularChange/new_banji_id', $newClasses, $html->tagValue('StudentParticularChange/new_banji_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('StudentParticularChange/new_banji_id', 'Please select the New Banji.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('StudentParticularChange/change_reason', 'Change Reason');?>
+	<?php echo $form->labelTag('StudentParticularChange/change_reason', '调班原因');?>
  	<?php echo $html->input('StudentParticularChange/change_reason', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('StudentParticularChange/change_reason', 'Please enter the Change Reason.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('StudentParticularChange/ratifier', 'Ratifier');?>
+	<?php echo $form->labelTag('StudentParticularChange/ratifier', '批准人');?>
  	<?php echo $html->input('StudentParticularChange/ratifier', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('StudentParticularChange/ratifier', 'Please enter the Ratifier.');?>
 </div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
+<!--
 <ul class="actions">
 <li><?php echo $html->link('List Student Particular Changes', '/student_particular_changes/index')?></li>
-<li><?php echo $html->link('View Students', '/students/index/');?></li>
-<li><?php echo $html->link('Add Students', '/students/add/');?></li>
-<li><?php echo $html->link('View Old Classes', '/old_classes/index/');?></li>
-<li><?php echo $html->link('Add Old Classes', '/old_classes/add/');?></li>
-<li><?php echo $html->link('View New Classes', '/new_classes/index/');?></li>
-<li><?php echo $html->link('Add New Classes', '/new_classes/add/');?></li>
 </ul>
+-->
+</fieldset>
+</div>

@@ -12,6 +12,10 @@
 			setcookie("osStudentName",$student_name);
 			setcookie("osStudentClass",$student_class);
 		}
+
+		if(empty($student_no)) {
+			echo("<script language='JavaScript'>alert('学号或密码错误！');</script>");
+		}
 	}
 ?>
 <table width="100" border="0" cellspacing="0" cellpadding="0">

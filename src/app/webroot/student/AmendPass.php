@@ -4,9 +4,42 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>金色校园</title>
 <link href="css.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+<!--
+	function check() {
+		var doc = document.form1;
+
+		if((doc.old_password.value == "") || (doc.new_password.value == "") || (doc.new_password2.value == "")) {
+			alert("密码不能为空");
+			return false;
+		}
+
+		if(doc.new_password.value != doc.new_password2.value) {
+			alert("两次录入的密码不一致，请重新录入！");
+			return false;
+		}
+	}
+//-->
+</script>
 </head>
 <?php
+	require_once('./includes/checkLogin.php');
 	require_once('./includes/conn.php');
+
+	if($_POST["action"] == "changePwd") {
+
+		$sql = " select student_no from students where student_no =".$osStudentNo." and password = '".md5($_POST["old_password"])."'";
+		$stmt = mysql_query($sql);
+		$arr = mysql_fetch_array($stmt);
+
+		if($arr[0] == $osStudentNo) {
+			$sql = " update students set password = '".md5($_POST["new_password"])."' where student_no=".$osStudentNo;
+			mysql_query($sql);	
+			echo("<script language='JavaScript'>alert('密码修改成功！');</script>");
+		}else {
+			echo("<script language='JavaScript'>alert('旧密码不对！');</script>");
+		}		
+	}
 ?>
 <body>
 <?php	include("top.php");?>
@@ -40,7 +73,9 @@
                   <tr>
                     <td>
 
-			<form method=post action="" name="changePwd" onSubmit="return check()">
+			<form method=post action="" name="form1" onSubmit="return check()">
+
+					<input type="hidden" name="action" value="changePwd">
 
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>

@@ -44,7 +44,7 @@
 					<?php
 						$sql_wdzy = "
 								select 
-									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
+									a.title,DATE_FORMAT(a.created,'%Y-%m-%d'),a.id 
 								from 
 									documents a,students b
 								where 
@@ -57,7 +57,7 @@
 					?>
                       <tr>
                         <td width="7%" align="center"><img src="images/items.gif" width="16" height="14" /></td>
-                        <td width="93%" height="25"><?=$arr_wdzy[0]?> [<?=$arr_wdzy[1]?>]</td>
+                        <td width="93%" height="25"><a href="view.php?id=<?=$arr_wdzy[2]?>" target="_blank"><?=$arr_wdzy[0]?></a> [<?=$arr_wdzy[1]?>]</td>
                       </tr>
 					<?php
 						}

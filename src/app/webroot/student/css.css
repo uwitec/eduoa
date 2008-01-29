@@ -248,7 +248,7 @@ A.white:visited {
 	COLOR: #FFFFFF; TEXT-DECORATION: no
 }
 A.white:active {
-	COLOR: #FFFFFF; TEXT-DECORATION: no
+	COLOR: #000000; TEXT-DECORATION: no
 }
 A.green{
 	FONT-SIZE: 12px; COLOR: #666A00; LINE-HEIGHT: none; TEXT-DECORATION: none;line-height: 18px

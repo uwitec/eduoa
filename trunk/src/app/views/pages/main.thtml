@@ -5,7 +5,7 @@
 <title>金色校园</title>
 <?php echo $html->css('frame');?>
 </head>
-<body bgcolor="#F3F3F5" scroll="no">
+<body bgcolor="#F3F3F5" scroll="no"  onload="timeview();">
 <table border=0 cellpadding=0 cellspacing=0 width=100% height=100% style="display: inline;">
 <tr>
   <td height=64 background="<?=$html->url('/img/frame/main_top_bg.jpg')?>">
@@ -88,7 +88,7 @@
 		<table border=0 cellpadding=0 cellspacing=0 width=100%>
 		<tr>
 		  <td align=left style="color:#ffffff">欢迎您，系统管理员 </td>
-		  <td align=right style="color:#ffffff">12:26:23</td>
+		  <td align=right style="color:#ffffff"><span id="time_area" class=timer> </span></td>
 		</tr>
 		</table>
 		</td>
@@ -128,5 +128,16 @@ function middleclick(){
   }
   eval("middlebutton.src='<?=$html->url('/img/frame/main_middle_button"+ leftmain +".gif')?>'");
 }
+
+var OA_TIME = new Date();
+function timeview()
+{
+  timestr=OA_TIME.toLocaleString();
+  timestr=timestr.substr(timestr.indexOf(" "));
+  time_area.innerHTML = timestr;
+  OA_TIME.setSeconds(OA_TIME.getSeconds()+1);
+  window.setTimeout( "timeview()", 1000 );
+}
+
 
 </script>

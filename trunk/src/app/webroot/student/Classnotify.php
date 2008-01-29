@@ -45,7 +45,7 @@
 					<?php
 						$sql_bjgg = "
 								select 
-									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
+									a.title,DATE_FORMAT(a.created,'%Y-%m-%d'),a.id 
 								from 
 									documents a,students b,doc_class_receiving_logs c
 								where 
@@ -58,7 +58,7 @@
 					?>
                       <tr>
                         <td width="7%" align="center"><img src="images/items.gif" width="16" height="14" /></td>
-                        <td width="93%" height="25"><?=$arr_bjgg[0]?> [<?=$arr_bjgg[1]?>]</td>
+                        <td width="93%" height="25"><a href="view.php?id=<?=$arr_bjgg[2]?>" target="_blank"><?=$arr_bjgg[0]?></a> [<?=$arr_bjgg[1]?>]</td>
                       </tr>
 					<?php
 						}

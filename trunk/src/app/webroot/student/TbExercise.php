@@ -43,7 +43,7 @@
                    <?php
 						$sql_tblx = "
 								select 
-									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
+									a.title,DATE_FORMAT(a.created,'%Y-%m-%d'),a.id 
 								from 
 									documents a,students b,doc_class_receiving_logs c
 								where 
@@ -56,7 +56,7 @@
 					?>
                                 <tr>
                                   <td width="7%" align="center"><img src="images/items.gif" alt="1" width="16" height="14" /></td>
-                                  <td width="93%" height="25"><?=$arr_tblx[0]?>
+                                  <td width="93%" height="25"><a href="view.php?id=<?=$arr_tblx[2]?>" target="_blank"><?=$arr_tblx[0]?></a>
                                     [
                                   <?=$arr_tblx[1]?>
                                     ]</td>

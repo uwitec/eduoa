@@ -18,25 +18,22 @@ class ExamResultsController extends AppController {
 		$this->set('examResult', $this->ExamResult->read(null, $id));
 	}
 
-	function add() {
-		if (empty($this->data)) {
-			$this->set('students', $this->ExamResult->Student->generateList());
-			$this->set('exams', $this->ExamResult->Exam->generateList());
-			$this->set('semesters', $this->ExamResult->Semester->generateList());
-			$this->set('courses', $this->ExamResult->Course->generateList());
-			$this->render();
-		} else {
-			$this->cleanUpFields();
-			if ($this->ExamResult->save($this->data)) {
-				$this->Session->setFlash('The Exam Result has been saved');
-				$this->redirect('/exam_results/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('students', $this->ExamResult->Student->generateList());
-				$this->set('exams', $this->ExamResult->Exam->generateList());
-				$this->set('semesters', $this->ExamResult->Semester->generateList());
-				$this->set('courses', $this->ExamResult->Course->generateList());
-			}
+	function add($student_id = null, $exam_id = null, $semester_id = null, $course_id = null, $score = null) {
+		$this->layout = 'ajax';
+		$this->data['ExamResult']['student_id'] = $student_id;
+		//$this->data['ExamResult']['exam_id'] = $exam_id;
+		$this->data['ExamResult']['semester_id'] = $semester_id;
+		$this->data['ExamResult']['course_id'] = $course_id;
+		$this->data['ExamResult']['score'] = $score;
+
+		$sql = "delete from exam_results where student_id = " . $this->data['ExamResult']['student_id'];
+		$sql .= " and semester_id = " . $this->data['ExamResult']['semester_id'];
+		//$sql .= " and exam_id = " . $this->data['ExamResult']['exam_id'];
+		$sql .= " and course_id = " . $this->data['ExamResult']['course_id'];
+		//echo $sql;
+		$this->ExamResult->execute($sql);
+
+		if ($this->ExamResult->save($this->data)) {
 		}
 	}
 
@@ -243,13 +240,16 @@ class ExamResultsController extends AppController {
 	}
 
 	function student(){
-		$this->ExamResult->recursive = 1;
-		$this->set('students',$this->ExamResult->Student->findAll());
-		$this->set('banji','三班');
+		$this->ExamResult->recursive = 0;
+		$this->set('students',$this->ExamResult->Student->findAll("Student.banji_id = ".$this->data['ExamResult']['banji']));
+		$this->set('semester',$this->data['ExamResult']['semester']);
+		$this->set('course',$this->data['ExamResult']['course']);
+		$this->set('exam','1');
 	}
 
 	function findScore($student_id = null, $exam_id = null, $semester_id = null, $course_id = null){
-		$conditions = "student_id=$student_id and semester_id = $semester_id and course_id = $course_id";
+		$conditions = "ExamResult.student_id=$student_id and ExamResult.semester_id = $semester_id";
+		$conditions .= " and ExamResult.course_id = $course_id";
 		return $this->ExamResult->field('score', $conditions);
     }
 

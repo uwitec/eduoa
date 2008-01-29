@@ -38,27 +38,35 @@
               <tr>
                 <td><table width="100%" border="0" cellspacing="0" cellpadding="4">
                   <tr>
-                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <td>
+
+			<form method=post action="" name="changePwd" onSubmit="return check()">
+
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td width="27%" align="right">旧密码：</td>
                         <td width="73%" height="25">
-                            <input type="text" name="textfield" />
+                            <input type="password" name="old_password" />
                         </td>
                         </tr>
                       <tr>
                         <td align="right">新密码：</td>
-                        <td height="25"><input type="text" name="textfield2" /></td>
+                        <td height="25"><input type="password" name="new_password" /></td>
                       </tr>
                       <tr>
                         <td align="right">确认密码：</td>
-                        <td height="25"><input type="text" name="textfield3" /></td>
+                        <td height="25"><input type="password" name="new_password2" /></td>
                       </tr>
                       <tr>
                         <td height="25" colspan="2" align="center">
                             <input type="submit" name="Submit" value="提交修改密码" />
                         </td>
                         </tr>
-                    </table></td>
+                    </table>					
+
+				</form>
+
+					</td>
                     </tr>
                 </table></td>
                 <td>&nbsp;</td>

@@ -6,6 +6,7 @@
 <link href="css.css" rel="stylesheet" type="text/css" />
 </head>
 <?php
+	require_once('./includes/checkLogin.php');
 	require_once('./includes/conn.php');
 ?>
 <body>

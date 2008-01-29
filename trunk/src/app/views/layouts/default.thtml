@@ -17,23 +17,21 @@ endif;
 <?php echo $html->css('bb.generic');?>
 </head>
 <body>
-	<div id="container">
-	   <?php
-	   if ($session->check('Message.flash')){
-	   	  $session->flash();
-	   ?>
-	      <SCRIPT LANGUAGE="JavaScript">
-	      <!--
-			element = document.getElementById("flashMessage");
-			element.style.display = "none";
-			alert(element.innerHTML);
-	      //-->
-	      </SCRIPT>
-	   <?php
-	   }
-	   echo $content_for_layout;
-	   ?>
-	</div>
+<?php
+if ($session->check('Message.flash')){
+  $session->flash();
+?>
+  <SCRIPT LANGUAGE="JavaScript">
+  <!--
+	element = document.getElementById("flashMessage");
+	element.style.display = "none";
+	alert(element.innerHTML);
+  //-->
+  </SCRIPT>
+<?php
+}
+echo $content_for_layout;
+?>
 <?php echo $cakeDebug?>
 </script>
 <script type="text/javascript">

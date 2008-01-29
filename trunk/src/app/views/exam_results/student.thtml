@@ -1,0 +1,38 @@
+<div id="content">
+<fieldset align=center>
+<legend>成绩输入使用说明</legend> 
+	<div>
+	  <p class="last"> <font color=green>简要说明：下载CSV模版文件->填写成绩数据->保存为CSV文件->导入系统</font><br />
+		1、选择要导入成绩的"<font color=red>学期</font>"、"<font color=red>班级</font>"和"<font color=red>课程</font>"；<br />
+		2、点击"<font color=red>下载成绩数据导入模版文件(CSV)</font>"，将模版文件保存到本机；<br />
+		3、用"<font color=red>Excel</font>"打开下载的模版文件，填入相应的成绩并<font color=red>保存为CSV文件</font>格式；<br />
+		4、点击"<font color=red>浏览</font>"，打开已填好成绩的文件；<br />
+		5、用鼠标单击"<font color=red>点击提交成绩</font>"；<br />
+		<font color=green>注：<font color=red>只能导入CSV格式</font>，即从逗号表达式格式文件，其它文件不会被系统所识别。</font><br />
+	  </p>
+	</div>
+</fieldset>
+</div>
+
+<form method="post">
+
+<table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=560 style="border-collapse:collapse">
+ <tr>
+   <th>序号</th>
+   <th>学号</th>
+   <th>姓名</th>
+   <th>班级</th>
+   <th>成绩</th>
+ </tr>
+ <?php foreach($students as $student):?>
+ <tr>
+   <td align="center"><?=$student['Student']['id']?></td>
+   <td align="center"><?=$student['Student']['student_no']?></td>
+   <td align="center"><?=$student['Student']['student_name']?></td>
+   <td align="center"><?=$student['Banji']['class_name']?></td>
+   <td align="center"><?=$html->input('ExamResult/score',array('size' => '10','value' => '100'))?></td>
+ </tr>
+ <?php endforeach;?>
+</table>
+
+</form>

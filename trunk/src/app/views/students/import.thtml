@@ -1,82 +1,24 @@
-<form name=form1 action="ff" method=post enctype=multipart/form-data>
-  <script> 
-function temp_function()
-	{
-	
-	selectid_str="";/*
-	for(i=0;i<document.all("selectid").length;i++)
-		{
-
-		el=document.all("selectid").item(i);
-		if(el.checked)
-		{  val=el.value;
-         selectid_str+=val + ",";
-		}
-	}*/
-	form1.hidden_str.value=selectid_str;
-	form1.submit();
-	}
-</script>
-  <script language="javascript">
-function opentemplates(){
-	var url = '';
-	url = 'download.php?action=studenttemplates&sessionkey=<?=nvh5j4roma0pie7pq3ept28m57?>';
-	location = url;
+<script language="javascript">
+function download(){
+	location = "<?php echo $html->url('/files/download/student.csv');?>";
 }
 </script>
+<form action="<?php echo $html->url('/students/import'); ?>" method="post" enctype="multipart/form-data">
   <table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=450 style="border-collapse:collapse">
-    <tr class=tabledata>
-      <td nowrap align=middle width=30>主键</td>
-      <td colspan=2>
-	    <select class="smallselect" name="primarykey" onkeydown="if(event.keycode==13)event.keycode=9" >
-          <option value=学号 >学号 [学号]</option>
-          <option value=姓名 >姓名 [姓名]</option>
-          <option value=班号 >班号 [班号]</option>
-          <option value=出生日期 >出生日期 [出生日期]</option>
-          <option value=性别 >性别 [性别]</option>
-          <option value=民族 >民族 [民族]</option>
-          <option value=籍贯 >籍贯 [籍贯]</option>
-          <option value=政治面貌 >政治面貌 [政治面貌]</option>
-          <option value=健康状况 >健康状况 [健康状况]</option>
-          <option value=身份证号 >身份证号 [身份证号]</option>
-          <option value=毕业学校 >毕业学校 [毕业学校]</option>
-          <option value=外语语种 >外语语种 [外语语种]</option>
-          <option value=入学方式 >入学方式 [入学方式]</option>
-          <option value=学生来源 >学生来源 [学生来源]</option>
-          <option value=来源地区 >来源地区 [来源地区]</option>
-          <option value=家庭住址 >家庭住址 [家庭住址]</option>
-          <option value=家庭邮编 >家庭邮编 [家庭邮编]</option>
-          <option value=家庭电话 >家庭电话 [家庭电话]</option>
-          <option value=入学日期 >入学日期 [入学日期]</option>
-          <option value=备注 >备注 [备注]</option>
-          <option value=学生电话 >学生电话 [学生电话]</option>
-          <option value=父亲姓名 >父亲姓名 [父亲姓名]</option>
-          <option value=父亲单位 >父亲单位 [父亲单位]</option>
-          <option value=父亲电话 >父亲电话 [父亲电话]</option>
-          <option value=母亲姓名 >母亲姓名 [母亲姓名]</option>
-          <option value=母亲单位 >母亲单位 [母亲单位]</option>
-          <option value=母亲电话 >母亲电话 [母亲电话]</option>
-        </select>
-      </td>
-    </tr>
     <tr class=tabledata>
       <td nowrap align=middle  colspan=8><br>
         <fieldset>
         <legend>存在时设定</legend>
         <div align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type='radio' name='update' value='1' id='radio_compression_none'   checked='checked' />
-          存在时时更新&nbsp;
-          <input type='radio' name='update' value='0' id='radio_compression_zip' />
-          存在时不更新&nbsp; </div>
+		  <?php echo $html->radio('Student/update',array('1'=>'存在时时更新&nbsp;','0'=>'存在时不更新&nbsp;'),null,array('value'=>'1'));?>
+		</div>
         </fieldset>
         <br>
         <fieldset>
         <legend>不存在设定</legend>
         <div align=left>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type='radio' name='exists' value='1' id='radio_compression_none' checked='checked' />
-          不存在时新建&nbsp;
-          <input type='radio' name='exists' value='0' id='radio_compression_zip' />
-          不存在时不新建&nbsp; </div>
+		  <?php echo $html->radio('Student/exists',array('1'=>'不存在时新建&nbsp;','0'=>'不存在时不新建&nbsp;'),null,array('value'=>'1'));?>
+		</div>
         </fieldset>
         <br>
       </td>
@@ -85,7 +27,7 @@ function opentemplates(){
       <th class=tableheader align=left colspan=3>选择要导入的组</th>
     </tr>
     <tr>
-      <td class=tabledata nowrap>选择要导入的组：</td>
+      <td class=tabledata nowrap>选择要导入的组:</td>
       <td class=tabledata nowrap colspan="2">
 	  <?php echo $html->selectTag('Student/banji_id', $banjis, $html->tagValue('Student/banji_id'), array(), array(), false);?>
       </td>
@@ -95,19 +37,21 @@ function opentemplates(){
     </tr>
     <tr class=tabledata>
       <td nowrap align=middle>ms csv文件</td>
-      <td colspan=2><input name='uploadfile' type=file size=25 class=smallinput></td>
+      <td colspan=2>
+	   <?php print $html->file("Filedata",array("size" => 25)); ?> 
+	  </td>
     </tr>
     <tr align="center" class="tablecontrol">
-      <td colspan="6"><div align="center">
-          <input type="button" value="导入" class="smallbutton" onclick="temp_function();">
-　　
-          <input type="button" value="返回" class="smallbutton" onclick="history.back();">
-        </div></td>
+      <td colspan="6">
+	    <div align="center">
+          <input type="submit" value="导入"/>
+          <input type="button" value="返回" class="smallbutton" onclick="history.back();"/>
+        </div>
+	  </td>
     </tr>
   </table>
 </form>
-<br>
 <input type=hidden class=smallinput name=tablename value="edu_student">
 <div align=center>
-  <input type="button" value="下载学生数据导入模版文件(csv)" class="smallbutton" onclick="opentemplates();">
+  <input type="button" value="下载学生数据导入模版文件(csv)" onclick="download();">
 </div>

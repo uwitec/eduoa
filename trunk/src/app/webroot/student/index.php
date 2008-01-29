@@ -51,6 +51,8 @@
                     <td valign="top">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<?php
+					if($osStudentNo) {
+						
 						$sql_bjgg = "
 								select 
 									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
@@ -71,6 +73,14 @@
                       </tr>
 					<?php
 						}
+					}else {
+					?>
+                      <tr>
+                        <td width="7%" align="center"><img src="images/items.gif" width="16" height="14" /></td>
+                        <td width="93%" height="25">请先登录学生系统！</td>
+                      </tr>
+					<?php
+					}
 					?>
                     </table>					</td>
                     </tr>
@@ -81,6 +91,8 @@
                     <td>
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<?php
+					if($osStudentNo) {
+						
 						$sql_wdzy = "
 								select 
 									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
@@ -101,6 +113,14 @@
                       </tr>
 					<?php
 						}
+					}else {
+					?>
+                      <tr>
+                        <td width="7%" align="center"><img src="images/items.gif" width="16" height="14" /></td>
+                        <td width="93%" height="25">请先登录学生系统！</td>
+                      </tr>
+					<?php
+					}
 					?>
                     </table>					</td>
                   </tr>
@@ -154,6 +174,8 @@
                           <tr>
                             <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                    <?php
+					if($osStudentNo) {
+						
 						$sql_tblx = "
 								select 
 									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
@@ -177,6 +199,14 @@
                                 </tr>
                                 <?php
 						}
+					}else {
+					?>
+                      <tr>
+                        <td width="7%" align="center"><img src="images/items.gif" width="16" height="14" /></td>
+                        <td width="93%" height="25">请先登录学生系统！</td>
+                      </tr>
+					<?php
+					}
 					?>
                             </table></td>
                           </tr>
@@ -185,6 +215,8 @@
                           <tr>
                             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <?php
+					if($osStudentNo) {
+						
 						$sql_jfxz = "
 								select 
 									a.title,DATE_FORMAT(a.created,'%Y-%m-%d') 
@@ -208,6 +240,14 @@
                                 </tr>
                                 <?php
 						}
+					}else {
+					?>
+                      <tr>
+                        <td width="7%" align="center"><img src="images/items.gif" width="16" height="14" /></td>
+                        <td width="93%" height="25">请先登录学生系统！</td>
+                      </tr>
+					<?php
+					}
 					?>
                             </table></td>
                           </tr>

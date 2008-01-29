@@ -13,7 +13,7 @@
     <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="20" background="images/huang_bg.gif"><img src="images/huang_1.gif" width="20" height="27" /></td>
-        <td width="820" align="center" background="images/huang_bg.gif"><span class="hotfoodfont"><a href="index.php" class="white">首页</a>&nbsp;| <a href="Schoolnotify.php" class="white">学校通知</a>&nbsp;| <a href="Classnotify.php" class="white">班级公告</a>&nbsp;| <a href="MyBehave.php" class="white">我的表现</a>&nbsp;| <a href="MySchoolWork.php" class="white">我的作业</a>&nbsp;| <a href="TbExercise.php" class="white">同步练习</a>&nbsp;| <a href="TutorshipData.php" class="white">教辅资料</a>&nbsp;| <a href="ExamGrade.php" class="white">考试成绩</a>&nbsp;| <a href="/blog/" target="_blank" class="white">我的博客</a>&nbsp;| <a href="/bbs/" target="_blank" class="white">学校论坛</a></span> </td>
+        <td width="820" align="center" background="images/huang_bg.gif"><span class="hotfoodfont"><a href="index.php" class="white">首页</a>&nbsp;| <a href="Schoolnotify.php" class="white">学校通知</a>&nbsp;| <a href="Classnotify.php" class="white">班级公告</a>&nbsp;| <a href="MyBehave.php" class="white">我的表现</a>&nbsp;| <a href="MySchoolWork.php" class="white">我的作业</a>&nbsp;| <a href="TbExercise.php" class="white">同步练习</a>&nbsp;| <a href="TutorshipData.php" class="white">教辅资料</a>&nbsp;| <a href="ExamGrade.php" class="white">考试成绩</a>&nbsp;| <a href="#"   class="white">我的博客</a>&nbsp;| <a href="#"  class="white">学校论坛</a></span> </td>
         <td width="19" background="images/huang_bg.gif"><img src="images/huang_2.gif" width="19" height="27" /></td>
       </tr>
     </table></td>

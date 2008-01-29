@@ -59,6 +59,13 @@
       </tr>
     </table>	
 
+	<?php	
+		if($student_no > 1 && empty($osStudentNo)) {
+			echo("<script language='JavaScript'>location.replace('index.php');</script>");
+		}
+	?>
+	
+
 	<?php	}else{?>
 
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">

@@ -48,7 +48,7 @@
 								from 
 									documents a,students b
 								where 
-									a.document_type_id = 1 and b.student_no = $osStudentNo and a.is_commons = 1 		
+									a.document_type_id = 1  and a.is_commons = 1 		
 								order by a.created desc
 								limit 10
 						";

@@ -4,14 +4,14 @@
     <td><div align="right"><strong><font color="#000000">http://<?=$_SERVER["REMOTE_ADDR"]?></font></strong></div></td>
   </tr>
   <tr>
-    <td><font color="#000000">班主任：王红云</font></td>
+    <td><font color="#000000">班主任：<?=$banji['Teacher']['teacher_name']?></font></td>
     <td>&nbsp;</td>
   </tr>
 </table>
 <hr width=720 height="1" align="$align" color="#000000">
 <table width=720 border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td><font color="#000000"><strong>班级名称:2002级一班</strong></font></td>
+    <td><font color="#000000"><strong>班级名称:<?=$banji['Banji']['class_name']?></strong></font></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td><div align="right"><font color="#000000">更新时间:<?=date('Y-m-d')?></font>　
@@ -39,9 +39,11 @@
     <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$i?></div></td>
     <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$student['Student']['student_no']?></div></td>
     <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$student['Student']['student_name']?></div></td>
-    <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$this->controller->ExamResult->findTotal(1,1,1)?></div></td>
+    <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$this->controller->ExamResult->findTotal($student['Student']['id'],$semester_id,1)?></div></td>
 	<?php foreach($courses as $course):?>
-    <td colspan="1" bgcolor="#ffccff"><div align="center"></div></td>
+    <td colspan="1" bgcolor="#ffccff">
+	  <div align="center"><?=$this->controller->ExamResult->findScore($student['Student']['id'],$semester_id,1,$course['Course']['id'])?></div>
+	</td>
 	<?php endforeach;?>
   </tr>
   <?php endforeach;?>

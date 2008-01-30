@@ -252,8 +252,10 @@ class ExamResultsController extends AppController {
 
    function exam_list($banji_id = null, $semester_id = null, $semester_name = null) {
 	   $this->set('semester_name',$semester_name);
+	   $this->set('semester_id', $semester_id);
 	   $this->set('students',$this->ExamResult->Student->findAllByBanjiId($banji_id));
 	   $this->set('courses',$this->ExamResult->Course->findAll('order by Course.id'));
+	   $this->set('banji', $this->Banji->read(null,$banji_id));
    }
 
 }

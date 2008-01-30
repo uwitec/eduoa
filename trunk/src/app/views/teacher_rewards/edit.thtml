@@ -9,7 +9,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('TeacherReward/flag', '奖惩标记');?>
- 	<?php echo $html->input('TeacherReward/flag', array('size' => '60'));?>
+	<?php echo $html->radio('TeacherReward/flag',array('1'=>'奖励','0'=>'惩罚'),null,array('value'=>'1'));?> 
 	<?php echo $html->tagErrorMsg('TeacherReward/flag', 'Please enter the Flag.');?>
 </div>
 <div class="optional"> 

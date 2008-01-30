@@ -4,12 +4,19 @@
 <form action="<?php echo $html->url('/teacher_rewards/add'); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('TeacherReward/teacher_id', '教师名称');?>
- 	<?php echo $html->selectTag('TeacherReward/teacher_id', $teachers, $html->tagValue('TeacherReward/teacher_id'), array(), array(), false);?>
+ 	<?php 
+		if($this->params['url']['teacher_id']) {
+			echo $this->params['url']['teacher_name'];
+			echo $html->hidden('TeacherReward/teacher_id', array('value' => $this->params['url']['teacher_id']));
+		}else {
+			echo $html->selectTag('TeacherReward/teacher_id', $teachers, $html->tagValue('TeacherReward/teacher_id'), array(), array(), false);
+		}
+	?>
 	<?php echo $html->tagErrorMsg('TeacherReward/teacher_id', 'Please select the Teacher.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('TeacherReward/flag', '奖惩标记');?>
- 	<?php echo $html->input('TeacherReward/flag', array('size' => '60'));?>
+	<?php echo $html->radio('TeacherReward/flag',array('1'=>'奖励','0'=>'惩罚'),null,array('value'=>'1'));?> 
 	<?php echo $html->tagErrorMsg('TeacherReward/flag', 'Please enter the Flag.');?>
 </div>
 <div class="optional"> 

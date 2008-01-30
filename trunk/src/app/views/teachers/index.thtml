@@ -19,7 +19,11 @@
 	<td><?php echo $teacher['Teacher']['sex']==1?'男':'女' ; ?></td>
 	<td><?php echo $teacher['Teacher']['office_phone']; ?></td>
 	<td>&nbsp;<?php echo $teacher['Department']['department_name']?></td>
-	<td><?php echo $teacher['Teacher']['is_work']==1?'离职(点击复职) 奖励处罚 继续教育':'离职(点击复职) 奖励处罚 继续教育' ; ?></td>
+	<td>
+		<?php echo($teacher['Teacher']['is_work']?'正常':'离职');
+		?>
+		 <a href="/teacher_rewards/add/?teacher_id=<?=$teacher['Teacher']['id']?>&teacher_name=<?=$teacher['Teacher']['teacher_name']?>">奖励处罚</a> <a href="/teacher_continuing_educations/add/?teacher_id=<?=$teacher['Teacher']['id']?>&teacher_name=<?=$teacher['Teacher']['teacher_name']?>">继续教育</a>
+	</td>
 	<td class="actions">
 		<?php echo $html->link('查看','/teachers/view/' . $teacher['Teacher']['id'])?>
 		<?php echo $html->link('编辑','/teachers/edit/' . $teacher['Teacher']['id'])?>

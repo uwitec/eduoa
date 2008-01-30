@@ -4,7 +4,14 @@
 <form action="<?php echo $html->url('/teacher_continuing_educations/add'); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('TeacherContinuingEducation/teacher_id', '教师名称');?>
- 	<?php echo $html->selectTag('TeacherContinuingEducation/teacher_id', $teachers, $html->tagValue('TeacherContinuingEducation/teacher_id'), array(), array(), false);?>
+ 	<?php 
+		if($this->params['url']['teacher_id']) {
+			echo $this->params['url']['teacher_name'];
+			echo $html->hidden('TeacherContinuingEducation/teacher_id', array('value' => $this->params['url']['teacher_id']));
+		}else {
+			echo $html->selectTag('TeacherContinuingEducation/teacher_id', $teachers, $html->tagValue('TeacherContinuingEducation/teacher_id'), array(), array(), false);
+		}
+	?>
 	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/teacher_id', 'Please select the Teacher.') ?>
 </div>
 <div class="optional"> 

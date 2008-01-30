@@ -16,7 +16,7 @@
 <tr>
 	<td><?php echo $teacherReward['Teacher']['teacher_name'];?></td>
 	<td><?php echo $teacherReward['TeacherReward']['created']; ?></td>
-	<td>行为：<?php echo $teacherReward['TeacherReward']['flag']; ?></td>
+	<td>行为：<?php echo $teacherReward['TeacherReward']['flag']?'奖励':'惩罚' ; ?></td>
 	<td><?php echo $teacherReward['TeacherReward']['content']; ?></td>
 	<td><?php echo $teacherReward['TeacherReward']['reason']; ?></td>
 	<td><?php echo $teacherReward['TeacherReward']['remark']; ?></td>

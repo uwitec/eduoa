@@ -15,11 +15,13 @@
 	<td style="padding-right:5px;" align=right>
 	<table border=0 cellpadding=0 cellspacing=0>
 	<tr>
+	<!--  暂时屏蔽  在线和所有人员
       <td style="padding-bottom:5px">
 	  <img src="<?=$html->url('/img/frame/main_top_button1.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button1_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button1.gif')?>'">
 	  </td>
 	  <td width=10></td>
 	  <td style="padding-bottom:5px"><img src="<?=$html->url('/img/frame/main_top_button2.gif')?>" onMouseOver="this.src='<?=$html->url('/img/frame/main_top_button2_over.gif')?>'" onMouseOut="this.src='<?=$html->url('/img/frame/main_top_button2.gif')?>'"></td>
+	-->
 	  <td width=10></td>
 	  <td style="padding-bottom:5px">
 	    <a href="<?=$html->url('/frames/desktop')?>" target="frameMain">

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class StudentParticularChange extends AppModel {
 
 	var $name = 'StudentParticularChange';
@@ -43,4 +43,24 @@ class StudentParticularChange extends AppModel {
 	);
 
 }
+
+/* 待确认，直接操作controller
+function afterSave(){
+	if ($id = $this->getLastInsertID()){
+
+			$strSQL =	" 
+						update 
+							students 
+						set 
+							banji_id = $this->data['StudentParticularChange']['new_banji_id']
+						where
+							id = $this->data['StudentParticularChange']['student_id']
+						";
+			$this->execute($strSQL);
+
+	}
+}
+*/
+
+
 ?>

@@ -1,12 +1,17 @@
-﻿<?php
+<?php
 class StudentParticularChangesController extends AppController {
 
 	var $name = 'StudentParticularChanges';
 	var $helpers = array('Html', 'Form' );
 
-	function index() {
+	function index($id = null) {
 		$this->StudentParticularChange->recursive = 0;
-		$this->set('studentParticularChanges', $this->StudentParticularChange->findAll());
+		if(empty($id)) {
+			$this->set('studentParticularChanges', $this->StudentParticularChange->findAll());
+		}else {
+			$this->set('studentParticularChanges', $this->StudentParticularChange->findAll(' student_id = '.$id));
+		}
+		
 	}
 
 	function view($id = null) {
@@ -19,10 +24,11 @@ class StudentParticularChangesController extends AppController {
 
 	function add($id = null) {
 		if (empty($this->data)) {
-			$this->set('students', $this->StudentParticularChange->Student->findById($id));
+			$this->data = $this->StudentParticularChange->Student->read(null,$id);
+			$this->set('student', $this->data);
 			$this->set('oldClasses', 
 						$this->StudentParticularChange->OldClass->generateList(
-				         $conditions = null,
+				         $conditions = ' Banji.id = '.$this->data['Banji']['id'],
 			             $order = 'id',
 			             $limit = null,
 			             $keyPath = '{n}.Banji.id',
@@ -30,7 +36,7 @@ class StudentParticularChangesController extends AppController {
 			);
 			$this->set('newClasses', 
 						$this->StudentParticularChange->Banji->generateList(
-				         $conditions = null,
+				         $conditions = ' Banji.id <> '.$this->data['Banji']['id'],
 			             $order = 'id',
 			             $limit = null,
 			             $keyPath = '{n}.Banji.id',
@@ -41,8 +47,12 @@ class StudentParticularChangesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->StudentParticularChange->save($this->data)) {
-				$this->Session->setFlash('The Student Particular Change has been saved');
-				$this->redirect('/student_particular_changes/index');
+				$this->Session->setFlash('调班操作成功！');
+
+				$strSQL =	" update students set banji_id = ".$this->data['StudentParticularChange']['new_banji_id']." where id =".$this->data['StudentParticularChange']['student_id'] ;
+				$this->StudentParticularChange->execute($strSQL);
+
+				$this->redirect('/student_particular_changes/index/'.$this->data['StudentParticularChange']['student_id']);
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 				$this->set('students', $this->StudentParticularChange->Student->generateList());

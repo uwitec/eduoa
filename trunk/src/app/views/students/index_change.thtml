@@ -21,7 +21,8 @@
 	<td><?php echo $student['Student']['sex']==1?'男':'女'; ?></td>
 	<td><?php echo $student['Person']['people_name'];?></td>
 	<td class="actions">
-		<?php echo $html->link('调班','/student_particular_changes/add/' . $student['Student']['id']);?>
+		<?php echo $html->link('调班','/student_particular_changes/add/' . $student['Student']['id'] );?>
+		<?php echo $html->link('查看调班记录','/student_particular_changes/index/' . $student['Student']['id'] );?>
 	</td>
 </tr>
 <?php endforeach; ?>

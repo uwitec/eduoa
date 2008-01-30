@@ -52,5 +52,16 @@ class ExamResult extends AppModel {
 		$conditions = "ExamResult.student_id = $student_id and ExamResult.semester_id = $semester_id and ExamResult.course_id = $course_id";
 		return $this->field('score',$conditions);
 	}
+
+	function findAverage($semester_id = null, $exam_id = null, $course_id = null){
+		$conditions = "select avg(score) from exam_results where semester_id = $semester_id and course_id = $course_id";
+		$ret = $this->findBySql($conditions);
+		return $ret[0][0]['avg(score)'];
+	}
+
+	function findCountFlunk($semester_id = null, $exam_id = null, $course_id = null, $score = null){
+		$conditions = "ExamResult.semester_id = $semester_id and ExamResult.course_id = $course_id and score < $score";
+		return $this->findCount($conditions);
+	}
 }
 ?>

@@ -258,5 +258,48 @@ class ExamResultsController extends AppController {
 	   $this->set('banji', $this->Banji->read(null,$banji_id));
    }
 
+   function semester($entrance_year = null, $semester_id = null, $semester_name = null){
+	   $this->set('semester_name',$semester_name);
+	   $this->set('semester_id', $semester_id);
+	   $this->set('entrance_year', $entrance_year);
+	   $this->set('students',$this->ExamResult->Student->findAll('Banji.entrance_year = '.$entrance_year));
+	   $this->set('courses',$this->ExamResult->Course->findAll('order by Course.id'));
+   }
+
+   function single_list($entrance_year = null, $semester_id = null, $semester_name = null){
+	   $this->set('semester_name',$semester_name);
+	   $this->set('semester_id', $semester_id);
+	   $this->set('entrance_year', $entrance_year);
+	   $this->set('students',$this->ExamResult->Student->findAll('Banji.entrance_year = '.$entrance_year));
+	   $this->set('courses',$this->ExamResult->Course->findAll('order by Course.id'));
+   }
+
+   function average($entrance_year = null, $semester_id = null, $semester_name = null) {
+	   $this->set('semester_name',$semester_name);
+	   $this->set('semester_id', $semester_id);
+	   $this->set('entrance_year', $entrance_year);
+	   $this->set('courses',$this->ExamResult->Course->findAll('order by Course.id'));
+   }
+
+   function flunk_stat($entrance_year = null, $semester_id = null, $semester_name = null) {
+	   $this->set('semester_name',$semester_name);
+	   $this->set('semester_id', $semester_id);
+	   $this->set('entrance_year', $entrance_year);
+	   $this->set('courses',$this->ExamResult->Course->findAll('order by Course.id'));
+   }
+
+   function statistics($entrance_year = null, $semester_id = null, $semester_name = null) {
+	   $this->set('semester_name',$semester_name);
+	   $this->set('semester_id', $semester_id);
+	   $this->set('entrance_year', $entrance_year);
+	   $this->set('courses',$this->ExamResult->Course->findAll('order by Course.id'));
+
+	   $scores = array('score >= 130 and score <=140' => '130-140',
+		              'score >= 120 and score < 130' => '120-130',
+		        );
+	   $this->set('scores',$scores);
+	   
+   }
+
 }
 ?>

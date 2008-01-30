@@ -116,7 +116,7 @@ create table teachers(
   department_id         int(10)                               comment '所属部门',
   file_id               int(10)                               comment '照片',
   password              varchar(32)                           comment '口令',
-  flag                  int(1)                                comment '状态(1:在岗 0:离职)',
+  flag                  int(1)                                comment '状态(1:正常 0:删除)',
   created               timestamp                             comment '创建时间',
   modified              timestamp                             comment '修改时间',
   primary key (id)
@@ -343,7 +343,7 @@ create table exam_results(
   exam_id               int(10)                               comment '考试名',
   semester_id           int(10)                               comment '学期',
   course_id             int(10)                               comment '课程',
-  score                 decimal(3,2)                          comment '分数',                  
+  score                 decimal(5,2)                          comment '分数',                  
   primary key (id)
 )engine=MyISAM default charset=utf8 comment='学生考试成绩';
 

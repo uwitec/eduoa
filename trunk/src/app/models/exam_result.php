@@ -42,5 +42,10 @@ class ExamResult extends AppModel {
 
 	);
 
+	function findTotal($student_id = null, $semester_id = null, $exam_id = null){
+		$conditions = "select sum(score) from exam_results where  student_id = $student_id and semester_id = $semester_id";
+		$ret = $this->findBySql($conditions);
+		return $ret[0][0]['sum(score)'];
+	}
 }
 ?>

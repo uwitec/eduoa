@@ -47,5 +47,10 @@ class ExamResult extends AppModel {
 		$ret = $this->findBySql($conditions);
 		return $ret[0][0]['sum(score)'];
 	}
+
+	function findScore($student_id = null, $semester_id = null, $exam_id = null, $course_id = null){
+		$conditions = "ExamResult.student_id = $student_id and ExamResult.semester_id = $semester_id and ExamResult.course_id = $course_id";
+		return $this->field('score',$conditions);
+	}
 }
 ?>

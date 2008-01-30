@@ -2,7 +2,7 @@
 class TeachersController extends AppController {
 
 	var $name = 'Teachers';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form' ,'Javascript');
 
 	function index() {
 		$this->Teacher->recursive = 0;
@@ -240,6 +240,29 @@ class TeachersController extends AppController {
 			$this->Session->setFlash('教职工删除成功！');
 			$this->redirect('/teachers/index');
 		}
+	}
+
+	function password($id = null) {
+		$this->Teacher->recursive = 0;
+		if($id){
+			$this->set('teachers', $this->Teacher->findAll($id));
+		}else{
+			$this->set('teachers', $this->Teacher->findAll());
+		}
+	}
+
+	function initpassword($id = null, $pwd = null){
+
+		$this->layout = 'ajax';
+		if($pwd == null){
+			$pwd = md5('888888');
+		}else{
+			$pwd = md5($pwd);
+		}
+
+		$sql = "update teachers set password = '$pwd' where id = $id";
+		$this->Teacher->execute($sql);
+
 	}
 
 }

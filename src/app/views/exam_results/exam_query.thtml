@@ -22,7 +22,7 @@
 
 <div id="content">
 <?php switch($this->params['url']['target']):?>
-<?php case 'list':?>
+<?php case 'exam_list':?>
 <fieldset align="center">
 <legend>班级成绩查询使用说明</legend> 
 	<div>

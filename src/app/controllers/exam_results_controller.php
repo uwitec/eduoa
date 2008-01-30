@@ -250,5 +250,11 @@ class ExamResultsController extends AppController {
 		return $this->ExamResult->field('score', $conditions);
     }
 
+   function exam_list($banji_id = null, $semester_id = null, $semester_name = null) {
+	   $this->set('semester_name',$semester_name);
+	   $this->set('students',$this->ExamResult->Student->findAllByBanjiId($banji_id));
+	   $this->set('courses',$this->ExamResult->Course->findAll('order by Course.id'));
+   }
+
 }
 ?>

@@ -1,3 +1,14 @@
+<?php
+	//临时处理，明天修改
+
+	$db_host="localhost";
+	$db_user="root";
+	$db_password="root";
+	$db_name="eduoa";
+	$link=mysql_connect($db_host,$db_user,$db_password);
+	mysql_query("SET NAMES 'utf8'",$link);
+	$db=mysql_select_db($db_name,$link);
+?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>金色校园</title>
@@ -15,31 +26,29 @@
   <table bordr=0 cellpadding="0" cellspacing="0" width=100% background="<?=$html->url('/img/frame/desktop/title_bg.jpg')?>">
   <tr>
     <td style="padding-left:5px" height=33>站点公告</td>
-	<td align=right style="padding-right:5px">全部</td>
+	<td align=right style="padding-right:5px"><a href="/documents/index/?type=5">全部</a></td>
   </tr>
   </table>
   <table border=0 cellpadding="0" cellspacing="0" width=100%>
-  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
-    <td height=28 style="padding-left:5px;padding-right:5px"><a href="#">暂无公告通知</a></td>
-	<td style="padding-right:5px;color:#666666;" align="right">2008-01-20</td>
-  </tr>
-  <tr>
-    <td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
-  </tr>
-  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
-    <td height=28 style="padding-left:5px;padding-right:5px"><a href="#">暂无公告通知</a></td>
-	<td style="padding-right:5px;color:#666666;" align="right">2008-01-20</td>
-  </tr>
-  <tr>
-    <td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
-  </tr>
-  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
-    <td height=28 style="padding-left:5px;padding-right:5px"><a href="#">暂无公告通知</a></td>
-	<td style="padding-right:5px;color:#666666;" align="right">2008-01-20</td>
-  </tr>
-  <tr>
-    <td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
-  </tr>
+	<?php
+		$sql = "select title,DATE_FORMAT(created,'%Y-%m-%d'),id from documents where document_type_id = 5 order by created desc limit 3 ";
+		$stmt = mysql_query($sql);
+		$i = 1 ;
+		while($row = mysql_fetch_array($stmt)) {
+	?>
+	  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
+		<td height=28 style="padding-left:5px;padding-right:5px"><a href="/documents/view/<?=$row[2]?>&type=5"><?=$row[0]?></a></td>
+		<td style="padding-right:5px;color:#666666;" align="right"><?=$row[1]?></td>
+	  </tr>
+	  <?php	if($i < 3) {?>
+	  <tr>
+		<td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
+	  </tr>
+	  <?php	}?>
+	<?php
+		$i++;
+		}
+	?>
   </table>
   </td>
   <td width=20></td>
@@ -47,31 +56,29 @@
   <table bordr=0 cellpadding="0" cellspacing="0" width=100% background="<?=$html->url('/img/frame/desktop/title_bg.jpg')?>">
   <tr>
     <td style="padding-left:5px" height=33>新闻 </td>
-	<td align=right style="padding-right:5px"><a href="#">全部</a></td>
+	<td align=right style="padding-right:5px"><a href="/documents/index/?type=6">全部</a></td>
   </tr>
   </table>
   <table border=0 cellpadding="0" cellspacing="0" width=100%>
-  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
-    <td height=28 style="padding-left:5px;padding-right:5px"><a href="#">暂无公告通知</a></td>
-	<td style="padding-right:5px;color:#666666;" align="right">2008-01-20</td>
-  </tr>
-  <tr>
-    <td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
-  </tr>
-  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
-    <td height=28 style="padding-left:5px;padding-right:5px"><a href="#">暂无公告通知</a></td>
-	<td style="padding-right:5px;color:#666666;" align="right">2008-01-20</td>
-  </tr>
-  <tr>
-    <td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
-  </tr>
-  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
-    <td height=28 style="padding-left:5px;padding-right:5px"><a href="#">暂无公告通知</a></td>
-	<td style="padding-right:5px;color:#666666;" align="right">2008-01-20</td>
-  </tr>
-  <tr>
-    <td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
-  </tr>
+	<?php
+		$sql = "select title,DATE_FORMAT(created,'%Y-%m-%d'),id from documents where document_type_id = 6 order by created desc limit 3 ";
+		$stmt = mysql_query($sql);
+		$i = 1;
+		while($row = mysql_fetch_array($stmt)) {
+	?>
+	  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
+		<td height=28 style="padding-left:5px;padding-right:5px"><a href="/documents/view/<?=$row[2]?>&type=6"><?=$row[0]?></a></td>
+		<td style="padding-right:5px;color:#666666;" align="right"><?=$row[1]?></td>
+	  </tr>
+	  <?php	if($i < 3) {?>
+	  <tr>
+		<td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
+	  </tr>
+	  <?php	}?>
+	<?php
+		$i++;
+		}
+	?>
   </table>
   </td>
 </tr>
@@ -121,32 +128,30 @@
   <td style="padding-right:1px;border:1px solid #83B5CD" height=130 valign=top width=49%>
   <table bordr=0 cellpadding="0" cellspacing="0" width=100% background="<?=$html->url('/img/frame/desktop/title_bg.jpg')?>">
   <tr>
-    <td style="padding-left:5px" height=33>日程安排  </td>
-	<td align=right style="padding-right:5px"><a href="#">全部</a></td>
+    <td style="padding-left:5px" height=33>全校班级公告</td>
+	<td align=right style="padding-right:5px"><a href="/documents/all_index/?type=1">全部</a></td>
   </tr>
   </table>
   <table border=0 cellpadding="0" cellspacing="0" width=100%>
-  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
-    <td height=28 style="padding-left:5px;padding-right:5px"><a href="#">暂无公告通知</a></td>
-	<td style="padding-right:5px;color:#666666;" align="right">2008-01-20</td>
-  </tr>
-  <tr>
-    <td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
-  </tr>
-  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
-    <td height=28 style="padding-left:5px;padding-right:5px">暂无公告通知</td>
-	<td style="padding-right:5px;color:#666666;" align="right">2008-01-20</td>
-  </tr>
-  <tr>
-    <td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
-  </tr>
-  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
-    <td height=28 style="padding-left:5px;padding-right:5px"><a href="#">暂无公告通知</a></td>
-	<td style="padding-right:5px;color:#666666;" align="right">2008-01-20</td>
-  </tr>
-  <tr>
-    <td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
-  </tr>
+	<?php
+		$sql = "select title,DATE_FORMAT(created,'%Y-%m-%d'),id from documents where document_type_id = 1 order by created desc limit 3 ";
+		$stmt = mysql_query($sql);
+		$i = 1;
+		while($row = mysql_fetch_array($stmt)) {
+	?>
+	  <tr onMouseOver="this.style.background='#efefef'" onMouseOut="this.style.background=''">
+		<td height=28 style="padding-left:5px;padding-right:5px"><a href="/documents/all_view/<?=$row[2]?>&type=1"><?=$row[0]?></a></td>
+		<td style="padding-right:5px;color:#666666;" align="right"><?=$row[1]?></td>
+	  </tr>
+	  <?php	if($i < 3) {?>
+	  <tr>
+		<td height=1 background="<?=$html->url('/img/frame/desktop/line.jpg')?>" colspan="2"></td>
+	  </tr>
+	  <?php	}?>
+	<?php
+		$i++;
+		}
+	?>
   </table>
   </td>
 </tr>

@@ -1,0 +1,73 @@
+<table width=720 border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><strong><font color="#000000">各科成绩列表  学期：<?=$semester_name?></font></strong></td>
+    <td><div align="right"><strong><font color="#000000">http://<?=$_SERVER["REMOTE_ADDR"]?></font></strong></div></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<hr width=720 height="1" align="$align" color="#000000">
+<table width=720 border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><font color="#000000"><strong>级别:<?=$entrance_year?></strong></font></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><div align="right"><font color="#000000">更新时间:<?=date('Y-m-d')?></font>　
+        <input type="button" value="打印" class="SmallButton" onClick="execCommand('Print');" title="打印本页">
+        <input type="button" value="刷新" class="SmallButton" onClick="execCommand('refresh');" title="刷新本页">
+        <input type="button" value="返回列表" class="SmallButton" onClick="javascript:history.go(-1)" title="关闭本页">
+      </div></td>
+  </tr>
+</table>
+<br>
+<table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=720 style='border-collapse:collapse'>
+  <tr align="center" class="TableContent">
+    <td colspan="1"><div align="center">序号</div></td>
+    <td colspan="1"><div align="center">学号</div></td>
+    <td colspan="1"><div align="center">姓名</div></td>
+	<td colspan="1"><div align="center">班级</div></td>
+	<?php if(empty($this->params['url']['course_id'])):?>
+	<?php foreach($courses as $course):?>
+    <td colspan="1">
+	  <div align="center">
+	    <?php
+		  $url = "/exam_results/single_list/$entrance_year/$semester_id/$semester_name/";
+		  $url .= "?course_id=".$course['Course']['id']."&course_name=".$course['Course']['course_name'];
+		  echo $html->link($course['Course']['course_name'],$url);
+		?>
+	  </div>
+	</td>
+	<?php endforeach;?>
+	<?php else:?>
+	<td colspan="1"><div align="center"><?=$this->params['url']['course_name']?></div></td>
+	<?php endif;?>
+  </tr>
+  <?php $i = 0;?>
+  <?php foreach($students as $student):?>
+  <?php $i++?>
+  <tr align="center" class="TableContent">
+    <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$i?></div></td>
+    <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$student['Student']['student_no']?></div></td>
+    <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$student['Student']['student_name']?></div></td>
+	<td colspan="1" bgcolor="#ffccff"><div align="center"><?=$student['Banji']['class_name']?></div></td>
+	<?php if(empty($this->params['url']['course_id'])):?>
+	<?php foreach($courses as $course):?>
+    <td colspan="1" bgcolor="#ffccff">
+	  <div align="center">
+	    <?=$this->controller->ExamResult->findScore($student['Student']['id'],$semester_id,1,$course['Course']['id'])?>
+	  </div>
+	</td>
+	<?php endforeach;?>
+	<?php else:?>
+    <td colspan="1" bgcolor="#ffccff">
+	  <div align="center">
+	    <?=$this->controller->ExamResult->findScore($student['Student']['id'],$semester_id,1,$this->params['url']['course_id'])?>
+	  </div>
+	</td>
+	<?php endif;?>
+
+  </tr>
+  <?php endforeach;?>
+</table>

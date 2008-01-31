@@ -1,0 +1,61 @@
+<h2>New Email</h2>
+<form action="<?php echo $html->url('/emails/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Email/from_id', 'From Id');?>
+ 	<?php echo $html->input('Email/from_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Email/from_id', 'Please enter the From Id.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Email/to_id', 'To Id');?>
+ 	<?php echo $html->input('Email/to_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Email/to_id', 'Please enter the To Id.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Email/cc_id', 'Cc Id');?>
+ 	<?php echo $html->input('Email/cc_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Email/cc_id', 'Please enter the Cc Id.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Email/bcc_id', 'Bcc Id');?>
+ 	<?php echo $html->input('Email/bcc_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Email/bcc_id', 'Please enter the Bcc Id.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Email/subject', 'Subject');?>
+ 	<?php echo $html->input('Email/subject', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Email/subject', 'Please enter the Subject.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag( 'Email/content', 'Content' );?>
+ 	<?php echo $html->textarea('Email/content', array('cols' => '60', 'rows' => '10'));?>
+	<?php echo $html->tagErrorMsg('Email/content', 'Please enter the Content.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Email/read_flag', 'Read Flag');?>
+ 	<?php echo $html->input('Email/read_flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Email/read_flag', 'Please enter the Read Flag.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Email/send_flag', 'Send Flag');?>
+ 	<?php echo $html->input('Email/send_flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Email/send_flag', 'Please enter the Send Flag.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Email/delete_flag', 'Delete Flag');?>
+ 	<?php echo $html->input('Email/delete_flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Email/delete_flag', 'Please enter the Delete Flag.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Email/email_box_id', 'Email Box');?>
+ 	<?php echo $html->selectTag('Email/email_box_id', $emailBoxes, $html->tagValue('Email/email_box_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Email/email_box_id', 'Please select the Email Box.') ?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Emails', '/emails/index')?></li>
+<li><?php echo $html->link('View Email Boxes', '/email_boxes/index/');?></li>
+<li><?php echo $html->link('Add Email Boxes', '/email_boxes/add/');?></li>
+</ul>

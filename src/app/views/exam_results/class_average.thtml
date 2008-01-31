@@ -1,0 +1,38 @@
+<table width=720 border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><strong><font color="#000000">分班不分科平均成绩　学期：<?=$semester_name?></font></strong></td>
+    <td><div align="right"><strong><font color="#000000">http://<?=$_SERVER["REMOTE_ADDR"]?></font></strong></div></td>
+  </tr>
+</table>
+<hr width=720 height="1" align="$align" color="#000000">
+<table width=720 border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><font color="#000000"><strong>级别:<??></strong></font></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><div align="right"><font color="#000000">更新时间:<?=date('Y-m-d')?></font>　
+        <input type="button" value="打印" class="SmallButton" onClick="execCommand('Print');" title="打印本页">
+        <input type="button" value="刷新" class="SmallButton" onClick="execCommand('refresh');" title="刷新本页">
+        <input type="button" value="返回列表" class="SmallButton" onClick="javascript:history.go(-1)" title="关闭本页">
+      </div></td>
+  </tr>
+</table>
+<br>
+<table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=720 style='border-collapse:collapse'>
+  <tr align="center" class="TableContent">
+    <td colspan="1"><div align="center">班级列表</div></td>
+    <td colspan="1"><div align="center">分班不分科平均成绩</div></td>
+  </tr>
+  <?php $i = 0;?>
+  <?php foreach($banjis as $banji):?>
+  <?php $i++?>
+  <tr align="center" class="TableContent">
+    <td colspan="1" bgcolor="#ffccff"><div align="center">班级:<?=$banji['Banji']['class_name']?></div></td>
+    <td colspan="1" bgcolor="#ffccff">
+	  <div align="center">
+	    <?=number_format($this->controller->ExamResult->findAverageByBanji($banji['Banji']['id'],$semester_id,null),2)?>
+	  </div>
+	</td>
+  </tr>
+  <?php endforeach;?>
+</table>

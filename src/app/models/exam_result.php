@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class ExamResult extends AppModel {
 
 	var $name = 'ExamResult';
@@ -113,6 +113,30 @@ class ExamResult extends AppModel {
 	function findFlunkScore($student_id = null, $semester_id = null, $exam_id = null, $course_id = null, $score = null){
 		$conditions = "ExamResult.student_id = $student_id and ExamResult.semester_id = $semester_id and ExamResult.course_id = $course_id and ExamResult.score < $score";
 		return $this->field('score',$conditions);
+	}
+
+	function findAverageByBanji($banji_id = null, $semester_id = null, $exam_id = null){
+		$conditions = "select avg(score) from exam_results where semester_id = $semester_id";
+		$conditions .= " and exists(select * from students where students.banji_id = $banji_id";
+		$conditions .= " and students.id = exam_results.student_id)";
+		$ret = $this->findBySql($conditions);
+		return $ret[0][0]['avg(score)'];
+	}
+
+    //分科不分班平均成绩
+	function findAverageByCourse($course_id = null, $semester_id = null, $exam_id = null){
+		$conditions = "select avg(score) from exam_results where semester_id = $semester_id and course_id = $course_id";
+		$ret = $this->findBySql($conditions);
+		return $ret[0][0]['avg(score)'];
+	}
+
+	//分科分班平均成绩
+	function findAverageByCourseAndBanji($course_id = null, $banji_id = null, $semester_id = null, $exam_id = null){
+		$conditions = "select avg(score) from exam_results where semester_id = $semester_id and course_id = $course_id";
+		$conditions .= " and exists(select students.id from students where students.banji_id = $banji_id";
+		$conditions .= " and students.id = exam_results.student_id)";
+		$ret = $this->findBySql($conditions);
+		return $ret[0][0]['avg(score)'];
 	}
 }
 ?>

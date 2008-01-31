@@ -14,7 +14,7 @@
 <?php foreach ($teacherIsWorks as $teacherIsWork): ?>
 <tr>
 	<td><?php echo $teacherIsWork['Teacher']['teacher_name'];?></td>
-	<td><?php echo $teacherIsWork['TeacherIsWork']['flag']; ?></td>
+	<td><?php echo "行为：".($teacherIsWork['TeacherIsWork']['flag']==1?'复职':'离职'); ?></td>
 	<td><?php echo $teacherIsWork['TeacherIsWork']['created']; ?></td>
 	<td><?php echo $teacherIsWork['TeacherIsWork']['reason']; ?></td>
 	<td><?php echo $teacherIsWork['TeacherIsWork']['assessor']; ?></td>

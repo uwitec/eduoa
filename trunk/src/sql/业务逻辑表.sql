@@ -142,7 +142,7 @@ create table teacher_rewards(
   id                    int(10)       not null auto_increment comment '教工奖惩信息编号',
   teacher_id            int(10)       not null                comment '教师名称',
   created               timestamp                             comment '奖惩日期',
-  flag                  int(1)        not null                comment '奖惩标记', 
+  flag                  int(1)        not null                comment '奖惩标记==>1奖励0惩罚', 
   content               varchar(200)                          COMMENT '奖惩内容',
   reason                varchar(1000)                         comment '奖惩原因',
   remark                varchar(2000)                         comment '备注',

@@ -17,14 +17,25 @@ class TeacherIsWorksController extends AppController {
 		$this->set('teacherIsWork', $this->TeacherIsWork->read(null, $id));
 	}
 
-	function add() {
+	function add($teacher_id = null,$teacher_name = null,$action_name = null) {
 		if (empty($this->data)) {
+			$this->set('teacher_id',$teacher_id);
+			$this->set('teacher_name',$teacher_name);
+			$this->set('action_name',$action_name);
 			$this->set('teachers', $this->TeacherIsWork->Teacher->generateList());
 			$this->render();
 		} else {
 			$this->cleanUpFields();
 			if ($this->TeacherIsWork->save($this->data)) {
-				$this->Session->setFlash('The Teacher Is Work has been saved');
+				$this->Session->setFlash('教职工离职(复职)操作成功！');
+
+				if($action_name == '离职') {
+					$sql = "update teachers set is_work = 0 where id = ".$this->data['TeacherIsWork']['teacher_id'];
+				}else {
+					$sql = "update teachers set is_work = 1 where id = ".$this->data['TeacherIsWork']['teacher_id'];
+				}
+				$this->TeacherIsWork->execute($sql);
+
 				$this->redirect('/teacher_is_works/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -59,7 +70,7 @@ class TeacherIsWorksController extends AppController {
 			$this->redirect('/teacher_is_works/index');
 		}
 		if ($this->TeacherIsWork->del($id)) {
-			$this->Session->setFlash('The Teacher Is Work deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/teacher_is_works/index');
 		}
 	}

@@ -1,34 +1,36 @@
 <div id="content">
 <fieldset align=center>
-<legend>教职工离职复职</legend> 
+<legend>教职工<?=$action_name?>信息调度</legend> 
 <form action="<?php echo $html->url('/teacher_is_works/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('TeacherIsWork/teacher_id', 'Teacher');?>
- 	<?php echo $html->selectTag('TeacherIsWork/teacher_id', $teachers, $html->tagValue('TeacherIsWork/teacher_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('TeacherIsWork/teacher_id', '教师名称');?>
+ 	<?php echo $teacher_name;?>
 	<?php echo $html->tagErrorMsg('TeacherIsWork/teacher_id', 'Please select the Teacher.') ?>
+	<?php echo $html->hidden('TeacherIsWork/teacher_id', array('value' => $teacher_id));?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('TeacherIsWork/flag', 'Flag');?>
- 	<?php echo $html->input('TeacherIsWork/flag', array('size' => '60'));?>
+	<?php echo $form->labelTag('TeacherIsWork/flag', '操作行为');?>
+ 	<?php echo "行为：".$action_name;?>
 	<?php echo $html->tagErrorMsg('TeacherIsWork/flag', 'Please enter the Flag.');?>
+	<?php echo $html->hidden('TeacherIsWork/flag', array('value' => ($action_name=='离职'?0:1)));?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('TeacherIsWork/reason', 'Reason');?>
+	<?php echo $form->labelTag('TeacherIsWork/reason', '离职(复职)原因');?>
  	<?php echo $html->input('TeacherIsWork/reason', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('TeacherIsWork/reason', 'Please enter the Reason.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('TeacherIsWork/assessor', 'Assessor');?>
+	<?php echo $form->labelTag('TeacherIsWork/assessor', '审核人');?>
  	<?php echo $html->input('TeacherIsWork/assessor', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('TeacherIsWork/assessor', 'Please enter the Assessor.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('TeacherIsWork/remark', 'Remark');?>
+	<?php echo $form->labelTag('TeacherIsWork/remark', '备注');?>
  	<?php echo $html->input('TeacherIsWork/remark', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('TeacherIsWork/remark', 'Please enter the Remark.');?>
 </div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">

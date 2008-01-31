@@ -346,6 +346,29 @@ class ExamResultsController extends AppController {
 	   $this->set('score',$score);
    }
 
- 
+   //分班不分科成绩平均
+   function class_average($banji_id = null, $semester_id = null, $semester_name = null) {
+	   $this->set('banjis', $this->Banji->findAll());
+	   $this->set('banji_id', $banji_id);
+	   $this->set('semester_name', $semester_name);
+	   $this->set('semester_id', $semester_id);
+   } 
+
+   //分科不分班成绩平均 
+   function course_average($entrance_year = null, $semester_id = null, $semester_name = null) {
+	   $this->set('semester_name', $semester_name);
+	   $this->set('semester_id', $semester_id);
+	   $this->set('entrance_year', $entrance_year);
+	   $this->set('courses', $this->ExamResult->Course->findAll('order by Course.id'));
+   }
+
+   //分科分班平均成绩
+   function class_course_average($entrance_year = null, $semester_id = null, $semester_name = null) {
+	   $this->set('semester_id', $semester_id);
+	   $this->set('entrance_year', $entrance_year);
+	   $this->set('semester_name', $semester_name);
+	   $this->set('banjis', $this->Banji->findAll());
+	   $this->set('courses', $this->ExamResult->Course->findAll('order by Course.id'));
+   }
 }
 ?>

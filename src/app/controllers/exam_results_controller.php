@@ -294,10 +294,21 @@ class ExamResultsController extends AppController {
 	   $this->set('entrance_year', $entrance_year);
 	   $this->set('courses',$this->ExamResult->Course->findAll('order by Course.id'));
 
-	   $scores = array('score >= 130 and score <=140' => '130-140',
-		              'score >= 120 and score < 130' => '120-130',
-		        );
-	   $this->set('scores',$scores);
+	   $score = array(
+		   array('130-140', 'score>=130 and score<140'),
+		   array('120-130', 'score>=120 and score<130'),
+		   array('110-120', 'score>=110 and score<120'),
+		   array('90-100', 'score>=90 and score<100'),
+		   array('80-90', 'score>=80 and score<90'),
+		   array('70-80', 'score>=70 and score<80'),
+		   array('60-70', 'score>=60 and score<70'),
+		   array('50-60', 'score>=50 and score<60'),
+		   array('40-50', 'score>=40 and score<50'),
+		   array('30-40', 'score>=30 and score<40'),
+		   array('20-30', 'score>=20 and score<30'),
+		   array('0-20', 'score>=0 and score<20'),
+	   );
+	   $this->set('score',$score);
 	   
    }
 

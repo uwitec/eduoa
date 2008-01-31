@@ -27,15 +27,56 @@
     <td colspan="1"><div align="center"><?=$course['Course']['course_name'].'[+]'?></div></td>
 	<?php endforeach;?>
   </tr>
-  <?php foreach($scores as $score):?>
+  <?php for($i=0;$i<sizeof($score);$i++):?>
   <tr align="center" class="TableContent">
-    <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$score[0]?></div></td>
-    <td colspan="1" bgcolor="#ffccff"><div align="center"></div></td>
+    <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$score[$i][0]?></div></td>
+    <td colspan="1" bgcolor="#ffccff">
+	  <div align="center">
+	    <?=$this->controller->ExamResult->findCountTotal($semester_id,1,$score[$i][1])?>
+		[<?=$this->controller->ExamResult->findCountTotal(null,1,$score[$i][1])?>]
+      </div>
+	</td>
 	<?php foreach($courses as $course):?>
     <td colspan="1" bgcolor="#ffccff">
-	  <div align="center"><?=$this->controller->ExamResult->findScore($student['Student']['id'],$semester_id,1,$course['Course']['id'])?></div>
+	  <div align="center">
+	    <?=$this->controller->ExamResult->findCountCourse($semester_id,1,$course['Course']['id'],$score[$i][1])?>
+		[<?=$this->controller->ExamResult->findCountCourse(null,1,$course['Course']['id'],$score[$i][1])?>]
+	  </div>
 	</td>
 	<?php endforeach;?>
   </tr>
-  <?php endforeach;?>
+  <?php endfor;?>
+</table>
+<br>
+<?php 
+  $total = $this->controller->ExamResult->findAllTotal($semester_id, null);
+  $total = $total==0?1:$total;
+?>
+<table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=720 style='border-collapse:collapse'>
+  <tr align="center" class="TableContent">
+    <td colspan="1"><div align="center">分数区间</div></td>
+    <td colspan="1"><div align="center">科目合计[%][+%]</div></td>
+	<?php foreach($courses as $course):?>
+    <td colspan="1"><div align="center"><?=$course['Course']['course_name'].'[%][+%]'?></div></td>
+	<?php endforeach;?>
+  </tr>
+  <?php for($i=0;$i<sizeof($score);$i++):?>
+  <tr align="center" class="TableContent">
+    <td colspan="1" bgcolor="#ffccff"><div align="center"><?=$score[$i][0]?></div></td>
+    <td colspan="1" bgcolor="#ffccff">
+	  <div align="center">
+	    <?=printf("%01.2f",$this->controller->ExamResult->findCountTotal($semester_id,1,$score[$i][1])/$total)?>
+		[<?=$this->controller->ExamResult->findCountTotal(null,1,$score[$i][1])?>]
+      </div>
+	</td>
+	<?php foreach($courses as $course):?>
+    <td colspan="1" bgcolor="#ffccff">
+	  <div align="center">
+	    <?=$this->controller->ExamResult->findCountCourse($semester_id,1,$course['Course']['id'],$score[$i][1])?>
+		[<?=$this->controller->ExamResult->findCountCourse(null,1,$course['Course']['id'],$score[$i][1])?>]
+	  </div>
+	</td>
+	<?php endforeach;?>
+  </tr>
+  <?php endfor;?>
 </table>

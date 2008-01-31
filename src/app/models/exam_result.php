@@ -63,5 +63,28 @@ class ExamResult extends AppModel {
 		$conditions = "ExamResult.semester_id = $semester_id and ExamResult.course_id = $course_id and score < $score";
 		return $this->findCount($conditions);
 	}
+
+	function findCountTotal($semester_id = null, $exam_id = null, $score = null){
+		if($semester_id == null){
+			$conditions = "$score";
+		}else{
+			$conditions = "ExamResult.semester_id =$semester_id and $score";
+		}
+		return $this->findCount($conditions);
+	}
+
+	function findCountCourse($semester_id = null, $exam_id = null, $course_id = null,  $score = null){
+		if($semester_id == null){
+			$conditions = "ExamResult.course_id = $course_id and $score";
+		}else{
+			$conditions = "ExamResult.course_id = $course_id and ExamResult.semester_id = $semester_id and $score";
+		}
+		return $this->findCount($conditions);
+	}
+
+	function findAllTotal($semester_id = null, $exam_id = null){
+		$conditions = "ExamResult.semester_id = $semester_id";
+		return $this->findCount($conditions);
+	}
 }
 ?>

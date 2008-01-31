@@ -370,5 +370,22 @@ class ExamResultsController extends AppController {
 	   $this->set('banjis', $this->Banji->findAll());
 	   $this->set('courses', $this->ExamResult->Course->findAll('order by Course.id'));
    }
+
+   //尖子生各班所占比例
+   function goodstudent($banji_id = null, $semester_id = null, $semester_name = null) {
+	   $this->set('banjis', $this->Banji->findAll());
+	   $this->set('banji_id', $banji_id);
+	   $this->set('semester_name', $semester_name);
+	   $this->set('semester_id', $semester_id);
+   }
+
+   //尖子生各班各科目所占比例
+   function teacher_goodstudent($entrance_year = null, $semester_id = null, $semester_name = null) {
+	   $this->set('semester_id', $semester_id);
+	   $this->set('entrance_year', $entrance_year);
+	   $this->set('semester_name', $semester_name);
+	   $this->set('banjis', $this->Banji->findAll());
+	   $this->set('courses', $this->ExamResult->Course->findAll('order by Course.id'));
+   }
 }
 ?>

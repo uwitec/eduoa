@@ -27,7 +27,7 @@
 <?php endforeach; ?>
 <tr>
 	<td colspan="2">
-	<input type="button" name="btnWrite" id="btnWrite" value="写邮件" />
+	<input type="button" name="btnWrite" id="btnWrite" value="写邮件" onclick="<?=$html->url('/emails/add')?>" />
 	<input type="button" name="btnQuery" id="btnQuery" value="查询邮件" />
 	<input type="button" name="btnBoxManage" id="btnBoxManage" value="邮箱管理" />
 	</td>

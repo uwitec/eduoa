@@ -14,8 +14,8 @@
 	  location =  url + '/' + id + '/' + $('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].value + '/' + $('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].text;
   }
 
-  function gotoUrl2(id,url){
-	  location =  url + '2/' + id + '/' + $('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].value + '/' + $('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].text;
+  function gotoUrl2(id,year,url){
+	  location =  url + '2/' + id + '/' + year + '/' + $('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].value + '/' + $('ExamResultSemesterId').options[$('ExamResultSemesterId').selectedIndex].text;
   }
 //-->
 </script>
@@ -137,7 +137,7 @@
 		foreach ($banjis as $banji){
 			echo $html->link($banji['Banji']['class_name'],"javascript:gotoUrl(".$banji['Banji']['id'].",'".$url."')");
 			echo " ";
-			echo $html->link('[成绩分析]',"javascript:gotoUrl2(".$banji['Banji']['id'].",'".$url."')");
+			echo $html->link('[成绩分析]',"javascript:gotoUrl2(".$banji['Banji']['id'].",".$year['Banji']['entrance_year'].",'".$url."')");
 			echo " | ";
 		}
 		echo "</td>";

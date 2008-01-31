@@ -73,6 +73,15 @@ class ExamResult extends AppModel {
 		return $this->findCount($conditions);
 	}
 
+	function findCountTotalByBanji($banji_id = null, $semester_id = null, $exam_id = null, $score = null){
+		if($semester_id == null){
+			$conditions = "Student.banji_id = $banji_id and $score";
+		}else{
+			$conditions = "Student.banji_id = $banji_id and ExamResult.semester_id =$semester_id and $score";
+		}
+		return $this->findCount($conditions);
+	}
+
 	function findCountCourse($semester_id = null, $exam_id = null, $course_id = null,  $score = null){
 		if($semester_id == null){
 			$conditions = "ExamResult.course_id = $course_id and $score";
@@ -82,9 +91,28 @@ class ExamResult extends AppModel {
 		return $this->findCount($conditions);
 	}
 
+	function findCountCourseByBanji($banji_id = null, $semester_id = null, $exam_id = null, $course_id = null,  $score = null){
+		if($semester_id == null){
+			$conditions = "Student.banji_id = $banji_id and ExamResult.course_id = $course_id and $score";
+		}else{
+			$conditions = "Student.banji_id = $banji_id and ExamResult.course_id = $course_id and ExamResult.semester_id = $semester_id and $score";
+		}
+		return $this->findCount($conditions);
+	}
+
 	function findAllTotal($semester_id = null, $exam_id = null){
 		$conditions = "ExamResult.semester_id = $semester_id";
 		return $this->findCount($conditions);
+	}
+
+	function findAllTotalByBanji($banji_id = null, $semester_id = null, $exam_id = null){
+		$conditions = "Student.banji_id = $banji_id and ExamResult.semester_id = $semester_id";
+		return $this->findCount($conditions);
+	}
+
+	function findFlunkScore($student_id = null, $semester_id = null, $exam_id = null, $course_id = null, $score = null){
+		$conditions = "ExamResult.student_id = $student_id and ExamResult.semester_id = $semester_id and ExamResult.course_id = $course_id and ExamResult.score < $score";
+		return $this->field('score',$conditions);
 	}
 }
 ?>

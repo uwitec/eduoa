@@ -1,39 +1,24 @@
-<div class="email">
-<h2>View Email</h2>
-
+<div id="content">
+<fieldset align=center>
+<legend>查看邮件</legend>
 <dl>
-	<dt>Id</dt>
-	<dd>&nbsp;<?php echo $email['Email']['id']?></dd>
-	<dt>From Id</dt>
+	<dt>发件人</dt>
 	<dd>&nbsp;<?php echo $email['Email']['from_id']?></dd>
-	<dt>To Id</dt>
+	<dt>收件人</dt>
 	<dd>&nbsp;<?php echo $email['Email']['to_id']?></dd>
-	<dt>Cc Id</dt>
+	<dt>抄送</dt>
 	<dd>&nbsp;<?php echo $email['Email']['cc_id']?></dd>
-	<dt>Bcc Id</dt>
+	<dt>暗送</dt>
 	<dd>&nbsp;<?php echo $email['Email']['bcc_id']?></dd>
-	<dt>Subject</dt>
+	<dt>主题</dt>
 	<dd>&nbsp;<?php echo $email['Email']['subject']?></dd>
-	<dt>Content</dt>
+	<dt>内容</dt>
 	<dd>&nbsp;<?php echo $email['Email']['content']?></dd>
-	<dt>Send Time</dt>
+	<dt>发送时间</dt>
 	<dd>&nbsp;<?php echo $email['Email']['send_time']?></dd>
-	<dt>Read Flag</dt>
-	<dd>&nbsp;<?php echo $email['Email']['read_flag']?></dd>
-	<dt>Send Flag</dt>
-	<dd>&nbsp;<?php echo $email['Email']['send_flag']?></dd>
-	<dt>Delete Flag</dt>
-	<dd>&nbsp;<?php echo $email['Email']['delete_flag']?></dd>
-	<dt>Email Box</dt>
-	<dd>&nbsp;<?php echo $html->link($email['EmailBox']['id'], '/email_boxes/view/' .$email['EmailBox']['id'])?></dd>
 </dl>
 <ul class="actions">
-	<li><?php echo $html->link('Edit Email',   '/emails/edit/' . $email['Email']['id']) ?> </li>
-	<li><?php echo $html->link('Delete Email', '/emails/delete/' . $email['Email']['id'], null, 'Are you sure you want to delete: id ' . $email['Email']['id'] . '?') ?> </li>
-	<li><?php echo $html->link('List Emails',   '/emails/index') ?> </li>
-	<li><?php echo $html->link('New Email',	'/emails/add') ?> </li>
-	<li><?php echo $html->link('List Email Box', '/email_boxes/index/')?> </li>
-	<li><?php echo $html->link('New Email Boxes', '/email_boxes/add/')?> </li>
+	<li><?php echo $html->link('邮件列表',   '/emails/index') ?> </li>
 </ul>
-
+</fieldset>
 </div>

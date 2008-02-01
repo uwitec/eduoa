@@ -24,7 +24,7 @@ class EmailsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Email->save($this->data)) {
-				$this->Session->setFlash('The Email has been saved');
+				$this->Session->setFlash('新增邮件成功！');
 				$this->redirect('/emails/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -44,7 +44,7 @@ class EmailsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Email->save($this->data)) {
-				$this->Session->setFlash('The Email has been saved');
+				$this->Session->setFlash('邮件保存成功！');
 				$this->redirect('/emails/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -59,7 +59,7 @@ class EmailsController extends AppController {
 			$this->redirect('/emails/index');
 		}
 		if ($this->Email->del($id)) {
-			$this->Session->setFlash('The Email deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功！');
 			$this->redirect('/emails/index');
 		}
 	}

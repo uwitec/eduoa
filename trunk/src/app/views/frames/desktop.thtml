@@ -26,7 +26,7 @@
   <table bordr=0 cellpadding="0" cellspacing="0" width=100% background="<?=$html->url('/img/frame/desktop/title_bg.jpg')?>">
   <tr>
     <td style="padding-left:5px" height=33>站点公告</td>
-	<td align=right style="padding-right:5px"><a href="<?=$html->url('/documents/index/?type=5')?>">全部</a></td>
+	<td align=right style="padding-right:5px"><?php echo $html->link('全部','/documents/index/?type=5')?></td>
   </tr>
   </table>
   <table border=0 cellpadding="0" cellspacing="0" width=100%>
@@ -56,7 +56,7 @@
   <table bordr=0 cellpadding="0" cellspacing="0" width=100% background="<?=$html->url('/img/frame/desktop/title_bg.jpg')?>">
   <tr>
     <td style="padding-left:5px" height=33>新闻 </td>
-	<td align=right style="padding-right:5px"><a href="<?=$html->url('/documents/index/?type=6')?>">全部</a></td>
+	<td align=right style="padding-right:5px"><?php echo $html->link('全部','/documents/index/?type=6')?></td>
   </tr>
   </table>
   <table border=0 cellpadding="0" cellspacing="0" width=100%>
@@ -90,7 +90,7 @@
   <table bordr=0 cellpadding="0" cellspacing="0" width=100% background="<?=$html->url('/img/frame/desktop/title_bg.jpg')?>">
   <tr>
     <td style="padding-left:5px" height=33>内部邮件</td>
-	<td align=right style="padding-right:5px"><a href="#">撰写邮件</a></td>
+	<td align=right style="padding-right:5px"><?php echo $html->link('撰写邮件','/emails/add/')?></td>
   </tr>
   </table>
   <table border=0 cellpadding="0" cellspacing="0" width=100%>
@@ -99,7 +99,7 @@
 	<table border="0" cellpadding="0" cellspacing="0">
 	<tr>
 	  <td width=18 align="center"><img src="<?=$html->url('/img/frame/desktop/ico1.gif')?>"></td>
-	  <td width=60 align="center"><a href="#">收件箱</a></td>
+	  <td width=60 align="center"><?php echo $html->link('收件箱','/emails/')?></td>
 	  <td style="color:#990000" align="left">0 封邮件，0 封新邮件</td>
 	</tr>
 	</table>
@@ -113,7 +113,7 @@
 	<table border="0" cellpadding="0" cellspacing="0">
 	<tr>
 	  <td width=18 align="center"><img src="<?=$html->url('/img/frame/desktop/ico1.gif')?>"></td>
-	  <td width=60 align="center"><a href="#">发件箱</a></td>
+	  <td width=60 align="center"><?php echo $html->link('发件箱','/emails/')?></td>
 	  <td style="color:#990000" align="left">0 封邮件</td>
 	</tr>
 	</table>
@@ -129,7 +129,7 @@
   <table bordr=0 cellpadding="0" cellspacing="0" width=100% background="<?=$html->url('/img/frame/desktop/title_bg.jpg')?>">
   <tr>
     <td style="padding-left:5px" height=33>全校班级公告</td>
-	<td align=right style="padding-right:5px"><a href="<?=$html->url('/documents/all_index/?type=1')?>">全部</a></td>
+	<td align=right style="padding-right:5px"><?php echo $html->link('全部','/documents/all_index/?type=1')?></td>
   </tr>
   </table>
   <table border=0 cellpadding="0" cellspacing="0" width=100%>

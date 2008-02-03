@@ -12,6 +12,7 @@
 <?php 
 if(isset($javascript)):
     echo $javascript->link('prototype.js');
+	echo $javascript->link('bitbee.js');
 endif;          
 ?> 
 <?php echo $html->css('bb.generic');?>

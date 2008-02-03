@@ -38,7 +38,7 @@ function download(){
     <tr class=tabledata>
       <td nowrap align=middle>ms csv文件</td>
       <td colspan=2>
-	   <?php print $html->file("Filedata",array("size" => 25)); ?> 
+	   <?php print $html->file("Filedata",array("size" => 25,"accept" => "csv","onPropertyChange" => "efficacyAccept(this)")); ?> 
 	  </td>
     </tr>
     <tr align="center" class="tablecontrol">
@@ -51,7 +51,6 @@ function download(){
     </tr>
   </table>
 </form>
-<input type=hidden class=smallinput name=tablename value="edu_student">
 <div align=center>
   <input type="button" value="下载学生数据导入模版文件(csv)" onclick="download();">
 </div>

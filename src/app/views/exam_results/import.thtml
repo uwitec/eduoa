@@ -58,7 +58,7 @@ function download(){
   <tr>
     <td align=left>选择文件：</td>
     <td colspan=1>
-	  <?php print $html->file("Filedata",array("size" => 25)); ?> 
+	  <?php print $html->file("Filedata",array("size" => 25,"accept" => "csv","onPropertyChange" => "efficacyAccept(this)")); ?> 
 	</td>
   </tr>
   <tr>

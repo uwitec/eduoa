@@ -5,8 +5,7 @@ function download(){
 	url += "/" + $('ExamResultBanji').options[$('ExamResultBanji').selectedIndex].text;
 	url += "/" + $('ExamResultSemester').options[$('ExamResultSemester').selectedIndex].text;
 	url += "/" + $('ExamResultCourse').options[$('ExamResultCourse').selectedIndex].text;
-	alert(url);
-	location = url;
+	window.location = url;
 }
 </script>
 <div id="content">

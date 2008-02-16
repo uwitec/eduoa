@@ -12,7 +12,7 @@
  
  		  $("CurriculumScheduleSchedule" + i).checked = true;
 		  $("schedule" + i).innerHTML='';
-		  var url = '/curriculum_schedules/delete';
+		  var url = "<?=$html->url('/curriculum_schedules/delete')?>";
 		  url = url + '/' + $F('CurriculumScheduleBanjiId') + '/' + $F('CurriculumScheduleSemesterId');
 		  url = url + '/' + $F('CurriculumScheduleSchedule' + i);
 		  $("CurriculumScheduleSchedule" + i).checked = false;
@@ -33,7 +33,7 @@
 		  if($("CurriculumScheduleSchedule" + i).checked){
 			  value = $('CurriculumScheduleCourseId').options[$('CurriculumScheduleCourseId').selectedIndex].text;
 			  $("schedule" + i).innerHTML= value;
-			  var url = '/curriculum_schedules/add';
+			  var url = "<?=$html->url('/curriculum_schedules/add')?>";
 			  url = url + '/' + $F('CurriculumScheduleBanjiId') + '/' + $F('CurriculumScheduleSemesterId');
 			  url = url + '/' + $F('CurriculumScheduleClassroomId') + '/' + $F('CurriculumScheduleCourseId');
 			  url = url + '/' + $F('CurriculumScheduleTeacherId') + '/' + $F('CurriculumScheduleSchedule' + i);

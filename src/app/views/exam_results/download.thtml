@@ -1,4 +1,9 @@
 <?php
+	$filename = $banji_name.'['.$semester_name.']'.$course_name.'.csv';
+	$filename = iconv('UTF-8','gb2312',$filename);
+
+    Header("content-type:application/octet-stream"); 
+	Header("content-disposition:attatchment;filename:".$fileName.".torrent"); 
 	$line = array('内部编号', '学号', '姓名', '成绩'); 
 	$csv->addRow($line);
 
@@ -7,8 +12,7 @@
 		$csv->addRow($line);
 	}
 
-	$filename = $banji_name.'['.$semester_name.']'.$course_name.'.csv';
-	$filename = iconv('UTF-8','gb2312',$filename);
+
 
 	echo $csv->render($filename,'gb2312','UTF-8');
 ?>

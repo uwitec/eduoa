@@ -1,26 +1,22 @@
-<h2>New Email Box</h2>
+<div id="content">
+<fieldset align=center>
+<legend>邮件箱列表</legend>
+
 <form action="<?php echo $html->url('/email_boxes/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('EmailBox/box_name', 'Box Name');?>
+	<?php echo $form->labelTag('EmailBox/box_name', '邮件箱名称:');?>
  	<?php echo $html->input('EmailBox/box_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('EmailBox/box_name', 'Please enter the Box Name.');?>
 </div>
-<div class="optional"> 
-	<?php echo $form->labelTag('EmailBox/order_list', 'Order List');?>
- 	<?php echo $html->input('EmailBox/order_list', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('EmailBox/order_list', 'Please enter the Order List.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('EmailBox/user_id', 'User');?>
- 	<?php echo $html->selectTag('EmailBox/user_id', $users, $html->tagValue('EmailBox/user_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('EmailBox/user_id', 'Please select the User.') ?>
-</div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('List Email Boxes', '/email_boxes/index')?></li>
-<li><?php echo $html->link('View Users', '/users/index/');?></li>
-<li><?php echo $html->link('Add Users', '/users/add/');?></li>
+<li><?php echo $html->link('返回', '/email_boxes/index/')?></li>
+<li><?php echo $html->link('撰写邮件', '/emails/add/');?></li>
+<li><?php echo $html->link('内部邮件', '/email_boxes/my/');?></li>
 </ul>
+
+</fieldset>
+</div>

@@ -1,0 +1,32 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body scroll="no">
+<a href='javascript:myTest()'>test</a>
+<a href='javascript:myTest2()'>test2</a>
+</body>
+</html>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	function myTest2(){
+		window.parent.parent.document.forms[0].EmailToId.value='222';
+	}
+
+
+//-->
+</SCRIPT>
+<script Language="JavaScript">
+var parent_window = parent.dialogArguments;
+function add_user(user_id,user_name)
+{
+  TO_VAL=parent_window.form1.COPY_TO_ID.value;
+  if(TO_VAL.indexOf(","+user_id+",")<0 && TO_VAL.indexOf(user_id+",")!=0)
+  {
+
+    parent_window.form1.COPY_TO_ID.value+=user_id+",";
+    parent_window.form1.COPY_TO_NAME.value+=user_name+",";
+  }
+}
+</script>

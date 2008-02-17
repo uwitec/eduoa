@@ -1,32 +1,29 @@
 <div id="content">
 <fieldset align=center>
-<legend>班级列表</legend>
+<legend>邮件箱列表</legend>
 
-<table cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-	<th>Id</th>
-	<th>Box Name</th>
-	<th>Order List</th>
-	<th>User</th>
-	<th>Actions</th>
+	<th>数字编号</th>
+	<th>邮件箱名称</th>
+	<th>操作</th>
 </tr>
 <?php foreach ($emailBoxes as $emailBox): ?>
 <tr>
 	<td><?php echo $emailBox['EmailBox']['id']; ?></td>
 	<td><?php echo $emailBox['EmailBox']['box_name']; ?></td>
-	<td><?php echo $emailBox['EmailBox']['order_list']; ?></td>
-	<td>&nbsp;<?php echo $html->link($emailBox['User']['id'], '/users/view/' .$emailBox['User']['id'])?></td>
 	<td class="actions">
-		<?php echo $html->link('View','/email_boxes/view/' . $emailBox['EmailBox']['id'])?>
-		<?php echo $html->link('Edit','/email_boxes/edit/' . $emailBox['EmailBox']['id'])?>
-		<?php echo $html->link('Delete','/email_boxes/delete/' . $emailBox['EmailBox']['id'], null, 'Are you sure you want to delete id ' . $emailBox['EmailBox']['id'])?>
+		<?php echo $html->link('编辑','/email_boxes/edit/' . $emailBox['EmailBox']['id'])?>
+		<?php echo $html->link('删除','/email_boxes/delete/' . $emailBox['EmailBox']['id'], null, '确认是否要删除『' . $emailBox['EmailBox']['box_name'] .'』')?>
 	</td>
 </tr>
 <?php endforeach; ?>
 </table>
 
 <ul class="actions">
-	<li><?php echo $html->link('New Email Box', '/email_boxes/add'); ?></li>
+	<li><?php echo $html->link('新建', '/email_boxes/add'); ?></li>
+    <li><?php echo $html->link('撰写邮件', '/emails/add/');?></li>
+    <li><?php echo $html->link('内部邮件', '/email_boxes/my/');?></li>
 </ul>
 
 </fieldset>

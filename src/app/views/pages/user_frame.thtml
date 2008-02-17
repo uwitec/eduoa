@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>金色校园教育管理软件系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body scroll="no" style="margin:0;padding:0;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="display: inline;">
+<tr>
+	<td width="180px">
+	  <iframe src="<?=$html->url('/departments/mylist')?>" width="180px" height="100%" scrolling="auto" frameborder="0" name="department_left"></iframe>
+	</td>
+	<td height="100%">
+	  <iframe src="<?=$html->url('/pages/blank')?>" width="100%" height="99%" scrolling="auto" frameborder="0" name="teacher_main"></iframe>
+	</td>
+</tr>
+</table>
+</body>
+
+</html>

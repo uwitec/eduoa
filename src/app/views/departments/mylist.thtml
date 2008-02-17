@@ -1,0 +1,14 @@
+<div id="tablelist">
+<table cellpadding="2" cellspacing="2" width="100%" style="display: inline;">
+<tr>
+	<th>按部门选择</th>
+</tr>
+<?php foreach ($departments as $department): ?>
+<tr>
+	<td align="left">
+	 <?php echo $html->link($department['Department']['department_name'], '/teachers/list_by_department/'.$department['Department']['id'], array('target' => 'teacher_main'))?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+</div>

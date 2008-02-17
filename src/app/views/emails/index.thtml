@@ -5,8 +5,6 @@
 <tr>
 	<th>发件人</th>
 	<th>收件人</th>
-	<th>抄送</th>
-	<th>暗送</th>
 	<th>主题</th>
 	<th>发送时间</th>
 	<th>操作</th>
@@ -15,8 +13,6 @@
 <tr>
 	<td><?php echo $email['Email']['from_id']; ?></td>
 	<td><?php echo $email['Email']['to_id']; ?></td>
-	<td><?php echo $email['Email']['cc_id']; ?></td>
-	<td><?php echo $email['Email']['bcc_id']; ?></td>
 	<td><?php echo $email['Email']['subject']; ?></td>
 	<td><?php echo $email['Email']['send_time']; ?></td>
 	<td class="actions">

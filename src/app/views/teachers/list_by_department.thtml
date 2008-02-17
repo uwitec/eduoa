@@ -1,0 +1,45 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function add_user(user_id,user_name,frmId,frmName){
+	var user = "window.parent.parent.parent.document.forms[0].";
+	to_val = eval(user+frmId).value;
+	if(to_val.indexOf(","+user_id+",")<0 && to_val.indexOf(user_id+",")!=0){
+		eval(user+frmId).value+=user_id+",";
+		eval(user+frmName).value+=user_name+",";
+	}
+}
+//-->
+</SCRIPT>
+
+<div id="content">
+<fieldset align=center>
+<legend>教职工列表</legend> 
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th>姓名</th>
+</tr>
+<tr>
+	<td onClick="javascript:add_all('EmailToId','EmailToName')" style="cursor:hand">以下全部添加</td>
+</tr>
+<?php 
+	foreach ($teachers as $teacher): 
+		$teacher_id = $teacher['Teacher']['id'];
+		$teacher_name = $teacher['Teacher']['teacher_name'];
+?>
+<tr>
+	<td onclick="javascript:add_user('<?=$teacher['Teacher']['id']?>','<?=$teacher['Teacher']['teacher_name']?>','EmailToId','EmailToName')" style="cursor:hand">
+	  <?php echo $teacher['Teacher']['teacher_name']; ?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+</fieldset>
+</div>
+
+<script Language="JavaScript">
+function add_all(frmId,frmName){
+<?php foreach ($teachers as $teacher):?>
+  add_user("<?=$teacher['Teacher']['id']?>","<?=$teacher['Teacher']['teacher_name']?>",frmId,frmName);
+<?php endforeach; ?>
+}
+</script>

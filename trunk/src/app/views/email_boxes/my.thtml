@@ -9,27 +9,27 @@
 </tr>
 <tr>
 	<td>收件箱</td>
-	<td></td>
+	<td>0 （0 封新邮件）</td>
 </tr>
 <tr>
 	<td>发件箱</td>
-	<td></td>
+	<td>0</td>
 </tr>
 <tr>
 	<td>已发送邮件箱</td>
-	<td></td>
+	<td>0</td>
 </tr>
 <?php foreach ($emailBoxes as $emailBox): ?>
 <tr>
 	<td><?php echo $emailBox['EmailBox']['box_name']; ?></td>
-	<td></td>
+	<td>0 （0 封新邮件）</td>
 </tr>
 <?php endforeach; ?>
 <tr>
 	<td colspan="2">
 	<input type="button" name="btnWrite" id="btnWrite" value="写邮件" onclick="javascript:location.replace('<?=$html->url('/emails/add')?>')" />
 	<input type="button" name="btnQuery" id="btnQuery" value="查询邮件" onclick="javascript:location.replace('<?=$html->url('/emails/')?>')" />
-	<input type="button" name="btnBoxManage" id="btnBoxManage" value="邮箱管理" />
+	<input type="button" name="btnBoxManage" id="btnBoxManage" value="邮箱管理" onclick="javascript:location.replace('<?=$html->url('/email_boxes/')?>')"/>
 	</td>
 </tr>
 </table>

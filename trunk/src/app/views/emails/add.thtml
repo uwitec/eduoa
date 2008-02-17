@@ -1,27 +1,39 @@
+<script type="text/javascript">
+    var GB_ROOT_DIR = "<?=$html->url('/js/greybox/')?>";
+</script>
+<?php
+echo $javascript->link('greybox/AJS.js');
+echo $javascript->link('greybox/AJS_fx.js');
+echo $javascript->link('greybox/gb_scripts.js');
+?>
+
 <div id="content">
 <fieldset align=center>
 <legend>写新邮件</legend>
 <form action="<?php echo $html->url('/emails/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('Email/from_id', '发件人');?>
- 	<?php echo $html->input('Email/from_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Email/from_id', 'Please enter the From Id.');?>
+    <?php echo $html->hidden('Email/to_id')?>
+	<?php echo $form->labelTag('Email/to_name', '收件人');?>
+ 	<?php echo $html->input('Email/to_name', array('size' => '40','readOnly' => 'true'));?>
+	<?php echo $html->link('新增', '/pages/user_frame', array('title' => '添加人员', 'rel' => 'gb_page_center[420, 300]'))?>
+	<a href="javascript:clear_user('EmailToId','EmailToName')">清除</a>
 </div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Email/to_id', '收件人');?>
- 	<?php echo $html->input('Email/to_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Email/to_id', 'Please enter the To Id.');?>
-</div>
+<!--
 <div class="optional"> 
 	<?php echo $form->labelTag('Email/cc_id', '抄送');?>
- 	<?php echo $html->input('Email/cc_id', array('size' => '60'));?>
+ 	<?php echo $html->input('Email/cc_id', array('size' => '40','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Email/cc_id', 'Please enter the Cc Id.');?>
+	<?php echo $html->link('新增', '/pages/user_frame', array('title' => '添加人员', 'rel' => 'gb_page_center[420, 300]'))?>
+	<a href="javascript:clear_user('EmailCcId','EmailCcId')">清除</a>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Email/bcc_id', '暗送');?>
- 	<?php echo $html->input('Email/bcc_id', array('size' => '60'));?>
+ 	<?php echo $html->input('Email/bcc_id', array('size' => '40','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Email/bcc_id', 'Please enter the Bcc Id.');?>
+	<?php echo $html->link('新增', '/pages/user_frame', array('title' => '添加人员', 'rel' => 'gb_page_center[420, 300]'))?>
+	<a href="javascript:clear_user('EmailToId','EmailToName')">清除</a>
 </div>
+-->
 <div class="optional"> 
 	<?php echo $form->labelTag('Email/subject', '主题');?>
  	<?php echo $html->input('Email/subject', array('size' => '60'));?>
@@ -41,3 +53,11 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function clear_user(frmId,frmName){
+	$(frmId).value="";
+	$(frmName).value="";
+}	
+//-->
+</SCRIPT>

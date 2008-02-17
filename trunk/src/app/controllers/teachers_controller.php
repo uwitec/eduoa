@@ -9,6 +9,11 @@ class TeachersController extends AppController {
 		$this->set('teachers', $this->Teacher->findAll());
 	}
 
+	function list_by_department($department_id = null) {
+		$this->Teacher->recursive = 0;
+		$this->set('teachers', $this->Teacher->findAllByDepartmentId($department_id));
+	}
+
 	function public_index() {
 		$this->Teacher->recursive = 0;
 		$this->set('teachers', $this->Teacher->findAll());

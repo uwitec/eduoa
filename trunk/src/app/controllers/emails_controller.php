@@ -2,7 +2,7 @@
 class EmailsController extends AppController {
 
 	var $name = 'Emails';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Javascript');
 
 	function index() {
 		$this->Email->recursive = 0;
@@ -23,13 +23,16 @@ class EmailsController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-			if ($this->Email->save($this->data)) {
-				$this->Session->setFlash('新增邮件成功！');
-				$this->redirect('/emails/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('emailBoxes', $this->Email->EmailBox->generateList());
+			$users = explode(",", $this->data['Email']['to_id']);
+			$count = sizeof($users) - 1;
+			for($i=0;$i<$count;$i++){
+				$this->data['Email']['from_id'] = $this->Session->read('User.id');
+				$this->data['Email']['to_id'] = $users[$i];
+				$this->Email->save($this->data);
+				$this->Email->create();
 			}
+			$this->Session->setFlash('新增邮件成功！');
+			$this->redirect('/emails/index');
 		}
 	}
 

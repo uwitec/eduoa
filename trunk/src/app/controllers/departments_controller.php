@@ -9,6 +9,11 @@ class DepartmentsController extends AppController {
 		$this->set('departments', $this->Department->findAll());
 	}
 
+	function mylist() {
+		$this->Department->recursive = 0;
+		$this->set('departments', $this->Department->findAll());
+	}
+
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash('Invalid id for Department.');

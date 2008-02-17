@@ -1,12 +1,25 @@
-<script  src="/js/dtree.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	var iPath = "<?=$html->url('/')?>";
+	if(iPath=="/")iPath="";
+//-->
+</SCRIPT>
+<?php echo $javascript->link('dtree.js');?>
+<style type="text/css">
+<!--
+body {
+	background-color: #E3F4FE;
+}
+-->
+</style>
 <div id="dtree">
 	<script type="text/javascript">
 		<!--
 
 		d = new dTree('d');
-		d.config.target = "right";
+		d.config.target = "frameMain";
 
-		d.add(0,-1,'盘古消费运营软件');
+		d.add(0,-1,'金色校园管理软件系统');
 
 		<?php 
 		  if (!empty($role['Module'])){

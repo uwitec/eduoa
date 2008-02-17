@@ -2,7 +2,7 @@
 class RolesController extends AppController {
 
 	var $name = 'Roles';
-	var $helpers = array('Html', 'Form', 'Habtm');
+	var $helpers = array('Html', 'Form', 'Habtm', 'Javascript');
 
 	function index() {
 		$this->Role->recursive = 0;

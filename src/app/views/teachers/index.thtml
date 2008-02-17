@@ -40,7 +40,7 @@
 	<td class="actions">
 		<?php echo $html->link('查看','/teachers/view/' . $teacher['Teacher']['id'])?>
 		<?php echo $html->link('编辑','/teachers/edit/' . $teacher['Teacher']['id'])?>
-		<?php echo $html->link('删除','/teachers/delete/' . $teacher['Teacher']['id'], null, '你是否真要删除资产维修记录『 ' . $teacher['Teacher']['teacher_name'] .' 』？')?>
+		<?php echo $html->link('删除','/teachers/delete/' . $teacher['Teacher']['id'], null, '你是否真要删除教师『 ' . $teacher['Teacher']['teacher_name'] .' 』？')?>
 	</td>
 </tr>
 <?php endforeach; ?>

@@ -68,6 +68,7 @@ class StudentsController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
+			$this->data['Student']['password'] = md5('888888');
 			if ($this->Student->save($this->data)) {
 				$this->Session->setFlash('学生信息新增成功！');
 				$this->redirect('/students/index');

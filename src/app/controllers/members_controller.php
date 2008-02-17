@@ -71,7 +71,7 @@ class MembersController extends AppController {
         		  $this->Acl->allow($this->Session->read('User.id'), $member_alias, '*');
        		   		          		  
 				  $this->Session->setFlash('添加成功！');
-				  $this->redirect('/members/index');
+				  $this->redirect('/teachers/index');
 			    } else {
 				  $this->Session->setFlash('添加用户出错！');
 			    }        		

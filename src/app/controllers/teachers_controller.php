@@ -3,6 +3,7 @@ class TeachersController extends AppController {
 
 	var $name = 'Teachers';
 	var $helpers = array('Html', 'Form' ,'Javascript');
+	var $uses = array('Teacher', 'Member', 'User');
 
 	function index() {
 		$this->Teacher->recursive = 0;
@@ -138,22 +139,72 @@ class TeachersController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-			if ($this->Teacher->save($this->data)) {
-				$this->Session->setFlash('教职工信息新增成功！');
-				$this->redirect('/teachers/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('banjis', $this->Teacher->Banji->generateList());
-				if (empty($this->data['Banji']['Banji'])) { $this->data['Banji']['Banji'] = null; }
-				$this->set('selectedBanjis', $this->data['Banji']['Banji']);
-				$this->set('courses', $this->Teacher->Course->generateList());
-				if (empty($this->data['Course']['Course'])) { $this->data['Course']['Course'] = null; }
-				$this->set('selectedCourses', $this->data['Course']['Course']);
+
+			//首先判断登录名是否重复
+			if($this->Member->findByUsername($this->data['Member']['username'])){
+        		$this->Session->setFlash('新增教师的系统登录名重复,请重新录入!');
+				$this->set('banjis', $this->Teacher->Banji->generateList(
+								$conditions = null,
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Banji.id',
+								$valuePath = '{n}.Banji.class_name')
+				);
+				$this->set('selectedBanjis', null);
+				$this->set('courses', $this->Teacher->Course->generateList(
+								$conditions = null,
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Course.id',
+								$valuePath = '{n}.Course.course_name')
+				);
+				$this->set('selectedCourses', null);
 				$this->set('users', $this->Teacher->User->generateList());
-				$this->set('people', $this->Teacher->Person->generateList());
-				$this->set('degrees', $this->Teacher->Degree->generateList());
-				$this->set('departments', $this->Teacher->Department->generateList());
-				$this->set('files', $this->Teacher->File->generateList());
+				$this->set('people', 
+							$this->Teacher->Person->generateList(
+								$conditions = null,
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Person.id',
+								$valuePath = '{n}.Person.people_name')
+				);
+				$this->set('degrees', 
+							$this->Teacher->Degree->generateList(
+								$conditions = null,
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Degree.id',
+								$valuePath = '{n}.Degree.degree_name')
+				);
+				$this->set('departments', 
+							$this->Teacher->Department->generateList(
+								$conditions = null,
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Department.id',
+								$valuePath = '{n}.Department.department_name')
+				);
+        	}else{
+				//首先保存Member表
+				$this->Member->create();
+				$data1['Member']['username'] = $this->data['Member']['username'];
+				$data1['Member']['password'] = $this->data['Member']['password'];
+				$data1['Member']['email'] = $this->data['Teacher']['email'];
+				$this->Member->save($data1);
+
+				//其次保存User表
+				$user_id = $this->Member->getLastInsertID();
+				$this->User->create();
+				$data['User']['id'] = $user_id;
+				$data['User']['login_name'] = $this->data['Member']['username'];
+				$data['User']['password'] = $this->data['Member']['password'];
+				$data['User']['user_name'] = $this->data['Teacher']['teacher_name'];
+				$data['User']['email'] = $this->data['Teacher']['email'];
+				$this->User->save($data);
+
+				//最后保存Tearcher表
+				$this->data['Tearcher']['user_id'] = $user_id;
+				$this->Teacher->save($this->data);
 			}
 		}
 	}

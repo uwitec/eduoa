@@ -25,6 +25,15 @@ class Member extends AppModel {
 						'order' => '',
 						'dependent' => ''
 				),
+
+			'Teacher' =>
+				array('className' => 'Teacher',
+						'foreignKey' => 'user_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'dependent' => ''
+				),
 	);
 
 	function afterSave(){
@@ -33,9 +42,13 @@ class Member extends AppModel {
 			$data['User']['id'] = $user_id;
 			$data['User']['login_name'] = $this->data['Member']['username'];
 			$data['User']['password'] = $this->data['Member']['password'];
-			$data['User']['user_name'] = $this->data['Member']['username'];
-			$data['User']['email'] = $this->data['Member']['email'];
+			$data['User']['user_name'] = $this->data['Teacher']['teacher_name'];
+			$data['User']['email'] = $this->data['Teacher']['email'];
 			$this->User->save($data);
+
+			$this->Teacher->create();
+			$this->data['Teacher']['user_id'] = $user_id;
+			$this->Teacher->save($this->data);
 		}
 	}
 

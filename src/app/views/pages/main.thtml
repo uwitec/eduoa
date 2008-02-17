@@ -64,7 +64,7 @@
 	  <table border=0 cellpadding=0 cellspacing=0 width=100% height=100%>
 	  <tr>
 		<td style="border:1px solid #067CAF;" bgcolor="#ffffff">
-		<iframe src="<?=$html->url('/modules/left')?>" frameborder=0 style="width:100%;height:100%" id="leftmenuframe"></iframe>
+		<iframe src="<?=$this->controller->Session->read('User.id')==1?$html->url('/modules/left'):$html->url('/roles/left')?>" frameborder=0 style="width:100%;height:100%" id="leftmenuframe"></iframe>
 		</td>
 	  </tr>
 	  </table>
@@ -89,7 +89,7 @@
 		<td background="<?=$html->url('/img/frame/right_content/top_words_bg.gif')?>" style="color:#ffffff;padding-top:8px;padding-left:5px;padding-right:5px">
 		<table border=0 cellpadding=0 cellspacing=0 width=100%>
 		<tr>
-		  <td align=left style="color:#ffffff">欢迎您，系统管理员 </td>
+		  <td align=left style="color:#ffffff">欢迎您，<?=$this->controller->Session->read('User.user_name')?> </td>
 		  <td align=right style="color:#ffffff"><span id="time_area" class=timer> </span></td>
 		</tr>
 		</table>

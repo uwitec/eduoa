@@ -2,7 +2,7 @@
 class TeacherContinuingEducationsController extends AppController {
 
 	var $name = 'TeacherContinuingEducations';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->TeacherContinuingEducation->recursive = 0;

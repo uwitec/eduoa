@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>新增资产类别增加方式</legend> 
 
-<form action="<?php echo $html->url('/asset_in_methods/add'); ?>" method="post">
+<form action="<?php echo $html->url('/asset_in_methods/add'); ?>" method="post" onSubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetInMethod/method_name', '增加方式名称:');?>
  	<?php echo $html->input('AssetInMethod/method_name', array('size' => '60'));?>
@@ -23,3 +23,23 @@
 
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function check(){
+
+	if($F('AssetInMethodMethodName')==''){
+		alert('增加方式名称不能为空！');
+		$('AssetInMethodMethodName').focus();
+		return false;
+	}
+	if($F('AssetInMethodMethodCode')==''){
+		alert('增加方式编码不能为空！');
+		$('AssetInMethodMethodCode').focus();
+		return false;
+	}
+
+}
+
+//-->
+</SCRIPT>

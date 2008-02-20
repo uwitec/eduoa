@@ -2,7 +2,7 @@
 class DocumentsController extends AppController {
 
 	var $name = 'Documents';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form' , 'Javascript');
 
 	function index() {
 		$id = $this->params['url']['type'];

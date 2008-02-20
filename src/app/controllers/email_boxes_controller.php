@@ -2,7 +2,7 @@
 class EmailBoxesController extends AppController {
 
 	var $name = 'EmailBoxes';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Javascript' );
 
 	function index() {
 		$this->my();

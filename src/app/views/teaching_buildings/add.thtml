@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>新增教学楼</legend>
 
-<form action="<?php echo $html->url('/teaching_buildings/add'); ?>" method="post">
+<form action="<?php echo $html->url('/teaching_buildings/add'); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('TeachingBuilding/building_no', '教学楼编号:');?>
  	<?php echo $html->input('TeachingBuilding/building_no', array('size' => '60'));?>
@@ -23,3 +23,19 @@
 
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('TeachingBuildingBuildingNo')==''){
+		alert('教学楼编号不能为空！');
+		$('TeachingBuildingBuildingNo').focus();
+		return false;
+	}
+	if($F('TeachingBuildingBuildingName')==''){
+		alert('教学楼名称不能为空！');
+		$('TeachingBuildingBuildingName').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

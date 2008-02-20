@@ -2,7 +2,7 @@
 class AssetTypesController extends AppController {
 
 	var $name = 'AssetTypes';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Javascript' );
 
 	function index() {
 		$this->AssetType->recursive = 0;

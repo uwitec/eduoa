@@ -2,7 +2,7 @@
 class ClassroomTypesController extends AppController {
 
 	var $name = 'ClassroomTypes';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->ClassroomType->recursive = 0;

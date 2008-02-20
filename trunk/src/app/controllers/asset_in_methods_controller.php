@@ -2,7 +2,7 @@
 class AssetInMethodsController extends AppController {
 
 	var $name = 'AssetInMethods';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->AssetInMethod->recursive = 0;

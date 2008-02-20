@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>新增资产维修</legend>
-<form action="<?php echo $html->url('/asset_maintenances/add'); ?>" method="post">
+<form action="<?php echo $html->url('/asset_maintenances/add'); ?>" method="post" onSubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetMaintenance/asset_id', '资产名称');?>
  	<?php echo $html->selectTag('AssetMaintenance/asset_id', $assets, $html->tagValue('AssetMaintenance/asset_id'), array(), array(), false);?>
@@ -56,3 +56,24 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('AssetMaintenanceReason')==''){
+		alert('故障原因不能为空！');
+		$('AssetMaintenanceReason').focus();
+		return false;
+	}
+	if($F('AssetMaintenanceStation')==''){
+		alert('维修单位不能为空！');
+		$('AssetMaintenanceStation').focus();
+		return false;
+	}
+	if($F('AssetMaintenanceAccessories')==''){
+		alert('配件名称不能为空！');
+		$('AssetMaintenanceAccessories').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

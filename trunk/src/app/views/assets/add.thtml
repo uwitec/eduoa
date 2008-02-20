@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>新建资产</legend>
 
-<form action="<?php echo $html->url('/assets/add'); ?>" method="post">
+<form action="<?php echo $html->url('/assets/add'); ?>" method="post" onSubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Asset/asset_name', '资产名称');?>
  	<?php echo $html->input('Asset/asset_name', array('size' => '60'));?>
@@ -92,3 +92,28 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function check(){
+
+	if($F('AssetAssetName')==''){
+		alert('资产名称不能为空！');
+		$('AssetAssetName').focus();
+		return false;
+	}
+	if($F('AssetAssetCode')==''){
+		alert('资产代码不能为空！');
+		$('AssetAssetCode').focus();
+		return false;
+	}
+	if($F('AssetBelongUser')==''){
+		alert('保管人员不能为空！');
+		$('AssetBelongUser').focus();
+		return false;
+	}
+
+}
+
+//-->
+</SCRIPT>

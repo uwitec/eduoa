@@ -2,7 +2,7 @@
 class AssetStatusesController extends AppController {
 
 	var $name = 'AssetStatuses';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->AssetStatus->recursive = 0;

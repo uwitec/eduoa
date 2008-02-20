@@ -2,7 +2,7 @@
 class AssetMaintenancesController extends AppController {
 
 	var $name = 'AssetMaintenances';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->AssetMaintenance->recursive = 0;

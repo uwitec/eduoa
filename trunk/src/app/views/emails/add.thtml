@@ -10,7 +10,7 @@ echo $javascript->link('greybox/gb_scripts.js');
 <div id="content">
 <fieldset align=center>
 <legend>写新邮件</legend>
-<form action="<?php echo $html->url('/emails/add'); ?>" method="post">
+<form action="<?php echo $html->url('/emails/add'); ?>" method="post"  onsubmit="return check()">
 <div class="optional"> 
     <?php echo $html->hidden('Email/to_id')?>
 	<?php echo $form->labelTag('Email/to_name', '收件人');?>
@@ -59,5 +59,31 @@ function clear_user(frmId,frmName){
 	$(frmId).value="";
 	$(frmName).value="";
 }	
+
+function check(){
+
+	if($F('EmailToName')==''){
+		alert('收件人不能为空！');
+		$('EmailToName').focus();
+		return false;
+	}
+	
+	if($F('EmailSubject')==''){
+		alert('主题不能为空！');
+		$('EmailSubject').focus();
+		return false;
+	}
+
+	if($F('EmailContent')==''){
+		alert('内容不能为空！');
+		$('EmailContent').focus();
+		return false;
+	}
+}
+
 //-->
 </SCRIPT>
+
+
+
+

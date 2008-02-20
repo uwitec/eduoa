@@ -54,7 +54,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>新增<?=$title?></legend>
-<form action="<?php echo $html->url('/documents/add'); ?>" method="post">
+<form action="<?php echo $html->url('/documents/add'); ?>" method="post"  onsubmit="return check()">
 <?php	if($title != "新闻" && $title != "公告通知"){?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Banji/Banji', '发布对象');?>
@@ -105,3 +105,22 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+
+	if($F('DocumentTitle')==''){
+		alert('<?=$v_name?>不能为空！');
+		$('DocumentTitle').focus();
+		return false;
+	}
+	
+	if($F('DocumentContent')==''){
+		alert('<?=$v_content?>不能为空！');
+		$('DocumentContent').focus();
+		return false;
+	}
+
+}
+//-->
+</SCRIPT>

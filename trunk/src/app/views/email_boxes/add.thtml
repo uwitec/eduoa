@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>邮件箱列表</legend>
 
-<form action="<?php echo $html->url('/email_boxes/add'); ?>" method="post">
+<form action="<?php echo $html->url('/email_boxes/add'); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('EmailBox/box_name', '邮件箱名称:');?>
  	<?php echo $html->input('EmailBox/box_name', array('size' => '60'));?>
@@ -20,3 +20,18 @@
 
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function check(){
+
+	if($F('EmailBoxBoxName')==''){
+		alert('邮件箱名不能为空！');
+		$('EmailBoxBoxName').focus();
+		return false;
+	}
+
+}
+
+//-->
+</SCRIPT>

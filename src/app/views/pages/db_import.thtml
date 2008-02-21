@@ -1,10 +1,24 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
- <HEAD>
-  <TITLE> New Document </TITLE>
- </HEAD>
-
- <BODY>
-  
- </BODY>
-</HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>金色校园教育管理软件系统</title>
+<?php echo $html->charset('UTF-8');?>
+<?php header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");?>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="expires" content="0"/>
+<link rel="icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+<?php echo $html->css('bb.generic');?>
+</head>
+<body>
+<fieldset>
+<legend>数据库导入</legend> 
+<br/><br/><br/><br/>
+<div align="center">
+<input type="button" value="数据库导入" style="font-size:40px" onClick="alert('数据库导入成功！');">
+</div>
+<br/><br/><br/><br/>
+</fieldset>
+</body>
+</html>

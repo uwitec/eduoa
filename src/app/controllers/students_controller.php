@@ -27,14 +27,14 @@ class StudentsController extends AppController {
 	}
 
    function index_grow_files($id = null) {
-		$this->Student->recursive = 0;
-		$banji = $this->params['url']['banji'];
-		if($banji){
-			$this->set('students', $this->Student->findAll('Banji.id = '.$banji));
-			$this->set('banji_id',$id);
-		}else{
+		$this->Student->recursive = 0;		
+		if(empty($this->params['url']['banji'])){
 			$this->set('students', $this->Student->findAll());
 			$this->set('banji_id',null);
+		}else{
+			$banji = $this->params['url']['banji'];
+			$this->set('students', $this->Student->findAll('Banji.id = '.$banji));
+			$this->set('banji_id',$id);
 		}
    }
 

@@ -2,7 +2,7 @@
 class StudentGrowFilesController extends AppController {
 
 	var $name = 'StudentGrowFiles';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->StudentGrowFile->recursive = 0;

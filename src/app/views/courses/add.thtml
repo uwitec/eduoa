@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>新增课程</legend> 
-<form action="<?php echo $html->url('/courses/add'); ?>" method="post">
+<form action="<?php echo $html->url('/courses/add'); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Course/course_name', '课程名称');?>
  	<?php echo $html->input('Course/course_name', array('size' => '60'));?>
@@ -26,3 +26,19 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('CourseCourseName')==''){
+		alert('课程名称不能为空！');
+		$('CourseCourseName').focus();
+		return false;
+	}
+	if($F('CourseCourseCode')==''){
+		alert('课程代码不能为空！');
+		$('CourseCourseCode').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

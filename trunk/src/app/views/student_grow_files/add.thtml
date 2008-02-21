@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>新建成长档案</legend> 
 
-<form action="<?php echo $html->url('/student_grow_files/add'); ?>" method="post">
+<form action="<?php echo $html->url('/student_grow_files/add'); ?>" method="post" onsubmit="return check()">
 <?php 
   echo $html->hidden('StudentGrowFile/student_id',array('value' => $students['Student']['id']));
   echo $html->hidden('StudentGrowFile/grow_file_type_id',array('value' => $growFileTypes['GrowFileType']['id']));
@@ -35,3 +35,19 @@
 </form>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('StudentGrowFileTitle')==''){
+		alert('标题不能为空！');
+		$('StudentGrowFileTitle').focus();
+		return false;
+	}
+	if($F('StudentGrowFileDescription')==''){
+		alert('描述不能为空！');
+		$('StudentGrowFileDescription').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

@@ -5,11 +5,11 @@
 <div class="optional"> 
 	<?php echo $form->labelTag('TeacherContinuingEducation/teacher_id', '教师名称');?>
  	<?php 
-		if($this->params['url']['teacher_id']) {
+		if(empty($this->params['url']['teacher_id'])) {
+			echo $html->selectTag('TeacherContinuingEducation/teacher_id', $teachers, $html->tagValue('TeacherContinuingEducation/teacher_id'), array(), array(), false);
+		}else {
 			echo $this->params['url']['teacher_name'];
 			echo $html->hidden('TeacherContinuingEducation/teacher_id', array('value' => $this->params['url']['teacher_id']));
-		}else {
-			echo $html->selectTag('TeacherContinuingEducation/teacher_id', $teachers, $html->tagValue('TeacherContinuingEducation/teacher_id'), array(), array(), false);
 		}
 	?>
 	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/teacher_id', 'Please select the Teacher.') ?>

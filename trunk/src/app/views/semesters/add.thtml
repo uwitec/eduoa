@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>新增学期信息</legend> 
-<form action="<?php echo $html->url('/semesters/add'); ?>" method="post">
+<form action="<?php echo $html->url('/semesters/add'); ?>" method="post"  onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Semester/semester_name', '学期名称');?>
  	<?php echo $html->input('Semester/semester_name', array('size' => '60'));?>
@@ -26,3 +26,19 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('SemesterSemesterName')==''){
+		alert('学期名称不能为空！');
+		$('SemesterSemesterName').focus();
+		return false;
+	}
+	if($F('SemesterIsCurrent')==''){
+		alert('当前学期不能为空！');
+		$('SemesterIsCurrent').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

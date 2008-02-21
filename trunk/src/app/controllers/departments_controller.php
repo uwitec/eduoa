@@ -2,7 +2,7 @@
 class DepartmentsController extends AppController {
 
 	var $name = 'Departments';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->Department->recursive = 0;

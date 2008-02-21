@@ -2,7 +2,7 @@
 class CoursesController extends AppController {
 
 	var $name = 'Courses';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->Course->recursive = 0;

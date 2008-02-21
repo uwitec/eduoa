@@ -1,7 +1,7 @@
 <fieldset align=center>
 <legend>新增角色</legend> 
 
-<form action="<?php echo $html->url('/roles/add'); ?>" method="post">
+<form action="<?php echo $html->url('/roles/add'); ?>" method="post" onsubmit="return check()">
 <div class="required"> 
 	<?php echo $form->labelTag('Role/role_name', '角色名称：');?>
  	<?php echo $html->input('Role/role_name', array('size' => '30'));?>
@@ -26,3 +26,19 @@
 <li><?php echo $html->link('返回角色列表', '/roles/index')?></li>
 </ul>
 </fieldset>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('RoleRoleName')==''){
+		alert('角色名称不能为空！');
+		$('RoleRoleName').focus();
+		return false;
+	}
+	if($F('RoleMemo')==''){
+		alert('备注不能为空！');
+		$('RoleMemo').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

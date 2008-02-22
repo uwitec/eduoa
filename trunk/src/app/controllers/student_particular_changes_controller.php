@@ -2,7 +2,7 @@
 class StudentParticularChangesController extends AppController {
 
 	var $name = 'StudentParticularChanges';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index($id = null) {
 		$this->StudentParticularChange->recursive = 0;

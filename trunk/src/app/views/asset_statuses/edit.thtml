@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>资产使用状态编辑</legend> 
-<form action="<?php echo $html->url('/asset_statuses/edit/'.$html->tagValue('AssetStatus/id')); ?>" method="post">
+<form action="<?php echo $html->url('/asset_statuses/edit/'.$html->tagValue('AssetStatus/id')); ?>" method="post" onSubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetStatus/status_name', '使用状态名称');?>
  	<?php echo $html->input('AssetStatus/status_name', array('size' => '60'));?>
@@ -22,3 +22,23 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function check(){
+
+	if($F('AssetStatusStatusName')==''){
+		alert('资产使用状态名称不能为空！');
+		$('AssetStatusStatusName').focus();
+		return false;
+	}
+	if($F('AssetStatusStatusCode')==''){
+		alert('资产使用状态编码不能为空！');
+		$('AssetStatusStatusCode').focus();
+		return false;
+	}
+
+}
+
+//-->
+</SCRIPT>

@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>编辑书籍</legend>
-<form action="<?php echo $html->url('/assets/book_edit/'.$html->tagValue('Asset/id')); ?>" method="post">
+<form action="<?php echo $html->url('/assets/book_edit/'.$html->tagValue('Asset/id')); ?>" method="post"  onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Asset/asset_name', '书籍名称');?>
  	<?php echo $html->input('Asset/asset_name', array('size' => '60'));?>
@@ -42,3 +42,19 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('AssetAssetName')==''){
+		alert('书籍名称不能为空！');
+		$('AssetAssetName').focus();
+		return false;
+	}
+	if($F('AssetAssetCode')==''){
+		alert('书籍代码不能为空！');
+		$('AssetAssetCode').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

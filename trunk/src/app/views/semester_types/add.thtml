@@ -1,4 +1,4 @@
-<h2>New Semester Type</h2>
+﻿<h2>New Semester Type</h2>
 <form action="<?php echo $html->url('/semester_types/add'); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('SemesterType/type_name', 'Type Name');?>

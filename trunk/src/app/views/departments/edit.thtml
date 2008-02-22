@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>部门信息</legend> 
-<form action="<?php echo $html->url('/departments/edit/'.$html->tagValue('Department/id')); ?>" method="post">
+<form action="<?php echo $html->url('/departments/edit/'.$html->tagValue('Department/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Department/department_name', '部门名称:');?>
  	<?php echo $html->input('Department/department_name', array('size' => '60'));?>
@@ -37,3 +37,19 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('DepartmentDepartmentName')==''){
+		alert('部门名称不能为空！');
+		$('DepartmentDepartmentName').focus();
+		return false;
+	}
+	if($F('DepartmentEnglishName')==''){
+		alert('英文名称不能为空！');
+		$('DepartmentEnglishName').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

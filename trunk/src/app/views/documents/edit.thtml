@@ -31,13 +31,18 @@
 			$v_name = "新闻标题";
 			$v_content = "新闻内容";
 			break;
+		case 7:
+			$title = "系统帮助";
+			$v_name = "系统帮助标题";
+			$v_content = "帮助内容";
+			break;
 	}
 ?>
 <div id="content">
 <fieldset align=center>
 <legend>编辑<?=$title?></legend> 
-<form action="<?php echo $html->url('/documents/edit/'.$html->tagValue('Document/id')); ?>" method="post">
-<?php	if($title != "新闻" && $title != "公告通知"){?>
+<form action="<?php echo $html->url('/documents/edit/'.$html->tagValue('Document/id')); ?>" method="post" onsubmit="return check()">
+<?php	if($title != "新闻" && $title != "公告通知" && $title != "系统帮助"){?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Banji/Banji', '发布对象');?>
  	<?php echo $html->selectTag('Banji/Banji', $banjis, $selectedBanjis, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), false);?>
@@ -79,3 +84,22 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+
+	if($F('DocumentTitle')==''){
+		alert('<?=$v_name?>不能为空！');
+		$('DocumentTitle').focus();
+		return false;
+	}
+	
+	if($F('DocumentContent')==''){
+		alert('<?=$v_content?>不能为空！');
+		$('DocumentContent').focus();
+		return false;
+	}
+
+}
+//-->
+</SCRIPT>

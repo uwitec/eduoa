@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>编辑教职工信息</legend> 
-<form action="<?php echo $html->url('/teachers/edit/'.$html->tagValue('Teacher/id')); ?>" method="post">
+<form action="<?php echo $html->url('/teachers/edit/'.$html->tagValue('Teacher/id')); ?>" method="post" onsubmit="return check()">
 <!--
 <div class="optional"> 
 	<?php echo $form->labelTag('Teacher/user_id', 'User');?>
@@ -96,3 +96,29 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('TeacherTeacherName')==''){
+		alert('教职工姓名不能为空！');
+		$('TeacherTeacherName').focus();
+		return false;
+	}
+	if($F('MemberUsername')==''){
+		alert('登录名不能为空！');
+		$('MemberUsername').focus();
+		return false;
+	}
+	if($F('MemberPassword')==''){
+		alert('密码不能为空！');
+		$('MemberPassword').focus();
+		return false;
+	}
+	if($F('MemberPassword')!=$F('MemberConfirm')){
+		alert('校验密码有误！');
+		$('MemberConfirm').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

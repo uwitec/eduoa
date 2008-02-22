@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>修改教室类型</legend>
 
-<form action="<?php echo $html->url('/classroom_types/edit/'.$html->tagValue('ClassroomType/id')); ?>" method="post">
+<form action="<?php echo $html->url('/classroom_types/edit/'.$html->tagValue('ClassroomType/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('ClassroomType/type_name', '类型名称');?>
  	<?php echo $html->input('ClassroomType/type_name', array('size' => '60'));?>
@@ -19,3 +19,14 @@
 
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('ClassroomTypeTypeName')==''){
+		alert('类型名称不能为空！');
+		$('ClassroomTypeTypeName').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

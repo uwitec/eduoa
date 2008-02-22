@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>修改教室</legend>
 
-<form action="<?php echo $html->url('/classrooms/edit/'.$html->tagValue('Classroom/id')); ?>" method="post">
+<form action="<?php echo $html->url('/classrooms/edit/'.$html->tagValue('Classroom/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Classroom/classroom_name', '教室名称:');?>
  	<?php echo $html->input('Classroom/classroom_name', array('size' => '50'));?>
@@ -34,3 +34,19 @@
 
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('ClassroomClassroomName')==''){
+		alert('教室名称不能为空！');
+		$('ClassroomClassroomName').focus();
+		return false;
+	}
+	if($F('ClassroomSeating')==''){
+		alert('座位数不能为空！');
+		$('ClassroomSeating').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

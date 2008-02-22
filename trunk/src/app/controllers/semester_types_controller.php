@@ -2,7 +2,7 @@
 class SemesterTypesController extends AppController {
 
 	var $name = 'SemesterTypes';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->SemesterType->recursive = 0;

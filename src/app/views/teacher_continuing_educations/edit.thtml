@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>编辑教职工继续教育信息</legend>
-<form action="<?php echo $html->url('/teacher_continuing_educations/edit/'.$html->tagValue('TeacherContinuingEducation/id')); ?>" method="post">
+<form action="<?php echo $html->url('/teacher_continuing_educations/edit/'.$html->tagValue('TeacherContinuingEducation/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('TeacherContinuingEducation/teacher_id', '教师名称');?>
  	<?php echo $html->selectTag('TeacherContinuingEducation/teacher_id', $teachers, $html->tagValue('TeacherContinuingEducation/teacher_id'), array(), array(), false);?>
@@ -52,3 +52,24 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('TeacherContinuingEducationOrganization')==''){
+		alert('教育机构名称不能为空！');
+		$('TeacherContinuingEducationOrganization').focus();
+		return false;
+	}
+	if($F('TeacherContinuingEducationAddress')==''){
+		alert('教育讲师名称不能为空！');
+		$('TeacherContinuingEducationAddress').focus();
+		return false;
+	}
+	if($F('TeacherContinuingEducationContent')==''){
+		alert('继续教育内容不能为空！');
+		$('TeacherContinuingEducationContent').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

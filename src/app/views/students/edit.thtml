@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>新建学生</legend> 
 
-<form action="<?php echo $html->url('/students/edit/'.$html->tagValue('Student/id')); ?>" method="post">
+<form action="<?php echo $html->url('/students/edit/'.$html->tagValue('Student/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Student/student_no', '学号:');?>
  	<?php echo $html->input('Student/student_no', array('size' => '30'));?>
@@ -114,3 +114,29 @@
 
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('StudentStudentNo')==''){
+		alert('学号不能为空！');
+		$('StudentStudentNo').focus();
+		return false;
+	}
+	if($F('StudentStudentName')==''){
+		alert('名称不能为空！');
+		$('StudentStudentName').focus();
+		return false;
+	}
+	if($F('StudentBanjiId')==''){
+		alert('班号不能为空！');
+		$('StudentBanjiId').focus();
+		return false;
+	}
+	if($F('BanjiClassSize')==''){
+		alert('班级人数不能为空！');
+		$('BanjiClassSize').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

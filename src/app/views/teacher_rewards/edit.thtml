@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>编辑教职工奖惩信息</legend> 
-<form action="<?php echo $html->url('/teacher_rewards/edit/'.$html->tagValue('TeacherReward/id')); ?>" method="post">
+<form action="<?php echo $html->url('/teacher_rewards/edit/'.$html->tagValue('TeacherReward/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('TeacherReward/teacher_id', '教师名称');?>
  	<?php echo $html->selectTag('TeacherReward/teacher_id', $teachers, $html->tagValue('TeacherReward/teacher_id'), array(), array(), false);?>
@@ -37,3 +37,19 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('TeacherRewardContent')==''){
+		alert('奖惩内容不能为空！');
+		$('TeacherRewardContent').focus();
+		return false;
+	}
+	if($F('TeacherRewardReason')==''){
+		alert('奖惩原因不能为空！');
+		$('TeacherRewardReason').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

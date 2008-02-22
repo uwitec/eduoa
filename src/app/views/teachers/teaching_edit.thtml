@@ -4,7 +4,7 @@
 <form action="<?php echo $html->url('/teachers/teaching_edit/'.$html->tagValue('Teacher/id')); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('Teacher/teacher_name', '姓名');?>
- 	<?php echo $html->input('Teacher/teacher_name', array('size' => '60'));?>
+ 	<?php echo $html->input('Teacher/teacher_name', array('size' => '60','readonly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Teacher/teacher_name', 'Please enter the Teacher Name.');?>
 </div>
 <div class="optional"> 

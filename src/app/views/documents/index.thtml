@@ -31,6 +31,11 @@
 			$v_name = "新闻标题";
 			$v_content = "新闻内容";
 			break;
+		case 7:
+			$title = "系统帮助";
+			$v_name = "系统帮助标题";
+			$v_content = "帮助内容";
+			break;
 	}
 ?>
 <div id="content">
@@ -39,7 +44,7 @@
 
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-	<?php	if($title != "新闻" && $title != "公告通知"){?>
+	<?php	if($title != "新闻" && $title != "公告通知" && $title != "系统帮助"){?>
 	<th>发布对象</th>
 	<?php	}?>
 	<?php	if($title == "班级公告"){?>
@@ -58,7 +63,7 @@
 </tr>
 <?php foreach ($documents as $document): ?>
 <tr>
-	<?php	if($title != "新闻" && $title != "公告通知"){?>
+	<?php	if($title != "新闻" && $title != "公告通知" && $title != "系统帮助"){?>
 	<td><?php foreach ($document['Banji'] as $banji){echo $banji['class_name'].' ';}?></td>	
 	<?php	}?>
 	<?php	if($title == "班级公告"){?>

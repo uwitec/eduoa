@@ -31,6 +31,11 @@
 			$v_name = "新闻标题";
 			$v_content = "新闻内容";
 			break;
+		case 7:
+			$title = "系统帮助";
+			$v_name = "系统帮助标题";
+			$v_content = "帮助内容";
+			break;
 	}
 ?>
 <div id="content">
@@ -38,7 +43,7 @@
 <legend>查看<?=$title?></legend> 
 
 <dl>
-	<?php	if($title != "新闻" && $title != "公告通知"){?>
+	<?php	if($title != "新闻" && $title != "公告通知" && $title != "系统帮助"){?>
 	<dt>发布对象</dt>
 	<dd><?php foreach ($document['Banji'] as $banji){echo $banji['class_name'].' ';}?></dd>
 	<?php	}?>

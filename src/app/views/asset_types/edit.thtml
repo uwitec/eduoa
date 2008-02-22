@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>编辑资产类别</legend>
-<form action="<?php echo $html->url('/asset_types/edit/'.$html->tagValue('AssetType/id')); ?>" method="post">
+<form action="<?php echo $html->url('/asset_types/edit/'.$html->tagValue('AssetType/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetType/type_name', '资产类别名称');?>
  	<?php echo $html->input('AssetType/type_name', array('size' => '60'));?>
@@ -22,3 +22,23 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function check(){
+
+	if($F('AssetTypeTypeName')==''){
+		alert('资产类别名称不能为空！');
+		$('AssetTypeTypeName').focus();
+		return false;
+	}
+	if($F('AssetTypeTypeCode')==''){
+		alert('资产类别编码不能为空！');
+		$('AssetTypeTypeCode').focus();
+		return false;
+	}
+
+}
+
+//-->
+</SCRIPT>

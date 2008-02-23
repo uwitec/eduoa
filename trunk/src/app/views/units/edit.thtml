@@ -1,9 +1,17 @@
+<?php
+	if($this->params['url']['type'] == 1) {
+		$title = "学校信息";
+	}else {
+		$title = "界面信息管理";
+	}
+?>
 <div id="content">
 <fieldset align=center>
-<legend>学校信息</legend> 
-<form action="<?php echo $html->url('/units/edit/'.$html->tagValue('Unit/id')); ?>" method="post">
+<legend><?=$title?></legend> 
+<form action="<?php echo $html->url('/units/edit/'.$html->tagValue('Unit/id')); ?>" method="post" onsubmit="return check()">
+<?php	if($this->params['url']['type'] == 1) {?>
 <div class="optional"> 
-	<?php echo $form->labelTag('Unit/unit_name', '单位名称:');?>
+	<?php echo $form->labelTag('Unit/unit_name', '学校名称:');?>
  	<?php echo $html->input('Unit/unit_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Unit/unit_name', 'Please enter the Unit Name.');?>
 </div>
@@ -19,7 +27,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Unit/post_no', '邮编:');?>
- 	<?php echo $html->input('Unit/post_no', array('size' => '60'));?>
+ 	<?php echo $html->input('Unit/post_no', array('size' => '60','maxlength' => '6'));?>
 	<?php echo $html->tagErrorMsg('Unit/post_no', 'Please enter the Post No.');?>
 </div>
 <div class="optional"> 
@@ -42,6 +50,23 @@
  	<?php echo $html->input('Unit/bank_no', array('size' => '60','maxlength' => '6'));?>
 	<?php echo $html->tagErrorMsg('Unit/bank_no', 'Please enter the Bank No.');?>
 </div>
+<?php	}else {?>
+<!--
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/login_ie_title', '登录界面IE标题:');?>
+ 	<?php echo $html->input('Unit/login_ie_title', array('size' => '60','maxlength' => '50'));?>
+	<?php echo $html->tagErrorMsg('Unit/login_ie_title', 'Please enter the login_ie_title.');?>
+</div>
+-->
+<div class="optional"> 
+	<?php echo $form->labelTag('Unit/main_ie_title', '主页面IE标题:');?>
+ 	<?php echo $html->input('Unit/main_ie_title', array('size' => '60','maxlength' => '50'));?>
+	<?php echo $html->tagErrorMsg('Unit/main_ie_title', 'Please enter the Bank No.');?>
+</div>
+<div class="optional"> 
+	<font color='red'>修改设置后，需重新登录方才生效！</font>
+</div>
+<?php	}?>
 <?php echo $html->hidden('Unit/id')?>
 <div class="submit">
 	<?php echo $html->submit('保存');?>
@@ -49,3 +74,24 @@
 </form>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+	if($F('UnitUnitName')==''){
+		alert('学校名称不能为空！');
+		$('UnitUnitName').focus();
+		return false;
+	}
+	if($F('UnitTelNo')==''){
+		alert('学校电话不能为空！');
+		$('UnitTelNo').focus();
+		return false;
+	}
+	if($F('UnitBankNo')==''){
+		alert('短信特号不能为空！');
+		$('UnitBankNo').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

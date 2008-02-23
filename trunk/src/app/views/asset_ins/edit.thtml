@@ -1,7 +1,7 @@
 <div id="content">
 <fieldset align=center>
 <legend>资产归还</legend>
-<form action="<?php echo $html->url('/asset_ins/edit/'.$html->tagValue('AssetIn/id')); ?>" method="post">
+<form action="<?php echo $html->url('/asset_ins/edit/'.$html->tagValue('AssetIn/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetIn/asset_id', '资产名称');?>
  	<?php echo $html->selectTag('AssetIn/asset_id', $assets, $html->tagValue('AssetIn/asset_id'), array(), array(), false);?>
@@ -32,3 +32,15 @@
 </ul>
 </fieldset>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(){
+
+	if($F('AssetInUsePerson')==''){
+		alert('使用人不能为空！');
+		$('AssetInUsePerson').focus();
+		return false;
+	}
+}
+//-->
+</SCRIPT>

@@ -6,7 +6,7 @@ class AssetsController extends AppController {
 
 	function index() {
 		$this->Asset->recursive = 0;
-		$this->set('assets', $this->Asset->findAll('asset_type_id <> 99999'));
+		$this->set('assets', $this->Asset->findAll('Asset.asset_type_id <> 99999'));
 	}
 
 	function view($id = null) {
@@ -136,7 +136,7 @@ class AssetsController extends AppController {
 
 	function book_index() {
 		$this->Asset->recursive = 0;
-		$this->set('assets', $this->Asset->findAll('asset_type_id = 99999'));
+		$this->set('assets', $this->Asset->findAll('Asset.asset_type_id = 99999'));
 	}
 
 	function book_add() {
@@ -194,12 +194,12 @@ class AssetsController extends AppController {
 
 	function book_in_out() {
 		$this->Asset->recursive = 0;
-		$this->set('assets', $this->Asset->findAll('asset_type_id = 99999'));
+		$this->set('assets', $this->Asset->findAll('Asset.asset_type_id = 99999'));
 	}
 
 	function book_search() {
 		$this->Asset->recursive = 0;
-		$this->set('assets', $this->Asset->findAll('asset_type_id = 99999'));
+		$this->set('assets', $this->Asset->findAll('Asset.asset_type_id = 99999'));
 	}
 
 

@@ -80,7 +80,7 @@ class Document extends AppModel {
 													sDoor
 												)
 										select 				
-											(SELECT bank_no FROM units),
+											(SELECT bank_no FROM units limit 1 ),
 											0,
 											0,
 											'950000',
@@ -104,12 +104,13 @@ class Document extends AppModel {
 					$strSQL .= " FROM 
 											students,documents
 										WHERE 
-											documents.id = ".$document_id;
+											students.father_phone is not null and documents.id = ".$document_id;
 				}else {
 					$strSQL .= " FROM 
 											students,documents,doc_class_receiving_logs
 										WHERE 
-											students.banji_id = doc_class_receiving_logs.banji_id
+											students.father_phone is not null 
+											AND students.banji_id = doc_class_receiving_logs.banji_id
 											AND documents.id = doc_class_receiving_logs.document_id
 											AND documents.id = ".$document_id;			
 				}

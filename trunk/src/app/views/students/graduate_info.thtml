@@ -1,0 +1,50 @@
+<div id="content">
+<fieldset align=center>
+<legend>毕业生信息</legend> 
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>学号</th>
+	<th>姓名</th>
+	<th>出生日期</th>
+	<th>性别</th>
+	<th>民族</th>
+	<th>籍贯</th>
+	<th>政治面貌</th>
+	<th>健康状况</th>
+	<th>身份证号</th>
+	<th>毕业学校</th>
+	<th>外语语种</th>
+	<th>入学方式</th>
+	<th>学生来源</th>
+	<th>家庭住址</th>
+	<th>家庭邮编</th>
+	<th>家庭电话</th>
+	<th>家长手机</th>
+	<th>入学日期</th>
+</tr>
+<?php foreach ($students as $student): ?>
+<tr>
+	<td><?php echo $student['Student']['student_no']; ?></td>
+	<td><?php echo $student['Student']['student_name']; ?></td>
+	<td><?php echo $student['Student']['birthday']; ?></td>
+	<td><?php echo $student['Student']['sex']==1?'男':'女'; ?></td>
+	<td><?php echo $student['Person']['people_name']?></td>
+	<td><?php echo $student['Student']['native_place']; ?></td>
+	<td><?php echo $student['Student']['political_feature']; ?></td>
+	<td><?php echo $student['Student']['physical_condition']; ?></td>
+	<td><?php echo $student['Student']['cert_number']; ?></td>
+	<td><?php echo $student['Student']['graduate_the_college']; ?></td>
+	<td><?php echo $student['Student']['foreign_language']; ?></td>
+	<td><?php echo $student['Student']['enter_the_way']; ?></td>
+	<td><?php echo $student['Student']['origin']; ?></td>
+	<td><?php echo $student['Student']['address']; ?></td>
+	<td><?php echo $student['Student']['zip']; ?></td>
+	<td><?php echo $student['Student']['telphone']; ?></td>
+	<td><?php echo $student['Student']['father_phone']; ?></td>
+	<td><?php echo $student['Student']['enter_date']; ?></td>
+</tr>
+<?php endforeach; ?>
+</table>
+</fieldset>
+</div>

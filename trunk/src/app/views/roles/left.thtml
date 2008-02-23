@@ -24,7 +24,12 @@ body {
 		<?php 
 		  if (!empty($role['Module'])){
 			  foreach ($role['Module'] as $module):
-				  echo("d.add(". $module['id']. ",". $module['parent_id'] . ",'" . $module['module_name'] . "','" . $module['url'] . "');\n");
+				if(2==$module['module_type']){
+				  $url = $module['url']==''?'':$module['url'];
+			    }else{
+				  $url = $module['url']==''?'':$html->url($module['url']);
+				}
+				echo("d.add(". $module['id']. ",". $module['parent_id'] . ",'" . $module['module_name'] . "','" . $url . "');\n");
 			  endforeach;
 		  }
 		?>

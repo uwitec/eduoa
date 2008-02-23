@@ -1,5 +1,7 @@
-<script type="text/javascript" src="/js/datechooser.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/datechooser.css" />
+<?php
+echo $javascript->link('datechooser.js');
+echo $html->css('datechooser');
+?>
 <SCRIPT LANGUAGE="JavaScript">
 <!--
 	events.add(window, 'load', WindowLoad);
@@ -7,12 +9,12 @@
 		var outFromDate = document.getElementById('outFromDate');
 		outFromDate.DateChooser = new DateChooser();
 		outFromDate.DateChooser.setUpdateField(['AssetOutFromDateMonth', 'AssetOutFromDateDay', 'AssetOutFromDateYear'], ['m', 'd', 'Y']);
-		outFromDate.DateChooser.setIcon('/img/datechooser.png', 'AssetOutFromDateDay',true,'点击选择日期');
+		outFromDate.DateChooser.setIcon("<?=$html->url('/img/datechooser.png')?>", 'AssetOutFromDateDay',true,'点击选择日期');
 
 		var outEndDate = document.getElementById('outEndDate');
 		outEndDate.DateChooser = new DateChooser();
 		outEndDate.DateChooser.setUpdateField(['AssetOutEndDateMonth', 'AssetOutEndDateDay', 'AssetOutEndDateYear'], ['m', 'd', 'Y']);
-		outEndDate.DateChooser.setIcon('/img/datechooser.png', 'AssetOutEndDateDay',true,'点击选择日期');
+		outEndDate.DateChooser.setIcon("<?=$html->url('/img/datechooser.png')?>", 'AssetOutEndDateDay',true,'点击选择日期');
 		return true;
 	}
 //-->

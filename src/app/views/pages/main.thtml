@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>金色校园</title>
+<title><?=$this->controller->Session->read('MainIeTitle')?></title>
 <?php echo $html->css('frame');?>
 </head>
 <body bgcolor="#F3F3F5" scroll="no"  onload="timeview();">

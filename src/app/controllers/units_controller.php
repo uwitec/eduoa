@@ -2,7 +2,7 @@
 class UnitsController extends AppController {
 
 	var $name = 'Units';
-	var $helpers = array('Html', 'Form');
+	var $helpers = array('Html', 'Form','Javascript');
 
 	function index() {
 		if($this->Unit->findCount() > 0){
@@ -37,6 +37,7 @@ class UnitsController extends AppController {
 	}
 
 	function edit($id = null) {
+		$type = $this->params['url']['type'];
 		if (empty($this->data)) {
 			if (!$id) {
 				$this->Session->setFlash('Invalid id for Unit');
@@ -46,8 +47,8 @@ class UnitsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Unit->save($this->data)) {
-				$this->Session->setFlash('学校信息修改成功！');
-				$this->redirect('/units/index');
+				$this->Session->setFlash('信息修改成功！');
+				$this->redirect('/units/edit/1/?type='.$type);
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 			}

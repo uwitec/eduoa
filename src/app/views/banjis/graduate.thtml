@@ -1,0 +1,40 @@
+<script language="javascript">
+function download(){
+	var url = "<?php echo $html->url('/exam_results/download');?>";
+	url += "/" + $('ExamResultBanji').options[$('ExamResultBanji').selectedIndex].value;
+	url += "/" + $('ExamResultBanji').options[$('ExamResultBanji').selectedIndex].text;
+	url += "/" + $('ExamResultSemester').options[$('ExamResultSemester').selectedIndex].text;
+	url += "/" + $('ExamResultCourse').options[$('ExamResultCourse').selectedIndex].text;
+	window.location = url;
+}
+</script>
+<div id="content">
+<fieldset align=center>
+<legend>学生毕业离校管理使用说明</legend> 
+	<div>
+	  <p>
+	  1、选择将要毕业学生的<font color=red>入学年份</font>；<br />
+	  2、确定无误，点击<font color=red>入学年份</font>后面相应的<font color=red>毕业离校</font>按钮；<br />
+	  3、系统毕业生的信息，从<font color=red>学生案档</font>转入到<font color=red>毕业生信息</font>。<font color=red>（注意：本步操作不可逆转，请确认无误后再执行）</font>
+	  </p>
+	</div>
+</fieldset>
+</div>
+
+<form action="<?php echo $html->url('/exam_results/import'); ?>" method="post" encType="multipart/form-data">
+
+<table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=560 style="border-collapse:collapse">
+  <tr>
+    <th style="text-align:left;font-size:14px;">请手动选择毕业离校的年级</th>
+  </tr>
+  <?php foreach($years as $year):?>
+  <tr>
+    <td style="text-align:left;font-size:14px;">
+	  入学年份：<?=$year['Banji']['entrance_year']?>
+	  『<?php echo $html->link('毕业离校','/students/graduate/' . $year['Banji']['entrance_year'], null, '是否确定让'.$year['Banji']['entrance_year'].'级学生毕业？\n\n(注意：本步操作不可逆转，请确认无误后再执行。)')?>』
+	</td>
+  </tr>
+  <?php endforeach;?>
+</table>
+
+</form>

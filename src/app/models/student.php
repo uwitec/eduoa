@@ -33,5 +33,17 @@ class Student extends AppModel {
 
 	);
 
+	function graduate($year = null){
+		$sql = "update students set status = 2
+		          where exists(
+				     select * from banjis 
+					   where banjis.id = students.banji_id and banjis.entrance_year = $year)
+                    and students.status = 1";
+		$this->execute($sql);
+
+		$sql = "update banjis set status = 2 where status = 1 and banjis.entrance_year = $year";
+		$this->execute($sql);
+	}
+
 }
 ?>

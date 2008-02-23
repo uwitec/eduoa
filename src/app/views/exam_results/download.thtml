@@ -2,17 +2,27 @@
 	$filename = $banji_name.'['.$semester_name.']'.$course_name.'.csv';
 	$filename = iconv('UTF-8','gb2312',$filename);
 
-    Header("content-type:application/octet-stream"); 
-	Header("content-disposition:attatchment;filename:".$fileName.".torrent"); 
-	$line = array('鍐呴儴缂栧彿', '瀛﹀彿', '濮撳悕', '鎴愮哗'); 
-	$csv->addRow($line);
+    Header("Content-type: text/x-csv");
+	//header("Content-Type: application/download");
+	//Header("Content-type:application/vnd.ms-excel");
+	//Header("content-disposition:attatchment;filename:".$filename); 
+	header("Content-Disposition: attachment; filename=".$filename);
+	
+
+	//$line = array('内部编号', '学号', '姓名', '成绩'); 
+	//$csv->addRow($line);
+
+	$content = "内部编号, 学号, 姓名, 成绩\n";
+
 
 	foreach($students as $student){
-		$line = array($student['Student']['id'], $student['Student']['student_no'], $student['Student']['student_name'], ''); 
-		$csv->addRow($line);
+		$content .= $student['Student']['id'].','.$student['Student']['student_no'].','.$student['Student']['student_name'].', '."\n";
+		//$line = array($student['Student']['id'], $student['Student']['student_no'], $student['Student']['student_name'], ''); 
+		//$csv->addRow($line);
 	}
+	//echo iconv('UTF-8','gb2312',$content);
+	//echo mb_convert_encoding($content,'gb2312','UTF-8');
+	echo $content;
 
-
-
-	echo $csv->render($filename,'gb2312','UTF-8');
+	//echo $csv->render($filename,'gb2312','UTF-8');
 ?>

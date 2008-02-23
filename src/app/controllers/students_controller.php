@@ -3,14 +3,15 @@ class StudentsController extends AppController {
 
 	var $name = 'Students';
 	var $helpers = array('Html', 'Form', 'Javascript', 'Csv');
+	var $uses = array('Student','Banji');
 
 	function index($id = null) {
 		$this->Student->recursive = 0;
 		if($id){
-			$this->set('students', $this->Student->findAll('Banji.id = '.$id));
+			$this->set('students', $this->Student->findAll('Banji.id = '.$id.' AND Banji.status = 1'));
 			$this->set('banji_id',$id);
 		}else{
-			$this->set('students', $this->Student->findAll());
+			$this->set('students', $this->Student->findAllByStatus(1));
 			$this->set('banji_id',null);
 		}
 	}
@@ -246,6 +247,16 @@ class StudentsController extends AppController {
 
    function download() {
 	$this->layout = 'ajax';
+   }
+
+   function graduate($year = null){
+	   $this->Student->graduate($year);
+	   $this->redirect('/banjis/graduate');
+   }
+
+   function graduate_info() {
+	   $this->Student->recursive = 0;
+	   $this->set('students',$this->Student->findAllByStatus(2));
    }
 
 }

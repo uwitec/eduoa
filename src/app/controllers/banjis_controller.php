@@ -123,10 +123,10 @@ class BanjisController extends AppController {
 		$this->Banji->recursive = 0;
 		
 		$this->Banji->unbindModel(array('belongsTo' => array('Teacher','AcademicYear','Classroom')));
-		$this->set('years', $this->Banji->findAll('group by Banji.entrance_year'));
+		$this->set('years', $this->Banji->findAll('Banji.status = 1 group by Banji.entrance_year'));
 
 		$this->Banji->unbindModel(array('belongsTo' => array('Teacher','AcademicYear','Classroom')));
-		$this->set('banjis', $this->Banji->findAll('order by Banji.entrance_year desc,Banji.order_list'));
+		$this->set('banjis', $this->Banji->findAll('Banji.status = 1 order by Banji.entrance_year desc,Banji.order_list'));
 
 	}
 
@@ -135,7 +135,10 @@ class BanjisController extends AppController {
 		$this->set('banjis', $this->Banji->findAll());
 	}
 
-
+   function graduate(){
+		$this->Banji->unbindModel(array('belongsTo' => array('Teacher','AcademicYear','Classroom')));
+		$this->set('years', $this->Banji->findAll('Banji.status = 1 group by Banji.entrance_year'));
+   }
 
 }
 ?>

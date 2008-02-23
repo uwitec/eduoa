@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class ModulesController extends AppController {
 
 	var $name = 'Modules';
@@ -45,22 +45,14 @@ class ModulesController extends AppController {
 		if (empty($this->data)) {
 			if (!$id) {
 				$this->Session->setFlash('Invalid id for Module');
-				$this->redirect('/modules/index');
 			}
 			$this->data = $this->Module->read(null, $id);
-			$this->set('roles', $this->Module->Role->generateList());
-			if (empty($this->data['Role'])) { $this->data['Role'] = null; }
-			$this->set('selectedRoles', $this->_selectedArray($this->data['Role']));
 		} else {
 			$this->cleanUpFields();
 			if ($this->Module->save($this->data)) {
-				$this->Session->setFlash('The Module has been saved');
-				$this->redirect('/modules/index');
+				$this->Session->setFlash('系统菜单修改成功!');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
-				$this->set('roles', $this->Module->Role->generateList());
-				if (empty($this->data['Role']['Role'])) { $this->data['Role']['Role'] = null; }
-				$this->set('selectedRoles', $this->data['Role']['Role']);
 			}
 		}
 	}

@@ -41,6 +41,8 @@ INSERT INTO `modules` VALUES ('70102', '班级查阅', '1', '701', '1', '0', nul
 INSERT INTO `modules` VALUES ('702', '学生档案', '1', '7', '1', '0', null, '/pages/student_frame', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('703', '调班管理', '1', '7', '1', '0', null, '/pages/student_change_frame', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('704', '学籍异动', '1', '7', '1', '0', null, '/students/', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
+INSERT INTO `modules` VALUES ('705', '学生毕业', '1', '7', '1', '0', null, '/students/graduate', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
+INSERT INTO `modules` VALUES ('706', '毕业生信息', '1', '7', '1', '0', null, '/students/graduate_info', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('8', '成长档案', '1', '0', '1', '0', null, null, null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('801', '成长档案管理', '1', '8', '1', '0', null, '/pages/student_grow_files_frame', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('802', '成长档案查看', '1', '8', '1', '0', null, '/pages/student_grow_files_view_frame', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
@@ -97,28 +99,22 @@ INSERT INTO `modules` VALUES ('1303', '书籍借还', '1', '13', '1', '0', null,
 INSERT INTO `modules` VALUES ('1304', '书籍查询', '1', '13', '1', '0', null, '/assets/book_search', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('14', '系统设置', '1', '0', '1', '0', null, null, null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('1401', '组织机构设置', '1', '14', '1', '0', null, null, null, null, null, null, null, null, null, null, '5', null, null, null, '1');
-INSERT INTO `modules` VALUES ('140101', '学校信息', '1', '1401', '1', '0', null, '/units/', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
+INSERT INTO `modules` VALUES ('140101', '学校信息', '1', '1401', '1', '0', null, '/units/?type=1', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('140102', '部门管理', '1', '1401', '1', '0', null, '/departments/?action=edit', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('140103', '用户管理', '1', '1401', '1', '0', null, '/members', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('15', '控制面板', '1', '0', '1', '0', null, null, null, null, null, null, null, null, null, null, '5', null, null, null, '1');
-
 INSERT INTO `modules` VALUES ('1501', '权限管理', '1', '15', '1', '0', null, null, null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('150101', '角色维护', '1', '1501', '1', '0', null, '/roles/index', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
-
-
 INSERT INTO `modules` VALUES ('1502', '密码管理', '1', '15', '1', '0', null, null, null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('150201', '教师密码管理', '1', '1502', '1', '0', null, '/teachers/password', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('150202', '学生密码管理', '1', '1502', '1', '0', null, '/students/password', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
-
 INSERT INTO `modules` VALUES ('1503', '数据库维护', '1', '15', '1', '0', null, null, null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('150301', '数据库优化', '1', '1503', '1', '0', null, '/pages/db_optimize', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('150302', '数据库修复', '1', '1503', '1', '0', null, '/pages/db_repair', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
-INSERT INTO `modules` VALUES ('150303', '数据库导入', '1', '1503', '1', '0', null, '/pages/db_export', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
-INSERT INTO `modules` VALUES ('150304', '数据库导出', '1', '1503', '1', '0', null, '/pages/db_import', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
-
-INSERT INTO `modules` VALUES ('1504', '界面信息管理', '1', '15', '1', '0', null, '/pages/sysinfo', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
-INSERT INTO `modules` VALUES ('1505', '系统帮助设定', '1', '15', '1', '0', null, '/pages/help', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
-
+INSERT INTO `modules` VALUES ('150303', '数据库导入', '1', '1503', '1', '0', null, '/pages/db_import', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
+INSERT INTO `modules` VALUES ('150304', '数据库导出', '1', '1503', '1', '0', null, '/pages/db_export', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
+INSERT INTO `modules` VALUES ('1504', '界面信息管理', '1', '15', '1', '0', null, '/units/?type=2', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
+INSERT INTO `modules` VALUES ('1505', '系统帮助设定', '1', '15', '1', '0', null, '/documents/index/?type=7', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('16', '辅助办公', '1', '0', '1', '0', null, null, null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('1601', '科学计算器', '1', '16', '1', '0', null, '/pages/calculate', null, null, null, null, null, null, null, null, '5', null, null, null, '1');
 INSERT INTO `modules` VALUES ('1602', '度衡量换算', '1', '16', '1', '0', null, '/pages/unit_converter', null, null, null, null, null, null, null, null, '5', null, null, null, '1');

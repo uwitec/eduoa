@@ -19,10 +19,10 @@
 </SCRIPT>
 <div id="content">
 <fieldset align=center>
-<legend>新增资产借出</legend>
-<form action="<?php echo $html->url('/asset_outs/add'); ?>" method="post"  onsubmit="return check()">
+<legend>新增书籍借出</legend>
+<form action="<?php echo $html->url('/asset_outs/book_add'); ?>" method="post"  onsubmit="return check()">
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetOut/asset_id', '资产名称');?>
+	<?php echo $form->labelTag('AssetOut/asset_id', '书籍名称');?>
  	<?php echo $html->selectTag('AssetOut/asset_id', $assets, $html->tagValue('AssetOut/asset_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('AssetOut/asset_id', 'Please select the Asset.') ?>
 </div>
@@ -51,7 +51,7 @@
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('资产借出列表', '/asset_outs/index')?></li>
+<li><?php echo $html->link('书籍借出列表', '/asset_outs/book_index')?></li>
 </ul>
 </fieldset>
 </div>

@@ -1,9 +1,9 @@
 <div id="content">
 <fieldset align=center>
-<legend>新增资产归还</legend>
-<form action="<?php echo $html->url('/asset_ins/add'); ?>" method="post" onsubmit="return check()">
+<legend>新增书籍归还</legend>
+<form action="<?php echo $html->url('/asset_ins/book_add'); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
-	<?php echo $form->labelTag('AssetIn/asset_id', '资产名称');?>
+	<?php echo $form->labelTag('AssetIn/asset_id', '书籍名称');?>
  	<?php echo $html->selectTag('AssetIn/asset_id', $assets, $html->tagValue('AssetIn/asset_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('AssetIn/asset_id', 'Please select the Asset.') ?>
 </div>
@@ -27,7 +27,7 @@
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('资产归还列表', '/asset_ins/index')?></li>
+<li><?php echo $html->link('书籍归还列表', '/asset_ins/book_index')?></li>
 </ul>
 </fieldset>
 </div>

@@ -2,11 +2,11 @@
 class AssetOutsController extends AppController {
 
 	var $name = 'AssetOuts';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->AssetOut->recursive = 0;
-		$this->set('assetOuts', $this->AssetOut->findAll('asset_type_id <> 99999'));
+		$this->set('assetOuts', $this->AssetOut->findAll('Asset.asset_type_id <> 99999'));
 	}
 
 	function view($id = null) {
@@ -21,7 +21,7 @@ class AssetOutsController extends AppController {
 		if (empty($this->data)) {
 			$this->set('assets', 
 						$this->AssetOut->Asset->generateList(
-							$conditions = 'asset_type_id <> 99999',
+							$conditions = 'Asset.asset_type_id <> 99999',
 							$order = 'id',
 							$limit = null,
 							$KeyPath = '{n}.Asset.id',
@@ -58,7 +58,7 @@ class AssetOutsController extends AppController {
 			$this->data = $this->AssetOut->read(null, $id);
 			$this->set('assets', 
 						$this->AssetOut->Asset->generateList(
-							$conditions = 'asset_type_id <> 99999',
+							$conditions = 'Asset.asset_type_id <> 99999',
 							$order = 'id',
 							$limit = null,
 							$KeyPath = '{n}.Asset.id',
@@ -94,6 +94,92 @@ class AssetOutsController extends AppController {
 		if ($this->AssetOut->del($id)) {
 			$this->Session->setFlash('删除成功！');
 			$this->redirect('/asset_outs/index');
+		}
+	}
+
+	//图书
+	function book_index() {
+		$this->AssetOut->recursive = 0;
+		$this->set('assetOuts', $this->AssetOut->findAll('Asset.asset_type_id = 99999'));
+	}
+
+	function book_add() {
+		if (empty($this->data)) {
+			$this->set('assets', 
+						$this->AssetOut->Asset->generateList(
+							$conditions = 'Asset.asset_type_id = 99999',
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Asset.id',
+							$valuePath = '{n}.Asset.asset_name')
+			);
+			$this->set('departments', 
+						$this->AssetOut->Department->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Department.id',
+							$valuePath = '{n}.Department.department_name')
+			);
+			$this->render();
+		} else {
+			$this->cleanUpFields();
+			if ($this->AssetOut->save($this->data)) {
+				$this->Session->setFlash('书籍借出保存成功！');
+				$this->redirect('/asset_outs/book_index');
+			} else {
+				$this->Session->setFlash('Please correct errors below.');
+				$this->set('assets', $this->AssetOut->Asset->generateList());
+				$this->set('departments', $this->AssetOut->Department->generateList());
+			}
+		}
+	}
+
+	function book_edit($id = null) {
+		if (empty($this->data)) {
+			if (!$id) {
+				$this->Session->setFlash('Invalid id for Asset Out');
+				$this->redirect('/asset_outs/book_index');
+			}
+			$this->data = $this->AssetOut->read(null, $id);
+			$this->set('assets', 
+						$this->AssetOut->Asset->generateList(
+							$conditions = 'Asset.asset_type_id = 99999',
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Asset.id',
+							$valuePath = '{n}.Asset.asset_name')
+			);
+			$this->set('departments', 
+						$this->AssetOut->Department->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Department.id',
+							$valuePath = '{n}.Department.department_name')
+			);
+
+		} else {
+			$this->cleanUpFields();
+			if ($this->AssetOut->save($this->data)) {
+				$this->Session->setFlash('书籍借出保存成功！');
+				$this->redirect('/asset_outs/book_index');
+			} else {
+				$this->Session->setFlash('Please correct errors below.');
+				$this->set('assets', $this->AssetOut->Asset->generateList());
+				$this->set('departments', $this->AssetOut->Department->generateList());
+			}
+		}
+	}
+
+	function book_delete($id = null) {
+		if (!$id) {
+			$this->Session->setFlash('Invalid id for Asset Out');
+			$this->redirect('/asset_outs/book_index');
+		}
+		if ($this->AssetOut->del($id)) {
+			$this->Session->setFlash('删除成功！');
+			$this->redirect('/asset_outs/book_index');
 		}
 	}
 

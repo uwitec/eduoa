@@ -68,7 +68,8 @@ class db{
 		switch($GonxAdmin["dbtype"]){
 			case "mysql": 
 				$this->Link_ID = @mysql_connect($this->hostName, $this->dbUser, $this->dbPwd) or die (_CONNECTION_ERROR_);
-				@mysql_select_db($this->dbName) or die (_CONNECTION_ERROR_.$this->error()."<br><br>");
+			    @mysql_query("SET NAMES 'utf8'",$this->Link_ID);
+				@mysql_select_db($this->dbName,$this->Link_ID) or die (_CONNECTION_ERROR_.$this->error()."<br><br>");
 			break;
 			
 		    case "postgresql": 

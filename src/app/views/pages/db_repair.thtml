@@ -16,7 +16,9 @@
 <legend>数据库修复</legend> 
 <br/><br/><br/><br/>
 <div align="center">
-<input type="button" value="数据库修复" style="font-size:40px" onClick="alert('数据库修复成功！');">
+<form action="<?php echo $html->url('/backup/?go=optimize'); ?>" method="post">
+  <?php echo $html->submit('数据库修复',array('style' => 'font-size:40px'));?>
+</form>
 </div>
 <br/><br/><br/><br/>
 </fieldset>

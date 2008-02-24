@@ -1,0 +1,43 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	var iPath = "<?=$html->url('/')?>";
+	if(iPath=="/")iPath="";
+//-->
+</SCRIPT>
+<?php echo $javascript->link('dtree.js');?>
+<style type="text/css">
+<!--
+body {
+	background-color: #E3F4FE;
+}
+-->
+</style>
+<table width="100%" align="center" style="display: inline;">
+<tr>
+	<td>
+		<div id="dtree" style="display: inline;">
+			<script type="text/javascript">
+				<!--
+
+				d = new dTree('d');
+				d.config.target = "module_main";
+
+				d.add(0,-1,'菜单信息设定');
+
+				<?php 
+				  if (!empty($modules)){
+					  foreach ($modules as $module):
+						  $url = $html->url('/modules/edit/'.$module['Module']['id']);
+						  echo("d.add(". $module['Module']['id']. ",". $module['Module']['parent_id'] . ",'" . $module['Module']['module_name'] . "','" . $url . "');\n");
+					  endforeach;
+				  }
+				?>
+
+				document.write(d);
+
+				//-->
+			</script>
+		</div>
+	</td>
+</tr>
+</table>

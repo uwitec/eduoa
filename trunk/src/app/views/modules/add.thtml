@@ -1,0 +1,114 @@
+<h2>New Module</h2>
+<form action="<?php echo $html->url('/modules/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/module_name', 'Module Name');?>
+ 	<?php echo $html->input('Module/module_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/module_name', 'Please enter the Module Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/module_type', 'Module Type');?>
+ 	<?php echo $html->input('Module/module_type', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/module_type', 'Please enter the Module Type.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/parent_id', 'Parent Id');?>
+ 	<?php echo $html->input('Module/parent_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/parent_id', 'Please enter the Parent Id.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/hierarchy', 'Hierarchy');?>
+ 	<?php echo $html->input('Module/hierarchy', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/hierarchy', 'Please enter the Hierarchy.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/node', 'Node');?>
+ 	<?php echo $html->input('Module/node', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/node', 'Please enter the Node.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/image_uri', 'Image Uri');?>
+ 	<?php echo $html->input('Module/image_uri', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/image_uri', 'Please enter the Image Uri.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/url', 'Url');?>
+ 	<?php echo $html->input('Module/url', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/url', 'Please enter the Url.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/target', 'Target');?>
+ 	<?php echo $html->input('Module/target', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/target', 'Please enter the Target.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/allow_del', 'Allow Del');?>
+ 	<?php echo $html->input('Module/allow_del', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/allow_del', 'Please enter the Allow Del.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/allow_add', 'Allow Add');?>
+ 	<?php echo $html->input('Module/allow_add', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/allow_add', 'Please enter the Allow Add.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/allow_publish', 'Allow Publish');?>
+ 	<?php echo $html->input('Module/allow_publish', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/allow_publish', 'Please enter the Allow Publish.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/duty_person', 'Duty Person');?>
+ 	<?php echo $html->input('Module/duty_person', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/duty_person', 'Please enter the Duty Person.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/duty_company', 'Duty Company');?>
+ 	<?php echo $html->input('Module/duty_company', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/duty_company', 'Please enter the Duty Company.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/duty_lead', 'Duty Lead');?>
+ 	<?php echo $html->input('Module/duty_lead', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/duty_lead', 'Please enter the Duty Lead.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/order_list', 'Order List');?>
+ 	<?php echo $html->input('Module/order_list', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/order_list', 'Please enter the Order List.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/max_num', 'Max Num');?>
+ 	<?php echo $html->input('Module/max_num', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/max_num', 'Please enter the Max Num.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/visit_count', 'Visit Count');?>
+ 	<?php echo $html->input('Module/visit_count', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/visit_count', 'Please enter the Visit Count.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/page_type', 'Page Type');?>
+ 	<?php echo $html->input('Module/page_type', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/page_type', 'Please enter the Page Type.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/memo', 'Memo');?>
+ 	<?php echo $html->input('Module/memo', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/memo', 'Please enter the Memo.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/flag', 'Flag');?>
+ 	<?php echo $html->input('Module/flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Module/flag', 'Please enter the Flag.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Role/Role', 'Related Roles');?>
+ 	<?php echo $html->selectTag('Role/Role', $roles, $selectedRoles, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), true);?>
+	<?php echo $html->tagErrorMsg('Role/Role', 'Please select the Related Roles.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Modules', '/modules/index')?></li>
+</ul>

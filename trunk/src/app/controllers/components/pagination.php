@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 /**
  * Pagination Component, responsible for managing the DATA required for pagination.
  */
@@ -64,7 +64,7 @@ class PaginationComponent extends Object
  * @var integer
  * @access public
  */
-	var $show = 15;
+	var $show = 2;
 /**
  * Specify DEFAULT sort column.
  *

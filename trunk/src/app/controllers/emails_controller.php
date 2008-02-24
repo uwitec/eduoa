@@ -2,11 +2,24 @@
 class EmailsController extends AppController {
 
 	var $name = 'Emails';
-	var $helpers = array('Html', 'Form', 'Javascript');
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Form', 'Javascript','Pagination');
 
-	function index() {
+	function index($keyword = null, $page=1) {
 		$this->Email->recursive = 0;
-		$this->set('emails', $this->Email->findAll());
+
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['Email']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Email.subject like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Email->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('emails',$data);
 	}
 
 	function view($id = null) {

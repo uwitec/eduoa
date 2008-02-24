@@ -2,11 +2,11 @@
 class DocumentsController extends AppController {
 
 	var $name = 'Documents';
-	var $helpers = array('Html', 'Form' , 'Javascript');
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Form' , 'Javascript','Pagination');
 
-	function index() {
+	function index($keyword = null, $page=1) {
 		$id = $this->params['url']['type'];
-		//$this->Document->recursive = 0;
 		$this->set('courses', 
 				   $this->Document->Course->generateList(
 					 $conditions = null,
@@ -16,10 +16,25 @@ class DocumentsController extends AppController {
 					 $valuePath = '{n}.Course.course_name')
 		);
 		if($id) {
-			$this->set('documents', $this->Document->findAll('document_type_id = '.$id. ' and is_commons is null order by created desc'));
+			$criteria = " document_type_id = ".$id. " and is_commons is null";
 		}else {
-			$this->set('documents', $this->Document->findAll());
+			$criteria = " ";
 		}
+
+	
+		if($keyword == null){
+			$keyword = $this->data['Document']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria .= " and Document.title like '%$keyword%' ";
+		}
+		$criteria .= "  order by created desc  ";
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Document->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('documents',$data);
+
 		
 	}
 

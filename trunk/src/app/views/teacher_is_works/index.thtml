@@ -1,6 +1,13 @@
 <div id="content">
 <fieldset align=center>
 <legend>教职工离职(复职)信息调度</legend> 
+<div align="left">
+	<form action="<?php echo $html->url('/teacher_is_works/index/'); ?>" method="post">
+	  教师名称：
+	  <?php echo $html->input('TeacherIsWork/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
 	<th>教师名称</th>
@@ -25,5 +32,7 @@
 </tr>
 <?php endforeach; ?>
 </table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
+
 </fieldset>
 </div>

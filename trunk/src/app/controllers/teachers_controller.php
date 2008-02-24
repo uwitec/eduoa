@@ -2,12 +2,25 @@
 class TeachersController extends AppController {
 
 	var $name = 'Teachers';
-	var $helpers = array('Html', 'Form' ,'Javascript');
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Form' ,'Javascript','Pagination');
 	var $uses = array('Teacher', 'Member', 'User');
 
-	function index() {
+	function index($keyword = null, $page=1) {
 		$this->Teacher->recursive = 0;
-		$this->set('teachers', $this->Teacher->findAll());
+
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['Teacher']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Teacher.teacher_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Teacher->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('teachers',$data);
 	}
 
 	function list_by_department($department_id = null) {
@@ -15,14 +28,39 @@ class TeachersController extends AppController {
 		$this->set('teachers', $this->Teacher->findAllByDepartmentId($department_id));
 	}
 
-	function public_index() {
+	function public_index($keyword = null, $page=1) {
 		$this->Teacher->recursive = 0;
-		$this->set('teachers', $this->Teacher->findAll());
+
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['Teacher']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Teacher.teacher_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'public_index/'.$keyword));
+		
+		$data = $this->Teacher->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('teachers',$data);
 	}
 
-	function teaching() {
-		$this->set('teachers', $this->Teacher->findAll());
+	function teaching($keyword = null, $page=1) {
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['Teacher']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Teacher.teacher_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'teaching/'.$keyword));
+		
+		$data = $this->Teacher->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('teachers',$data);
 	}
+
+
 
 	function teaching_edit($id = null) {
 		if (empty($this->data)) {

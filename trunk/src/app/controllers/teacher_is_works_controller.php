@@ -2,11 +2,23 @@
 class TeacherIsWorksController extends AppController {
 
 	var $name = 'TeacherIsWorks';
-	var $helpers = array('Html', 'Form' );
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Form' ,'Javascript','Pagination');
 
-	function index() {
-		$this->TeacherIsWork->recursive = 0;
-		$this->set('teacherIsWorks', $this->TeacherIsWork->findAll());
+	function index($keyword = null, $page=1) {
+		//$this->TeacherIsWork->recursive = 0;
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['TeacherIsWork']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Teacher.teacher_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->TeacherIsWork->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('teacherIsWorks',$data);
 	}
 
 	function view($id = null) {

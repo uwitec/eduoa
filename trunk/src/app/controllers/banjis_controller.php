@@ -2,11 +2,24 @@
 class BanjisController extends AppController {
 
 	var $name = 'Banjis';
-	var $helpers = array('Html', 'Form', 'Javascript' );
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Javascript', 'Ajax', 'Form', 'Time','Pagination');
 
-	function index() {
+	function index($keyword = null, $page=1) {
 		$this->Banji->recursive = 0;
-		$this->set('banjis', $this->Banji->findAll());
+
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['Banji']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Banji.class_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Banji->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('banjis',$data);
 	}
 
 	function view($id = null) {
@@ -48,6 +61,13 @@ class BanjisController extends AppController {
 						 $keyPath = '{n}.Classroom.id',
 						 $valuePath = '{n}.Classroom.classroom_name')
 			);
+			$selX = array();
+			$selY = array();
+			for($i=2000; $i<=2020; $i++) {
+				$selX = array("$i" => "$i");
+				$selY = array_merge($selY,$selX);
+			}
+			$this->set('entranceYears',$selY);
 			$this->render();
 		} else {
 			$this->cleanUpFields();
@@ -94,6 +114,13 @@ class BanjisController extends AppController {
 						 $keyPath = '{n}.Classroom.id',
 						 $valuePath = '{n}.Classroom.classroom_name')
 			);
+			$selX = array();
+			$selY = array();
+			for($i=2000; $i<=2020; $i++) {
+				$selX = array("$i" => "$i");
+				$selY = array_merge($selY,$selX);
+			}
+			$this->set('entranceYears',$selY);
 		} else {
 			$this->cleanUpFields();
 			if ($this->Banji->save($this->data)) {
@@ -130,9 +157,21 @@ class BanjisController extends AppController {
 
 	}
 
-	function vlist() {
+	function vlist($keyword = null, $page=1) {
 		$this->Banji->recursive = 0;
-		$this->set('banjis', $this->Banji->findAll());
+
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['Banji']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Banji.class_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'vlist/'.$keyword));
+		
+		$data = $this->Banji->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('banjis',$data);
 	}
 
    function graduate(){

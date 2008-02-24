@@ -2,11 +2,24 @@
 class AssetInsController extends AppController {
 
 	var $name = 'AssetIns';
-	var $helpers = array('Html', 'Form','Javascript' );
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Form' ,'Javascript','Pagination');
 
-	function index() {
+	function index($keyword = null, $page=1) {
 		$this->AssetIn->recursive = 0;
-		$this->set('assetIns', $this->AssetIn->findAll('Asset.asset_type_id <> 99999'));
+
+		$criteria = " Asset.asset_type_id <> 99999 ";
+		if($keyword == null){
+			$keyword = $this->data['AssetIn']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria .= " and Asset.asset_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->AssetIn->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('assetIns',$data);
 	}
 
 	function view($id = null) {

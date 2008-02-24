@@ -16,7 +16,13 @@
 <div id="content">
 <fieldset align=center>
 <legend><?=$title?>列表</legend> 
-
+<div align="left">
+	<form action="<?php echo $html->url('/documents/all_index/?type='.$this->params['url']['type']); ?>" method="post">
+	  输入关键词：
+	  <?php echo $html->input('Document/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
 	<?php	if($title == "班级公告(全校)"){?>
@@ -25,7 +31,7 @@
 	<th><?=$v_name?></th>
 	<th><?=$v_content?></th>
 	<?php	if($title == "课件下载(全校)"){?>
-	<th>附件</th>
+<!--	<th>附件</th>-->
 	<?php	}?>
 	<th>发布日期</th>
 	<th>操作</th>
@@ -38,7 +44,7 @@
 	<td><?php echo $document['Document']['title']; ?></td>
 	<td><?php echo $document['Document']['content']; ?></td>
 	<?php	if($title == "课件下载(全校)"){?>
-	<td>……</td>
+<!--	<td>……</td>-->
 	<?php	}?>
 	<td><?php echo $document['Document']['created']; ?></td>
 	<td class="actions">
@@ -49,6 +55,8 @@
 </tr>
 <?php endforeach; ?>
 </table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
+
 <ul class="actions">
 	<li><?php echo $html->link('新增'.$title, '/documents/all_add/?type='.$this->params['url']['type']); ?></li>
 </ul>

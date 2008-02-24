@@ -161,16 +161,35 @@ class DocumentsController extends AppController {
 		}
 	}
 
-	function all_index() {
+	function all_index($keyword = null, $page=1) {
 		$id = $this->params['url']['type'];
 		$this->Document->recursive = 0;
 		if($id) {
-			$this->set('documents', $this->Document->findAll('document_type_id = '.$id. ' and is_commons=1 order by created desc'));
+			$criteria = " document_type_id = ".$id. " and is_commons = 1";
 		}else {
-			$this->set('documents', $this->Document->findAll());
+			$criteria = " ";
 		}
+
+	
+		if($keyword == null){
+			$keyword = $this->data['Document']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria .= " and Document.title like '%$keyword%' ";
+		}
+		$criteria .= "  order by created desc  ";
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'all_index/'.$keyword));
+		
+		$data = $this->Document->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('documents',$data);
+
 		
 	}
+
+
+
+
 
 	function all_add($id = null) {
 		if (empty($this->data)) {

@@ -335,7 +335,7 @@ class TeachersController extends AppController {
 			$this->redirect('/teachers/index');
 		}
 	}
-
+/*
 	function password($id = null) {
 		$this->Teacher->recursive = 0;
 		if($id){
@@ -344,6 +344,26 @@ class TeachersController extends AppController {
 			$this->set('teachers', $this->Teacher->findAll());
 		}
 	}
+*/
+
+
+	function password($keyword = null, $page=1) {
+		$this->Teacher->recursive = 0;
+
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['Teacher']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Teacher.teacher_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'password/'.$keyword));
+		
+		$data = $this->Teacher->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('teachers',$data);
+	}
+
 
 	function initpassword($id = null, $pwd = null){
 

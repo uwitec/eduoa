@@ -45,17 +45,40 @@ class StudentsController extends AppController {
 		}
 	}
 
-   function index_grow_files($id = null) {
-		$this->Student->recursive = 0;		
+
+	function index_grow_files($keyword = null, $page=1) {
+		$this->Student->recursive = 0;
+
+		if($keyword == null){
+			$keyword = $this->data['Student']['keyword'];
+		}
+
+
 		if(empty($this->params['url']['banji'])){
-			$this->set('students', $this->Student->findAll());
+			$criteria = ' ';
 			$this->set('banji_id',null);
 		}else{
 			$banji = $this->params['url']['banji'];
-			$this->set('students', $this->Student->findAll('Banji.id = '.$banji));
+			$criteria = ' Banji.id = '.$banji.' and ';
 			$this->set('banji_id',$id);
 		}
-   }
+
+		if($keyword != null){
+			$criteria .= " Student.student_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index_grow_files/'.$keyword));
+		
+		$data = $this->Student->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('students',$data);
+	}
+
+
+
+
+
+
+
 
 	function view($id = null) {
 		if (!$id) {
@@ -160,16 +183,37 @@ class StudentsController extends AppController {
 
 	}
 
-	function password($id = null) {
+	function password($id = null,$keyword = null, $page=1) {
 		$this->Student->recursive = 0;
+
+		if($keyword == null){
+			$keyword = $this->data['Student']['keyword'];
+		}
+
 		if($id){
-			$this->set('students', $this->Student->findAll('banji.id = '.$id));
+			if($keyword != null){
+				$criteria = "  Banji.id = ".$id. " and Student.student_name like '%$keyword%' ";
+			}else {
+				$criteria = "  Banji.id = ".$id;
+			}
 			$this->set('banji_id',$id);
 		}else{
-			$this->set('students', $this->Student->findAll());
+			if($keyword != null){
+				$criteria = " Student.student_name like '%$keyword%' ";
+			}else {
+				$criteria = " ";
+			}
 			$this->set('banji_id',null);
 		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'password/'.$keyword));
+		
+		$data = $this->Student->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('students',$data);
 	}
+
+
+
 
 	function edit_password($id = null) {
 		$this->set('student', $this->Student->read(null, $id));

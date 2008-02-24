@@ -6,16 +6,33 @@ class StudentsController extends AppController {
 	var $helpers = array('Html', 'Form', 'Javascript', 'Csv','Pagination');
 	var $uses = array('Student','Banji');
 
-	function index($id = null) {
+	function index($id = null,$keyword = null, $page=1) {
 		$this->Student->recursive = 0;
+
+		if($keyword == null){
+			$keyword = $this->data['Student']['keyword'];
+		}
+
 		if($id){
-			$this->set('students', $this->Student->findAll('Banji.id = '.$id.' AND Banji.status = 1'));
+			$criteria = ' Banji.id = '.$id.' AND Banji.status = 1';
 			$this->set('banji_id',$id);
 		}else{
-			$this->set('students', $this->Student->findAllByStatus(1));
+			$criteria = ' Student.status = 1';
 			$this->set('banji_id',null);
 		}
+
+		if($keyword != null){
+			$criteria .= " and Student.student_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Student->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('students',$data);
 	}
+
+
+
 
 	function index_change($id = null) {
 		$this->Student->recursive = 0;

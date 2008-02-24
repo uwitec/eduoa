@@ -7,3 +7,4 @@ ALTER TABLE `asset_ins` CHANGE `use_person` `use_person` VARCHAR( 20 ) NULL DEFA
 
 ALTER TABLE `asset_outs` CHANGE `use_person` `use_person` VARCHAR( 20 ) NULL DEFAULT NULL COMMENT '使用人' ;
 
+ALTER TABLE `students` ADD `status` INT NOT NULL DEFAULT '1' COMMENT '状态(9:新生 1:正常 2:毕业)' AFTER `password` ;

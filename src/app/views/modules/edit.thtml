@@ -1,0 +1,28 @@
+<div id="content">
+<fieldset align=center>
+<legend>编辑系统菜单</legend>
+
+<form action="<?php echo $html->url('/modules/edit/'.$html->tagValue('Module/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/module_name', '菜单名称:');?>
+ 	<?php echo $html->input('Module/module_name', array('size' => '40'));?>
+	<?php echo $html->tagErrorMsg('Module/module_name', 'Please enter the Module Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/image_uri', '图片:');?>
+ 	<?php echo $html->input('Module/image_uri', array('size' => '40'));?>
+	<?php echo $html->tagErrorMsg('Module/image_uri', 'Please enter the Image Uri.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/url', '链接:');?>
+ 	<?php echo $html->input('Module/url', array('size' => '40', 'readOnly' => 'true'));?>
+	<?php echo $html->tagErrorMsg('Module/url', 'Please enter the Url.');?>
+</div>
+<?php echo $html->hidden('Module/id')?>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+
+</fieldset>
+</div>

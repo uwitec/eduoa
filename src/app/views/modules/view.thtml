@@ -1,0 +1,84 @@
+<div class="module">
+<h2>View Module</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $module['Module']['id']?></dd>
+	<dt>Module Name</dt>
+	<dd>&nbsp;<?php echo $module['Module']['module_name']?></dd>
+	<dt>Module Type</dt>
+	<dd>&nbsp;<?php echo $module['Module']['module_type']?></dd>
+	<dt>Parent Id</dt>
+	<dd>&nbsp;<?php echo $module['Module']['parent_id']?></dd>
+	<dt>Hierarchy</dt>
+	<dd>&nbsp;<?php echo $module['Module']['hierarchy']?></dd>
+	<dt>Node</dt>
+	<dd>&nbsp;<?php echo $module['Module']['node']?></dd>
+	<dt>Image Uri</dt>
+	<dd>&nbsp;<?php echo $module['Module']['image_uri']?></dd>
+	<dt>Url</dt>
+	<dd>&nbsp;<?php echo $module['Module']['url']?></dd>
+	<dt>Target</dt>
+	<dd>&nbsp;<?php echo $module['Module']['target']?></dd>
+	<dt>Allow Del</dt>
+	<dd>&nbsp;<?php echo $module['Module']['allow_del']?></dd>
+	<dt>Allow Add</dt>
+	<dd>&nbsp;<?php echo $module['Module']['allow_add']?></dd>
+	<dt>Allow Publish</dt>
+	<dd>&nbsp;<?php echo $module['Module']['allow_publish']?></dd>
+	<dt>Duty Person</dt>
+	<dd>&nbsp;<?php echo $module['Module']['duty_person']?></dd>
+	<dt>Duty Company</dt>
+	<dd>&nbsp;<?php echo $module['Module']['duty_company']?></dd>
+	<dt>Duty Lead</dt>
+	<dd>&nbsp;<?php echo $module['Module']['duty_lead']?></dd>
+	<dt>Order List</dt>
+	<dd>&nbsp;<?php echo $module['Module']['order_list']?></dd>
+	<dt>Max Num</dt>
+	<dd>&nbsp;<?php echo $module['Module']['max_num']?></dd>
+	<dt>Visit Count</dt>
+	<dd>&nbsp;<?php echo $module['Module']['visit_count']?></dd>
+	<dt>Page Type</dt>
+	<dd>&nbsp;<?php echo $module['Module']['page_type']?></dd>
+	<dt>Memo</dt>
+	<dd>&nbsp;<?php echo $module['Module']['memo']?></dd>
+	<dt>Flag</dt>
+	<dd>&nbsp;<?php echo $module['Module']['flag']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Module',   '/modules/edit/' . $module['Module']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Module', '/modules/delete/' . $module['Module']['id'], null, 'Are you sure you want to delete: id ' . $module['Module']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Modules',   '/modules/index') ?> </li>
+	<li><?php echo $html->link('New Module',	'/modules/add') ?> </li>
+</ul>
+
+</div>
+<div class="related">
+<h3>Related Roles</h3>
+<?php if (!empty($module['Role'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach ($module['Role']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach ($module['Role'] as $role):?>
+<tr>
+	<?php foreach ($role as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/roles/view/' . $role['id']);?>
+		<?php echo $html->link('Edit', '/roles/edit/' . $role['id']);?>
+		<?php echo $html->link('Delete', '/roles/delete/' . $role['id'], null, 'Are you sure you want to delete: id ' . $role['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Role', '/roles/add/');?> </li>
+</ul>
+</div>

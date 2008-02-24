@@ -62,7 +62,7 @@
 	<th><?=$v_name?></th>
 	<th><?=$v_content?></th>
 	<?php	if(($title == "课件下载") || ($title == "同步练习")){?>
-	<th>附件</th>
+<!--	<th>附件</th>-->
 	<?php	}?>
 	<th>发布日期</th>
 	<th>操作</th>
@@ -81,7 +81,7 @@
 	<td><?php echo $document['Document']['title']; ?></td>
 	<td><?php echo $document['Document']['content']; ?></td>
 	<?php	if(($title == "课件下载") || ($title == "同步练习")){?>
-	<td>……</td>
+<!--	<td>……</td>-->
 	<?php	}?>
 	<td><?php echo $document['Document']['created']; ?></td>
 	<td class="actions">

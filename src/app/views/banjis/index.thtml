@@ -1,9 +1,18 @@
-<script src="/js/mootools.js" type=text/javascript></script>
-<script src="/js/sortabletable.js"  type=text/javascript></script>
+<?php
+  echo $javascript->link('mootools.js');
+  echo $javascript->link('sortabletable.js');
+?>
+
 <div id="content">
 <fieldset align=center>
 <legend>班级列表</legend>
-
+<div align="left">
+	<form action="<?php echo $html->url('/banjis/index/'); ?>" method="post">
+	  班级名称：
+	  <?php echo $html->input('Banji/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
 <table cellpadding="0" cellspacing="0" width="100%" id="myTable">
  <thead>
   <tr>
@@ -40,6 +49,7 @@
 	  myTable = new sortableTable('myTable', {overCls: 'over'});
   });
 </SCRIPT>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
 
 <ul class="actions">
 	<li><?php echo $html->link('新增班级', '/banjis/add'); ?></li>

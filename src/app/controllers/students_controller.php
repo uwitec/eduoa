@@ -2,7 +2,8 @@
 class StudentsController extends AppController {
 
 	var $name = 'Students';
-	var $helpers = array('Html', 'Form', 'Javascript', 'Csv');
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Form', 'Javascript', 'Csv','Pagination');
 	var $uses = array('Student','Banji');
 
 	function index($id = null) {
@@ -254,10 +255,22 @@ class StudentsController extends AppController {
 	   $this->redirect('/banjis/graduate');
    }
 
-   function graduate_info() {
-	   $this->Student->recursive = 0;
-	   $this->set('students',$this->Student->findAllByStatus(2));
-   }
+	function graduate_info($keyword = null, $page=1) {
+		$this->Student->recursive = 0;
+
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['Student']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Student.student_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'graduate_info/'.$keyword));
+		
+		$data = $this->Student->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('students',$data);
+	}
 
 }
 ?>

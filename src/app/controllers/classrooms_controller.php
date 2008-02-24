@@ -2,12 +2,26 @@
 class ClassroomsController extends AppController {
 
 	var $name = 'Classrooms';
-	var $helpers = array('Html', 'Form','Javascript' );
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Javascript', 'Ajax', 'Form', 'Time','Pagination');
 
-	function index() {
+	function index($keyword = null, $page=1) {
 		$this->Classroom->recursive = 0;
-		$this->set('classrooms', $this->Classroom->findAll());
+
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['Classroom']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Classroom.classroom_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Classroom->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('classrooms',$data);
 	}
+
 
 	function view($id = null) {
 		if (!$id) {
@@ -124,9 +138,21 @@ class ClassroomsController extends AppController {
 		}
 	}
 
-	function vlist() {
+	function vlist($keyword = null, $page=1) {
 		$this->Classroom->recursive = 0;
-		$this->set('classrooms', $this->Classroom->findAll());
+
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['Classroom']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Classroom.classroom_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'vlist/'.$keyword));
+		
+		$data = $this->Classroom->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('classrooms',$data);
 	}
 
 }

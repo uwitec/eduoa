@@ -15,7 +15,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Banji/entrance_year', '入学年份:');?>
- 	<?php echo $html->input('Banji/entrance_year', array('size' => '60'));?>
+	<?php echo $html->selectTag('Banji/entrance_year', $entranceYears,$html->tagValue('Banji/entrance_year'), array(), array(), false);?> 	
 	<?php echo $html->tagErrorMsg('Banji/entrance_year', 'Please enter the Entrance Year.');?>
 </div>
 <div class="optional"> 

@@ -2,11 +2,23 @@
 class TeacherContinuingEducationsController extends AppController {
 
 	var $name = 'TeacherContinuingEducations';
-	var $helpers = array('Html', 'Form','Javascript' );
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Form' ,'Javascript','Pagination');
 
-	function index() {
-		$this->TeacherContinuingEducation->recursive = 0;
-		$this->set('teacherContinuingEducations', $this->TeacherContinuingEducation->findAll());
+	function index($keyword = null, $page=1) {
+		//$this->TeacherIsWork->recursive = 0;
+		$criteria = " ";
+		if($keyword == null){
+			$keyword = $this->data['TeacherContinuingEducation']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = " Teacher.teacher_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->TeacherContinuingEducation->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('teacherContinuingEducations',$data);
 	}
 
 	function view($id = null) {

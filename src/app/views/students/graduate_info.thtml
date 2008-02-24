@@ -1,7 +1,13 @@
 <div id="content">
 <fieldset align=center>
 <legend>毕业生信息</legend> 
-
+<div align="left">
+	<form action="<?php echo $html->url('/students/graduate_info/'); ?>" method="post">
+	  学生姓名：
+	  <?php echo $html->input('Student/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th>学号</th>
@@ -46,5 +52,7 @@
 </tr>
 <?php endforeach; ?>
 </table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
+
 </fieldset>
 </div>

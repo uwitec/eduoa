@@ -2,11 +2,23 @@
 class AssetsController extends AppController {
 
 	var $name = 'Assets';
-	var $helpers = array('Html', 'Form','Javascript' );
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Form' ,'Javascript','Pagination');
 
-	function index() {
+	function index($keyword = null, $page=1) {
 		$this->Asset->recursive = 0;
-		$this->set('assets', $this->Asset->findAll('Asset.asset_type_id <> 99999'));
+		$criteria = " Asset.asset_type_id <> 99999 ";
+		if($keyword == null){
+			$keyword = $this->data['Asset']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria .= " and Asset.asset_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Asset->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('assets',$data);
 	}
 
 	function view($id = null) {
@@ -134,10 +146,22 @@ class AssetsController extends AppController {
 
 	//书籍管理处理
 
-	function book_index() {
+	function book_index($keyword = null, $page=1) {
 		$this->Asset->recursive = 0;
-		$this->set('assets', $this->Asset->findAll('Asset.asset_type_id = 99999'));
+		$criteria = " Asset.asset_type_id = 99999 ";
+		if($keyword == null){
+			$keyword = $this->data['Asset']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria .= " and Asset.asset_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'book_index/'.$keyword));
+		
+		$data = $this->Asset->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('assets',$data);
 	}
+
 
 	function book_add() {
 		if (empty($this->data)) {

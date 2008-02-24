@@ -2,12 +2,27 @@
 class AssetMaintenancesController extends AppController {
 
 	var $name = 'AssetMaintenances';
-	var $helpers = array('Html', 'Form','Javascript' );
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Form' ,'Javascript','Pagination');
 
-	function index() {
+	function index($keyword = null, $page=1) {
 		$this->AssetMaintenance->recursive = 0;
-		$this->set('assetMaintenances', $this->AssetMaintenance->findAll('asset_type_id <> 99999'));
+
+		$criteria = " Asset.asset_type_id <> 99999 ";
+		if($keyword == null){
+			$keyword = $this->data['AssetMaintenance']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria .= " and Asset.asset_name like '%$keyword%' ";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->AssetMaintenance->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('assetMaintenances',$data);
 	}
+
+
 
 	function view($id = null) {
 		if (!$id) {

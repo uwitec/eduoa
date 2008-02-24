@@ -364,7 +364,7 @@ fieldset table{
 
 fieldset table th{
 	border:1px solid #81BEEA;
-	background-image: url(/img/table_th_bg.jpg);
+	background-image: url(../img/table_th_bg.jpg);
 	padding: 4px;
 	white-space:nowrap;
 }

@@ -9,7 +9,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetIn/in_date', '入库日期');?>
- 	<?php echo $html->dateTimeOptionTag('AssetIn/in_date', 'MDY' , 'NONE', $html->tagValue('AssetIn/in_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('AssetIn/in_date', 'YMD' , 'NONE', $html->tagValue('AssetIn/in_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetIn/in_date', 'Please select the In Date.');?>
 </div>
 <div class="optional"> 

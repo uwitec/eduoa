@@ -9,12 +9,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetOut/from_date', '借出日期');?>
- 	<?php echo $html->dateTimeOptionTag('AssetOut/from_date', 'MDY' , 'NONE', $html->tagValue('AssetOut/from_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('AssetOut/from_date', 'YMD' , 'NONE', $html->tagValue('AssetOut/from_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetOut/from_date', 'Please select the From Date.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetOut/end_date', '归还日期');?>
- 	<?php echo $html->dateTimeOptionTag('AssetOut/end_date', 'MDY' , 'NONE', $html->tagValue('AssetOut/end_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('AssetOut/end_date', 'YMD' , 'NONE', $html->tagValue('AssetOut/end_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetOut/end_date', 'Please select the End Date.');?>
 </div>
 <div class="optional"> 

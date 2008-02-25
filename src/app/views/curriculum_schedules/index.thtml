@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>班级排课[班级：<?=$this->params['pass'][1]?>]</legend> 
 
-<form>
+<form action="<?php echo $html->url('/curriculum_schedules/banji_view/'. $this->params['pass'][0]); ?>" target="_blank">
 <script language="JavaScript">
 <!--
   function updateSchedule(i){
@@ -54,7 +54,7 @@
 	<td>固定教室<?php echo $html->selectTag('CurriculumSchedule/classroom_id', $classrooms, $html->tagValue('CurriculumSchedule/classroom_id'), array(), array(), false);?></td>
 	<td>选择课程<?php echo $html->selectTag('CurriculumSchedule/course_id', $courses, $html->tagValue('CurriculumSchedule/course_id'), array(), array(), false);?></td>
 	<td>选择教师<?php echo $html->selectTag('CurriculumSchedule/teacher_id', $teachers, $html->tagValue('CurriculumSchedule/teacher_id'), array(), array(), true);?></td>
-	<td><input type="button" value="课表预览"></td>
+	<td><input type="submit" value="课表预览"></td>
   </tr>
 </table>
 <br/>

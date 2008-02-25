@@ -1,3 +1,20 @@
+<?php
+echo $javascript->link('datechooser.js');
+echo $html->css('datechooser');
+?>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	events.add(window, 'load', WindowLoad);
+	function WindowLoad(){
+		var inFromDate = document.getElementById('inFromDate');
+		inFromDate.DateChooser = new DateChooser();
+		inFromDate.DateChooser.setUpdateField(['AssetInInDateMonth', 'AssetInInDateDay', 'AssetInInDateYear'], ['m', 'd', 'Y']);
+		inFromDate.DateChooser.setIcon("<?=$html->url('/img/datechooser.png')?>", 'AssetInInDateDay',true,'点击选择日期');
+
+		return true;
+	}
+//-->
+</SCRIPT>
 <div id="content">
 <fieldset align=center>
 <legend>新增资产归还</legend>
@@ -7,9 +24,9 @@
  	<?php echo $html->selectTag('AssetIn/asset_id', $assets, $html->tagValue('AssetIn/asset_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('AssetIn/asset_id', 'Please select the Asset.') ?>
 </div>
-<div class="optional"> 
+<div class="optional"  id="inFromDate"> 
 	<?php echo $form->labelTag('AssetIn/in_date', '入库日期');?>
- 	<?php echo $html->dateTimeOptionTag('AssetIn/in_date', 'MDY' , 'NONE', $html->tagValue('AssetIn/in_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('AssetIn/in_date', 'YMD' , 'NONE', $html->tagValue('AssetIn/in_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetIn/in_date', 'Please select the In Date.');?>
 </div>
 <div class="optional"> 

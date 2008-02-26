@@ -9,12 +9,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetMaintenance/send_date', '送修日期');?>
- 	<?php echo $html->dateTimeOptionTag('AssetMaintenance/send_date', 'MDY' , 'NONE', $html->tagValue('AssetMaintenance/send_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('AssetMaintenance/send_date', 'YMD' , 'NONE', $html->tagValue('AssetMaintenance/send_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/send_date', 'Please select the Send Date.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('AssetMaintenance/maintenance_date', '维修日期');?>
- 	<?php echo $html->dateTimeOptionTag('AssetMaintenance/maintenance_date', 'MDY' , 'NONE', $html->tagValue('AssetMaintenance/maintenance_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('AssetMaintenance/maintenance_date', 'YMD' , 'NONE', $html->tagValue('AssetMaintenance/maintenance_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetMaintenance/maintenance_date', 'Please select the Maintenance Date.');?>
 </div>
 <div class="optional"> 

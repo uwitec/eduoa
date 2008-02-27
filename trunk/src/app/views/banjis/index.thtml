@@ -1,6 +1,8 @@
 <?php
+/*
   echo $javascript->link('mootools.js');
   echo $javascript->link('sortabletable.js');
+*/
 ?>
 
 <div id="content">
@@ -44,11 +46,13 @@
 <?php endforeach; ?>
 </tbody>
 </table>
+<!--
 <SCRIPT type=text/javascript>
   window.addEvent('domready', function(){
 	  myTable = new sortableTable('myTable', {overCls: 'over'});
   });
 </SCRIPT>
+-->
 <p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
 
 <ul class="actions">

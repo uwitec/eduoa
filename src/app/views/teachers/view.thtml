@@ -1,3 +1,10 @@
+<?php
+	if(empty($this->params['url']['type'])) {
+		$goBack = 'index';
+	}else {
+		$goBack = 'teaching';
+	}
+?>
 <div id="content">
 <fieldset align=center>
 <legend>查看教职工信息</legend> 
@@ -9,23 +16,27 @@
 	<dt>姓名</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['teacher_name']?></dd>
 	<dt>教职工类型</dt>
-	<dd>&nbsp;<?php echo $teacher['Teacher']['teacher_type']?></dd>
+	<dd>&nbsp;<?php if($teacher['Teacher']['teacher_type'] == 1){echo("教师");}else{echo("职工");}?></dd>
 	<dt>是否在岗</dt>
-	<dd>&nbsp;<?php echo $teacher['Teacher']['is_work']?></dd>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['is_work']?'在岗':'离职'?></dd>
 	<dt>生日</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['birthday']?></dd>
 	<dt>性别</dt>
-	<dd>&nbsp;<?php echo $teacher['Teacher']['sex']?></dd>
+	<dd>&nbsp;<?php echo $teacher['Teacher']['sex']?'男':'女'?></dd>
+	<!--
 	<dt>民族</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['Person']['id'], '/people/view/' .$teacher['Person']['id'])?></dd>
 	<dt>学位</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['Degree']['id'], '/degrees/view/' .$teacher['Degree']['id'])?></dd>
+	-->
 	<dt>职称</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['duty']?></dd>
 	<dt>身份证号码</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['cert_number']?></dd>
+	<!--
 	<dt>任教年限</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['get_busy_date']?></dd>
+	-->
 	<dt>联系地址</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['address']?></dd>
 	<dt>电子邮箱</dt>
@@ -36,8 +47,10 @@
 	<dd>&nbsp;<?php echo $teacher['Teacher']['specialty']?></dd>
 	<dt>办公电话</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['office_phone']?></dd>
+	<!--
 	<dt>所属部门</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['Department']['id'], '/departments/view/' .$teacher['Department']['id'])?></dd>
+	-->
 	<!--
 	<dt>照片</dt>
 	<dd>&nbsp;<?php echo $html->link($teacher['File']['name'], '/files/view/' .$teacher['File']['id'])?></dd>
@@ -46,7 +59,7 @@
 	<dd>&nbsp;<?php echo $teacher['Teacher']['flag']?></dd>
 </dl>
 <ul class="actions">
-	<li><?php echo $html->link('教职工列表',   '/teachers/index') ?> </li>
+	<li><?php echo $html->link('教职工列表',   '/teachers/'.$goBack) ?> </li>
 </ul>
 </fieldset>
 </div>

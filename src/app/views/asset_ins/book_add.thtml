@@ -25,7 +25,7 @@ echo $html->css('datechooser');
 	<?php echo $html->tagErrorMsg('AssetIn/asset_id', 'Please select the Asset.') ?>
 </div>
 <div class="optional" id="inFromDate"> 
-	<?php echo $form->labelTag('AssetIn/in_date', '入库日期');?>
+	<?php echo $form->labelTag('AssetIn/in_date', '归还日期');?>
  	<?php echo $html->dateTimeOptionTag('AssetIn/in_date', 'YMD' , 'NONE', $html->tagValue('AssetIn/in_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetIn/in_date', 'Please select the In Date.');?>
 </div>

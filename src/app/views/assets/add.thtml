@@ -1,3 +1,24 @@
+<?php
+echo $javascript->link('datechooser.js');
+echo $html->css('datechooser');
+?>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	events.add(window, 'load', WindowLoad);
+	function WindowLoad(){
+		var outFromDate = document.getElementById('outFromDate');
+		outFromDate.DateChooser = new DateChooser();
+		outFromDate.DateChooser.setUpdateField(['AssetMadeDateMonth', 'AssetMadeDateDay', 'AssetMadeDateYear'], ['m', 'd', 'Y']);
+		outFromDate.DateChooser.setIcon("<?=$html->url('/img/datechooser.png')?>", 'AssetMadeDateDay',true,'点击选择日期');
+
+		var outEndDate = document.getElementById('outEndDate');
+		outEndDate.DateChooser = new DateChooser();
+		outEndDate.DateChooser.setUpdateField(['AssetInDateMonth', 'AssetInDateDay', 'AssetInDateYear'], ['m', 'd', 'Y']);
+		outEndDate.DateChooser.setIcon("<?=$html->url('/img/datechooser.png')?>", 'AssetInDateDay',true,'点击选择日期');
+		return true;
+	}
+//-->
+</SCRIPT>
 <div id="content">
 <fieldset align=center>
 <legend>新建资产</legend>
@@ -28,14 +49,14 @@
  	<?php echo $html->input('Asset/provider', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Asset/provider', 'Please enter the Provider.');?>
 </div>
-<div class="optional"> 
+<div class="optional" id="outFromDate"> 
 	<?php echo $form->labelTag('Asset/made_date', '生产日期');?>
- 	<?php echo $html->dateTimeOptionTag('Asset/made_date', 'MDY' , 'NONE', $html->tagValue('Asset/made_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('Asset/made_date', 'YMD' , 'NONE', $html->tagValue('Asset/made_date'), array());?>
 	<?php echo $html->tagErrorMsg('Asset/made_date', 'Please select the Made Date.');?>
 </div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Asset/in_date', '入帐日期');?>
- 	<?php echo $html->dateTimeOptionTag('Asset/in_date', 'MDY' , 'NONE', $html->tagValue('Asset/in_date'), array());?>
+<div class="optional" id="outEndDate"> 
+	<?php echo $form->labelTag('Asset/in_date', '入库日期');?>
+ 	<?php echo $html->dateTimeOptionTag('Asset/in_date', 'YMD' , 'NONE', $html->tagValue('Asset/in_date'), array());?>
 	<?php echo $html->tagErrorMsg('Asset/in_date', 'Please select the In Date.');?>
 </div>
 <div class="optional"> 

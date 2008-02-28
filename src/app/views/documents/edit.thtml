@@ -45,7 +45,7 @@
 <?php	if($title != "新闻" && $title != "公告通知" && $title != "系统帮助"){?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Banji/Banji', '发布对象');?>
- 	<?php echo $html->selectTag('Banji/Banji', $banjis, $selectedBanjis, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), false);?>
+ 	<?php echo $html->selectTag('Banji/Banji', $banjis, $selectedBanjis, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), false);?>【按下Ctrl键，点击鼠标进行多选】
 	<?php echo $html->tagErrorMsg('Banji/Banji', 'Please select the Related Banjis.');?>
 </div>
 <?php	}?>

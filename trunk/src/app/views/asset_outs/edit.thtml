@@ -1,3 +1,24 @@
+<?php
+echo $javascript->link('datechooser.js');
+echo $html->css('datechooser');
+?>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	events.add(window, 'load', WindowLoad);
+	function WindowLoad(){
+		var outFromDate = document.getElementById('outFromDate');
+		outFromDate.DateChooser = new DateChooser();
+		outFromDate.DateChooser.setUpdateField(['AssetOutFromDateMonth', 'AssetOutFromDateDay', 'AssetOutFromDateYear'], ['m', 'd', 'Y']);
+		outFromDate.DateChooser.setIcon("<?=$html->url('/img/datechooser.png')?>", 'AssetOutFromDateDay',true,'点击选择日期');
+
+		var outEndDate = document.getElementById('outEndDate');
+		outEndDate.DateChooser = new DateChooser();
+		outEndDate.DateChooser.setUpdateField(['AssetOutEndDateMonth', 'AssetOutEndDateDay', 'AssetOutEndDateYear'], ['m', 'd', 'Y']);
+		outEndDate.DateChooser.setIcon("<?=$html->url('/img/datechooser.png')?>", 'AssetOutEndDateDay',true,'点击选择日期');
+		return true;
+	}
+//-->
+</SCRIPT>
 <div id="content">
 <fieldset align=center>
 <legend>资产借出</legend>
@@ -7,12 +28,12 @@
  	<?php echo $html->selectTag('AssetOut/asset_id', $assets, $html->tagValue('AssetOut/asset_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('AssetOut/asset_id', 'Please select the Asset.') ?>
 </div>
-<div class="optional"> 
+<div class="optional" id="outFromDate"> 
 	<?php echo $form->labelTag('AssetOut/from_date', '借出日期');?>
  	<?php echo $html->dateTimeOptionTag('AssetOut/from_date', 'YMD' , 'NONE', $html->tagValue('AssetOut/from_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetOut/from_date', 'Please select the From Date.');?>
 </div>
-<div class="optional"> 
+<div class="optional" id="outEndDate"> 
 	<?php echo $form->labelTag('AssetOut/end_date', '归还日期');?>
  	<?php echo $html->dateTimeOptionTag('AssetOut/end_date', 'YMD' , 'NONE', $html->tagValue('AssetOut/end_date'), array());?>
 	<?php echo $html->tagErrorMsg('AssetOut/end_date', 'Please select the End Date.');?>

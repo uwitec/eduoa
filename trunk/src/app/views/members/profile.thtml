@@ -1,3 +1,19 @@
+<?php
+echo $javascript->link('datechooser.js');
+echo $html->css('datechooser');
+?>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	events.add(window, 'load', WindowLoad);
+	function WindowLoad(){
+		var outFromDate = document.getElementById('outFromDate');
+		outFromDate.DateChooser = new DateChooser();
+		outFromDate.DateChooser.setUpdateField(['MemberBdayMonth', 'MemberBdayDay', 'MemberBdayYear'], ['m', 'd', 'Y']);
+		outFromDate.DateChooser.setIcon("<?=$html->url('/img/datechooser.png')?>", 'MemberBdayDay',true,'点击选择日期');
+		return true;
+	}
+//-->
+</SCRIPT>
 <fieldset align=center>
 <legend>修改个人资料</legend>
 <form action="<?php echo $html->url('/members/profile/'.$html->tagValue('Member/uid')); ?>" method="post" onsubmit="return check()">
@@ -16,7 +32,7 @@
  	<?php echo $html->input('User/cert_number', array('size' => '60','maxlength' => '18'));?>
 	<?php echo $html->tagErrorMsg('User/cert_number', 'Please enter the Cert Number.');?>
 </div>
-<div class="optional"> 
+<div class="optional" id="outFromDate"> 
 	<?php echo $form->labelTag('Member/bday', '出生日期：');?>
  	<?php echo $html->dateTimeOptionTag('Member/bday', 'YMD' , 'NONE', $html->tagValue('Member/bday'), array());?>
 	<?php echo $html->tagErrorMsg('Member/bday', 'Please select the Bday.');?>

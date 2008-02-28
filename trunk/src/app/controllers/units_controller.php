@@ -36,8 +36,7 @@ class UnitsController extends AppController {
 		}
 	}
 
-	function edit($id = null) {
-		$type = $this->params['url']['type'];
+	function edit($id = null,$type = null) {
 		if (empty($this->data)) {
 			if (!$id) {
 				$this->Session->setFlash('Invalid id for Unit');

@@ -9,12 +9,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('SemesterType/start_date', '开始日期');?>
- 	<?php echo $html->dateTimeOptionTag('SemesterType/start_date', 'MDY' , 'NONE', $html->tagValue('SemesterType/start_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('SemesterType/start_date', 'YMD' , 'NONE', $html->tagValue('SemesterType/start_date'), array());?>
 	<?php echo $html->tagErrorMsg('SemesterType/start_date', 'Please select the Start Date.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('SemesterType/end_date', '结束日期');?>
- 	<?php echo $html->dateTimeOptionTag('SemesterType/end_date', 'MDY' , 'NONE', $html->tagValue('SemesterType/end_date'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('SemesterType/end_date', 'YMD' , 'NONE', $html->tagValue('SemesterType/end_date'), array());?>
 	<?php echo $html->tagErrorMsg('SemesterType/end_date', 'Please select the End Date.');?>
 </div>
 <?php echo $html->hidden('SemesterType/id')?>

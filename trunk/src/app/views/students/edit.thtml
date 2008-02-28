@@ -1,3 +1,24 @@
+<?php
+echo $javascript->link('datechooser.js');
+echo $html->css('datechooser');
+?>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	events.add(window, 'load', WindowLoad);
+	function WindowLoad(){
+		var outFromDate = document.getElementById('outFromDate');
+		outFromDate.DateChooser = new DateChooser();
+		outFromDate.DateChooser.setUpdateField(['StudentBirthdayMonth', 'StudentBirthdayDay', 'StudentBirthdayYear'], ['m', 'd', 'Y']);
+		outFromDate.DateChooser.setIcon("<?=$html->url('/img/datechooser.png')?>", 'StudentBirthdayDay',true,'点击选择日期');
+
+		var outEndDate = document.getElementById('outEndDate');
+		outEndDate.DateChooser = new DateChooser();
+		outEndDate.DateChooser.setUpdateField(['StudentEnterDateMonth', 'StudentEnterDateDay', 'StudentEnterDateYear'], ['m', 'd', 'Y']);
+		outEndDate.DateChooser.setIcon("<?=$html->url('/img/datechooser.png')?>", 'StudentEnterDateDay',true,'点击选择日期');
+		return true;
+	}
+//-->
+</SCRIPT>
 <div id="content">
 <fieldset align=center>
 <legend>新建学生</legend> 
@@ -18,7 +39,7 @@
  	<?php echo $html->selectTag('Student/banji_id', $banjis, $html->tagValue('Student/banji_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Student/banji_id', 'Please select the Banji.') ?>
 </div>
-<div class="optional"> 
+<div class="optional" id="outFromDate"> 
 	<?php echo $form->labelTag('Student/birthday', '出生日期:');?>
  	<?php echo $html->dateTimeOptionTag('Student/birthday', 'YMD' , 'NONE', $html->tagValue('Student/birthday'), array());?>
 	<?php echo $html->tagErrorMsg('Student/birthday', 'Please select the Birthday.');?>
@@ -50,7 +71,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Student/cert_number', '身份证号:');?>
- 	<?php echo $html->input('Student/cert_number', array('size' => '30'));?>
+ 	<?php echo $html->input('Student/cert_number', array('size' => '30','maxlength' => '18'));?>
 	<?php echo $html->tagErrorMsg('Student/cert_number', 'Please enter the Cert Number.');?>
 </div>
 <div class="optional"> 
@@ -93,7 +114,7 @@
  	<?php echo $html->input('Student/father_phone', array('size' => '30','maxlength' => '11'));?>
 	<?php echo $html->tagErrorMsg('Student/father_phone', 'Please enter the Telphone.');?>
 </div>
-<div class="optional"> 
+<div class="optional" id="outEndDate"> 
 	<?php echo $form->labelTag('Student/enter_date', '入学日期:');?>
  	<?php echo $html->dateTimeOptionTag('Student/enter_date', 'YMD' , 'NONE', $html->tagValue('Student/enter_date'), array());?>
 	<?php echo $html->tagErrorMsg('Student/enter_date', 'Please select the Enter Date.');?>
@@ -117,26 +138,52 @@
 <SCRIPT LANGUAGE="JavaScript">
 <!--
 function check(){
+
 	if($F('StudentStudentNo')==''){
 		alert('学号不能为空！');
 		$('StudentStudentNo').focus();
 		return false;
 	}
+	if(isNaN($F('StudentStudentNo'))) {
+		alert('学号格式不对，必须是数字！');
+		$('StudentStudentNo').focus();
+		return false;		
+	}
+	
 	if($F('StudentStudentName')==''){
 		alert('名称不能为空！');
 		$('StudentStudentName').focus();
 		return false;
 	}
-	if($F('StudentBanjiId')==''){
-		alert('班号不能为空！');
-		$('StudentBanjiId').focus();
+
+	if($F('StudentCertNumber')==''){
+		alert('身份证号码不能为空！');
+		$('StudentCertNumber').focus();
 		return false;
 	}
-	if($F('BanjiClassSize')==''){
-		alert('班级人数不能为空！');
-		$('BanjiClassSize').focus();
+	if($F('StudentCertNumber').length!=15  && $F('StudentCertNumber').length!=18) {
+		alert('身份证号码位数不对，只能是15或18位！');
+		$('StudentCertNumber').focus();
 		return false;
 	}
+	if($F('StudentCertNumber').length==15) {
+		if(isNaN($F('StudentCertNumber'))){
+			alert('无效身份证号码，请重新输入！');
+			$('StudentCertNumber').focus();
+			return false;
+		}
+	}
+	if($F('StudentCertNumber').length==18) {
+		str1 = $F('StudentCertNumber').substring(0,17);
+		str2 = $F('StudentCertNumber').substring(17,18);
+		alpha = "X0123456789";
+		if(isNaN(str1)||alpha.indexOf(str2)==-1){
+			alert('无效身份证号码，请重新输入！');
+			$('StudentCertNumber').focus();
+			return false;
+		}		
+	}
+
 }
 //-->
 </SCRIPT>

@@ -61,12 +61,18 @@ class BanjisController extends AppController {
 						 $keyPath = '{n}.Classroom.id',
 						 $valuePath = '{n}.Classroom.classroom_name')
 			);
-			$selX = array();
-			$selY = array();
+
+			$keys = array();
+			$vals = array();
 			for($i=2000; $i<=2020; $i++) {
-				$selX = array("$i" => "$i");
-				$selY = array_merge($selY,$selX);
+				$keys = array_merge($keys,array($i));
+				$vals = array_merge($vals,array($i));
 			}
+			$selY = array_combine($keys, $vals);
+
+
+
+
 			$this->set('entranceYears',$selY);
 			$this->render();
 		} else {
@@ -114,12 +120,15 @@ class BanjisController extends AppController {
 						 $keyPath = '{n}.Classroom.id',
 						 $valuePath = '{n}.Classroom.classroom_name')
 			);
-			$selX = array();
-			$selY = array();
+
+			$keys = array();
+			$vals = array();
 			for($i=2000; $i<=2020; $i++) {
-				$selX = array("$i" => "$i");
-				$selY = array_merge($selY,$selX);
+				$keys = array_merge($keys,array($i));
+				$vals = array_merge($vals,array($i));
 			}
+			$selY = array_combine($keys, $vals);
+
 			$this->set('entranceYears',$selY);
 		} else {
 			$this->cleanUpFields();

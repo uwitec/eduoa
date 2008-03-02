@@ -51,12 +51,9 @@ class ClassroomsController extends AppController {
 		    );
 			$this->render();
 		} else {
-			$this->cleanUpFields();
-			if ($this->Classroom->save($this->data)) {
-				$this->Session->setFlash('教室信息保存成功！');
-				$this->redirect('/classrooms/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
+        	if($this->Classroom->findByClassroomNameAndTeachingBuildingId($this->data['Classroom']['classroom_name'],$this->data['Classroom']['teaching_building_id'])){
+        		$this->Classroom->invalidate('classroom_name');
+        		$this->set('classroom_name_error', '已经存在！');
 				$this->set('classroomTypes', 
 						   $this->Classroom->ClassroomType->generateList(
 							 $conditions = null,
@@ -73,6 +70,30 @@ class ClassroomsController extends AppController {
 							 $keyPath = '{n}.TeachingBuilding.id',
 							 $valuePath = '{n}.TeachingBuilding.building_name')
 				);
+        	}else{
+				$this->cleanUpFields();
+				if ($this->Classroom->save($this->data)) {
+					$this->Session->setFlash('教室信息保存成功！');
+					$this->redirect('/classrooms/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+					$this->set('classroomTypes', 
+							   $this->Classroom->ClassroomType->generateList(
+								 $conditions = null,
+								 $order = 'id',
+								 $limit = null,
+								 $keyPath = '{n}.ClassroomType.id',
+								 $valuePath = '{n}.ClassroomType.type_name')
+					);
+					$this->set('teachingBuildings', 
+								$this->Classroom->TeachingBuilding->generateList(
+								 $conditions = null,
+								 $order = 'id',
+								 $limit = null,
+								 $keyPath = '{n}.TeachingBuilding.id',
+								 $valuePath = '{n}.TeachingBuilding.building_name')
+					);
+				}
 			}
 		}
 	}

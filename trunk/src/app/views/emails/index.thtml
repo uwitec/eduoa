@@ -18,8 +18,8 @@
 </tr>
 <?php foreach ($emails as $email): ?>
 <tr>
-	<td><?php echo $email['Email']['from_id']; ?></td>
-	<td><?php echo $email['Email']['to_id']; ?></td>
+	<td><?php echo $email['User']['user_name']; ?></td>
+	<td><?php echo $email['Teacher']['teacher_name']; ?></td>
 	<td><?php echo $email['Email']['subject']; ?></td>
 	<td><?php echo $email['Email']['send_time']; ?></td>
 	<td class="actions">

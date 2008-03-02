@@ -27,7 +27,7 @@ echo $html->css('datechooser');
 <div class="optional"> 
 	<?php echo $form->labelTag('Student/student_no', '学号:');?>
  	<?php echo $html->input('Student/student_no', array('size' => '30'));?>
-	<?php echo $html->tagErrorMsg('Student/student_no', 'Please enter the Student No.');?>
+	<?php echo $html->tagErrorMsg('Student/student_no', '该学号已存在！');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Student/student_name', '姓名:');?>
@@ -71,7 +71,7 @@ echo $html->css('datechooser');
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Student/cert_number', '身份证号:');?>
- 	<?php echo $html->input('Student/cert_number', array('size' => '30','maxlength'=>'18','value' => '234234'));?>
+ 	<?php echo $html->input('Student/cert_number', array('size' => '30','maxlength'=>'18'));?>
 	<?php echo $html->tagErrorMsg('Student/cert_number', 'Please enter the Cert Number.');?>
 </div>
 <div class="optional"> 
@@ -175,7 +175,7 @@ function check(){
 	if($F('StudentCertNumber').length==18) {
 		str1 = $F('StudentCertNumber').substring(0,17);
 		str2 = $F('StudentCertNumber').substring(17,18);
-		alpha = "X0123456789";
+		alpha = "xX0123456789";
 		if(isNaN(str1)||alpha.indexOf(str2)==-1){
 			alert('无效身份证号码，请重新输入！');
 			$('StudentCertNumber').focus();

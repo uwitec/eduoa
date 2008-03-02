@@ -51,13 +51,34 @@ class AssetOutsController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-			if ($this->AssetOut->save($this->data)) {
-				$this->Session->setFlash('资产借出保存成功！');
-				$this->redirect('/asset_outs/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('assets', $this->AssetOut->Asset->generateList());
-				$this->set('departments', $this->AssetOut->Department->generateList());
+
+			if($this->data['AssetOut']['from_date'] > $this->data['AssetOut']['end_date']) {
+				$this->Session->setFlash('资产借出日期不能大于归还日期！');
+				$this->set('assets', 
+							$this->AssetOut->Asset->generateList(
+								$conditions = 'Asset.asset_type_id <> 99999',
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Asset.id',
+								$valuePath = '{n}.Asset.asset_name')
+				);
+				$this->set('departments', 
+							$this->AssetOut->Department->generateList(
+								$conditions = null,
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Department.id',
+								$valuePath = '{n}.Department.department_name')
+				);
+			}else {
+				if ($this->AssetOut->save($this->data)) {
+					$this->Session->setFlash('资产借出保存成功！');
+					$this->redirect('/asset_outs/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+					$this->set('assets', $this->AssetOut->Asset->generateList());
+					$this->set('departments', $this->AssetOut->Department->generateList());
+				}				
 			}
 		}
 	}
@@ -88,13 +109,33 @@ class AssetOutsController extends AppController {
 
 		} else {
 			$this->cleanUpFields();
-			if ($this->AssetOut->save($this->data)) {
-				$this->Session->setFlash('资产借出保存成功！');
-				$this->redirect('/asset_outs/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('assets', $this->AssetOut->Asset->generateList());
-				$this->set('departments', $this->AssetOut->Department->generateList());
+			if($this->data['AssetOut']['from_date'] > $this->data['AssetOut']['end_date']) {
+				$this->Session->setFlash('资产借出日期不能大于归还日期！');
+				$this->set('assets', 
+							$this->AssetOut->Asset->generateList(
+								$conditions = 'Asset.asset_type_id <> 99999',
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Asset.id',
+								$valuePath = '{n}.Asset.asset_name')
+				);
+				$this->set('departments', 
+							$this->AssetOut->Department->generateList(
+								$conditions = null,
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Department.id',
+								$valuePath = '{n}.Department.department_name')
+				);
+			}else{
+				if ($this->AssetOut->save($this->data)) {
+					$this->Session->setFlash('资产借出保存成功！');
+					$this->redirect('/asset_outs/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+					$this->set('assets', $this->AssetOut->Asset->generateList());
+					$this->set('departments', $this->AssetOut->Department->generateList());
+				}
 			}
 		}
 	}
@@ -149,13 +190,34 @@ class AssetOutsController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-			if ($this->AssetOut->save($this->data)) {
-				$this->Session->setFlash('书籍借出保存成功！');
-				$this->redirect('/asset_outs/book_index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('assets', $this->AssetOut->Asset->generateList());
-				$this->set('departments', $this->AssetOut->Department->generateList());
+			if($this->data['AssetOut']['from_date'] > $this->data['AssetOut']['end_date']) {
+				$this->Session->setFlash('书籍借出日期不能大于归还日期！');
+				$this->set('assets', 
+							$this->AssetOut->Asset->generateList(
+								$conditions = 'Asset.asset_type_id = 99999',
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Asset.id',
+								$valuePath = '{n}.Asset.asset_name')
+				);
+				$this->set('departments', 
+							$this->AssetOut->Department->generateList(
+								$conditions = null,
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Department.id',
+								$valuePath = '{n}.Department.department_name')
+				);				
+			}else {
+				$this->cleanUpFields();
+				if ($this->AssetOut->save($this->data)) {
+					$this->Session->setFlash('书籍借出保存成功！');
+					$this->redirect('/asset_outs/book_index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+					$this->set('assets', $this->AssetOut->Asset->generateList());
+					$this->set('departments', $this->AssetOut->Department->generateList());
+				}
 			}
 		}
 	}

@@ -92,7 +92,7 @@ class StudentsController extends AppController {
 		if (empty($this->data)) {
 			$this->set('banjis', 
 					   $this->Student->Banji->generateList(
-						 $conditions = null,
+						 $conditions = ' Banji.status = 1 ',
 						 $order = 'id',
 						 $limit = null,
 						 $keyPath = '{n}.Banji.id',
@@ -110,15 +110,37 @@ class StudentsController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-			$this->data['Student']['password'] = md5('888888');
-			if ($this->Student->save($this->data)) {
-				$this->Session->setFlash('学生信息新增成功！');
-				$this->redirect('/students/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('banjis', $this->Student->Banji->generateList());
-				$this->set('people', $this->Student->Person->generateList());
-				$this->set('files', $this->Student->File->generateList());
+			$this->set('banjis', 
+					   $this->Student->Banji->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.Banji.id',
+						 $valuePath = '{n}.Banji.class_name')
+			);
+			$this->set('people', 
+					   $this->Student->Person->generateList(
+						 $conditions = null,
+						 $order = 'id',
+						 $limit = null,
+						 $keyPath = '{n}.Person.id',
+						 $valuePath = '{n}.Person.people_name')
+			);
+
+        	if($this->Student->findByStudentNo($this->data['Student']['student_no'])){
+        		$this->Student->invalidate('student_no');
+        		$this->set('student_no_error', '已经存在！');
+        	}elseif($this->data['Student']['enter_date'] > date("Y-m-d")) {
+					$this->Session->setFlash('入学日期不能大于当前日期！');
+			}else{
+				$this->cleanUpFields();
+				$this->data['Student']['password'] = md5('888888');
+				if ($this->Student->save($this->data)) {
+					$this->Session->setFlash('学生信息新增成功！');
+					$this->redirect('/students/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+				}
 			}
 		}
 	}

@@ -46,7 +46,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Teacher/cert_number', '身份证号码');?>
- 	<?php echo $html->input('Teacher/cert_number', array('size' => '60'));?>
+ 	<?php echo $html->input('Teacher/cert_number', array('size' => '60','maxlength' => '18'));?>
 	<?php echo $html->tagErrorMsg('Teacher/cert_number', 'Please enter the Cert Number.');?>
 </div>
 <div class="optional"> 
@@ -104,20 +104,28 @@ function check(){
 		$('TeacherTeacherName').focus();
 		return false;
 	}
-	if($F('MemberUsername')==''){
-		alert('登录名不能为空！');
-		$('MemberUsername').focus();
+
+	if(($F('TeacherCertNumber')!='') && ($F('TeacherCertNumber').length!=15)  && ($F('TeacherCertNumber').length!=18)) {
+		alert('身份证号码位数不对，只能是15或18位！');
+		$('TeacherCertNumber').focus();
 		return false;
 	}
-	if($F('MemberPassword')==''){
-		alert('密码不能为空！');
-		$('MemberPassword').focus();
-		return false;
+	if($F('TeacherCertNumber').length==15) {
+		if(isNaN($F('TeacherCertNumber'))){
+			alert('无效身份证号码，请重新输入！');
+			$('TeacherCertNumber').focus();
+			return false;
+		}
 	}
-	if($F('MemberPassword')!=$F('MemberConfirm')){
-		alert('校验密码有误！');
-		$('MemberConfirm').focus();
-		return false;
+	if($F('TeacherCertNumber').length==18) {
+		str1 = $F('TeacherCertNumber').substring(0,17);
+		str2 = $F('TeacherCertNumber').substring(17,18);
+		alpha = "xX0123456789";
+		if(isNaN(str1)||alpha.indexOf(str2)==-1){
+			alert('无效身份证号码，请重新输入！');
+			$('TeacherCertNumber').focus();
+			return false;
+		}		
 	}
 }
 //-->

@@ -33,11 +33,6 @@ function check(){
 		$('RoleRoleName').focus();
 		return false;
 	}
-	if($F('RoleMemo')==''){
-		alert('备注不能为空！');
-		$('RoleMemo').focus();
-		return false;
-	}
 }
 //-->
 </SCRIPT>

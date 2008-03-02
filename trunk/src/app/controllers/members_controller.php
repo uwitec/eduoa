@@ -112,7 +112,7 @@ class MembersController extends AppController {
 			$this->cleanUpFields();
 			if($this->Member->save($this->data)) {
 				$this->data['User']['id'] = $id;
-				$this->data['User']['member_no'] = $this->data['User']['region_id'].$this->data['User']['cert_number'];
+				//$this->data['User']['member_no'] = $this->data['User']['region_id'].$this->data['User']['cert_number'];
 				if($this->Member->User->save($this->data)){
 					$this->Session->setFlash('会员信息修改成功！');
 				}else{

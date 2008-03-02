@@ -3,13 +3,9 @@
 <legend>查看邮件</legend>
 <dl>
 	<dt>发件人</dt>
-	<dd>&nbsp;<?php echo $email['Email']['from_id']?></dd>
+	<dd>&nbsp;<?php echo $email['User']['user_name']?></dd>
 	<dt>收件人</dt>
-	<dd>&nbsp;<?php echo $email['Email']['to_id']?></dd>
-	<dt>抄送</dt>
-	<dd>&nbsp;<?php echo $email['Email']['cc_id']?></dd>
-	<dt>暗送</dt>
-	<dd>&nbsp;<?php echo $email['Email']['bcc_id']?></dd>
+	<dd>&nbsp;<?php echo $email['Teacher']['teacher_name']?></dd>
 	<dt>主题</dt>
 	<dd>&nbsp;<?php echo $email['Email']['subject']?></dd>
 	<dt>内容</dt>

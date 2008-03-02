@@ -11,7 +11,7 @@
 <div class="optional"> 
 	<?php echo $form->labelTag('TeachingBuilding/building_name', '教学楼名称:');?>
  	<?php echo $html->input('TeachingBuilding/building_name', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('TeachingBuilding/building_name', 'Please enter the Building Name.');?>
+	<?php echo $html->tagErrorMsg('TeachingBuilding/building_name', '相同教学楼编号或名称已经存在！');?>
 </div>
 <div class="submit">
 	<?php echo $html->submit('保存');?>

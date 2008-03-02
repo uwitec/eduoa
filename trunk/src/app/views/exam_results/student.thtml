@@ -57,7 +57,7 @@
    <td align="center"><?=$student['Banji']['class_name']?></td>
    <?php $value = $this->controller->findScore($student['Student']['id'],null,$semester,$course);?>
    <td align="center">
-     <?=$html->input('ExamResult/score'.$student['Student']['id'],array('size' => '10','value' => $value, 'onkeyup' => 'saveScore('.$student['Student']['id'].')'))?>
+     <?=$html->input('ExamResult/score'.$student['Student']['id'],array('size' => '10','value' => $value, 'maxlength' => '4','onkeyup' => 'saveScore('.$student['Student']['id'].')'))?>
    </td>
  </tr>
  <?php endforeach;?>

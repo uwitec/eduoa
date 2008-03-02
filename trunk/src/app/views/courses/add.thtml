@@ -5,7 +5,7 @@
 <div class="optional"> 
 	<?php echo $form->labelTag('Course/course_name', '课程名称');?>
  	<?php echo $html->input('Course/course_name', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Course/course_name', 'Please enter the Course Name.');?>
+	<?php echo $html->tagErrorMsg('Course/course_name', '该课程名称或代码已存在.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Course/teaching_material', '所选教材');?>

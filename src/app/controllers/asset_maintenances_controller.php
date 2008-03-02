@@ -45,13 +45,26 @@ class AssetMaintenancesController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-			if ($this->AssetMaintenance->save($this->data)) {
-				$this->Session->setFlash('资产维修保存成功！');
-				$this->redirect('/asset_maintenances/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('assets', $this->AssetMaintenance->Asset->generateList());
+			if($this->data['AssetMaintenance']['send_date'] > $this->data['AssetMaintenance']['maintenance_date']) {
+				$this->Session->setFlash('资产维修日期不能大于送修日期！');
+				$this->set('assets', 
+							$this->AssetMaintenance->Asset->generateList(
+								$conditions = 'asset_type_id <> 99999',
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Asset.id',
+								$valuePath = '{n}.Asset.asset_name')
+				);
+			}else {
+				if ($this->AssetMaintenance->save($this->data)) {
+					$this->Session->setFlash('资产维修保存成功！');
+					$this->redirect('/asset_maintenances/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+					$this->set('assets', $this->AssetMaintenance->Asset->generateList());
+				}
 			}
+
 		}
 	}
 
@@ -72,12 +85,24 @@ class AssetMaintenancesController extends AppController {
 			);
 		} else {
 			$this->cleanUpFields();
-			if ($this->AssetMaintenance->save($this->data)) {
-				$this->Session->setFlash('资产维修保存成功！');
-				$this->redirect('/asset_maintenances/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('assets', $this->AssetMaintenance->Asset->generateList());
+			if($this->data['AssetMaintenance']['send_date'] > $this->data['AssetMaintenance']['maintenance_date']) {
+				$this->Session->setFlash('资产维修日期不能大于送修日期！');
+				$this->set('assets', 
+							$this->AssetMaintenance->Asset->generateList(
+								$conditions = 'asset_type_id <> 99999',
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Asset.id',
+								$valuePath = '{n}.Asset.asset_name')
+				);
+			}else {
+				if ($this->AssetMaintenance->save($this->data)) {
+					$this->Session->setFlash('资产维修保存成功！');
+					$this->redirect('/asset_maintenances/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+					$this->set('assets', $this->AssetMaintenance->Asset->generateList());
+				}
 			}
 		}
 	}

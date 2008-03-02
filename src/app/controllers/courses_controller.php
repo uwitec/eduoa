@@ -21,12 +21,17 @@ class CoursesController extends AppController {
 		if (empty($this->data)) {
 			$this->render();
 		} else {
-			$this->cleanUpFields();
-			if ($this->Course->save($this->data)) {
-				$this->Session->setFlash('课程新增成功！');
-				$this->redirect('/courses/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
+        	if($this->Course->findByCourseName($this->data['Course']['course_name'])){
+        		$this->Course->invalidate('course_name');
+        		$this->set('course_name_error', '已经存在！');
+        	}else {
+				$this->cleanUpFields();
+				if ($this->Course->save($this->data)) {
+					$this->Session->setFlash('课程新增成功！');
+					$this->redirect('/courses/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+				}
 			}
 		}
 	}

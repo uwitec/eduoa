@@ -13,6 +13,23 @@ class Email extends AppModel {
 						'counterCache' => ''
 				),
 
+			'User' =>
+				array('className' => 'User',
+						'foreignKey' => 'from_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'counterCache' => ''
+				),
+			'Teacher' =>
+				array('className' => 'Teacher',
+						'foreignKey' => 'to_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'counterCache' => ''
+				),
+
 	);
 
 	/*

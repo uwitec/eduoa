@@ -1,3 +1,4 @@
+<br/><br/>
 <?php
 echo $javascript->link('datechooser.js');
 echo $html->css('datechooser');
@@ -28,9 +29,9 @@ echo $html->css('datechooser');
 	<?php echo $html->tagErrorMsg('Member/password', 'Please enter the Password.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('User/cert_number', '身份证号码：');?>
- 	<?php echo $html->input('User/cert_number', array('size' => '60','maxlength' => '18'));?>
-	<?php echo $html->tagErrorMsg('User/cert_number', 'Please enter the Cert Number.');?>
+	<?php echo $form->labelTag('User/cert_int', '身份证号码：');?>
+ 	<?php echo $html->input('User/cert_int', array('size' => '60','maxlength' => '18'));?>
+	<?php echo $html->tagErrorMsg('User/cert_int', 'Please enter the Cert Number.');?>
 </div>
 <div class="optional" id="outFromDate"> 
 	<?php echo $form->labelTag('Member/bday', '出生日期：');?>
@@ -75,27 +76,34 @@ function check(){
 		return false;
 	}
 	
-	if($F('UserCertNumber')==''){
+	if($F('UserCertInt')==''){
 		alert('身份证号码不能为空！');
-		$('UserCertNumber').focus();
+		$('UserCertInt').focus();
 		return false;
 	}
-
-	if(($F('UserCertNumber').length !=15) && ($F('UserCertNumber').length !=18)){
-		alert('身份证号码位数不对！');
-		$('UserCertNumber').focus();
+	if($F('UserCertInt').length!=15  && $F('UserCertInt').length!=18) {
+		alert('身份证号码位数不对，只能是15或18位！');
+		$('UserCertInt').focus();
 		return false;
 	}
-
-	if($F('UserCertNumber')!=''){
-
-		var patrn = /[0-9Xx]$/;
-		if(!patrn.test($F('UserCertNumber'))){
-			alert('身份证号码格式不对！');
-			$('UserCertNumber').focus();
+	if($F('UserCertInt').length==15) {
+		if(isNaN($F('UserCertInt'))){
+			alert('无效身份证号码，请重新输入！');
+			$('UserCertInt').focus();
 			return false;
 		}
 	}
+	if($F('UserCertInt').length==18) {
+		str1 = $F('UserCertInt').substring(0,17);
+		str2 = $F('UserCertInt').substring(17,18);
+		alpha = "xX0123456789";
+		if(isNaN(str1)||alpha.indexOf(str2)==-1){
+			alert('无效身份证号码，请重新输入！');
+			$('UserCertInt').focus();
+			return false;
+		}		
+	}
+
 	
 	/*
 	if($F('MemberEmail')==''){

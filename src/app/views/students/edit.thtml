@@ -46,7 +46,7 @@ echo $html->css('datechooser');
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Student/sex', '性别:');?>	
-	<?php echo $html->selectTag('Student/sex', array('1' => '男','0' => '女'),array('1'),array(), array(), false);?> 	
+	<?php echo $html->selectTag('Student/sex', array('1' => '男','0' => '女'),$html->tagValue('Student/sex'),array(), array(), false);?> 	
 	<?php echo $html->tagErrorMsg('Student/sex', 'Please enter the Sex.');?>
 </div>
 <div class="optional"> 

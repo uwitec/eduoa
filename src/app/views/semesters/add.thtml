@@ -5,11 +5,11 @@
 <div class="optional"> 
 	<?php echo $form->labelTag('Semester/semester_name', '学期名称');?>
  	<?php echo $html->input('Semester/semester_name', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Semester/semester_name', 'Please enter the Semester Name.');?>
+	<?php echo $html->tagErrorMsg('Semester/semester_name', '该学期名称已存在.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Semester/is_current', '当前学期');?>
- 	<?php echo $html->input('Semester/is_current', array('size' => '60'));?>
+	<?php echo $html->selectTag('Semester/is_current', array('1' => '是','0' => '否'),array('1'),array(), array(), false);?> 	
 	<?php echo $html->tagErrorMsg('Semester/is_current', 'Please enter the Is Current.');?>
 </div>
 <div class="optional"> 

@@ -1,14 +1,17 @@
+<br/><br/>
 <?php
 	if($this->params['url']['type'] == 1) {
 		$title = "学校信息";
+		$tCK = "return check()";
 	}else {
 		$title = "界面信息管理";
+		$tCK = "return true";
 	}
 ?>
 <div id="content">
 <fieldset align=center>
 <legend><?=$title?></legend> 
-<form action="<?php echo $html->url('/units/edit/'.$html->tagValue('Unit/id')); ?>" method="post" onsubmit="return check()">
+<form action="<?php echo $html->url('/units/edit/'.$html->tagValue('Unit/id').'/'.$this->params['url']['type']); ?>" method="post" onsubmit="<?=$tCK?>">
 <?php	if($this->params['url']['type'] == 1) {?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Unit/unit_name', '学校名称:');?>

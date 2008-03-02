@@ -29,13 +29,26 @@ class SemestersController extends AppController {
 			);
 			$this->render();
 		} else {
-			$this->cleanUpFields();
-			if ($this->Semester->save($this->data)) {
-				$this->Session->setFlash('学期信息新增成功！');
-				$this->redirect('/semesters/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('semesterTypes', $this->Semester->SemesterType->generateList());
+        	if($this->Semester->findBySemesterName($this->data['Semester']['semester_name'])){
+        		$this->Semester->invalidate('semester_name');
+        		$this->set('semester_name_error', '已经存在！');
+				$this->set('semesterTypes', 
+						   $this->Semester->SemesterType->generateList(
+							 $conditions = null,
+							 $order = 'id',
+							 $limit = null,
+							 $keyPath = '{n}.SemesterType.id',
+							 $valuePath = '{n}.SemesterType.type_name')
+				);
+        	}else{
+				$this->cleanUpFields();
+				if ($this->Semester->save($this->data)) {
+					$this->Session->setFlash('学期信息新增成功！');
+					$this->redirect('/semesters/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+					$this->set('semesterTypes', $this->Semester->SemesterType->generateList());
+				}
 			}
 		}
 	}

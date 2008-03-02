@@ -21,12 +21,17 @@ class ClassroomTypesController extends AppController {
 		if (empty($this->data)) {
 			$this->render();
 		} else {
-			$this->cleanUpFields();
-			if ($this->ClassroomType->save($this->data)) {
-				$this->Session->setFlash('教室类型保存成功！');
-				$this->redirect('/classroom_types/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
+        	if($this->ClassroomType->findByTypeName($this->data['ClassroomType']['type_name'])){
+        		$this->ClassroomType->invalidate('type_name');
+        		$this->set('type_name_error', '已经存在！');
+        	}else{
+				$this->cleanUpFields();
+				if ($this->ClassroomType->save($this->data)) {
+					$this->Session->setFlash('教室类型保存成功！');
+					$this->redirect('/classroom_types/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+				}
 			}
 		}
 	}

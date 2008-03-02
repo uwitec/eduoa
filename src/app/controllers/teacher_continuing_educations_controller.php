@@ -42,13 +42,26 @@ class TeacherContinuingEducationsController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-			if ($this->TeacherContinuingEducation->save($this->data)) {
-				$this->Session->setFlash('新增教职工继续教育记录成功！');
-				$this->redirect('/teacher_continuing_educations/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('teachers', $this->TeacherContinuingEducation->Teacher->generateList());
+			if($this->data['TeacherContinuingEducation']['start_date'] > $this->data['TeacherContinuingEducation']['end_date']) {
+				$this->Session->setFlash('教育开始日期不能大于结束日期！');
+				$this->set('teachers', 
+							$this->TeacherContinuingEducation->Teacher->generateList(
+								$conditions = null,
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Teacher.id',
+								$valuePath = '{n}.Teacher.teacher_name')
+				);
+			}else {
+				if ($this->TeacherContinuingEducation->save($this->data)) {
+					$this->Session->setFlash('新增教职工继续教育记录成功！');
+					$this->redirect('/teacher_continuing_educations/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+					$this->set('teachers', $this->TeacherContinuingEducation->Teacher->generateList());
+				}
 			}
+
 		}
 	}
 
@@ -69,12 +82,24 @@ class TeacherContinuingEducationsController extends AppController {
 			);
 		} else {
 			$this->cleanUpFields();
-			if ($this->TeacherContinuingEducation->save($this->data)) {
-				$this->Session->setFlash('教职工继续教育记录保存成功！');
-				$this->redirect('/teacher_continuing_educations/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('teachers', $this->TeacherContinuingEducation->Teacher->generateList());
+			if($this->data['TeacherContinuingEducation']['start_date'] > $this->data['TeacherContinuingEducation']['end_date']) {
+				$this->Session->setFlash('教育开始日期不能大于结束日期！');
+				$this->set('teachers', 
+							$this->TeacherContinuingEducation->Teacher->generateList(
+								$conditions = null,
+								$order = 'id',
+								$limit = null,
+								$KeyPath = '{n}.Teacher.id',
+								$valuePath = '{n}.Teacher.teacher_name')
+				);
+			}else {
+				if ($this->TeacherContinuingEducation->save($this->data)) {
+					$this->Session->setFlash('教职工继续教育记录保存成功！');
+					$this->redirect('/teacher_continuing_educations/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+					$this->set('teachers', $this->TeacherContinuingEducation->Teacher->generateList());
+				}
 			}
 		}
 	}

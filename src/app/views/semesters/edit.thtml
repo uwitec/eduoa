@@ -9,7 +9,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Semester/is_current', '当前学期');?>
- 	<?php echo $html->input('Semester/is_current', array('size' => '60'));?>
+	<?php echo $html->selectTag('Semester/is_current', array('1' => '是','0' => '否'),$html->tagValue('Semester/is_current'),array(), array(), false);?> 	
 	<?php echo $html->tagErrorMsg('Semester/is_current', 'Please enter the Is Current.');?>
 </div>
 <div class="optional"> 

@@ -21,12 +21,18 @@ class TeachingBuildingsController extends AppController {
 		if (empty($this->data)) {
 			$this->render();
 		} else {
-			$this->cleanUpFields();
-			if ($this->TeachingBuilding->save($this->data)) {
-				$this->Session->setFlash('教学楼信息保存成功！');
-				$this->redirect('/teaching_buildings/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
+
+        	if($this->TeachingBuilding->getStatus($this->data['TeachingBuilding']['building_no'],$this->data['TeachingBuilding']['building_name']) > 0){
+        		$this->TeachingBuilding->invalidate('building_name');
+        		$this->set('building_name_error', '教学楼名称已经存在！');
+        	}else{
+				$this->cleanUpFields();
+				if ($this->TeachingBuilding->save($this->data)) {
+					$this->Session->setFlash('教学楼信息保存成功！');
+					$this->redirect('/teaching_buildings/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+				}
 			}
 		}
 	}

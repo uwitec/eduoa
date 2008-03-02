@@ -6,7 +6,7 @@
 <div class="optional"> 
 	<?php echo $form->labelTag('Classroom/classroom_name', '教室名称:');?>
  	<?php echo $html->input('Classroom/classroom_name', array('size' => '30'));?>
-	<?php echo $html->tagErrorMsg('Classroom/classroom_name', 'Please enter the Classroom Name.');?>
+	<?php echo $html->tagErrorMsg('Classroom/classroom_name', '同一教学楼已存在该教室名称.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Classroom/classroom_type_id', '教室类型:');?>
@@ -43,6 +43,11 @@ function check(){
 	}
 	if($F('ClassroomSeating')==''){
 		alert('座位数不能为空！');
+		$('ClassroomSeating').focus();
+		return false;
+	}
+	if(isNaN($F('ClassroomSeating'))) {
+		alert('座位数格式不对！');
 		$('ClassroomSeating').focus();
 		return false;
 	}

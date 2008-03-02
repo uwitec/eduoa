@@ -11,7 +11,7 @@
 <?php foreach ($semesters as $semester): ?>
 <tr>
 	<td><?php echo $semester['Semester']['semester_name']; ?></td>
-	<td><?php echo $semester['Semester']['is_current']; ?></td>
+	<td><?php echo $semester['Semester']['is_current']?'是':'否'; ?></td>
 	<td><?php echo $semester['SemesterType']['type_name']; ?></td>
 	<td class="actions">
 		<?php echo $html->link('编辑','/semesters/edit/' . $semester['Semester']['id'])?>

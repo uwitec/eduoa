@@ -6,7 +6,7 @@
 <div class="optional"> 
 	<?php echo $form->labelTag('ClassroomType/type_name', '类型名称');?>
  	<?php echo $html->input('ClassroomType/type_name', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('ClassroomType/type_name', 'Please enter the Type Name.');?>
+	<?php echo $html->tagErrorMsg('ClassroomType/type_name', '相同类型名称已存在.');?>
 </div>
 <div class="submit">
 	<?php echo $html->submit('保存');?>

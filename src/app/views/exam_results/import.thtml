@@ -7,6 +7,14 @@ function download(){
 	url += "/" + $('ExamResultCourse').options[$('ExamResultCourse').selectedIndex].text;
 	window.location = url;
 }
+
+function download_normal(){
+	var url = "<?php echo $html->url('/exp_imp/export.php');?>";
+	url += "?banji=" + $('ExamResultBanji').options[$('ExamResultBanji').selectedIndex].value;
+	url += "&semester=" + $('ExamResultSemester').options[$('ExamResultSemester').selectedIndex].value;
+	url += "&course=" + $('ExamResultCourse').options[$('ExamResultCourse').selectedIndex].value;
+	window.location = url;
+}
 </script>
 <div id="content">
 <fieldset align=center>
@@ -19,6 +27,7 @@ function download(){
 		4、点击"<font color=red>浏览</font>"，打开已填好成绩的文件；<br />
 		5、用鼠标单击"<font color=red>点击提交成绩</font>"；<br />
 		<font color=green>注：<font color=red>只能导入CSV格式</font>，即从逗号表达式格式文件，其它文件不会被系统所识别。</font><br />
+		<font color=red>特别提醒：成绩批量导入，将删除原有成绩数据，用新成绩数据覆盖，请谨慎操作！</font><br />
 	  </p>
 	</div>
 </fieldset>
@@ -50,7 +59,7 @@ function download(){
   </tr>
   <tr>
     <td align=left colspan=2>
-	  <input type="button" value="下载成绩数据导入模版文件(CSV)" onClick="download();">
+	  <input type="button" value="下载成绩数据导入模版文件(CSV)" onClick="download_normal()">
       <font color=red>首先点击左边按键下载CSV模版文件</font>
 	</td>
   </tr>

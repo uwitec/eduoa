@@ -109,11 +109,14 @@ class ExamResultsController extends AppController {
 					$banji = $this->data['ExamResult']['banji']; //班级
 					$course = $this->data['ExamResult']['course']; //课程
 
+					//在批量导入成绩前，先删除整个班级对应课程的成绩，再重新insert
+					$del_sql = "delete from exam_results where course_id = ".$course." and student_id in (select id from students where banji_id =". $banji.")";
+					$this->ExamResult->execute($del_sql);
 
 					while($data=fgetcsv($handle,10000,",")){
 						if($count >0){
 							$sql = "insert into exam_results (student_id,semester_id,course_id,score)";
-							$sql .= " values ('$data[0]','$semester', '$course', '$data[3]')";
+							$sql .= " values ('$data[0]','$semester', '$course', '$data[2]')";
 							$this->ExamResult->execute($sql);
 						}
 						$count++;
@@ -144,7 +147,7 @@ class ExamResultsController extends AppController {
 						$valuePath = '{n}.Banji.class_name')
 					);
 					$this->Session->setFlash('上传文件失败！');
-					$this->redirect('/students/import');
+					$this->redirect('/exam_results/import');
 					exit();
 				}
 			}

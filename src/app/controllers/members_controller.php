@@ -4,7 +4,7 @@ class MembersController extends AppController {
 	var $name = 'Members';
 	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
 	var $helpers = array('Html', 'Javascript', 'Ajax', 'Form', 'Time','Pagination');
-	var $uses = array('Member','Unit');
+	var $uses = array('Member','Unit','Teacher');
 	
     function validator(){
         $this->layout = '';
@@ -194,6 +194,13 @@ class MembersController extends AppController {
 				$unit = $this->Unit->read(null, 1);
 				//$this->Session->write('LoginIeTitle', $unit['Unit']['login_ie_title']);
 				$this->Session->write('MainIeTitle', $unit['Unit']['main_ie_title']);
+
+
+				if( ($this->someone['Member']['uid'] <> 1) && ($this->someone['User']['role_id'] == 1) ){
+					$teacher = $this->Teacher->findByUserId($this->someone['Member']['uid']);
+					$this->Session->write('TeacherID', $teacher['Teacher']['id']);
+				}
+
 		      	$this->redirect('/pages/main');				
       		}else {
       			$this->Session->setFlash('会员重复登录！'); //重复登录。

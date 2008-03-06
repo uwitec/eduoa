@@ -12,8 +12,16 @@ class EmailsController extends AppController {
 		if($keyword == null){
 			$keyword = $this->data['Email']['keyword'];
 		}		
+
+		if($this->Session->read('User.id') <> 1) {
+			$criteria = " Email.to_id = ".$this->Session->read('TeacherID');
+		}else {
+			$criteria = " ";
+		}
+		
+
 		if($keyword != null){
-			$criteria = " Email.subject like '%$keyword%' ";
+			$criteria .= " Email.subject like '%$keyword%' ";
 		}
 
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));

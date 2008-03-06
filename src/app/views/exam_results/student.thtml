@@ -43,7 +43,7 @@
 <?php echo $html->hidden('ExamResult/course_id',array('value' => $course));?>
 <table border=1 cellspacing=0 bordercolor=#000000 cellpadding=0 align=center width=560 style="border-collapse:collapse">
  <tr>
-   <th>序号</th>
+   <!--<th>序号</th>-->
    <th>学号</th>
    <th>姓名</th>
    <th>班级</th>
@@ -51,7 +51,7 @@
  </tr>
  <?php foreach($students as $student):?>
  <tr>
-   <td align="center"><?=$student['Student']['id']?></td>
+   <!--<td align="center"><?=$student['Student']['id']?></td>-->
    <td align="center"><?=$student['Student']['student_no']?></td>
    <td align="center"><?=$student['Student']['student_name']?></td>
    <td align="center"><?=$student['Banji']['class_name']?></td>

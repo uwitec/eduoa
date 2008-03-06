@@ -335,17 +335,6 @@ class TeachersController extends AppController {
 			$this->redirect('/teachers/index');
 		}
 	}
-/*
-	function password($id = null) {
-		$this->Teacher->recursive = 0;
-		if($id){
-			$this->set('teachers', $this->Teacher->findAll($id));
-		}else{
-			$this->set('teachers', $this->Teacher->findAll());
-		}
-	}
-*/
-
 
 	function password($keyword = null, $page=1) {
 		$this->Teacher->recursive = 0;
@@ -374,9 +363,8 @@ class TeachersController extends AppController {
 			$pwd = md5($pwd);
 		}
 
-		$sql = "update teachers set password = '$pwd' where id = $id";
+		$sql = "update members set password = '$pwd' where id = $id ";
 		$this->Teacher->execute($sql);
-
 	}
 
 }

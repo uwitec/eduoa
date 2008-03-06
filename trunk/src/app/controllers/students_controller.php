@@ -22,7 +22,12 @@ class StudentsController extends AppController {
 		}
 
 		if($keyword != null){
-			$criteria .= " and Student.student_name like '%$keyword%' ";
+			if($keyword > 0) {
+				$criteria .= " and Banji.id = $keyword ";
+			}else {
+				$criteria .= " and Student.student_name like '%$keyword%' ";
+			}
+			
 		}
 
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
@@ -72,13 +77,6 @@ class StudentsController extends AppController {
 		$data = $this->Student->findAll($criteria, NULL, null, $limit, $page); 			
 		$this->set('students',$data);
 	}
-
-
-
-
-
-
-
 
 	function view($id = null) {
 		if (!$id) {
@@ -295,8 +293,7 @@ class StudentsController extends AppController {
 					  $count++;
 				  }
 				  $this->Session->setFlash('导入学生档案成功！');
-				  //$this->redirect('/students/');
-				  exit();
+				  $this->redirect('/students/');
 			  }else{
 				$this->set('banjis', 
 					   $this->Student->Banji->generateList(

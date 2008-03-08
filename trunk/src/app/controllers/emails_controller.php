@@ -5,26 +5,47 @@ class EmailsController extends AppController {
 	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
 	var $helpers = array('Html', 'Form', 'Javascript','Pagination');
 
-	function index($keyword = null, $page=1) {
+	function index($keyword = null,$page=1) {
 		$this->Email->recursive = 0;
 
-		$criteria = " ";
+		$criteria = " 1=1 ";
+
 		if($keyword == null){
 			$keyword = $this->data['Email']['keyword'];
 		}		
 
-		if($this->Session->read('User.id') <> 1) {
-			$criteria = " Email.to_id = ".$this->Session->read('TeacherID');
-		}else {
-			$criteria = " ";
-		}
-		
-
 		if($keyword != null){
-			$criteria .= " Email.subject like '%$keyword%' ";
+			$criteria .= "and Email.subject like '%$keyword%' ";
+		}
+
+		if($this->Session->read('User.id') <> 1) {
+			$criteria .= " and Email.to_id = ".$this->Session->read('TeacherID');
 		}
 
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Email->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('emails',$data);
+	}
+
+	function index_send($keyword = null,$page=1) {
+		$this->Email->recursive = 0;
+
+		$criteria = " 1=1 ";
+
+		if($keyword == null){
+			$keyword = $this->data['Email']['keyword'];
+		}		
+
+		if($keyword != null){
+			$criteria .= "and Email.subject like '%$keyword%' ";
+		}
+
+		if($this->Session->read('User.id') <> 1) {
+			$criteria .= " and Email.from_id = ".$this->Session->read('User.id');
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index_send/'.$keyword));
 		
 		$data = $this->Email->findAll($criteria, NULL, null, $limit, $page); 			
 		$this->set('emails',$data);

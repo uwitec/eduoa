@@ -8,13 +8,33 @@
 	<th>邮件数</th>
 </tr>
 <tr>
-	<td>收件箱</td>
-	<td>0 （0 封新邮件）</td>
+	<td><a href="<?=$html->url('/emails/index')?>">收件箱</a></td>
+	<td>
+		<?php 
+			if($this->controller->Session->read('User.id') == 1) {
+				$osUserID = 1;
+			}else {
+				$osUserID = $this->controller->Session->read('TeacherID');
+			}
+			echo $this->controller->EmailBox->findReceiveCount($osUserID); 
+		?>	
+	</td>
 </tr>
 <tr>
-	<td>发件箱</td>
-	<td>0</td>
+	<td><a href="<?=$html->url('/emails/index_send')?>">发件箱</a></td>
+	<td>
+		<?php 
+			if($this->controller->Session->read('User.id') == 1) {
+				$osUserID = 1;
+			}else {
+				$osUserID = $this->controller->Session->read('User.id');
+			}
+			$osUserID = $this->controller->Session->read('User.id');
+			echo $this->controller->EmailBox->findSendCount($osUserID); 
+		?>
+	</td>
 </tr>
+<!--
 <tr>
 	<td>已发送邮件箱</td>
 	<td>0</td>
@@ -25,11 +45,15 @@
 	<td>0 （0 封新邮件）</td>
 </tr>
 <?php endforeach; ?>
+-->
 <tr>
 	<td colspan="2">
 	<input type="button" name="btnWrite" id="btnWrite" value="写邮件" onclick="javascript:location.replace('<?=$html->url('/emails/add')?>')" />
-	<input type="button" name="btnQuery" id="btnQuery" value="查询邮件" onclick="javascript:location.replace('<?=$html->url('/emails/')?>')" />
+	<input type="button" name="btnQuery" id="btnQuery" value="收件箱" onclick="javascript:location.replace('<?=$html->url('/emails/index')?>')" />
+	<input type="button" name="btnQuery" id="btnQuery" value="发件箱" onclick="javascript:location.replace('<?=$html->url('/emails/index_send')?>')" />
+	<!--
 	<input type="button" name="btnBoxManage" id="btnBoxManage" value="邮箱管理" onclick="javascript:location.replace('<?=$html->url('/email_boxes/')?>')"/>
+	-->
 	</td>
 </tr>
 </table>

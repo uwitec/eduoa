@@ -1,8 +1,8 @@
 <div id="content">
 <fieldset align=center>
-<legend>收件箱邮件列表</legend>
+<legend>发件箱邮件列表</legend>
 <div align="left">
-	<form action="<?php echo $html->url('/emails/index/'); ?>" method="post">
+	<form action="<?php echo $html->url('/emails/index_send/'); ?>" method="post">
 	  输入邮件主题：
 	  <?php echo $html->input('Email/keyword', array('size' => '60'));?>
 	  <?php echo $html->submit('查询');?>

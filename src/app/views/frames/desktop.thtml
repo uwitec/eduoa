@@ -1,5 +1,5 @@
 <?php
-	//临时处理，明天修改
+	//临时处理
 
 	$db_host="localhost";
 	$db_user="root";
@@ -85,6 +85,39 @@
 <tr>
   <td height=5></td>
 </tr>
+<?php
+
+
+
+	function findSendCount($from_id = null){
+		$conditions = "select count(*) from emails ";
+		if($from_id <> 1) {
+			$conditions .= " where  from_id = ".$from_id;
+		}		
+		$ret = $this->findBySql($conditions);
+		return $ret[0][0]['count(*)'];
+	}
+
+	$sql = "select count(*) from emails ";
+	if($this->controller->Session->read('User.id') <> 1) {
+		$sql .= " where from_id = ".$this->controller->Session->read('User.id');
+	}
+	$stmt = mysql_query($sql);
+	while($row = mysql_fetch_array($stmt)) {
+		$sendCounts = $row[0];
+	}
+
+
+	$sql = "select count(*) from emails ";
+	if($this->controller->Session->read('User.id') <> 1) {
+		$sql .= " where to_id = ".$this->controller->Session->read('TeacherID');
+	}
+	$stmt = mysql_query($sql);
+	while($row = mysql_fetch_array($stmt)) {
+		$receiveCounts = $row[0];
+	}
+
+?>
 <tr>
   <td style="padding-right:1px;border:1px solid #83B5CD" height=130 valign=top width=49%>
   <table bordr=0 cellpadding="0" cellspacing="0" width=100% background="<?=$html->url('/img/frame/desktop/title_bg.jpg')?>">
@@ -100,7 +133,7 @@
 	<tr>
 	  <td width=18 align="center"><img src="<?=$html->url('/img/frame/desktop/ico1.gif')?>"></td>
 	  <td width=60 align="center"><?php echo $html->link('收件箱','/emails/')?></td>
-	  <td style="color:#990000" align="left">0 封邮件，0 封新邮件</td>
+	  <td style="color:#990000" align="left"><?=$receiveCounts?> 封邮件</td>
 	</tr>
 	</table>
 	</td>
@@ -113,8 +146,8 @@
 	<table border="0" cellpadding="0" cellspacing="0">
 	<tr>
 	  <td width=18 align="center"><img src="<?=$html->url('/img/frame/desktop/ico1.gif')?>"></td>
-	  <td width=60 align="center"><?php echo $html->link('发件箱','/emails/')?></td>
-	  <td style="color:#990000" align="left">0 封邮件</td>
+	  <td width=60 align="center"><?php echo $html->link('发件箱','/emails/index_send')?></td>
+	  <td style="color:#990000" align="left"><?=$sendCounts?> 封邮件</td>
 	</tr>
 	</table>
 	</td>

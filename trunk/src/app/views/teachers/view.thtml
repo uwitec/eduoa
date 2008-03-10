@@ -19,8 +19,10 @@
 	<dd>&nbsp;<?php if($teacher['Teacher']['teacher_type'] == 1){echo("教师");}else{echo("职工");}?></dd>
 	<dt>是否在岗</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['is_work']?'在岗':'离职'?></dd>
+<!--
 	<dt>生日</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['birthday']?></dd>
+-->
 	<dt>性别</dt>
 	<dd>&nbsp;<?php echo $teacher['Teacher']['sex']?'男':'女'?></dd>
 	<!--

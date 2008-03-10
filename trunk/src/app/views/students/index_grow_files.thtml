@@ -27,7 +27,7 @@
 	  if($this->params['url']['action']=='edit'){
 		  echo $html->link('奋斗目标', '/student_grow_files/add/'.$student['Student']['id'].'/1').' ';
 		  echo $html->link('成长札记', '/student_grow_files/add/'.$student['Student']['id'].'/2').' ';
-		  echo $html->link('成绩自我分析', '/student_grow_files/add/'.$student['Student']['id'].'/3').' ';
+		  echo $html->link('成绩分析', '/student_grow_files/add/'.$student['Student']['id'].'/3').' ';
 		  echo $html->link('教师评语', '/student_grow_files/add/'.$student['Student']['id'].'/4').' ';
 		  echo $html->link('学业评价', '/student_grow_files/add/'.$student['Student']['id'].'/5').' ';
 		  echo $html->link('阅读书籍', '/student_grow_files/add/'.$student['Student']['id'].'/6').' ';

@@ -68,6 +68,13 @@
  	<?php echo $html->input('Document/title', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Document/title', 'Please enter the Title.');?>
 </div>
+<?php	if($title == "课件下载"){?>
+<div class="optional"> 
+	<?php echo $form->labelTag('Document/subhead', '下载地址');?>
+ 	<?php echo $html->input('Document/subhead', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Document/subhead', 'Please select the Course.') ?>
+</div>
+<?php	}?>
 <div class="optional"> 
 	<?php echo $form->labelTag( 'Document/content', $v_content );?>
  	<?php echo $html->textarea('Document/content', array('cols' => '60', 'rows' => '10'));?>

@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>查看教职工奖惩信息</legend> 
 <dl>
-	<dt>教师名称</dt>
+	<dt>教师姓名</dt>
 	<dd>&nbsp;<?php echo $teacherReward['Teacher']['teacher_name']?></dd>
 	<dt>奖惩日期</dt>
 	<dd>&nbsp;<?php echo $teacherReward['TeacherReward']['created']?></dd>

@@ -14,7 +14,6 @@
 	<th>真实姓名</th>
 	<th>部门名称</th>
 	<th>性别</th>
-	<th>生日</th>
 	<th>部门电话</th>
 </tr>
 <?php foreach ($teachers as $teacher): ?>
@@ -23,7 +22,6 @@
 	<td><?php echo $teacher['Teacher']['teacher_name']; ?></td>
 	<td><?php echo $teacher['Department']['department_name']?></td>
 	<td><?php echo $teacher['Teacher']['sex']==1?'男':'女' ; ?></td>
-	<td><?php echo $teacher['Teacher']['birthday']; ?></td>
 	<td><?php echo $teacher['Department']['tel_no']?></td>
 </tr>
 <?php endforeach; ?>

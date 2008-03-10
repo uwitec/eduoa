@@ -1,4 +1,4 @@
-﻿<SCRIPT LANGUAGE="JavaScript">
+<SCRIPT LANGUAGE="JavaScript">
 <!--
 	var iPath = "<?=$html->url('/')?>";
 	if(iPath=="/")iPath="";
@@ -20,7 +20,7 @@
 			<?php 
 			  if (!empty($years)){
 				  foreach ($years as $year):
-					  echo("d.add(". $year['Banji']['entrance_year']. ",0,'[" . $year['Banji']['entrance_year'] . "]','');\n");
+					  echo("d.add(". $year['Banji']['entrance_year']. ",0,'[" . $year['Banji']['entrance_year'] . "年入学]','');\n");
 				  endforeach;
 			  }
 

@@ -24,7 +24,7 @@ echo $html->css('datechooser');
 <legend>新增教职工继续教育</legend> 
 <form action="<?php echo $html->url('/teacher_continuing_educations/add'); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
-	<?php echo $form->labelTag('TeacherContinuingEducation/teacher_id', '教师名称');?>
+	<?php echo $form->labelTag('TeacherContinuingEducation/teacher_id', '教师姓名');?>
  	<?php 
 		if(empty($this->params['url']['teacher_id'])) {
 			echo $html->selectTag('TeacherContinuingEducation/teacher_id', $teachers, $html->tagValue('TeacherContinuingEducation/teacher_id'), array(), array(), false);

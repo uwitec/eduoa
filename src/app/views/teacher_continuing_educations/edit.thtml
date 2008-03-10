@@ -24,7 +24,7 @@ echo $html->css('datechooser');
 <legend>编辑教职工继续教育信息</legend>
 <form action="<?php echo $html->url('/teacher_continuing_educations/edit/'.$html->tagValue('TeacherContinuingEducation/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
-	<?php echo $form->labelTag('TeacherContinuingEducation/teacher_id', '教师名称');?>
+	<?php echo $form->labelTag('TeacherContinuingEducation/teacher_id', '教师姓名');?>
  	<?php echo $html->selectTag('TeacherContinuingEducation/teacher_id', $teachers, $html->tagValue('TeacherContinuingEducation/teacher_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('TeacherContinuingEducation/teacher_id', 'Please select the Teacher.') ?>
 </div>

@@ -3,7 +3,7 @@
 <legend>教职工<?=$action_name?>信息调度</legend> 
 <form action="<?php echo $html->url('/teacher_is_works/add'); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
-	<?php echo $form->labelTag('TeacherIsWork/teacher_id', '教师名称');?>
+	<?php echo $form->labelTag('TeacherIsWork/teacher_id', '教师姓名');?>
  	<?php echo $teacher_name;?>
 	<?php echo $html->tagErrorMsg('TeacherIsWork/teacher_id', 'Please select the Teacher.') ?>
 	<?php echo $html->hidden('TeacherIsWork/teacher_id', array('value' => $teacher_id));?>

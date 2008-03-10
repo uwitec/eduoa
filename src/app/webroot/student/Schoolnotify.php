@@ -46,7 +46,7 @@
 								select 
 									a.title,DATE_FORMAT(a.created,'%Y-%m-%d'),a.id 
 								from 
-									documents a,students b
+									documents a
 								where 
 									a.document_type_id = 1  and a.is_commons = 1 		
 								order by a.created desc

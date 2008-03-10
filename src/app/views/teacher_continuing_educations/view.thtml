@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend> 查看教职工继续教育信息</legend> 
 <dl>
-	<dt>教师名称</dt>
+	<dt>教师姓名</dt>
 	<dd>&nbsp;<?php echo $teacherContinuingEducation['Teacher']['teacher_name']?></dd>
 	<dt>教育开始日期</dt>
 	<dd>&nbsp;<?php echo $teacherContinuingEducation['TeacherContinuingEducation']['start_date']?></dd>

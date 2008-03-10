@@ -57,6 +57,10 @@
 	<?php	}?>
 	<dt><?=$v_name?></dt>
 	<dd>&nbsp;<?php echo $document['Document']['title']?></dd>
+	<?php	if($title == "课件下载"){?>
+	<dt>下载地址</dt>
+	<dd>&nbsp;<?php echo $document['Document']['subhead']?></dd>
+	<?php	}?>
 	<dt><?=$v_content?></dt>
 	<dd>&nbsp;<?php echo $document['Document']['content']?></dd>
 	<dt>发布日期</dt>

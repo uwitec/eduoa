@@ -15,7 +15,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/role_id', '所属角色');?>
- 	<?php echo $html->selectTag('User/role_id', $roles, $html->tagValue('User/role_id'), array('style'=>'width: 438px;background-color: #e5ffe6'), array(), true);?>
+ 	<?php echo $html->selectTag('User/role_id', $roles, $html->tagValue('User/role_id'), array('style'=>'width: 438px;background-color: #e5ffe6'), array(), false);?>
 	<?php echo $html->tagErrorMsg('User/role_id', 'Please select the Department.') ?>
 </div>
 <div class="optional"> 

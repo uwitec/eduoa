@@ -51,25 +51,28 @@ class StudentsController extends AppController {
 	}
 
 
-	function index_grow_files($keyword = null, $page=1) {
+	function index_grow_files($id = null, $keyword = null, $page=1) {
 		$this->Student->recursive = 0;
 
 		if($keyword == null){
 			$keyword = $this->data['Student']['keyword'];
 		}
 
-
-		if(empty($this->params['url']['banji'])){
-			$criteria = ' ';
-			$this->set('banji_id',null);
-		}else{
-			$banji = $this->params['url']['banji'];
-			$criteria = ' Banji.id = '.$banji.' and ';
+		if($id){
+			$criteria = ' Banji.id = '.$id.' AND Banji.status = 1';
 			$this->set('banji_id',$id);
+		}else{
+			$criteria = ' Student.status = 1';
+			$this->set('banji_id',null);
 		}
 
 		if($keyword != null){
-			$criteria .= " Student.student_name like '%$keyword%' ";
+			if($keyword > 0) {
+				$criteria .= " and Banji.id = $keyword ";
+			}else {
+				$criteria .= " and Student.student_name like '%$keyword%' ";
+			}
+			
 		}
 
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index_grow_files/'.$keyword));
@@ -354,6 +357,36 @@ class StudentsController extends AppController {
 		$this->set('students',$data);
 	}
 
+
+	function index_grow_files_view($id = null, $keyword = null, $page=1) {
+		$this->Student->recursive = 0;
+
+		if($keyword == null){
+			$keyword = $this->data['Student']['keyword'];
+		}
+
+		if($id){
+			$criteria = ' Banji.id = '.$id.' AND Banji.status = 1';
+			$this->set('banji_id',$id);
+		}else{
+			$criteria = ' Student.status = 1';
+			$this->set('banji_id',null);
+		}
+
+		if($keyword != null){
+			if($keyword > 0) {
+				$criteria .= " and Banji.id = $keyword ";
+			}else {
+				$criteria .= " and Student.student_name like '%$keyword%' ";
+			}
+			
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index_grow_files_view/'.$keyword));
+		
+		$data = $this->Student->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('students',$data);
+	}
 
 }
 ?>

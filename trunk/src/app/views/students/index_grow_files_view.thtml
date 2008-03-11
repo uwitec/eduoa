@@ -1,0 +1,36 @@
+<div id="content">
+<fieldset align=center>
+<legend>学生列表</legend> 
+<div align="left">
+	<form action="<?php echo $html->url('/students/index_grow_files/'); ?>" method="post">
+	  学生姓名：
+	  <?php echo $html->input('Student/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th>学号</th>
+	<th>姓名</th>
+	<th>性别</th>
+	<th>班级</th>
+	<th>成长档案</th>
+</tr>
+<?php foreach ($students as $student): ?>
+<tr>
+	<td><?php echo $student['Student']['student_no']; ?></td>
+	<td><?php echo $student['Student']['student_name']; ?></td>
+	<td><?php echo $student['Student']['sex']==1?'男':'女'; ?></td>
+	<td><?php echo $student['Banji']['class_name']?></td>
+	<td class="actions">
+	  <?php 
+		  echo $html->link('查看', '/student_grow_files/view/'.$student['Student']['id']);
+	  ?> 
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
+
+</fieldset>
+</div>

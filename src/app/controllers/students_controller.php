@@ -338,7 +338,7 @@ class StudentsController extends AppController {
 	function graduate_info($keyword = null, $page=1) {
 		$this->Student->recursive = 0;
 
-		$criteria = " 1= 1 ";
+		$criteria = "Banji.status = 2";
 		if($keyword == null){
 			$keyword = $this->data['Student']['keyword'];
 		}		

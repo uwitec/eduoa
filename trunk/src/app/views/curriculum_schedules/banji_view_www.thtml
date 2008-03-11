@@ -1,0 +1,43 @@
+<table cellpadding="0" cellspacing="0" width="100%" bordercolor="#000000">
+<tr>
+	<th colspan="2">课节</th>
+	<th>星期一</th>
+	<th>星期二</th>
+	<th>星期三</th>
+	<th>星期四</th>
+	<th>星期五</th>
+	<th>星期六</th>
+	<th>星期日</th>
+</tr>
+<?php $i = 0 ;?>
+<?php foreach ($hours as $hour): ?>
+<tr>
+	<td><?php echo $hour['Hour']['hour_name']; ?></td>
+	<td>
+	  <table width="100%" border="0">
+	    <tr>
+           <td>课程</td>
+        </tr>
+        <tr>
+           <td>教室</td>
+        </tr>
+      </table>
+	</td>
+	<?php
+	foreach($weeks as $week){
+		$this->data = $this->controller->findScheduleByBanji($this->params['pass'][0], 1, $hour['Hour']['id'],$week['Week']['id']);
+		echo '<td>';
+		echo '<table width="100%" border="0">';
+	    echo '<tr>';
+        echo '<td bgcolor="#ffccff">&nbsp;'.$this->data['Course']['course_name'].'</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td bgcolor=#ffffCC>&nbsp;'.$this->data['Classroom']['classroom_name'].'</td>';
+        echo '</tr>';
+        echo '</table>';
+		echo '</td>';
+	}
+	?>
+</tr>
+<?php endforeach; ?>
+</table>

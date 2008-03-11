@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class CurriculumSchedulesController extends AppController {
 
 	var $name = 'CurriculumSchedules';
@@ -156,6 +156,12 @@ class CurriculumSchedulesController extends AppController {
    }
 
    function banji_view() {
+		$this->CurriculumSchedule->recursive = 0;
+		$this->set('hours', $this->Hour->findAll());
+		$this->set('weeks', $this->Week->findAll());
+   }
+
+   function banji_view_www() {
 		$this->CurriculumSchedule->recursive = 0;
 		$this->set('hours', $this->Hour->findAll());
 		$this->set('weeks', $this->Week->findAll());

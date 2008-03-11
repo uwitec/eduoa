@@ -6,11 +6,10 @@
 <link href="css.css" rel="stylesheet" type="text/css" />
 </head>
 <?php
-	session_start();
 	require_once('./includes/checkLogin.php');
 	require_once('./includes/conn.php');
 
-	$sql = " select type_name,id from grow_file_types ";
+	$sql = " select type_name,id from grow_file_types where id = 4";
 	$stmt = mysql_query($sql);
 ?>
 <body>
@@ -41,26 +40,21 @@
             <td width="7" background="images/zuo_1.gif"><img src="images/zuo_1.gif" width="7" height="8" /></td>
             <td bgcolor="FFF4E8">
 			 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="13%">教师评语</td>
+                <td width="87%" valign="top"></td>
+              </tr>
 			 <?php	
 				while($row = mysql_fetch_array($stmt)) {
-					$sql2 = " select b.type_name,a.title,a.description,a.created from student_grow_files a,grow_file_types b where a.grow_file_type_id = b.id and b.id =".$row[1]." and a.student_id =".$osStudentID;
+					$sql2 = " select b.type_name,a.title,a.description,a.created from student_grow_files a,grow_file_types b where a.grow_file_type_id = b.id and b.id =".$row[1]." and a.student_id =".$_COOKIE["osStudentID"];
 					$stmt2 = mysql_query($sql2);
 			?>
-              <tr>
-                <td width="13%"><?=$row[0]?></td>
-                <td width="87%" valign="top">
-					<?php
-						$ii = 0;
-						while($row2 = mysql_fetch_array($stmt2)) {
-							echo $row[1]."==>".$row[2];
-							if($ii > 0) {
-								echo("<br>");
-							}
-							$ii++;
-						}
-					?>
-				</td>
-              </tr>
+                          
+                
+					<?php	while($row2 = mysql_fetch_array($stmt2)) {?>
+						 <tr>  <td width="13%"><?=$row2[1]?></td>
+						<td width="87%" valign="top"><?=$row2[2]?></td></tr>
+              <?php	}?>
 			 <?php	}?>
             </table>
 			</td>

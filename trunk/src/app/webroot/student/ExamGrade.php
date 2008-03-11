@@ -8,6 +8,9 @@
 <?php
 	require_once('./includes/checkLogin.php');
 	require_once('./includes/conn.php');
+
+	$sql = " select c.semester_name,b.course_name,a.score from exam_results a,courses b,semesters c where a.course_id = b.id and a.semester_id = c.id and  a.student_id =".$_COOKIE["osStudentID"];
+	$stmt = mysql_query($sql);
 ?>
 <body>
 <?php	include("top.php");?>
@@ -36,20 +39,19 @@
         <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="7" background="images/zuo_1.gif"><img src="images/zuo_1.gif" width="7" height="8" /></td>
-            <td bgcolor="FFF4E8"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <td bgcolor="FFF4E8"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
               <tr>
-                <td><table width="100%" border="0" cellspacing="0" cellpadding="4">
-                  <tr>
-                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="4%" align="center">&nbsp;</td>
-                        <td width="96%" height="25">暂无考试成绩！</td>
-                      </tr>
-                    </table></td>
-                    </tr>
-                </table></td>
-                <td>&nbsp;</td>
+                <td width="33%" align="center"><strong>学期</strong></td>
+                <td width="33%" align="center"><strong>课程</strong></td>
+                <td width="33%" align="center"><strong>分数</strong></td>
               </tr>
+			  <?php	while($row = mysql_fetch_array($stmt)) {?>
+              <tr>
+                <td align="center"><?=$row[0]?></td>
+                <td align="center"><?=$row[1]?></td>
+                <td align="center"><?=$row[2]?></td>
+              </tr>
+			  <?php	}?>
             </table></td>
             <td width="7" background="images/you_2.gif"><img src="images/you_2.gif" width="7" height="8" /></td>
           </tr>

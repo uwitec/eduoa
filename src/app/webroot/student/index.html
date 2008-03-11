@@ -210,7 +210,9 @@ body {
                         <td width="209"><img src="/templets/default4/images/seuduct_top.gif" width="209" height="43" /></td>
                       </tr>
                       <tr>
-                        <td height="50" background="/templets/default4/images/login_bg_1.gif"><form id="form1" name="form1" target="_blank" method="post" action="/student/logincheck.php" onsubmit="return CheckStudentLogin();"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <td height="50" background="/templets/default4/images/login_bg_1.gif"><form id="form1" name="form1" target="_blank" method="post" action="/student/logincheck.php" onsubmit="return CheckStudentLogin();">
+						 <input type="hidden" name="action" value="login">						
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
                           <tr>
                             <td width="25" height="23" align="center"><img src="/templets/default4/images/jiantou_1.gif" width="3" height="6" /></td>
                             <td width="126" align="left"><input name="username" type="text" size="18" /></td>

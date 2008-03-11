@@ -338,19 +338,22 @@ class StudentsController extends AppController {
 	function graduate_info($keyword = null, $page=1) {
 		$this->Student->recursive = 0;
 
-		$criteria = " ";
+		$criteria = " 1= 1 ";
 		if($keyword == null){
 			$keyword = $this->data['Student']['keyword'];
 		}		
 		if($keyword != null){
-			$criteria = " Student.student_name like '%$keyword%' ";
+			$criteria = " and Student.student_name like '%$keyword%' ";
 		}
+
+		$criteria .= " and Student.status = 2 ";
 
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'graduate_info/'.$keyword));
 		
 		$data = $this->Student->findAll($criteria, NULL, null, $limit, $page); 			
 		$this->set('students',$data);
 	}
+
 
 }
 ?>

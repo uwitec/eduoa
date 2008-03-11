@@ -9,7 +9,7 @@
 	<dt>出生日期</dt>
 	<dd>&nbsp;<?php echo $student['Student']['birthday']?></dd>
 	<dt>性别</dt>
-	<dd>&nbsp;<?php echo $student['Student']['sex']?></dd>
+	<dd>&nbsp;<?php echo $student['Student']['sex']?'男':'女'; ?></dd>
 	<dt>民族</dt>
 	<dd>&nbsp;<?php echo $student['Person']['people_name']?></dd>
 	<dt>籍贯</dt>
@@ -58,8 +58,6 @@
 	<dt>母亲电话</dt>
 	<dd>&nbsp;<?php echo $student['Student']['mother_phone']?></dd>
 -->
-	<dt>状态</dt>
-	<dd>&nbsp;<?php echo $student['Student']['status']?></dd>
 </dl>
 <ul class="actions">
 	<?php	if(empty($this->params['url']['search'])) {?>

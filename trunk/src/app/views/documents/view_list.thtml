@@ -1,0 +1,95 @@
+<?php
+	switch($this->params['url']['type']){
+		case 1:
+			$title = "班级公告";
+			$v_name = "公告标题";
+			$v_content = "主要内容";
+			break;
+		case 2:
+			$title = "学生作业";
+			$v_name = "重点难点";
+			$v_content = "作业内容";
+			break;
+		case 3:
+			$title = "课件下载";
+			$v_name = "资料名称";
+			$v_content = "内容";
+			$v_fujian = "附件";
+			break;
+		case 4:
+			$title = "同步练习";
+			$v_name = "章节";
+			$v_content = "内容";
+			break;
+		case 5:
+			$title = "公告通知";
+			$v_name = "公告标题";
+			$v_content = "公告内容";
+			break;
+		case 6:
+			$title = "新闻";
+			$v_name = "新闻标题";
+			$v_content = "新闻内容";
+			break;
+		case 7:
+			$title = "系统帮助";
+			$v_name = "系统帮助标题";
+			$v_content = "帮助内容";
+			break;
+	}
+?>
+<div id="content">
+<fieldset align=center>
+<legend><?=$title?>列表</legend> 
+<div align="left">
+	<form action="<?php echo $html->url('/documents/view_list/?type='.$this->params['url']['type']); ?>" method="post">
+	  输入关键词：
+	  <?php echo $html->input('Document/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<?php	if($title != "新闻" && $title != "公告通知" && $title != "系统帮助"){?>
+	<th>发布对象</th>
+	<?php	}?>
+	<?php	if($title == "班级公告"){?>
+	<th>紧急程度</th>
+	<?php	}?>
+	<?php	if($title == "学生作业"){?>
+	<th>作业课目</th>
+	<?php	}?>
+	<th><?=$v_name?></th>
+	<th><?=$v_content?></th>
+	<?php	if(($title == "课件下载") || ($title == "同步练习")){?>
+<!--	<th>附件</th>-->
+	<?php	}?>
+	<th>发布日期</th>
+	<th>操作</th>
+</tr>
+<?php foreach ($documents as $document): ?>
+<tr>
+	<?php	if($title != "新闻" && $title != "公告通知" && $title != "系统帮助"){?>
+	<td><?php foreach ($document['Banji'] as $banji){echo $banji['class_name'].' ';}?></td>	
+	<?php	}?>
+	<?php	if($title == "班级公告"){?>
+	<td><?php echo $document['Rate']['rate_name']; ?></td>
+	<?php	}?>
+	<?php	if($title == "学生作业"){?>
+	<td><?php echo $document['Course']['course_name']; ?></td>
+	<?php	}?>
+	<td><?php echo $document['Document']['title']; ?></td>
+	<td><?php echo $document['Document']['content']; ?></td>
+	<?php	if(($title == "课件下载") || ($title == "同步练习")){?>
+<!--	<td>……</td>-->
+	<?php	}?>
+	<td><?php echo $document['Document']['created']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('查看','/documents/viewl/' . $document['Document']['id'].'&type='.$this->params['url']['type'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
+</fieldset>
+</div>

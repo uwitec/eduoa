@@ -8,7 +8,7 @@
 <?php
 	require_once('./includes/conn.php');
 
-	$sql = "select title,content from documents where id =".$_GET["id"];
+	$sql = "select title,content,subhead from documents where id =".$_GET["id"];
 	$stmt = mysql_query($sql);
 	$arr = mysql_fetch_array($stmt);
 ?>
@@ -16,10 +16,19 @@
 <?php	include("top.php");?>
 <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td align="center" valign="top" class="hotfoodtd"><?=$arr[0]?></td>
+    <td align="center" valign="top" class="hotfoodtd" height="30"><?=$arr[0]?></td>
   </tr>
   <tr>
-    <td valign="top" class="hotfoodtd"><?=$arr[1]?></td>
+    <td valign="top" class="hotfoodtd"  height="200"><?=$arr[1]?></td>
+  </tr>
+  <tr>
+    <td valign="top" class="hotfoodtd" align="right">
+		<?php
+			if($arr[2]){
+				echo("<a href='$arr[2]'>点击下载附件</a>");
+			}
+		?>
+	</td>
   </tr>
 </table>
 <?php	include('bottom.php');?>

@@ -46,6 +46,14 @@ class DocumentsController extends AppController {
 		$this->set('document', $this->Document->read(null, $id));
 	}
 
+	function viewl($id = null) {
+		if (!$id) {
+			$this->Session->setFlash('Invalid id for Document.');
+			$this->redirect('/documents/view_list');
+		}
+		$this->set('document', $this->Document->read(null, $id));
+	}
+
 	function add($id = null) {
 		if (empty($this->data)) {
 			$this->set('banjis', 
@@ -274,6 +282,40 @@ class DocumentsController extends AppController {
 		}
 	}
 
+	function view_list($keyword = null, $page=1) {
+		$id = $this->params['url']['type'];
+		$this->set('courses', 
+				   $this->Document->Course->generateList(
+					 $conditions = null,
+					 $order = 'id',
+					 $limit = null,
+					 $keyPath = '{n}.Course.id',
+					 $valuePath = '{n}.Course.course_name')
+		);
+		if($id) {
+			$criteria = " document_type_id = ".$id. " and is_commons is null";
+		}else {
+			$criteria = " ";
+		}
+
+	
+		if($keyword == null){
+			$keyword = $this->data['Document']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria .= " and Document.title like '%$keyword%' ";
+		}
+		$criteria .= "  order by created desc  ";
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'view_list/'.$keyword));
+		
+		$data = $this->Document->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('documents',$data);
+
+		
+	}
+
 }
+
 
 ?>

@@ -16,8 +16,13 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Teacher/department_id', '所属部门:');?>
- 	<?php echo $html->selectTag('Teacher/department_id', $departments, $html->tagValue('Teacher/department_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('Teacher/department_id', $departments, $html->tagValue('Teacher/department_id'), array('style'=>'width: 438px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Teacher/department_id', 'Please select the Department.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/role_id', '所属角色');?>
+ 	<?php echo $html->selectTag('User/role_id', $roles, $html->tagValue('User/role_id'), array('style'=>'width: 438px;background-color: #e5ffe6'), array(), true);?>
+	<?php echo $html->tagErrorMsg('User/role_id', 'Please select the Department.') ?>
 </div>
 <div class="optional">
    <?php echo $form->labelTag('Member/username', '登录名:');?>
@@ -36,27 +41,27 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Teacher/teacher_type', '教职工类型:');?>
-	<?php echo $html->selectTag('Teacher/teacher_type', array('2' => '职工','1' => '教师'),array('1'),array(), array(), false);?> 	
+	<?php echo $html->selectTag('Teacher/teacher_type', array('2' => '职工','1' => '教师'),array('1'),array('style'=>'width: 438px'), array(), false);?> 	
 	<?php echo $html->tagErrorMsg('Teacher/teacher_type', 'Please enter the Teacher Type.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Teacher/is_work', '是否在岗:');?>
-	<?php echo $html->selectTag('Teacher/is_work', array('0' => '离职','1' => '在岗'),array('1'),array(), array(), false);?> 	
+	<?php echo $html->selectTag('Teacher/is_work', array('0' => '离职','1' => '在岗'),array('1'),array('style'=>'width: 438px'), array(), false);?> 	
 	<?php echo $html->tagErrorMsg('Teacher/is_work', 'Please enter the Is Work.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Teacher/sex', '性别:');?>	
-	<?php echo $html->selectTag('Teacher/sex', array('1' => '男','0' => '女'),array('1'),array(), array(), false);?> 	
+	<?php echo $html->selectTag('Teacher/sex', array('1' => '男','0' => '女'),array('1'),array('style'=>'width: 438px'), array(), false);?> 	
 	<?php echo $html->tagErrorMsg('Teacher/sex', 'Please enter the Sex.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Teacher/people_id', '民族:');?>
- 	<?php echo $html->selectTag('Teacher/people_id', $people, $html->tagValue('Teacher/people_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('Teacher/people_id', $people, $html->tagValue('Teacher/people_id'), array('style'=>'width: 438px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Teacher/people_id', 'Please select the People.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Teacher/degree_id', '学位:');?>
- 	<?php echo $html->selectTag('Teacher/degree_id', $degrees, $html->tagValue('Teacher/degree_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('Teacher/degree_id', $degrees, $html->tagValue('Teacher/degree_id'), array('style'=>'width: 438px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Teacher/degree_id', 'Please select the Degree.') ?>
 </div>
 <div class="optional"> 

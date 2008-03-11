@@ -4,7 +4,7 @@ class TeachersController extends AppController {
 	var $name = 'Teachers';
 	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
 	var $helpers = array('Html', 'Form' ,'Javascript','Pagination');
-	var $uses = array('Teacher', 'Member', 'User');
+	var $uses = array('Teacher', 'Member', 'User', 'Role');
 
 	function index($keyword = null, $page=1) {
 		$this->Teacher->recursive = 0;
@@ -164,6 +164,15 @@ class TeachersController extends AppController {
 							$valuePath = '{n}.Degree.degree_name')
 			);
 
+			$this->set('roles', 
+						$this->Role->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Role.id',
+							$valuePath = '{n}.Role.role_name')
+			);
+
 
 			$this->set('departments', 
 						$this->Teacher->Department->generateList(
@@ -261,8 +270,6 @@ class TeachersController extends AppController {
 							$KeyPath = '{n}.Banji.id',
 							$valuePath = '{n}.Banji.class_name')
 			);
-			if (empty($this->data['Banji'])) { $this->data['Banji'] = null; }
-			$this->set('selectedBanjis', $this->_selectedArray($this->data['Banji']));
 			$this->set('courses', $this->Teacher->Course->generateList(
 							$conditions = null,
 							$order = 'id',
@@ -270,10 +277,6 @@ class TeachersController extends AppController {
 							$KeyPath = '{n}.Course.id',
 							$valuePath = '{n}.Course.course_name')
 			);
-			if (empty($this->data['Course'])) { $this->data['Course'] = null; }
-			$this->set('selectedCourses', $this->_selectedArray($this->data['Course']));
-			$this->set('users', $this->Teacher->User->generateList());
-
 			$this->set('people', 
 						$this->Teacher->Person->generateList(
 							$conditions = null,
@@ -282,7 +285,6 @@ class TeachersController extends AppController {
 							$KeyPath = '{n}.Person.id',
 							$valuePath = '{n}.Person.people_name')
 			);
-
 			$this->set('degrees', 
 						$this->Teacher->Degree->generateList(
 							$conditions = null,
@@ -291,8 +293,14 @@ class TeachersController extends AppController {
 							$KeyPath = '{n}.Degree.id',
 							$valuePath = '{n}.Degree.degree_name')
 			);
-
-
+			$this->set('roles', 
+						$this->Role->generateList(
+							$conditions = null,
+							$order = 'id',
+							$limit = null,
+							$KeyPath = '{n}.Role.id',
+							$valuePath = '{n}.Role.role_name')
+			);
 			$this->set('departments', 
 						$this->Teacher->Department->generateList(
 							$conditions = null,
@@ -302,7 +310,6 @@ class TeachersController extends AppController {
 							$valuePath = '{n}.Department.department_name')
 			);
 
-			$this->set('files', $this->Teacher->File->generateList());
 		} else {
 			$this->cleanUpFields();
 			if ($this->Teacher->save($this->data)) {

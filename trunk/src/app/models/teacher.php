@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Teacher extends AppModel {
 
 	var $name = 'Teacher';
@@ -86,6 +86,14 @@ class Teacher extends AppModel {
 				),
 
 	);
+
+	function afterSave(){
+		$this->User->read(null, $this->data['Teacher']['user_id']);
+		if(!empty($this->data['User']['role_id'])){
+			$data['User']['role_id'] = $this->data['User']['role_id'];
+		}
+		$this->User->save($data);
+	}
 
 }
 ?>

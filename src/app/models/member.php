@@ -44,6 +44,9 @@ class Member extends AppModel {
 			$data['User']['password'] = $this->data['Member']['password'];
 			$data['User']['user_name'] = $this->data['Teacher']['teacher_name'];
 			$data['User']['email'] = $this->data['Teacher']['email'];
+			if(!empty($this->data['User']['role_id'])){
+				$data['User']['role_id'] = $this->data['User']['role_id'];
+			}
 			$this->User->save($data);
 
 			$this->Teacher->create();

@@ -32,7 +32,7 @@ class StudentGrowFilesController extends AppController {
 			$this->cleanUpFields();
 			if ($this->StudentGrowFile->save($this->data)) {
 				$this->Session->setFlash('学生成长档案保存成功！');
-				$this->redirect('/students/index_grow_files/?action=edit&banji');
+				$this->redirect('/students/index_grow_files/');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 				$this->set('students', $this->StudentGrowFile->Student->generateList());
@@ -77,5 +77,9 @@ class StudentGrowFilesController extends AppController {
 		}
 	}
 
+	function index_view() {
+		$this->StudentGrowFile->recursive = 0;
+		$this->set('studentGrowFiles', $this->StudentGrowFile->findAll());
+	}
 }
 ?>

@@ -2,7 +2,7 @@
 <fieldset align=center>
 <legend>学生列表</legend> 
 <div align="left">
-	<form action="<?php echo $html->url('/students/index_grow_files/?action=edit'); ?>" method="post">
+	<form action="<?php echo $html->url('/students/index_grow_files/'); ?>" method="post">
 	  学生姓名：
 	  <?php echo $html->input('Student/keyword', array('size' => '60'));?>
 	  <?php echo $html->submit('查询');?>
@@ -24,7 +24,7 @@
 	<td><?php echo $student['Banji']['class_name']?></td>
 	<td class="actions">
 	  <?php 
-	  if($this->params['url']['action']=='edit'){
+	  if(empty($this->params['url']['action'])){
 		  echo $html->link('奋斗目标', '/student_grow_files/add/'.$student['Student']['id'].'/1').' ';
 		  echo $html->link('成长札记', '/student_grow_files/add/'.$student['Student']['id'].'/2').' ';
 		  echo $html->link('成绩分析', '/student_grow_files/add/'.$student['Student']['id'].'/3').' ';

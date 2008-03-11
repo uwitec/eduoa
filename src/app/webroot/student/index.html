@@ -1,0 +1,352 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>金色校园</title>
+<link href="/templets/style/dede4.css" rel="stylesheet" type="text/css" />
+<link href="/templets/style/sindex.css" rel="stylesheet" type="text/css" />
+<link href="/templets/style/www.ie.la.css" rel="stylesheet" type="text/css" />
+<link href="/templets/style/css.css"" rel="stylesheet" type="text/css" />
+<script language="javascript" src="/include/dedeajax2.js"></script>
+<SCRIPT language="javascript" src="/include/prototype.js"></SCRIPT>
+<script language="javascript">
+function CheckLogin(){
+  var taget_obj = document.getElementById('_loginform');
+  myajax = new DedeAjax(taget_obj,false,false,"","","");
+  myajax.SendGet2("/member/loginsta.php");
+  DedeXHTTP = null;
+}
+</script>
+<SCRIPT language=javascript>
+function CheckStudentLogin()
+{
+	if($F("username")=="" || $F("password")=="")
+	{
+		alert("登录名或密码必须填写！");
+		return false;
+	}
+	return true;
+}
+function CheckAdminLogin()
+{
+	if($F("data[Member][username]")=="" || $F("data[Member][password]")=="")
+	{
+		alert("登录名或密码必须填写！");
+		return false;
+	}
+	return true;
+}
+function CheckCuery()
+{
+	if($("keyword").value == "")
+	{
+		alert("请填写查询关键字！");
+		return false;
+	}
+	return true;
+}
+</SCRIPT>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style></head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="22" align="center"><a href="/plus/heightsearch.php" target="_blank">高级搜索</a> | <a href='#' onClick="javascript:window.external.AddFavorite('http://www.dyyfxx.net','金色校园');">收藏本站</a> | <a href="/plus/sitemap.html" target="_blank">网站地图</a> | <a href="http://www.dyyfxx.net/mailadmin/" target="_blank">邮件订阅</a></td>
+  </tr>
+</table>
+<table width="991" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="400" align="center" valign="top" class="topbannerbg"><table width="780" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="104">&nbsp;</td>
+      </tr>
+      <tr>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="60">&nbsp;</td>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center"><a href="http://www.dyyfxx.net"><img src="/templets/default4/images/b_1.gif" width="78" height="28" border="0" /></a></td>
+                <td align="center"><a href="http://www.dyyfxx.net/html/xiaoyuanxinwen/index.html"><img src="/templets/default4/images/b_2.gif" width="101" height="28" border="0" /></a></td>
+                <td align="center"><a href="http://www.dyyfxx.net/html/jiaoyujiaoxue/index.html"><img src="/templets/default4/images/b_3.gif" width="101" height="28" border="0" /></a></td>
+                <td align="center"><a href="http://www.dyyfxx.net/html/ziyuanxiazai/index.html"><img src="/templets/default4/images/b_4.gif" width="101" height="28" border="0" /></a></td>
+                <td align="center"><a href="http://www.dyyfxx.net/html/xueshengtiandi/index.html"><img src="/templets/default4/images/b_5.gif" width="101" height="28" border="0" /></a></td>
+                <td align="center"><a href="http://www.dyyfxx.net/html/jiachangwangxiao/index.html"><img src="/templets/default4/images/b_6.gif" width="101" height="28" border="0" /></a></td>
+              </tr>
+            </table></td>
+            <td width="100">&nbsp;</td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="40" valign="bottom"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="120">&nbsp;</td>
+            <td align="left"><img src="/templets/default4/images/select.gif" width="465" height="21" border="0" usemap="#Map" /></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+      <table width="780" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30">&nbsp;</td>
+          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td width="149" background="/templets/default4/images/bg_head.gif"><img src="/templets/default4/images/picnews_head.gif" width="149" height="49" /></td>
+                            <td width="61" background="/templets/default4/images/bg_head.gif">&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+                              <tr>
+                                <td><table width="100" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td bgcolor="99CC01"><img src="/templets/default4/images/green_1_1.gif" width="9" height="9" /></td>
+                                    <td bgcolor="99CC01"><img src="/templets/default4/images/1_1.gif" width="1" height="1" /></td>
+                                    <td width="9" bgcolor="99CC01"><img src="/templets/default4/images/green_1_2.gif" width="9" height="9" /></td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor="99CC01"><img src="/templets/default4/images/images/1_1.gif" width="1" height="1" /></td>
+                                    <td bgcolor="99CC01"><div class="swfnews">
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="182" height="151">
+  <param name="movie" value="/templets/default4/images/22.swf" />
+  <param name="quality" value="high" />
+  <embed src="/templets/default4/images/22.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="182" height="151"></embed>
+</object></div></td>
+                                    <td bgcolor="99CC01"><img src="/templets/default4/images/1_1.gif" width="1" height="1" /></td>
+                                  </tr>
+                                  <tr>
+                                    <td width="9" bgcolor="99CC01"><img src="/templets/default4/images/green_1_4.gif" width="9" height="9" /></td>
+                                    <td bgcolor="99CC01"><img src="/templets/default4/images/1_1.gif" width="1" height="1" /></td>
+                                    <td bgcolor="99CC01"><img src="/templets/default4/images/green_1_3.gif" width="9" height="9" /></td>
+                                  </tr>
+                                </table></td>
+                              </tr>
+                            </table></td>
+                            </tr>
+                        </table></td>
+                        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td width="149" background="/templets/default4/images/bg_head.gif"><img src="/templets/default4/images/hot_news.gif" width="150" height="49" /></td>
+                            <td background="/templets/default4/images/bg_head.gif">&nbsp;</td>
+                            <td width="13" background="/templets/default4/images/bg_head.gif"><img src="/templets/default4/images/green_di.gif" width="13" height="48" /></td>
+                          </tr>
+                          <tr>
+                            <td colspan="3" align="left"><div class="topnews">
+			<dl>
+				<dd>
+					
+                    	<li><a href='/html/xueshengtiandi/20080229/130.html'>精彩的课本剧表演――《包</a></li><li><a href='/html/xueshengtiandi/20080229/129.html'>倾听花儿的声音……</a></li><li><a href='/html/xueshengtiandi/20080229/128.html'>我们的诗意生活</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080229/127.html'>开学新主张   爱上现代诗</a></li><li><a href='/html/hudongjiaoliu/20080229/126.html'>春季饮食小常识 </a></li><li><a href='/html/hudongjiaoliu/20080229/125.html'>春天防感冒十诀</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080229/124.html'>国家语委2008年度语言文字</a></li><li><a href='/html/xiaoyuanxinwen/jiaoyuxinwen/20080229/123.html'>会员投稿</a></li>						</dd>
+			</dl>
+			</div></td>
+                            </tr>
+                        </table></td>
+                      </tr>
+                    </table>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="167" background="/templets/default4/images/bg_head_1.gif"><img src="/templets/default4/images/tuwen_head.gif" width="167" height="43" /></td>
+                          <td width="1000" background="/templets/default4/images/bg_head_1.gif">&nbsp;</td>
+                          <td width="10" background="/templets/default4/images/bg_head_1.gif"><img src="/templets/default4/images/bian.gif" width="10" height="43" /></td>
+                        </tr>
+                        <tr>
+                          <td colspan="3"><div class="pleft picnews">
+				<dl>
+                		<dd><a href="/html/xueshengtiandi/20080229/130.html" class="pimg" target="_blank"><img src='/upimg/dsy/080229/_105145L0.jpg' border='0' width='152' height='98' alt='精彩的课本剧表演――《包公审驴》'></a> <span><a href='/html/xueshengtiandi/20080229/130.html'>精彩的课本剧表演――</a></span> </dd><dd><a href="/html/xueshengtiandi/20080229/129.html" class="pimg" target="_blank"><img src='/upimg/dsy/080229/_104R91U.jpg' border='0' width='152' height='98' alt='倾听花儿的声音……'></a> <span><a href='/html/xueshengtiandi/20080229/129.html'>倾听花儿的声音……</a></span> </dd><dd><a href="/html/xueshengtiandi/20080229/128.html" class="pimg" target="_blank"><img src='/upimg/dsy/080229/_104455X3.jpg' border='0' width='152' height='98' alt='我们的诗意生活'></a> <span><a href='/html/xueshengtiandi/20080229/128.html'>我们的诗意生活</a></span> </dd><dd><a href="/html/xiaoyuanxinwen/xiaonaxinwen/20080229/127.html" class="pimg" target="_blank"><img src='/upimg/dsy/080229/_10433b38.jpg' border='0' width='152' height='98' alt='开学新主张   爱上现代诗'></a> <span><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080229/127.html'>开学新主张   爱上现</a></span> </dd><dd><a href="/html/hudongjiaoliu/20080229/126.html" class="pimg" target="_blank"><img src='/upimg/dsy/080229/_103601U6.jpg' border='0' width='152' height='98' alt='春季饮食小常识 '></a> <span><a href='/html/hudongjiaoliu/20080229/126.html'>春季饮食小常识 </a></span> </dd><dd><a href="/html/hudongjiaoliu/20080229/125.html" class="pimg" target="_blank"><img src='/upimg/dsy/080229/_103232111.jpg' border='0' width='152' height='98' alt='春天防感冒十诀'></a> <span><a href='/html/hudongjiaoliu/20080229/125.html'>春天防感冒十诀</a></span> </dd>
+				</dl>
+			</div></td>
+                          </tr>
+                      </table>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="167" background="/templets/default4/images/bg_head_1.gif"><img src="/templets/default4/images/xiaoyuan_news.gif" width="167" height="43" /></td>
+                          <td width="1000" background="/templets/default4/images/bg_head_1.gif">&nbsp;</td>
+                          <td width="10" background="/templets/default4/images/bg_head_1.gif"><img src="/templets/default4/images/bian.gif" width="10" height="43" /></td>
+                        </tr>
+                        <tr>
+                          <td colspan="3"><table width="100%" border="0" cellspacing="0" cellpadding="4">
+                            <tr>
+                              <td align="left"><div class="rlist margintop">
+		<div class="rlist">
+			<div >
+				
+                	<li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080229/127.html'>开学新主张   爱上现代诗</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080229/124.html'>国家语委2008年度语言文字工</a></li><li><a href='/html/xiaoyuanxinwen/jiaoyuxinwen/20080229/123.html'>会员投稿</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080227/113.html'>开学典礼说感恩，堂正做人报</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080227/112.html'>第二周国旗下讲话5、5班</a></li><li><a href='/html/xiaoyuanxinwen/20080227/111.html'>调查显示：80%以上的家长重</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080227/110.html'><教师自主发展的制度建设与</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080227/106.html'>欢迎孩子们回家</a></li><li><a href='/html/xiaoyuanxinwen/lingdaoguanhuai/20080227/105.html'>新学期，新起点</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080227/103.html'>发展特色 保持本色</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080227/102.html'>德阳逸夫学校21周本周工作要</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080227/96.html'>学校最新通知 </a></li><li><a href='/html/xiaoyuanxinwen/meitibaodao/20080227/94.html'>岷东逸夫学校加强教育科研</a></li><li><a href='/html/xiaoyuanxinwen/xiaonaxinwen/20080130/73.html'>学校教学大楼</a></li>			</div>
+		</div>
+	  </div>	</td>
+                              <td align="left"><div class="rlist margintop">
+		<div class="rlist">
+			<div >
+				
+                	<li><a href='/html/jiaoyujiaoxue/20080227/119.html'>利用多媒体,优化自然教学过</a></li><li><a href='/html/jiaoyujiaoxue/20080227/118.html'>多媒体扩展美术课</a></li><li><a href='/html/jiaoyujiaoxue/20080227/117.html'>不一定老师才是师</a></li><li><a href='/html/jiaoyujiaoxue/20080227/116.html'>巧用课件，构建活色生香的课</a></li><li><a href='/html/jiaoyujiaoxue/20080227/115.html'>英语应用文教学</a></li><li><a href='/html/jiaoyujiaoxue/20080227/114.html'>谈童声合唱教学训练</a></li><li><a href='/html/jiaoyujiaoxue/jingpinjiaoan/20080227/107.html'>德育案例--给闪光以肯定</a></li><li><a href='/html/jiaoyujiaoxue/jingpinjiaoan/20080113/64.html'>祖冲之给我们的启示</a></li><li><a href='/html/jiaoyujiaoxue/gongkaike/20080110/40.html'>五年级课题--我的地盘我作主</a></li><li><a href='/html/jiaoyujiaoxue/gongkaike/20080110/38.html'>展示真我风采</a></li><li><a href='/html/jiaoyujiaoxue/jingpinjiaoan/20080109/21.html'>草船借箭</a></li><li><a href='/html/jiaoyujiaoxue/jingpinjiaoan/20080109/20.html'>美丽的对称图形</a></li><li><a href='/html/jiaoyujiaoxue/jingpinjiaoan/20080109/19.html'>圆锥的认识</a></li><li><a href='/html/jiaoyujiaoxue/jingpinjiaoan/20080109/18.html'>可怕的白色污染</a></li>			</div>
+		</div>
+	  </div></td>
+                            </tr>
+                          </table></td>
+                        </tr>
+                      </table></td>
+                    <td valign="top">&nbsp;</td>
+                    <td width="209" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="209"><img src="/templets/default4/images/seuduct_top.gif" width="209" height="43" /></td>
+                      </tr>
+                      <tr>
+                        <td height="50" background="/templets/default4/images/login_bg_1.gif"><form id="form1" name="form1" target="_blank" method="post" action="/student/logincheck.php" onsubmit="return CheckStudentLogin();"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td width="25" height="23" align="center"><img src="/templets/default4/images/jiantou_1.gif" width="3" height="6" /></td>
+                            <td width="126" align="left"><input name="username" type="text" size="18" /></td>
+                            <td width="58" rowspan="2" align="center"><input name="image2" type="image" src="/templets/default4/images/go_b.gif" width="50" height="44"  target="_blank"/></td>
+                          </tr>
+                          <tr>
+                            <td width="25" height="23" align="center"><img src="/templets/default4/images/jiantou_1.gif" width="3" height="6" /></td>
+                            <td align="left"><input name="password" type="password" size="18" /></td>
+                            </tr>
+                        </table></form></td>
+                      </tr>
+                      <tr>
+                        <td><img src="/templets/default4/images/jiaoshi_login_head.gif" width="209" height="36" /></td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="5CB115"><form id="form1" name="form1" method="post" action="/eduoa/members/login" onSubmit="return CheckAdminLogin();"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td width="25" height="23" align="center"><img src="/templets/default4/images/jiantou_1.gif" width="3" height="6" /></td>
+                            <td width="126" align="left"><input name="data[Member][username]" type="text" size="18" /></td>
+                            <td width="58" rowspan="2" align="center"><input name="image3" type="image" src="/templets/default4/images/go_b.gif" width="50" height="44" target="_blank"/></td>
+                          </tr>
+                          <tr>
+                            <td width="25" height="23" align="center"><img src="/templets/default4/images/jiantou_1.gif" width="3" height="6" /></td>
+                            <td align="left"><input name="data[Member][password]" type="password" size="18"/></td>
+                          </tr>
+                        </table></form></td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="5CB115"><img src="/templets/default4/images/serceh.gif" width="209" height="36" /></td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="5CB115"><form action="/plus/search.php" name="formsearch" onSubmit="return CheckCuery();"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td width="25" height="23" align="center"><img src="/templets/default4/images/jiantou_1.gif" width="3" height="6" /></td>
+                            <td width="126" align="left"><input name="keyword" type="text" class="searchtxt" id="keyword" size="18" /></td>
+                            <td width="58" rowspan="2" align="center"><input name="image" type="image" src="/templets/default4/images/go_b.gif" width="50" height="44"   target="_blank"/></td>
+                          </tr>
+                          <tr>
+                            <td width="25" height="23" align="center"><img src="/templets/default4/images/jiantou_1.gif" width="3" height="6" /></td>
+                            <td align="left"><select name="select" id="searchtype">
+                              <option value="titlekeyword" selected="selected">智能模糊搜索</option>
+                              <option value="title">仅搜索标题</option>
+                            </select></td>
+                          </tr>
+                        </table></form></td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="5CB115"><img src="/templets/default4/images/green_di_1.gif" width="209" height="12" /></td>
+                      </tr>
+                    </table>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </table>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="167" align="left" background="/templets/default4/images/bg_head_1.gif"><img src="/templets/default4/images/xintie_head.gif" width="141" height="43" /></td>
+                          <td background="/templets/default4/images/bg_head_1.gif">&nbsp;</td>
+                          <td width="10" background="/templets/default4/images/bg_head_1.gif"><img src="/templets/default4/images/bian.gif" width="10" height="43" /></td>
+                        </tr>
+                        <tr>
+                          <td colspan="3"><table width="97%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td width="7%" align="center"><img src="/images/n_ico.gif" width="9" height="9" /></td>
+                              <td width="93%" height="20" align="left" class="lineio"><span id="thread_2"><a href="bbs/viewthread.php?tid=3&amp;extra=page=1">大家好...........</a></span> </td>
+                            </tr>
+                            <tr>
+                              <td align="center"><img src="/images/n_ico.gif" width="9" height="9" /></td>
+                              <td height="20" align="left" class="lineio"><span id="thread_4"><a href="bbs/viewthread.php?tid=4&amp;extra=page=1">大家还是来摆起塞</a></span> </td>
+                            </tr>
+                            <tr>
+                              <td align="center"><img src="/images/n_ico.gif" width="9" height="9" /></td>
+                              <td height="20" align="left" class="lineio"><span id="thread_3"><a href="bbs/viewthread.php?tid=3&amp;extra=page=1">欢迎来到德阳岷江东路逸夫学校</a></span> </td>
+                            </tr>
+                            <tr>
+                              <td align="center"><img src="/images/n_ico.gif" width="9" height="9" /></td>
+                              <td height="20" align="left" class="lineio"><label></label>
+                                  <span id="thread_1"><a href="bbs/viewthread.php?tid=1&amp;extra=page=1">论坛建立了</a></span> </td>
+                            </tr>
+                          </table>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td>&nbsp;</td>
+                              </tr>
+                            </table></td>
+                        </tr>
+                      </table>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="140" background="/templets/default4/images/bg_head_1.gif"><img src="/templets/default4/images/blog_head.gif" width="139" height="43" /></td>
+                          <td width="59" background="/templets/default4/images/bg_head_1.gif">&nbsp;</td>
+                          <td width="10" background="/templets/default4/images/bg_head_1.gif"><img src="/templets/default4/images/bian.gif" width="10" height="43" /></td>
+                        </tr>
+                        <tr>
+                          <td colspan="3"><table width="100%" border="0" cellspacing="0" cellpadding="2">
+                            <tr>
+                              <td height="20" align="center"><a href="blog/blog.php?uid=33" target="_blank">九年级三班</a></td>
+                              <td height="20" align="center"><a href="blog/blog.php?uid=32" target="_blank">九年级二班</a> </td>
+                              <td height="20" align="center"><a href="blog/blog.php?uid=31" target="_blank">九年级一班</a> </td>
+                            </tr>
+                            <tr>
+                              <td height="20" align="center"><a href="blog/blog.php?uid=30" target="_blank">八年级三班</a> </td>
+                              <td height="20" align="center"><a href="blog/blog.php?uid=29" target="_blank">八年级二班</a></td>
+                              <td height="20" align="center"><a href="blog/blog.php?uid=28" target="_blank">八年级一班</a></td>
+                            </tr>
+                            <tr>
+                              <td height="20" colspan="3" align="right"><a href="http://www.dyyfxx.net/blog/" target="_blank">更多</a>..</td>
+                            </tr>
+                          </table></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                </table></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="167" background="/templets/default4/images/bg_head_1.gif"><img src="/templets/default4/images/di_1.gif" width="167" height="43" /></td>
+                <td width="1000" background="/templets/default4/images/bg_head_1.gif">&nbsp;</td>
+                <td width="10" background="/templets/default4/images/bg_head_1.gif"><img src="/templets/default4/images/bian.gif" width="10" height="43" /></td>
+              </tr>
+              <tr>
+                <td height="50" colspan="3" align="center">Power by landmark Copyright 2004-2008<br />
+                版权所有：成都蓝码科技有限公司</td>
+              </tr>
+            </table></td>
+          <td width="30">&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+
+<map name="Map" id="Map"><area shape="rect" coords="9,2,82,18" href="http://www.dyyfxx.net/html/hudongjiaoliu/index.html" />
+<area shape="rect" coords="97,3,166,17" href="http://www.dyyfxx.net/html/xiaowugongkai/index.html" />
+<area shape="rect" coords="184,2,253,17" href="http://www.patlz.com:8000/file/index1.jsp" />
+<area shape="rect" coords="269,3,335,17" href="http://www.dyyfxx.net/eduoa/" />
+</map></body>
+</html>

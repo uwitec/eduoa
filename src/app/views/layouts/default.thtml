@@ -1,6 +1,6 @@
 <?php
 	if(!$this->controller->Session->read('User.id')) {
-		echo("<script language='JavaScript'>alert('X 您长时间未操作，信息已过期，请重新登录！');top.location.replace('../index.php');</script>");
+		echo("<script language='JavaScript'>alert('X 您长时间未操作，信息已过期，请重新登录！');top.location.replace('/eduoa/index.php');</script>");
 		exit();
 	}
 ?>

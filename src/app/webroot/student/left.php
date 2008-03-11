@@ -11,6 +11,7 @@
 			setcookie("osStudentNo",$student_no);
 			setcookie("osStudentName",$student_name);
 			setcookie("osStudentClass",$student_class);
+
 		}
 
 		if(empty($student_no)) {
@@ -92,13 +93,13 @@
 				<tr>
 				  <td height="22" align="left">学　号：
 					<label>
-					<input name="username" type="text" size="10" value="1001" />
+					<input name="username" type="text" size="10" />
 					</label></td>
 				</tr>
 				<tr>
 				  <td height="22" align="left">密　码：
 					<label>
-					<input name="password" type="password" size="10" value="888888" />
+					<input name="password" type="password" size="10" />
 					</label></td>
 				</tr>
 				<tr>

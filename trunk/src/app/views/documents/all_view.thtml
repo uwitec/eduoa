@@ -1,7 +1,7 @@
 <?php
 	switch($this->params['url']['type']){
 		case 1:
-			$title = "班级公告(全校)";
+			$title = "校园公告";
 			$v_name = "公告标题";
 			$v_content = "主要内容";
 			break;
@@ -18,7 +18,7 @@
 <legend>查看<?=$title?></legend> 
 
 <dl>
-	<?php	if($title == "班级公告(全校)"){?>
+	<?php	if($title == "校园公告"){?>
 	<dt>紧急程度</dt>
 	<dd>&nbsp;<?php echo $document['Rate']['rate_name']?></dd>
 	<?php	}?>

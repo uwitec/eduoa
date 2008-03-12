@@ -162,6 +162,7 @@ class CurriculumSchedulesController extends AppController {
    }
 
    function banji_view_www() {
+	    $this->layout = 'site';
 		$this->CurriculumSchedule->recursive = 0;
 		$this->set('hours', $this->Hour->findAll());
 		$this->set('weeks', $this->Week->findAll());

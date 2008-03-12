@@ -47,7 +47,7 @@
 								from 
 									documents a,students b,doc_class_receiving_logs c
 								where 
-									a.document_type_id = 3 and a.id = c.document_id 
+									a.document_type_id = 2 and a.id = c.document_id 
 									and b.banji_id = c.banji_id and  b.student_no = ".$_COOKIE["osStudentNo"]. " 		
 								order by a.created desc
 						";

@@ -1,5 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
+	session_start();
 	require_once("./includes/conn.php");
 	if($_POST["action"] == "login") {
 		$sql = "select a.student_no,a.student_name,b.class_name,a.id,b.id from students a,banjis b where a.student_no='".$_POST["username"]."' and a.password='".md5($_POST["password"])."' and a.banji_id = b.id ";
@@ -16,6 +17,9 @@
 			setcookie("osStudentClass",$student_class);
 			setcookie("osStudentID",$student_id);
 			setcookie("osClassID",$class_id);
+
+			session_register("osStudentNo");
+			$osStudentNo = $student_no;
 		}
 
 

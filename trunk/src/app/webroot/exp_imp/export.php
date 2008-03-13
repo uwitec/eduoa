@@ -1,12 +1,18 @@
 <?php
 
 	$db_host="localhost";
-	$db_user="root";
-	$db_password="root";
+	$db_user="eduoa";
+	$db_password="123456";
 	$db_name="eduoa";
 	$link=mysql_connect($db_host,$db_user,$db_password);
-	mysql_query("SET NAMES 'utf8'",$link);
+	//mysql_query("SET NAMES 'utf8'",$link);
 	$db=mysql_select_db($db_name,$link);
+
+	mysql_query("set names 'gbk'",$link);
+	mysql_query("set character set 'gbk'",$link);
+	mysql_query("set COLLATION_CONNECTION='gbk_chinese_ci' ",$link);
+
+
 
 
     Header("Content-type: text/x-csv");
@@ -27,7 +33,7 @@
 	}
 
 	$csv_file_name = $banji_name."--".$course.".csv";
-	$csv_file_name = iconv('UTF-8','gb2312',$banji_name)."__".iconv('UTF-8','gb2312',$course_name).".csv";
+	$csv_file_name = mb_convert_encoding($banji_name,'UTF-8','GB2312')."__".mb_convert_encoding($course_name,'UTF-8','GB2312').".csv";
 
 	//由于中文名字导入有问题，暂直接用英文名字
 	$csv_file_name = "exam_result.csv";
@@ -40,7 +46,8 @@
 	$sql = "SELECT id,student_name from students where banji_id = $banji_id ";
 	$stmt = mysql_query($sql);
 	while($row= mysql_fetch_array($stmt)){
-		$content .= $row[0].','.iconv('UTF-8','gb2312',$row[1]).','."\n";
+		//$content .= $row[0].','.mb_convert_encoding($row[1],'UTF-8','GB2312').','."\n";
+		$content .= $row[0].','.$row[1].','."\n";
 	}
 
 	echo($content);

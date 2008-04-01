@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	setcookie("osStudentNo",'0');
 	session_unregister("osStudentNo");
 	
